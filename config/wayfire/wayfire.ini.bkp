@@ -1,0 +1,201 @@
+[core]
+plugins = resize command vswitch oswitch grid window-rules autostart place invert animate move switcher fast-switcher zoom expo cube decoration idle autorotate-iio vswipe matcher tile wobbly fisheye
+vheight = 2
+close_top_view = <ctrl> KEY_Q | <alt> KEY_F4
+xwayland = 1
+background_color = 0 0 0 1
+
+[autostart]
+background = bash -c 'pkill -9 swaybg ; swaybg -i "$(find /home/$USER/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n1)"'
+panel = waybar
+
+[command]
+command_0 = sakura -m
+command_1 = dmenu_run
+command_2 = rofi -show drun -theme ~/.config/rofi/center.rasi
+command_3 = pactl set-sink-volume 0 +5%
+command_4 = pactl set-sink-volume 0 -5%
+command_5 = pactl set-sink-mute 0 toggle
+command_6 = ~/.config/rofi/rofimenu2.sh
+command_7 = firefox
+command_8 = bash -c 'pkill -9 swaybg ; swaybg -i "$(find /home/$USER/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n1)"'
+command_9 = sakura -m -e htop
+binding_0 = <super> KEY_T
+binding_1 = <super> KEY_M
+binding_2 = <alt> KEY_F2
+binding_3 = KEY_VOLUMEUP
+binding_4 = KEY_VOLUMEDOWN
+binding_5 = KEY_MUTE
+binding_6 = <alt> KEY_F1
+binding_7 = <ctrl> <super> KEY_F
+binding_8 = <ctrl> <alt> KEY_W
+binding_9 = <ctrl> <alt> KEY_ESC
+binding_lock = <super> <alt> KEY_L
+command_lock = swaylock
+binding_print = KEY_PRINT
+command_print = bash -c 'play ~/.local/songs/camera_shutter.mp3 ; grim "/home/$USER/Imagens/Captura de Tela/Captura de tela de $(date +"%d-%m-%Y %H:%M:%S").png" - | wl-copy'
+binding_file = <super> KEY_N
+command_file = xdg-open ~
+binding_config = <ctrl> <alt> KEY_C
+command_config = xdg-open ~/.config/wayfire.ini
+repeatable_binding_echo = <ctrl> <alt> <super> <shift> KEY_E
+command_echo = echo "Test"
+
+[input]
+mouse_cursor_speed = 0
+touchpad_cursor_speed = 0
+mouse_scroll_speed = 1
+touchpad_scroll_speed = 1
+natural_scroll = 0`
+click_method = default
+scroll_method = default
+disable_while_typing = 1
+disable_touchpad_while_mouse = 0
+xkb_layout = br
+xkb_variant = abnt2
+modifier_binding_timeout = 0
+cursor_theme = Adwaita
+
+[eDP-1]
+layout = 0@0
+custom_mode_1 = 74.50  1280 1344 1472 1664  720 723 728 748 -hsync +vsync
+scale = 1.00
+transform = normal
+
+[SYNA7501:00 06CB:16CA]
+output = eDP-1
+
+[alpha]
+min_value = 0.01
+modifier = <alt>
+
+[fisheye]
+radius = 450
+zoom = 8.910000
+toggle = <super> KEY_Z
+
+[wobbly]
+spring_k = 1
+friction = 1
+grid_resolution = 7
+
+[animate]
+duration = 540.000000
+startup_duration = 1000
+open_animation = fire
+close_animation = fire
+enabled_for = (type is toplevel || (type is x-or && focuseable is true))
+fade_enabled_for = type is overlay
+zoom_enabled_for = none
+fire_enabled_for = none
+
+[place]
+mode = cascade
+
+[cube]
+activate = <ctrl> <alt> BTN_LEFT
+rotate_left = <ctrl> <alt> KEY_J
+rotate_right = <ctrl> <alt> KEY_L
+rotate_up = <ctrl> <alt> KEY_I
+rotate_down = <ctrl> <alt> KEY_K
+zoom = 0.090000
+speed_zoom = 0.070000
+speed_spin_horiz = 0.020000
+speed_spin_vert = 0.020000
+initial_animation = 586
+background = 0.1 0.1 0.1 1.0
+skydome_texture = /home/ilex/Desktop/col.png
+mirror = 0
+cubemap_image = /home/ilex/Desktop/col.png
+background_mode = cubemap
+skydome_mirror = 1
+deform = 1
+
+[expo]
+background = 0.1 0.1 0.1 1.0
+duration = 250.000000
+offset = 50.000000
+toggle = <super> KEY_W
+
+[grid]
+duration = 332.000000
+slot_bl = <alt> <shift> KEY_B
+slot_b = <alt> <shift> KEY_K
+slot_br = <alt> <shift> KEY_N
+slot_l = <alt> <shift> KEY_J
+slot_c = <alt> <shift> KEY_M | <super> KEY_A
+slot_r = <alt> <shift> KEY_L
+slot_tl = <alt> <shift> KEY_U
+slot_t = <alt> <shift> KEY_I
+slot_tr = <alt> <shift> KEY_O
+
+[move]
+activate = <alt> BTN_LEFT
+enable_snap = 1
+enable_snap_off = 1
+snap_threshold = 10
+snap_off_threshold = 0
+
+[oswitch]
+next_output = <super> KEY_O
+next_output_with_win = <super> <shift> KEY_O
+
+[switcher]
+next_view = <alt> KEY_TAB
+prev_view = <alt> <shift> KEY_TAB
+gesture_toggle = "edge-swipe down 3"
+speed = 500
+view_thumbnail_scale = 1.0
+view_thumbnail_size = 0.100000
+
+[fast-switcher]
+activate = <alt> KEY_ESC
+
+[vswitch]
+binding_down = <super> KEY_K
+binding_left = <super> KEY_J
+binding_right = <super> KEY_L
+binding_up = <super> KEY_I
+binding_win_down = <super> <shift> KEY_K
+binding_win_left = <super> <shift> KEY_J
+binding_win_right = <super> <shift> KEY_L
+binding_win_up = <super> <shift> KEY_I
+duration = 300
+
+[resize]
+activate = <super> BTN_LEFT
+
+[zoom]
+speed = 0.005
+
+[invert]
+toggle = <super> <alt> KEY_I
+
+[idle]
+toggle = <ctrl> <super> KEY_I
+dpms_timeout = 600
+
+[wrot]
+
+[decoration]
+font = serif
+icon_1 = close.png
+command_1 = close
+icon_2 = min.png
+command_2 = min
+
+[blur]
+method = kawase
+mode = normal
+kawase_offset = 3
+kawase_degrade = 1
+kawase_iterations = 5
+
+[autorotate-iio]
+
+[tile]
+key_toggle_fullscreen = <super> KEY_F
+
+[vswipe]
+
+

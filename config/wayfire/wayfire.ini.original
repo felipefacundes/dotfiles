@@ -1,0 +1,26 @@
+[core]
+plugins = default autostart command decoration wobbly fisheye animate fast-switcher tile resize move
+
+[autostart]
+a0 = bash -c 'pkill -9 swaybg ; swaybg -i "$(find /home/$USER/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n1)"'
+a1 = waybar
+
+[input]
+xkb_variant = abnt2
+xkb_layout = br
+
+[animate]
+close_animation = fire
+
+[fast-switcher]
+
+[tile]
+key_toggle_fullscreen = <alt> KEY_F11
+
+[resize]
+activate = <super> BTN_LEFT
+
+[move]
+activate = <alt> BTN_LEFT
+
+
