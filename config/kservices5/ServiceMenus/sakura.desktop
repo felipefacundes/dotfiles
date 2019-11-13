@@ -1,0 +1,17 @@
+[Desktop Entry]
+Type=Service
+X-KDE-ServiceTypes=KonqPopupMenu/Plugin
+MimeType=inode/directory;
+Actions=openTerminalHere;
+X-KDE-AuthorizeAction=shell_access
+
+[Desktop Action openTerminalHere]
+TryExec=lacritty
+Exec=sakura -m --working-directory %f
+Icon=utilities-terminal
+
+Name=Open Sakura Here
+Name[pt_BR]=Abra Sakura Aqui
+
+Comment=Opens a terminal at the current folder
+Comment[pt_BR]=Abre um terminal na pasta atual
