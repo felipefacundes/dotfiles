@@ -2,46 +2,46 @@
 mkdir -p ~/.config/sway
 cd ~/.config/sway
 rm -rf *
-wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/sway/config
+wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/config/sway/config
 mkdir -p ~/.config/waybar
 cd ~/.config/waybar
 rm -rf *
-wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/waybar/arrow-date-center-theme-transparent/config
-wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/waybar/arrow-date-center-theme-transparent/style.css
+wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/config/waybar/arrow-date-center-theme-transparent/config
+wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/config/waybar/arrow-date-center-theme-transparent/style.css
 mkdir -p ~/.config/swaylock
 cd ~/.config/swaylock
 rm -rf *
-wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/swaylock/config
-wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/swaylock/ford_mustang_12-wallpaper-1920x1080.jpg
+wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/config/swaylock/config
+wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/config/swaylock/ford_mustang_12-wallpaper-1920x1080.jpg
 mkdir -p ~/.config/termite
 cd ~/.config/termite
 rm -rf *
-wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/termite/config
+wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/config/termite/config
 cd ~
 rm -rf .Xdefaults
-wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/.Xdefaults
+wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/config/.Xdefaults
 mkdir -p ~/.config/rofi
 cd ~/.config/rofi
 rm -rf *
-wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/rofi/rofimenu.sh
-wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/rofi/center.rasi
-wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/rofi/config
-wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/rofi/rofi-list.sh
+wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/config/rofi/rofimenu.sh
+wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/config/rofi/center.rasi
+wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/config/rofi/config
+wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/config/rofi/rofi-list.sh
 mv rofimenu.sh rofimenu2.sh
 mv rofi-list.sh rofimenu.sh
 mv config config.bkp
 chmod +x *.sh
 mkdir -p ~/.config/rofi/sidebar
 cd ~/.config/rofi/sidebar
-wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/rofi/sidebar/rofi.rasi
+wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/config/rofi/sidebar/rofi.rasi
 mkdir -p ~/.config/rofi/appmenu
 cd ~/.config/rofi/appmenu
-wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/rofi/appmenu/drun.rasi
+wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/config/rofi/appmenu/drun.rasi
 mkdir -p "/home/$USER/Imagens/Captura de Tela"
 mkdir -p ~/Imagens/Wallpapers
 cd ~/Imagens/Wallpapers
-wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/Wallpapers/Archlinux-lbdesign-arch-Linux-1333727-wallhere.com.jpg
-wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/swaylock/ford_mustang_12-wallpaper-1920x1080.jpg
+wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/config/Wallpapers/Archlinux-lbdesign-arch-Linux-1333727-wallhere.com.jpg
+wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/config/swaylock/ford_mustang_12-wallpaper-1920x1080.jpg
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "Vamos às Fontes especiais com íconizadas"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -50,7 +50,7 @@ cd ~/.fonts
 rm -rf *Hack*
 rm -rf MinhasFonts.tar.xz
 #wget -nc "https://github.com/felipefacundes/dotfiles/blob/master/fonts/NerdFontHkNF.tar.xz?raw=true" -O NerdFontHkNF.tar.xz
-wget -nc "https://github.com/felipefacundes/dotfiles/blob/master/fonts/MinhasFonts.tar.xz?raw=true" -O MinhasFonts.tar.xz
+wget -nc "https://github.com/felipefacundes/dotfiles/blob/master/config/fonts/MinhasFonts.tar.xz?raw=true" -O MinhasFonts.tar.xz
 #tar -xf NerdFontHkNF.tar.xz
 tar -xf MinhasFonts.tar.xz
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
