@@ -1,0 +1,70 @@
+#
+#   _____                   _ _       
+#  |_   _|__ _ __ _ __ ___ (_) |_ ___ 
+#    | |/ _ \ '__| '_ ` _ \| | __/ _ \
+#    | |  __/ |  | | | | | | | ||  __/
+#    |_|\___|_|  |_| |_| |_|_|\__\___|
+#     
+
+
+[options]
+scroll_on_output = false
+scroll_on_keystroke = true
+audible_bell = false
+mouse_autohide = false
+allow_bold = true
+dynamic_title = true
+urgent_on_bell = true
+clickable_url = true
+font = MesloLGS NF 12
+font = Hack Nerd Font 12
+#font = Inconsolata Nerd Font 12
+#font = Hack 12
+#font = DejaVu Sans Mono for Powerline 12
+scrollback_lines = 10000
+search_wrap = true
+icon_name = utilities-terminal
+geometry = 800x550
+clickable_url = true
+cursor_blink = system
+cursor_shape = block
+filter_unmatched_urls = true
+
+[colors]
+foreground = #839496
+foreground_bold = #eee8d5
+#foreground_dim = #888888
+background = #002b36
+cursor = #93a1a1
+
+# black
+color0  = #073642
+color8  = #586e75
+
+# red
+color1  = #dc322f
+color9  = #cb4b16
+
+# green
+color2  = #859900
+color10 = #586e75
+
+# yellow
+color3  = #b58900
+color11 = #657b83
+
+# blue
+color4  = #268bd2
+color12 = #839496
+
+# magenta
+color5  = #d33682
+color13 = #6c71c4
+
+# cyan
+color6  = #2aa198
+color14 = #93a1a1
+
+# white
+color7  = #eee8d5
+color15 = #fdf6e3
