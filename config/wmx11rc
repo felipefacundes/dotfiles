@@ -1,0 +1,20 @@
+##/## /bin/xcinnamonce
+#export vblank_mode=0
+export QT_QPA_PLATFORM=xcb
+export QT_QPA_PLATFORMTHEME=qt5ct
+#export QT_STYLE_OVERRIDE=gtk2
+export vblank_mode=0
+export __GL_SYNC_TO_VBLANK=0
+numlockx on
+xbindkeys &
+#/bin/polybar top &
+dbus-run-session /bin/openbox &
+#bash -c 'feh --bg-scale "$(find /home/$USER/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n1)"' &
+xwinwrap -ni -o 0.9 -fs -s -st -sp -b -nf -- mpv --no-audio -loop 0 \
+-saturation 100 -brightness -20 -contrast 50 -wid WID ~/Videos/Aquario.mkv &
+dbus-launch /bin/xcompmgr &
+##/##compton --config ~/.config/compton.conf &
+dbus-launch /bin/xfce4-panel
+export vblank_mode=0
+export __GL_SYNC_TO_VBLANK=0
+#awesome

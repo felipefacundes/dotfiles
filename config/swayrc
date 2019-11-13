@@ -1,0 +1,16 @@
+#!/bin/bash
+#export QT_QPA_PLATFORM=xcb
+#export GDK_BACKEND=wayland
+#export GTK_THEME=Adapta-Nokto
+dbus-launch gsettings set org.gnome.desktop.interface gtk-theme 'Adapta-Nokto'
+dbus-launch gsettings set org.gnome.desktop.interface icon-theme 'Lila_HD_Dark'
+dbus-launch gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
+export QT_QPA_PLATFORM=wayland-egl
+export QT_QPA_PLATFORMTHEME=qt5ct
+export CLUTTER_BACKEND=wayland
+export SDL_VIDEODRIVER=wayland
+export QT_STYLE_OVERRIDE=qt5ct
+#eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+#export SSH_AUTH_SOCK
+
+XDG_SESSION_TYPE=wayland dbus-run-session sway

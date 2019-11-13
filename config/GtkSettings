@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Theme
+gsettings set org.gnome.desktop.interface gtk-theme 'Adapta-Nokto'
+gsettings set org.gnome.desktop.interface icon-theme 'Lila_HD_Dark'
+gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
+# Font
+gsettings set org.gnome.desktop.interface document-font-name 'Sans 10'
+gsettings set org.gnome.desktop.interface font-name 'Ubuntu 10'
+gsettings set org.gnome.desktop.interface monospace-font-name 'Ubuntu Mono 11'
+#gsettings set org.gnome.nautilus.desktop font 'Ubuntu 10'
+# List
+#gsettings list-recursively org.gnome.desktop.interface
+# Reset
+#gsettings reset-recursively org.gnome.desktop.interface
