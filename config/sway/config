@@ -73,7 +73,7 @@ mode 1920x1080@144Hz
 #subpixel rgb
 # background|bg <color> solid_color
 # Pode ser "90", "180", "270" para rotação; ou "flipped", "flipped-90", "flipped-180", "flipped-270" para aplicar uma rotação e inverter, ou "normal"
-#transform 180
+transform 180
 #dpms on
 #scale 2
 }
@@ -307,10 +307,10 @@ bindsym Mod1+l focus right
 bindsym Mod1+Tab focus right
 
 # Alternativa
-bindsym Mod1+Left focus left
-bindsym Mod1+Down focus down
-bindsym Mod1+Up focus up
-bindsym Mod1+Right focus right
+bindsym Mod4+Left focus left
+bindsym Mod4+Down focus down
+bindsym Mod4+Up focus up
+bindsym Mod4+Right focus right
 
 # Mover janela focada
 bindsym Mod1+Shift+h move left
@@ -574,4 +574,4 @@ exec bash -c "pkill -9 pulseaudio ; pulseaudio -vvv --start --realtime=1 --daemo
 
 exec clipit
 
-exec qbittorrent
+#exec qbittorrent
