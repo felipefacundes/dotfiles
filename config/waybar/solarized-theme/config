@@ -1,0 +1,110 @@
+{
+    "layer": "bottom", // Waybar at top layer
+    // "position": "bottom", // Waybar at the bottom of your screen
+    // "height": 30, // Waybar height
+    // "width": 1280, // Waybar width
+    // Choose the order of the modules
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    // "modules-center": ["sway/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["cpu", "custom/temp", "memory", "custom/root", "custom/home", "custom/main", "custom/backup", "custom/scratch", "pulseaudio", "network", "tray"],
+    // Modules configuration
+    "sway/workspaces": {
+         "disable-scroll": false,
+         "all-outputs": false
+    //     "format": "{name}: {icon}",
+    //     "format-icons": {
+    //         "1": "",
+    //         "2": "",
+    //         "3": "",
+    //         "4": "",
+    //         "5": "",
+    //         "urgent": "",
+    //         "focused": "",
+    //         "default": ""
+    //     }
+     },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>",
+	"max-length": 20
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "format": "{:%m-%d %l:%M}"
+    },
+    "cpu": {
+        "format": "  {usage}% "
+    }, 
+    "memory": {
+        "format": "   {}%"
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+    "network": {
+        // "interface": "wlp2s0", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "  {ifname}: {ipaddr}/{cidr} ",
+        "format-disconnected": "⚠ Disconnected "
+    },
+    "pulseaudio": {
+        //"scroll-step": 5,
+        "format": " {icon} {volume}%",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+"custom/temp": {
+        "format": "  {} ",
+	"interval": 2,
+        "exec": "$HOME/.config/scripts/temp.sh 2> /dev/null"
+    },
+"custom/root": {
+        "format": " / {} ",
+	"interval": 200,
+        "exec": "$HOME/.config/scripts/rootspace.sh 2> /dev/null"
+    },
+"custom/home": {
+        "format": "  {} ",
+	"interval": 200,
+        "exec": "$HOME/.config/scripts/homespace.sh 2> /dev/null"
+    },
+"custom/main": {
+        "format": "  {} ",
+	"interval": 200,
+        "exec": "$HOME/.config/scripts/mainspace.sh 2> /dev/null"
+    },
+"custom/backup": {
+        "format": "  {} ",
+	"interval": 200,
+        "exec": "$HOME/.config/scripts/backupspace.sh 2> /dev/null"
+    },   
+"custom/scratch": {
+        "format": "  {} ",
+	"interval": 200,
+        "exec": "$HOME/.config/scripts/scratchspace.sh 2> /dev/null"
+    }
+}

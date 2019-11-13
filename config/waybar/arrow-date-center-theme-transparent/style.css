@@ -1,0 +1,115 @@
+* {
+	font-size: 14px;
+	font-family: monospace;
+}
+window#waybar {
+	background: transparent;
+	color: #fdf6e3;
+}
+#custom-right-arrow-dark,
+#custom-left-arrow-dark {
+	color: #1a1a1a;
+    opacity: 0.7;
+}
+#custom-right-arrow-light,
+#custom-left-arrow-light {
+	color: transparent;
+	background: transparent;
+}
+#custom-rofi,
+#custom-terminal,
+#custom-firefox,
+#custom-arquivos,
+#custom-telegram,
+#custom-pacman,
+#workspaces,
+#clock.1,
+#clock.2,
+#clock.3,
+#pulseaudio,
+#backlight,
+#memory,
+#cpu,
+#temperature,
+#battery,
+#tray,
+#custom-desligar {
+	background: #1a1a1a;
+    opacity: 0.7;
+}
+#custom-rofi {
+	color: #0061ff;
+}
+#custom-terminal {
+	color: #ffffff;
+}
+#custom-firefox {
+	color: #ffa000;
+}
+#custom-arquivos {
+	color: #fff89d;
+}
+#custom-telegram {
+	color: #9dfff5;
+}
+#custom-pacman {
+	color: #f8fc03;
+}
+
+#workspaces button {
+	padding: 0 2px;
+	color: #fdf6e3;
+}
+#workspaces button.focused {
+	color: #b600bd;
+}
+#workspaces button:hover {
+	box-shadow: inherit;
+	text-shadow: inherit;
+}
+#workspaces button:hover {
+	background: #1a1a1a;
+	border: #1a1a1a;
+	padding: 0 3px;
+}
+#clock.1 {
+    color: #ffcf7c;
+}
+#clock.2 {
+    color: #00ffbd;
+}
+#clock.3 {
+    color: #ffcf7c;
+}
+#pulseaudio {
+	color: #009eff;
+}
+#backlight {
+	color: #b58900;
+}
+#memory {
+	color: #00ffbd;
+}
+#temperature {
+	color: #ffcd00;
+}
+#cpu {
+	color: #f700ff;
+}
+#battery {
+	color: #aeff00;
+}
+#custom-desligar {
+	color: #ff0000;
+}
+#custom-rofi,
+#clock,
+#pulseaudio,
+#backlight,
+#memory,
+#cpu,
+#temperature,
+#battery,
+#custom-desligar {
+	padding: 0 10px;
+}
