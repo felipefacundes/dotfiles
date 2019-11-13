@@ -1,0 +1,18 @@
+# man swaylock for more options.
+ignore-empty-password
+daemonize
+line-uses-ring
+
+image=$HOME/.config/swaylock/ford_mustang_12-wallpaper-1920x1080.jpg
+
+indicator-radius=50
+indicator-thickness=10
+
+# Descomente a linha de baixo e terá fundo transparente.
+#inside-color=00000033
+
+key-hl-color=3dc258aa
+
+ring-color=ffffffaa
+
+separator-color=00000000
