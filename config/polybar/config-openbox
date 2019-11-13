@@ -1,0 +1,724 @@
+######################## Cores
+
+[colors]
+;background = ${xrdb:color0:#222}
+background = #00000000
+;background = #222
+background-alt = #444
+;foreground = ${xrdb:color7:#222}
+foreground = #dfdfdf
+foreground-alt = #555
+primary = #ffb52a
+secondary = #000000
+alert = #ff0000
+
+######################## Configurações
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
+
+############################################ Módulos ##########################################
+
+[module/weather]
+type = custom/script
+exec = ~/.config/polybar/scripts/openweathermap-detailed.sh &
+interval = 600
+label-font = 3
+
+; Modulo xwindows
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+; Modulo xkeyboard
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+;format-prefix-underline = #5500ff
+
+label-layout = %layout%
+;label-layout-underline = #5500ff
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+; Modulo filesystem
+
+[module/filesystem]
+type = internal/fs
+interval = 10
+
+mount-0 = /
+
+label-mounted = %mountpoint%%{F-}: %percentage_used%%
+label-unmounted = %mountpoint% Não MONTADO
+label-unmounted-foreground = #ffffff
+
+; Modulo bspwm
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
+
+label-occupied = %index%
+label-occupied-padding = 2
+
+label-urgent = %index%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+label-empty = %index%
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 2
+
+; Separator in between workspaces
+; label-separator = |
+
+; Módulo xworkspaces somente para openbox
+
+[module/ewmh]
+type = internal/xworkspaces
+
+; Only show workspaces defined on the same output as the bar
+;
+; Useful if you want to show monitor specific workspaces for openbox
+; on different bars
+;
+; Default: false
+pin-workspaces = true
+
+; Create click handler used to focus desktop
+; Default: true
+enable-click = true
+
+; Create scroll handlers used to cycle desktops
+; Default: true
+enable-scroll = false
+
+; icon-[0-9]+ = <desktop-name>;<icon>
+; NOTE: The desktop name needs to match the name configured by the WM
+; You can get a list of the defined desktops using:
+; $ xprop -root _NET_DESKTOP_NAMES
+icon-0 = code;♚
+icon-1 = office;♛
+icon-2 = graphics;♜
+icon-3 = mail;♝
+icon-4 = web;♞
+icon-default = ♟
+
+; Available tags:
+;   <label-monitor>
+;   <label-state> - gets replaced with <label-(active|urgent|occupied|empty)>
+; Default: <label-state>
+format = <label-state>
+
+; Available tokens:
+;   %name%
+; Default: %name%
+label-monitor = %name%
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-active = %index%
+label-active-foreground = #ffffff
+label-active-background = #3f3f3f
+label-active-underline = #fba922
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-occupied = %icon%
+label-occupied-underline = #555555
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-urgent = %icon%
+label-urgent-foreground = #000000
+label-urgent-background = #bd2c40
+label-urgent-underline = #9b0a20
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-empty = %icon%
+label-empty-foreground = #55
+
+; Módulo i3wm
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+pin-workspaces = true
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
+
+;set $ws1 "1:"
+;set $ws2 "2:"
+;set $ws3 "3:"
+;set $ws4 "4:"
+;set $ws5 "5:"
+;set $ws6 "6:"
+;set $ws7 "7:"
+;set $ws8 "8:"
+;set $ws9 "9:"
+;set $ws10 "10:"
+
+strip-wsnumbers = false
+label-state-foreground = ${colors.principal}
+
+label-mode = %mode%
+label-mode-foreground = ${colors.secondary}
+label-mode-padding = 1
+
+label-focused = %name%
+label-focused-foreground = ${colors.secondary}
+label-focused-background = ${colors.background-alt}
+label-focused-padding = 1
+
+label-unfocused = %name%
+label-unfocused-padding = 1
+
+label-visible = %name%
+label-visible-background = ${colors.background-alt}
+label-visible-padding = 1
+
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+; Módulo mpd
+
+[module/mpd]
+type = internal/mpd
+;format-online = <label-song> <toggle> <icon-repeatone> <label-time> <icon-stop>
+;format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+;format-online = <label-song> <icon-prev> <icon-stop> <toggle> <icon-next> <label-time>
+format-online = <label-song> <toggle> <icon-stop> <label-time>
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+icon-seekb = seekb
+icon-seekf = seekf
+icon-random = rdm
+icon-repeat = 
+icon-repeatone = ¹
+icon-single = single
+icon-consume = consume
+
+;label-song =   %title%
+;label-song-maxlen = 25
+;label-song-ellipsis = true
+label-song = %{F#ffffff}%{F-} %title%%{F-}
+
+; Modulo xbacklight
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #fff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground-alt}
+
+; Modulo backlight-acpi
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+; Módulo cpu
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = #8dd3f8
+format-underline = #8dd3f8
+label = %percentage:2%%
+
+; Módulo memória
+
+
+[module/memória]
+type = internal/memory
+interval = 2
+format-prefix = ""
+format-prefix-foreground = #f8f08d
+format-underline = #f8f08d
+label = %percentage_used%%
+
+; Módulo data
+
+[module/data]
+type = internal/date
+interval = 5
+
+;date = " %d-%m-%y"
+date-alt = " %d-%m-%y"
+
+time = %H:%M
+;time-alt = %H:%M:%S
+
+
+format-prefix = 
+format-prefix-foreground = #f8ce8d
+format-underline = #f8ce8d
+
+label = %date% %time%
+
+; Modulo pulseaudio
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL %percentage%%
+label-volume-foreground = ${root.foreground}
+
+label-muted =  muted
+label-muted-foreground = #666
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+; Modulo alsa
+
+[module/alsa]
+type = internal/alsa
+
+format-volume = <label-volume>
+label-volume =  %percentage%%
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = " "
+format-muted-foreground = #ffffff
+label-muted = Som MUTADO
+format-volume-underline = #ffffff
+
+;bar-volume-width = 10
+;bar-volume-foreground-0 = #55aa55
+;bar-volume-foreground-1 = #55aa55
+;bar-volume-foreground-2 = #55aa55
+;bar-volume-foreground-3 = #55aa55
+;bar-volume-foreground-4 = #55aa55
+;bar-volume-foreground-5 = #f5a70a
+;bar-volume-foreground-6 = #ff5555
+;bar-volume-gradient = false
+;bar-volume-indicator = |
+;bar-volume-indicator-font = 2
+;bar-volume-fill = ─
+;bar-volume-fill-font = 2
+;bar-volume-empty = ─
+;bar-volume-empty-font = 2
+;bar-volume-empty-foreground = ${colors.foreground-alt}
+
+; Modulo temperature
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+format-underline = #8df88d
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = #8df88d
+
+; Modulo Desligar
+
+[module/menudesligar]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = #ff0000
+;label-open-foreground = ${colors.secondary}
+label-close = Cancelar
+;label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = "Sair"
+menu-0-0-exec = menu-open-1
+menu-0-1 = "Suspender"
+menu-0-1-exec = menu-open-2
+menu-0-2 = "Reiniciar"
+menu-0-2-exec = menu-open-3
+menu-0-3 = "Desligar"
+menu-0-3-exec = menu-open-4
+menu-1-0 = "Sair AGORA!?"
+menu-1-0-exec = pkill -9 -u "$USER"
+menu-2-0 = "Suspender AGORA!?"
+menu-2-0-exec = openrc-shutdown --halt now
+menu-3-0 = "Reiniciar AGORA!?"
+menu-3-0-exec = openrc-shutdown --reboot now
+menu-4-0 = "Desligar AGORA!?"
+menu-4-0-exec = openrc-shutdown --poweroff now
+
+
+[module/rofi]
+type = custom/text
+content = "%{F#0061ff}%{F-}"
+click-left = ~/.config/rofi/rofimenu.sh &
+click-right = rofi -show drun -theme ~/.config/rofi/sidebar/rofi.rasi &
+click-middle = obkey &
+
+[module/terminal]
+type = custom/text
+content = "%{F#ffffff}%{F-}"
+click-left = sakura -m &
+click-right = sakura -s &
+
+[module/browser]
+type = custom/text
+content = "%{F#ffa000}%{F-}"
+click-left = firefox &
+;click-middle = firefox &
+;click-right = chromium &
+
+[module/telegram]
+type = custom/text
+content = "%{F#9dfff5}%{F-}"
+click-left = bash -c 'firefox --new-tab "https://web.telegram.org/"' &
+
+[module/update]
+type = custom/text
+content = "%{F#ffffff}%{F-}"
+click-left = exec sakura -e sudo pacman -Syyu &
+
+[module/arquivos]
+type = custom/text
+content = "%{F#fff89d}%{F-}"
+click-left = dolphin &
+
+[module/mpv]
+type = custom/text
+content = "%{F#ffffff}%{F-}"
+click-left = mpv &
+
+[module/user]
+type = custom/text
+content = "%{F#8df8d8}%{F-} FeFacundes"
+content-underline = #8df8d8
+
+[module/linux]
+type = custom/text
+content = "%{F#0061ff}%{F-} Arch Linux"
+;content-underline = #ff00d1
+click-left = xfdashboard &
+click-middle = bash -c 'feh --bg-scale "$(find /home/$USER/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n1)"' &
+click-right = rofi -show drun -theme ~/.config/rofi/appmenu/drun.rasi &
+
+[module/wall]
+type = custom/text
+content = "%{F#ffffff}%{F-}"
+click-left = nitrogen --set-zoom-fill /home/rfacundes/Imagens/Wallpapers &
+
+[module/trash]
+type = custom/text
+content = "%{F#ffffff}%{F-}"
+click-left = dolphin trash:/// &
+
+[module/refresh]
+type = custom/text
+content = 
+content-foreground = #e88cff
+click-left = openbox --restart &
+
+[module/print]
+type = custom/text
+content = "%{F#ffffff}%{F-}"
+click-left = bash -c 'scrot "$HOME/Imagens/Captura de Tela/Captura de tela de %d-%m-%Y %H:%M:%S.png"' &
+
+[module/torrent]
+type = custom/text
+content = "%{F#ffffff}%{F-}"
+click-left = qbittorrent &
+
+[module/tux]
+type = custom/text
+content = "%{F#ffffff}%{F-}"
+;content-underline = #ff00d1
+
+[module/lock]
+type = custom/text
+content = 
+content-foreground = #ffffff
+click-left = slimlock &
+
+[module/placeholder]
+# Just a dummy module as polybar always requires at least one amodule
+type = custom/script
+width = 1
+
+#################################### Barra/Systray #############################################
+
+[bar/systray]
+# As small as possible, polybar will resize it when items get added
+width = 1
+
+# Whatever fits your needs
+height = 40
+
+# Bottom left to imitate gnome-shells systray
+bottom = true
+
+# REQUIRED for us to be able to move the window
+override-redirect = true
+
+modules-right = placeholder
+
+tray-position = left
+tray-maxsize = 16
+tray-padding = 8
+tray-transparent = false
+tray-background = #282C34
+
+################################## Barra/Topo ####################################################
+
+[bar/top]
+monitor = ${env:MONITOR:LVDS-1}
+dpi = 80
+width = 100%
+height = 20
+radius = 0.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = #f00
+
+border-size = 1
+;border-color = #fc7878
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+;font-0 = fixed:pixelsize=10;1
+font-0 = "Fantasque Sans Mono:style=Regular:pixelsize=10;1"
+font-1 = "xos4 Terminess Powerline:pixelsize=13;1"
+;font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = Hack Nerd Font:pixelsize=13;2
+;font-4 = Siji:pixelsize=10;1
+;font-5 = Typicons:pixelsize=15;2
+font-6 = feather:style=Regular:pixelsize=12;2
+
+tray-position = right
+;tray-maxsize = 16
+;tray-padding = 8
+;tray-transparent = true
+;tray-background = #282C34
+;tray-background = #0063ff
+
+modules-left = rofi terminal arquivos browser telegram ewmh
+modules-right = alsa memória cpu temperature user data menudesligar
+modules-center = linux
+
+# wm-restack = bspwm
+# wm-restack = i3
+# wm-restack = openbox
+
+override-redirect = false
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+################################## Barra/Topo ####################################################
+
+[bar/top_wayland]
+monitor = ${env:MONITOR:XWAYLAND0}
+dpi = 80
+width = 100%
+height = 20
+radius = 0.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = #f00
+
+border-size = 1
+;border-color = #fc7878
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+;font-0 = fixed:pixelsize=10;1
+font-0 = "Fantasque Sans Mono:style=Regular:pixelsize=10;1"
+font-1 = "xos4 Terminess Powerline:pixelsize=13;1"
+;font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = Hack Nerd Font:pixelsize=13;2
+;font-4 = Siji:pixelsize=10;1
+;font-5 = Typicons:pixelsize=15;2
+font-6 = feather:style=Regular:pixelsize=12;2
+
+tray-position = right
+;tray-maxsize = 16
+;tray-padding = 8
+;tray-transparent = true
+;tray-background = #282C34
+;tray-background = #0063ff
+
+modules-left = rofi terminal arquivos browser telegram ewmh
+modules-right = alsa memória cpu temperature user data menudesligar
+modules-center = linux weather
+
+;wm-restack = bspwm
+;wm-restack = i3
+;wm-restack = openbox
+
+override-redirect = false
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+########################################### Barra/Bottom ####################################################
+
+[bar/bottom]
+monitor = ${env:MONITOR:LVDS-1}
+dpi = 95
+width = 100%
+height = 20
+fixed-center = true
+bottom = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 1
+line-color = ${colors.alert}
+
+border-size = 1
+;border-color = #494b49
+
+padding-left = 1
+padding-right = 1
+
+module-margin-left = 0
+module-margin-right = 1
+
+;font-0 = fixed:pixelsize=10;1
+font-0 = "Fantasque Sans Mono:style=Regular:pixelsize=10;1"
+font-1 = "xos4 Terminess Powerline:pixelsize=13;1"
+;font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = Hack Nerd Font:pixelsize=13;2
+;font-4 = Siji:pixelsize=10;1
+;font-2 = Typicons:pixelsize=15;2
+;font-2 = feather:style=Regular:pixelsize=12;2
+
+modules-left = ewmh
+modules-center = terminal nautilus browser telegram vlc
+modules-right =
+
+tray-position =
+tray-padding = 2
+;tray-transparent = true
+;tray-background = #0063ff
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+; Modulo xwindows

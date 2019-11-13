@@ -1,0 +1,628 @@
+;==========================================================
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+[color]
+
+white = #FFFFFF
+black = #000000
+
+bg = #282828
+fg = #fdf6e3
+blue = #268bd2
+
+shade1 = #d79921
+shade2 = #cc241d
+shade3 = #98971a
+shade4 = #458588
+shade5 = #b16286
+shade6 = #689d6a
+
+shade7 = #64B5F6
+border = #3c3836
+ashade = #839496
+
+[general]
+padding = 1
+
+[bar/top]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 15
+;offset-x = 1%
+;offset-y = 1%
+;radius = 6.0
+fixed-center = true
+
+background = ${color.bg}
+foreground = ${color.fg}
+
+;line-size = 3
+;line-color = #f00
+
+border-bottom-size = 2
+border-bottom-color = ${color.border}
+
+padding-left = 1
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = DejaVu\ Sans\ Mono\ For\ Powerline:pixelsize=8;2
+font-1 = Font\ Awesome\ 5\ Free:style=Solid:pixelsize=10;2
+font-2 = Font\ Awesome\ 5\ Brands:pixelsize=10;2
+font-3 = Inconsolata\ Nerd\ Font:pixelsize:10;2
+
+modules-left = pulseaudio xbacklight xwindow
+modules-center = i3 bspwm
+modules-right = xkeyboard network eth battery date powermenu
+
+tray-position = left
+tray-padding = 2
+;tray-background = #0063ff
+
+wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/bspwm]
+type = internal/bspwm
+
+; Only show workspaces defined on the same output as the bar
+; NOTE: The bspwm and XRandR monitor names must match, which they do by default.
+; Default: true
+pin-workspaces = true
+
+; Output mode flags after focused state label
+; Default: false
+inline-mode = false
+
+; Create click handler used to focus workspace
+; Default: true
+enable-click = false
+
+; Create scroll handlers used to cycle workspaces
+; Default: true
+enable-scroll = false
+
+; Set the scroll cycle direction 
+; Default: true
+reverse-scroll = false
+
+; Use fuzzy (partial) matching on labels when assigning 
+; icons to workspaces
+; Example: code;♚ will apply the icon to all workspaces 
+; containing 'code' in the label
+; Default: false
+fuzzy-match = true
+
+; ws-icon-[0-9]+ = label;icon
+; Note that the label needs to correspond with the bspwm workspace name
+;ws-icon-default =
+ws-icon-0 = 1; 
+ws-icon-1 = 2; 
+ws-icon-2 = 3; 
+ws-icon-3 = 4; 
+ws-icon-4 = 5; 
+ws-icon-5 = 6; 
+ws-icon-6 = 7; 
+ws-icon-7 = 8; 
+ws-icon-8 = 9; 
+ws-icon-9 = 10; 
+
+; Available tags:
+;   <label-monitor>
+;   <label-state> - gets replaced with <label-(focused|urgent|occupied|empty)>
+;   <label-mode> - gets replaced with <label-(monocle|tiled|fullscreen|floating|locked|sticky|private)>
+; Default: <label-state>
+format = <label-state><label-mode>
+
+; Available tokens:
+;   %name%
+; Default: %name%
+label-monitor = %name%
+
+; If any values for label-dimmed-N are defined, the workspace/mode
+; colors will get overridden with those values if the monitor is out of focus
+; To only override workspaces in a specific state, use:
+;   label-dimmed-focused
+;   label-dimmed-occupied
+;   label-dimmed-urgent
+;   label-dimmed-empty
+;label-dimmed-foreground = #555
+;label-dimmed-focused-background = #f00
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+;label-focused = %icon% %name%
+;label-focused-foreground = ${color.fg}
+;label-focused-background = ${color.bg}
+;label-focused-underline = ${color.shade1}
+label-focused = %icon%
+label-focused-foreground = ${color.shade4}
+label-focused-padding = 2
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+;label-occupied = %icon% %name%
+label-occupied = %icon%
+label-occupied-padding = 2
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+;label-urgent = %icon% %name%
+;label-urgent-foreground = ${color.fg}
+;label-urgent-background = ${color.bg}
+;label-urgent-underline = ${color.fg}
+label-urgent = %icon%
+label-urgent-padding = 2
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+;label-empty = %icon% %name%
+;label-empty-foreground = ${color.fg}
+label-empty = 
+label-empty-foreground = ${color.fg}
+label-empty-padding = 0
+
+; The following labels will be used to indicate the layout/mode
+; for the focused workspace. Requires <label-mode>
+;
+; Available tokens:
+;   None
+;label-monocle = 
+;label-tiled = 
+;label-fullscreen = 
+;label-floating = 
+;label-pseudotiled = P
+;label-locked = 
+;label-locked-foreground = #bd2c40
+;label-sticky = 
+;label-sticky-foreground = #fba922
+;label-private = 
+;label-private-foreground = #bd2c40
+
+; Separator in between workspaces
+;label-separator = |
+;label-separator-padding = 2
+;label-separator-foreground = #ffb52a
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+enable-scroll = false
+
+label-focused = %name% %icon%
+label-focused-padding = 2
+label-focused-foreground = ${color.blue}
+
+label-unfocused = %icon% 
+label-unfocused-padding = ${self.label-focused-padding}
+label-unfocused-foreground = ${color.white}
+
+label-urgent = %icon% 
+#label-urgent-background = #bd2c40
+label-urgent-padding = ${self.label-focused-padding}
+label-urgent-foreground = ${color.white}
+
+label-visible = %icon% 
+label-visible-padding = ${self.label-focused-padding}
+label-visible-foreground = ${color.white}
+
+label-mode-padding = ${self.label-focused-padding}
+label-mode-foreground = ${color.bg}
+label-mode-background = ${color.blue}
+
+ws-icon-0 = 1; 
+ws-icon-1 = 2; 
+ws-icon-2 = 3; 
+ws-icon-3 = 4; 
+ws-icon-4 = 5; 
+ws-icon-5 = 6; 
+ws-icon-6 = 7; 
+ws-icon-7 = 8; 
+ws-icon-8 = 9; 
+ws-icon-9 = 10; 
+
+;label-separator = |
+;label-separator-padding = 1
+;label-separator-foreground = #ffb52a
+
+[module/mpd]
+type = internal/mpd
+
+; Host where mpd is running (either ip or domain name)
+; Can also be the full path to a unix socket where mpd is running.
+host = localhost
+port = 6600
+;password = janek2004
+
+; Seconds to sleep between progressbar/song timer sync
+; Default: 1
+interval = 2
+
+format-online = <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next> <label-song> <icon-repeat> <icon-random> 
+;format-playing = ${self.format-online}
+;format-paused = ${self.format-online}
+;format-stopped = ${self.format-online}
+
+; Available tags:
+;   <label-offline>
+; Default: ""
+;format-offline = <label-offline>
+
+; Available tokens:
+;   %artist%
+;   %album-artist%
+;   %album%
+;   %date%
+;   %title%
+; Default: %artist% - %title%
+label-song =  %artist% - %title%
+
+; Available tokens:
+;   %elapsed%
+;   %total%
+; Default: %elapsed% / %total%
+;label-time = %elapsed% / %total%
+
+; Available tokens:
+;   None
+label-offline =  mpd is offline
+
+; Only applies if <icon-X> is used
+icon-play = 
+icon-pause = 
+icon-stop = 
+icon-prev = 
+icon-next = 
+icon-seekb = 
+icon-seekf = 
+icon-random = 
+icon-repeat = 
+
+; Used to display the state of random/repeat/repeatone/single
+; Only applies if <icon-[random|repeat|repeatone|single]> is used
+toggle-on-foreground = #ff
+toggle-off-foreground = #55
+
+[module/xwindow]
+type = internal/xwindow
+label = %{A1:rofi -show drun:} %title:0:20:...%%{A} 
+label-empty = %{A1:rofi -show drun:}%{A} 
+format-padding = ${general.padding}
+format-background = ${color.shade6}
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+format-background = ${color.shade5}
+format-padding = ${general.padding}
+format-prefix = " "
+format-prefix-foreground = ${color.fg}
+
+label-layout = %layout%
+
+[module/xbacklight]
+type = internal/xbacklight
+format = <label> <bar>
+format-padding = ${general.padding}
+label =  
+
+bar-width = 10
+bar-indicator = | 
+bar-indicator-foreground = #fff
+bar-indicator-font = 2
+bar-fill = 
+bar-fill-font = 2
+bar-fill-foreground = ${color.shade1}
+bar-empty = 
+bar-empty-font = 2
+bar-empty-foreground = ${color.ashade}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+[module/cpu]
+type = internal/cpu
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 0.5
+
+; Available tags:
+;   <label> (default)
+;   <bar-load>
+;   <ramp-load>
+;   <ramp-coreload>
+format = <label> <ramp-coreload>
+
+; Available tokens:
+;   %percentage% (default) - total cpu load averaged over all cores
+;   %percentage-sum% - Cumulative load on all cores
+;   %percentage-cores% - load percentage for each core
+;   %percentage-core[1-9]% - load percentage for specific core
+label =  %percentage%%
+
+; Spacing between individual per-core ramps
+ramp-coreload-spacing = 1
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+
+[module/memory]
+type = internal/memory
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 3
+
+; Available tags:
+;   <label> (default)
+;   <bar-used>
+;   <bar-free>
+;   <ramp-used>
+;   <ramp-free>
+;   <bar-swap-used>
+;   <bar-swap-free>
+;   <ramp-swap-used>
+;   <ramp-swap-free>
+format =  <label> <bar-used>
+
+; Available tokens:
+;   %percentage_used% (default)
+;   %percentage_free%
+;   %gb_used%
+;   %gb_free%
+;   %gb_total%
+;   %mb_used%
+;   %mb_free%
+;   %mb_total%
+;   %percentage_swap_used%
+;   %percentage_swap_free%
+;   %mb_swap_total%
+;   %mb_swap_free%
+;   %mb_swap_used%
+;   %gb_swap_total%
+;   %gb_swap_free%
+;   %gb_swap_used%
+label = %percentage_used%%
+
+; Only applies if <bar-used> is used
+bar-used-indicator =
+bar-used-width = 10
+bar-used-foreground-0 = ${color.blue}
+;bar-used-foreground-1 = #557755
+;bar-used-foreground-2 = #f5a70a
+;bar-used-foreground-3 = #ff5555
+bar-used-fill = ▐
+bar-used-empty = ▐
+bar-used-empty-foreground = ${color.ashade}
+
+[module/network]
+type = internal/network
+interface = wlp2s0
+interval = 3.0
+format-connected-background = ${color.shade4}
+format-disconnected-background = ${color.shade4}
+format-connected-padding = ${general.padding}
+format-disconnected-padding = ${general.padding}
+format-connected = <label-connected>
+
+label-connected = %{A1:termite --name "network-polybar" -e nmtui:}%essid%%{A}
+;   %downspeed:9%
+
+;ramp-signal-foreground = ${color.fg-alt}
+format-connected-prefix = "  "
+;format-connected-prefix-foreground = #b6a49b
+format-disconnected = <label-disconnected>
+label-disconnected = not connected
+label-disconnected-foreground = #66ffffff
+
+[module/eth]
+type = internal/network
+interface = wwp0s29u1u6i6
+interval = 3.0
+
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${color.fg-alt}
+label-connected = %local_ip%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${color.fg-alt}
+
+[module/date]
+type = internal/date
+format-background = ${color.shade1}
+format-padding = ${general.padding}
+interval = 30
+label =  %time%
+time =  %I:%M %p
+time-alt =  %Y-%m-%d
+
+[module/pulseaudio]
+type = internal/pulseaudio
+format-volume-padding = ${general.padding}
+format-volume = <ramp-volume> <bar-volume>
+label-volume-foreground = ${root.foreground}
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+format-muted = <ramp-volume> <bar-volume>
+ramp-muted-foreground = #666
+
+bar-volume-width = 10
+bar-volume-foreground-0 = ${color.shade4}
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = 
+bar-volume-fill-font = 2
+bar-volume-empty = 
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${color.ashade}
+
+[module/battery]
+type = internal/battery
+label-padding = 30
+
+; Use $ ls -1 /sys/class/power_supply/
+battery = BAT0
+adapter = AC
+full-at = 98
+poll-interval = 1
+bar-capacity-width = 10
+time-format = %H:%M
+format-charging-background = ${color.shade3}
+format-discharging-background = ${color.shade3}
+format-full-background = ${color.shade3}
+format-charging-padding = ${general.padding}
+format-discharging-padding = ${general.padding}
+format-full-padding = ${general.padding}
+format-charging    = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-full        = <ramp-capacity> <label-full>
+
+ramp-capacity-0 = ""
+ramp-capacity-1 = ""
+ramp-capacity-2 = ""
+ramp-capacity-3 = ""
+ramp-capacity-4 = ""
+
+animation-charging-0 = " "
+animation-charging-1 = " "
+animation-charging-2 = " "
+animation-charging-3 = " "
+animation-charging-framerate = 500
+
+[module/temperature]
+type = internal/temperature
+
+interval = 0.5
+
+; Thermal zone to use
+; To list all the zone types, run 
+; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
+; Default: 0
+thermal-zone = 0
+
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input
+
+base-temperature = 30
+
+warn-temperature = 70
+units = false
+
+format = <ramp> <label>
+
+format-warn = <ramp> <label-warn>
+
+label =  %temperature-c:2:2%°C
+
+label-warn =  %temperature-c%°C
+label-warn-foreground = #dc322f
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+;ramp-foreground = #55
+
+[module/powermenu]
+type = custom/script
+exec = echo ""
+format-background = ${color.shade2}
+format-padding = 1
+click-left = ~/.config/polybar/scripts/powermenu.sh
+
+[module/google]
+type = custom/text
+content = 
+content-foreground = ${color.white}
+click-left = xdg-open https://www.google.com/ 
+
+[module/github]
+type = custom/text
+content = 
+content-foreground = ${color.white}
+click-left = xdg-open https://www.github.com/ 
+
+[module/reddit]
+type = custom/text
+content = 
+content-foreground = ${color.white}
+click-left = xdg-open https://www.reddit.com/
+
+[module/facebook]
+type = custom/text
+content = 
+content-foreground = ${color.white}
+click-left = xdg-open https://www.facebook.com/
+
+[module/youtube]
+type = custom/text
+content = 
+content-foreground = ${color.white}
+click-left = xdg-open https://www.youtube.com/
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini

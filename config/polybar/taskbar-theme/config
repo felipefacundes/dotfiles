@@ -1,0 +1,1027 @@
+[section/base]
+include-file = /home/losao/.config/polybar/wid
+
+[colors]
+background = #aa0F0700
+foreground = #afCDCCB3
+background1 = #0F0700
+urgent = #ccE74A47
+green = #cc117919
+verde = #cc117919
+branco = #F4F5F7
+prata = #D4D4C9
+vermelho = #ccEB1100
+preto = #cc101010
+marrom = #cc712C23
+azul = #cc3347EF
+roxo = #ccB533EF
+amarelo = #ccDBEF33
+cinza = #cc979797
+
+
+[bar/dock]
+font-0 = SF Pro Display:Semibold:size=13;3
+font-1 = SF Pro Display:Semibold:size=13;3
+font-2 = TerminessTTF Nerd Font:size=15;3
+font-3 = TerminessTTF Nerd Font:size=15;3
+font-4 = TerminessTTF Nerd Font:size=15;3
+font-5 = Ionicons:size=14;3
+font-6 = Ionicons:size=14;3
+font-7 = Ionicons:size=14;3
+font-8 = FontAwesome:size=14;3
+font-9 = font\-logos:size=16;3
+font-10 = octicons:size=16;3
+font-11 = Symbols Nerd Font:size=15;3
+font-12 = Symbols Nerd Font:size=15;3
+font-13 = Symbols Nerd Font:size=15;4
+font-14 = TerminessTTF Nerd Font:size=15;3
+font-15 = TerminessTTF Nerd Font:size=15;3
+font-16 = TerminessTTF Nerd Font:size=19;4
+font-17 = octicons:Bold:size=15;3
+font-18 = icomoon:size=11:antialias=true;3
+
+modules-right  = wireless-network cputv memoryramptv rede cal volume
+modules-center = browser ranger telegram email smplayer subl3 tube xterm termite 
+modules-left = menu uptimetv bspwm xwindow
+
+monitor = ${env:MONITOR:HDMI-0}
+width = 100%
+height = 24
+override-redirect = false
+fixed-center = true
+offset-x = 0%
+offset-y = 0%
+scroll-up = bspc node -t tiled
+scroll-down = bspc node -t floating
+click-left = bspc node -f next
+click-right = bspc node -f -c
+module-margin = 3
+padding-right = 5
+padding-left = 5
+border-size = 6  
+border-top-size = 5
+border-bottom-size = 5
+line-size = 4
+border-color = ${colors.background1}
+background = ${colors.background1}
+foreground = ${colors.foreground}
+bottom=true
+radius = 0.9
+wm-name = bspwm
+dpi-x = 96
+dpi-y = 96
+;tray-position = right
+;tray-padding = 5
+;tray-offset-x = 0
+;tray-offset-y = 0
+;tray-transparent = true
+;tray-scale = 1
+;tray-background = ${root.background}
+enable-ipc = true
+
+
+[bar/windows]
+font-0 = SF Pro Display:Semibold:size=13;3
+font-1 = SF Pro Display:Semibold:size=13;3
+font-2 = icomoon:size=11.7:antialias=true;3
+font-3 = TerminessTTF Nerd Font:size=15;3
+font-4 = icomoon:size=14:antialias=true;2
+font-5 = Ionicons:size=14;3
+font-6 = Ionicons:size=14;3
+font-7 = Ionicons:size=14;3
+font-8 = FontAwesome:size=14;3
+font-9 = TerminessTTF Nerd Font:size=15;3
+font-10 = TerminessTTF Nerd Font:size=15;3
+font-11 = Symbols Nerd Font:size=15;3
+font-12 = Symbols Nerd Font:size=15;3
+font-13 = Symbols Nerd Font:size=15;4
+font-14 = TerminessTTF Nerd Font:size=14;3
+font-15 = FontAwesome:size=14;3
+font-16 = TerminessTTF Nerd Font:size=19;4
+font-17 = octicons:Bold:size=15;3
+
+modules-right = rede
+
+monitor = ${env:MONITOR:HDMI-0}
+format-label-offset  = 50
+format-label-spacing = 50
+width = 100%
+height = 22
+override-redirect = false
+fixed-center = true
+offset-x = 0%
+offset-y = 0%
+scroll-up = bspc node -d next -f
+scroll-down = bspc node -d prev -f
+click-left = bspc node -f next
+click-right = bspc node -f -c
+module-margin = 1
+padding-right = 0
+padding-left = 0
+border-size = 6  
+border-top-size = 5
+border-bottom-size = 5
+line-size = 4
+border-color = ${colors.background1}
+background = ${colors.background}
+foreground = ${colors.foreground}
+bottom=false
+radius = 0.9
+wm-name = bspwm
+dpi-x = 96
+dpi-y = 96
+;tray-position = right
+;tray-padding = 5
+;tray-offset-x = 0
+;tray-offset-y = 0
+;tray-transparent = true
+;tray-scale = 1
+;tray-background = ${root.background}
+enable-ipc = true
+
+
+[module/xwindow]
+type = internal/xwindow
+interval = 1
+format = %{T1}<label>
+format-padding = 4
+label = %title%
+label-maxlen = 200
+
+; Used instead of label when there is no window title
+; Available tokens:
+;   None
+label-empty = Empty
+label-empty-foreground = #707880
+
+[module/volume]
+type = internal/pulseaudio
+format-volume-padding = 0
+label-volume  = "%{A1:pavucontrol & disown:}%{A3:pulseaudio-equalizer-gtk & disown:}%percentage%%{A}   %{B- F-}"
+label-volume-background = ${colors.foreground}
+label-volume-foreground = ${colors.background1}
+format-volume ="<ramp-volume>%{T1}<label-volume>%{T-}"
+
+ramp-volume-0 ="%{T15} ﰝ "
+ramp-volume-1 ="%{T15} ﰝ "
+ramp-volume-2 ="%{T15} ﰝ "
+ramp-volume-3 ="%{T15} ﰝ "
+ramp-volume-4 ="%{T15} ﰝ "
+ramp-volume-5 ="%{T15} ﰝ "
+ramp-volume-6 ="%{T15} ﰝ "
+ramp-volume-7 ="%{T15} ﰝ "
+ramp-volume-8 ="%{T15} ﰝ "
+ramp-volume-9 ="%{T15} ﰝ "
+ramp-volume-10 ="%{T15} ﰝ "
+
+ramp-volume-0-background = ${colors.foreground}
+ramp-volume-0-foreground = ${colors.urgent}
+ramp-volume-1-background = ${colors.foreground}
+ramp-volume-1-foreground = ${colors.background1}
+ramp-volume-2-background = ${colors.foreground}
+ramp-volume-2-foreground = ${colors.background1}
+ramp-volume-3-background = ${colors.foreground}
+ramp-volume-3-foreground = ${colors.background1}
+ramp-volume-4-background = ${colors.foreground}
+ramp-volume-4-foreground = ${colors.background1}
+ramp-volume-5-background = ${colors.foreground}
+ramp-volume-5-foreground = ${colors.background1}
+ramp-volume-6-background = ${colors.foreground}
+ramp-volume-6-foreground = ${colors.background1}
+ramp-volume-7-background = ${colors.foreground}
+ramp-volume-7-foreground = ${colors.background1}
+ramp-volume-8-background = ${colors.foreground}
+ramp-volume-8-foreground = ${colors.background1}
+ramp-volume-9-background = ${colors.foreground}
+ramp-volume-9-foreground = ${colors.background1}
+ramp-volume-10-background = ${colors.foreground}
+ramp-volume-10-foreground = ${colors.urgent}
+
+[module/uptimetv]
+type = custom/script
+interval = 60
+label ="%{T15}%{T15} %{T13}%output%%{T15}   %{T-}" 
+;label-foreground = ${colors.background1}
+;label-background = ${colors.foreground}
+exec =  uptime |awk {'print $3'}| sed 's/,//g'
+click-right = xterm -e 'wq uptime'
+click-left = xterm -e 'wq uptime'
+
+[module/openweathermap-detailed]
+type = custom/script
+exec = ~/.config/polybar/weather.sh
+label = "%output%%{F}"
+interval = 600
+label-font = 2
+
+[module/cal]
+type = custom/script
+interval = 10
+label = "%{T17}%output% %{T-}"
+exec = echo "$(wq relogio)"
+;label-underline = ${colors.background1}
+;label-foreground = ${colors.background1}
+;label-background = ${colors.foreground}
+
+[module/memoryramptv]
+type = internal/memory
+; Seconds to sleep between updates
+; Default: 1
+interval = 3
+;﬙ format = %{T-} <label>%{T15}%{T-}
+format = %{T-} <label> %{T16}﬙%{T-}
+label = "%gb_used%"
+
+[module/cputv]
+type = internal/cpu 
+interval = 1
+format = "%{T-}<label>%{T19} %{T-}"
+label ="%{T-}%percentage%%" 
+:format-label-offset = 5
+
+
+ramp-coreload-0 =%{T9}⣀⣀⣀
+ramp-coreload-1 =%{T9}⣀⣀⣀
+ramp-coreload-2 =%{T9}⣄⣀⣠
+ramp-coreload-3 =%{T9}⣄⣤⣠
+ramp-coreload-4 =%{T9}⣄⣦⣠
+ramp-coreload-5 =%{T9}⣤⣶⣤
+ramp-coreload-6 =%{T9}⣧⣶⣼
+ramp-coreload-7 =%{T9}⣧⣷⣼
+ramp-coreload-8 =%{T9}⣷⣷⣼
+ramp-coreload-9 =%{T9}⣿⣾⣿
+ramp-coreload-10 =%{T9}⣿⣿⣿
+
+ramp-coreload-0-foreground = ${colors.foreground}
+ramp-coreload-1-foreground = ${colors.foreground}
+ramp-coreload-2-foreground = ${colors.foreground}
+ramp-coreload-3-foreground = ${colors.foreground}
+ramp-coreload-4-foreground = ${colors.foreground}
+ramp-coreload-5-foreground = ${colors.foreground}
+ramp-coreload-6-foreground = ${colors.foreground}
+ramp-coreload-7-foreground = ${colors.urgent}
+ramp-coreload-8-foreground = ${colors.urgent}
+ramp-coreload-9-foreground = ${colors.urgent}
+ramp-coreload-10-foreground = ${colors.urgent}
+
+[module/wireless-network]
+type = internal/network
+interface = wlp39s0f3u1
+interval = 1.0
+accumulate-stats = true
+unknown-as-up = true
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+label-connected = %downspeed:5:%
+label-disconnected =
+
+[module/browser]
+type = custom/script 
+exec = echo "%{T15}%{F T-}"
+click-left = nohup $(qutebrowser -R --target window google.com.br --qt-arg geometry 1000x600 ) &
+click-right = nohup $(qutebrowser -R --target tab google.com.br) &
+
+[module/subl3]
+type = custom/script
+exec = echo "%{T15}%{T-}"
+click-left = subl3 &
+click-right = subl3 -n & 
+
+[module/termite]
+type = custom/script
+exec = echo " %{T17}%{F T-} "
+click-left = nohup termite &
+
+[module/xterm]
+type = custom/script
+exec = echo " %{T10}流%{F T-} "
+click-left = nohup xterm -b 80 -ti vt340 &
+click-right = $(nohup $($(sleep 3;bspc node -f --flag sticky=on)|& nohup xterm -rv -geometry 40x1 &)&)&
+
+
+[module/telegram]
+type = custom/script
+exec = echo "%{T15}%{F T-}"
+click-left = $(nohup telegram-desktop &) &
+click-right = telegramcli.bin &
+
+[module/ranger]
+type = custom/script
+exec = echo "%{T7}%{F T-} "
+click-left = nohup nemo 2>/dev/null & 
+click-right = $($TERM -e 'ranger' 2>/dev/null) & 
+
+[module/pamac]
+type = custom/script
+exec = echo " %{T10}%{F T-} "
+click-left = nohup pamac-manager &
+
+[module/email]
+type = custom/script
+exec = echo "%{T11}%{F T-}"
+click-left = qutebrowser -R --target window hotmail.com --qt-arg geometry 1200x600 &
+click-right = qutebrowser -R --target window gmail.com --qt-arg geometry 1000x600 &
+
+[module/tube]
+type = custom/script
+exec = echo "%{T17}%{F T-}"
+click-left = nohup qutebrowser -R --target window youtube.com.br --qt-arg geometry 1200x800+0+0 2>/dev/null &
+click-right = nohup qutebrowser -R --target tab youtube.com.br &
+
+[module/smplayer]
+type = custom/script
+exec = echo "%{T17}﮲%{F T-}"
+click-left = smplayer &
+click-right = $(nohup mpv "$(xclip -sel clipboard -o )" &) &
+
+[module/menu]
+type = custom/script
+exec = echo "%{T10}%{F T-}"
+
+click-left = rofi -combi-modi drun,window -show combi -modi combi -font "SF Pro Display 9" -bw 5 -location 0 -terminal xterm -columns 2 -lines 10 -show-icons -color-normal "#cc1E1B1C,#cc5FAACD,#cc391F29,#cc5FAACD,#cc101010" -color-window "#cc1E1B1C, #cc5FAACD, #cc101010" -width 50 -padding 15 -line-padding 3 -line-margin 2 -combi-hide-mode-prefix True
+
+click-right = rofi -combi-modi drun,window -show combi -modi combi -font "SF Pro Display 9" -bw 5 -location 0 -terminal xterm -columns 2 -lines 10 -show-icons -color-normal "#cc1E1B1C,#cc5FAACD,#cc391F29,#cc5FAACD,#cc101010" -color-window "#cc1E1B1C, #cc5FAACD, #cc101010" -width 50 -padding 15 -line-padding 3 -line-margin 2 -combi-hide-mode-prefix True
+
+[module/rede]
+type = custom/script
+interval = 500
+exec = echo "%{T16}$(wq rede)%{T-}"
+click-left = nohup $(nm-connection-editor) &
+click-right = nohup $(nm-connection-editor) &  
+
+[module/battery]
+type = internal/battery
+; This is useful in case the battery never reports 100% charge
+full-at = 99
+; Use the following command to list batteries and adapters:
+; $ ls -1 /sys/class/power_supply/
+battery = BAT0
+adapter = AC0
+; If an inotify event haven't been reported in this many
+; seconds, manually poll for new values.
+;
+; Needed as a fallback for systems that don't report events
+; on sysfs/procfs.
+;
+; Disable polling by setting the interval to 0.
+;
+; Default: 5
+poll-interval = 5
+; see "man date" for details on how to format the time string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+; Default: %H:%M:%S
+time-format = %H:%M
+
+; Available tags:
+;   <label-charging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;   <animation-charging>
+format-charging = <label-charging>
+
+; Available tags:
+;   <label-discharging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;   <animation-discharging>
+format-discharging = <label-discharging>
+
+; Available tags:
+;   <label-full> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+format-full = <label-full>
+
+; Available tokens:
+;   %percentage% (default) - is set to 100 if full-at is reached
+;   %percentage_raw%
+;   %time%
+;   %consumption% (shows current charge rate in watts)
+;label-charging = "%{T18}%{T-} + %percentage%%"
+label-charging = "%percentage%%+%{T18}%{T-}"
+
+; Available tokens:
+;   %percentage% (default) - is set to 100 if full-at is reached
+;   %percentage_raw%
+;   %time%
+;   %consumption% (shows current discharge rate in watts)
+label-discharging = "%percentage%% - %{T18}%{T-} %time%"
+
+; Available tokens:
+;   %percentage% (default) - is set to 100 if full-at is reached
+;   %percentage_raw%
+;label-full = %{T16}%{T-}%{T18}%{T-}
+label-full = %{T18}%{T-}
+
+; Only applies if <ramp-capacity> is used
+ramp-capacity-0 = %{T16}%{T-}
+ramp-capacity-1 = %{T16}%{T-}
+ramp-capacity-2 = %{T16}%{T-}
+ramp-capacity-3 = %{T16}%{T-}
+ramp-capacity-4 = %{T16}%{T-}
+
+; Only applies if <bar-capacity> is used
+bar-capacity-width = 10
+
+; Only applies if <animation-charging> is used
+animation-charging-0 = %{T16}%{T-}%{T18}%{T-}
+animation-charging-1 = %{T16}%{T-}%{T18}%{T-}
+animation-charging-2 = %{T16}%{T-}%{T18}%{T-}
+animation-charging-3 = %{T16}%{T-}%{T18}%{T-}
+animation-charging-4 = %{T16}%{T-}%{T18}%{T-}
+; Framerate in milliseconds
+animation-charging-framerate = 750
+
+; Only applies if <animation-discharging> is used
+animation-discharging-0 =%{T16}%{T-}
+animation-discharging-1 =%{T16}%{T-}
+animation-discharging-2 =%{T16}%{T-}
+animation-discharging-3 =%{T16}%{T-}
+animation-discharging-4 =%{T16}%{T-}
+; Framerate in milliseconds
+animation-discharging-framerate = 500
+
+
+[module/bspwm]
+type = internal/bspwm
+pin-workspaces = true
+inline-mode = true
+enable-click = true
+enable-scroll = true
+reverse-scroll = false
+fuzzy-match = true
+
+ws-icon-1 = 1;%{T17}
+ws-icon-2 = 2;%{T17}
+ws-icon-3 = 3;%{T17}
+ws-icon-4 = 4;%{T17}
+ws-icon-5 = 5;%{T17}
+ws-icon-6 = 6;%{T17}
+ws-icon-7 = 7;%{T17}
+ws-icon-8 = 8;%{T17}
+ws-icon-9 = 9;%{T17}
+ws-icon-0 = 0;%{T17}%{T-}
+
+
+; Available tags:
+;   <label-monitor>
+;   <label-state> - gets replaced with <label-(focused|urgent|occupied|empty)>
+;   <label-mode> - gets replaced with <label-(monocle|tiled|fullscreen|floating|locked|sticky|private)>
+; Default: <label-state>
+format = <label-state>
+
+; Available tokens:
+;   %name%
+; Default: %name%
+;label-monitor = %name%
+
+; If any values for label-dimmed-N are defined, the workspace/mode
+; colors will get overridden with those values if the monitor is out of focus
+; To only override workspaces in a specific state, use:
+;   label-dimmed-focused
+;   label-dimmed-occupied
+;   label-dimmed-urgent
+;   label-dimmed-empty
+;label-dimmed-foreground = #555
+;label-dimmed-underline = ${bar/top.background}
+;label-dimmed-focused-background = #f00
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-focused = "%{T17}%{T-}"
+label-focused-foreground = ${colors.branco}
+label-focused-background = ${colors.background}
+;label-focused-underline = ${colors.vermelho}
+;label-focused-overline = ${colors.vermelho}
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name% label-occupied = 
+label-occupied = "%{T17}%{T-}"
+label-occupied-foreground = ${colors.branco}
+label-occupied-background = ${colors.background}
+;label-occupied-underline = ${colors.urgent}
+;label-occupied-overline = ${colors.urgent}
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+;label-urgent = ""
+;label-urgent-foreground = ${colors.foreground}
+;label-urgent-background = ${colors.urgent}
+;label-urgent-underline = ${colors.vermelho}
+;label-urgent-overline = ${colors.vermelho}
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-empty = %icon%
+label-empty-foreground = ${colors.foreground}
+label-empty-background = ${colors.background}
+;label-empty-underline = ${colors.verde}
+;label-empty-overline = ${colors.verde}
+
+; The following labels will be used to indiheade the layout/mode
+; for the focused workspace. Requires <label-mode>
+;
+; Available tokens:
+;   None
+;label-monocle = 
+;label-tiled = 
+;label-fullscreen = 
+;label-floating = 
+;label-pseudotiled = P
+;label-locked = 
+;label-locked-foreground = #bd2c40
+;label-sticky = 
+;label-sticky-foreground = #fba922
+;label-private = 
+;label-private-foreground = #bd2c40
+
+; Separator in between workspaces
+label-separator = " "
+label-separator-padding = 1
+;label-separator-foreground = ${colors.prata}
+
+
+[module/x1]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 1)"
+tail = true
+exec-if = [[ $(wq qt_windows) -gt 0 ]]
+click-left = wq foco 1
+click-right = wq close 1
+scroll-up = wq tiled 1
+scroll-down = wq floating 1
+doubleclick-left = wq node_proximo_desktop 1
+format-padding = 2
+label = "%output:50:50 ﬋%"
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
+
+[module/x2]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 2)"
+tail = true
+exec-if = [[ $(wq qt_windows) -gt 1 ]]
+click-left = wq foco 2
+click-right = wq close 2
+scroll-up = wq tiled 2
+scroll-down = wq floating 2
+doubleclick-left = wq node_proximo_desktop 2
+format-padding = 2
+label = "%output:50:50 ﬋%"
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
+
+[module/x3]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 3)"
+tail = true
+exec-if = [[ $(wq qt_windows) -gt 2 ]]
+click-left = wq foco 3 
+click-right = wq close 3 
+scroll-up = wq tiled 3  
+scroll-down = wq floating 3  
+doubleclick-left = wq node_proximo_desktop 3  
+format-padding = 2
+label = "%output:50:50 ﬋%"
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
+
+[module/x4]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 4)"
+tail = true
+exec-if = [[ $(wq qt_windows) -gt 3 ]]
+click-left = wq foco 4 
+click-right = wq close 4 
+scroll-up = wq tiled 4  
+scroll-down = wq floating 4  
+doubleclick-left = wq node_proximo_desktop 4  
+format-padding = 2
+label = "%output:50:50 ﬋%"
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
+
+[module/x5]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 5)"
+tail = true
+exec-if = [[ $(wq qt_windows) -gt 4 ]]
+click-left = wq foco 5 
+click-right = wq close 5 
+scroll-up = wq tiled 5  
+scroll-down = wq floating 5  
+doubleclick-left = wq node_proximo_desktop 5  
+format-padding = 2
+label = "%output:50:50 ﬋%"
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
+
+[module/x6]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 6)"
+tail = true
+exec-if = [[ $(wq qt_windows) -gt 5 ]]
+click-left = wq foco 6 
+click-right = wq close 6 
+scroll-up = wq tiled 6   
+scroll-down = wq floating 6   
+doubleclick-left = wq node_proximo_desktop 6  
+format-padding = 2
+label = "%output:50:50 ﬋%"
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
+
+[module/x7]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 7)"
+tail = true
+exec-if = [[ $(wq qt_windows) -gt 6 ]]
+click-left = wq foco 7 
+click-right = wq close 7 
+scroll-up = wq tiled 7   
+scroll-down = wq floating 7   
+doubleclick-left = wq node_proximo_desktop 7  
+format-padding = 2
+format-exec-spacing = 35
+label = "%output:50:50 ﬋%"
+format-exe-offset  = 35
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
+
+[module/x8]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 8)"
+tail = true
+exec-if = [[ $(wq qt_windows) -gt 7 ]]
+click-left = wq foco 8 
+click-right = wq close 8 
+scroll-up = wq tiled 8  
+scroll-down = wq floating 8  
+doubleclick-left = bspc node -d prev 
+doublelick-start = bspc node -d next
+format-padding = 2
+format-exec-spacing = 35
+label = "%output:50:50 ﬋%"
+format-exe-offset  = 35
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
+
+[module/x9]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 9)"
+tail = true
+exec-if = [[ $(wq qt_windows) -gt 8 ]]
+click-left = wq foco 9 
+click-right = wq close 9 
+scroll-up = wq tiled 9  
+scroll-down = wq floating 9  
+doubleclick-left = wq node_proximo_desktop 9  
+format-padding = 2
+format-exec-spacing = 35
+label = "%output:50:50 ﬋%"
+format-exe-offset  = 35
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
+
+[module/x10]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 10)"
+tail = true
+exec-if = [[ $(wq qt_windows) -gt 9 ]]
+click-left = wq foco 10 
+click-right = wq close 10p )
+scroll-up = wq tiled 10  
+scroll-down = wq floating 10p ) 
+doubleclick-left = wq node_proximo_desktop 10  
+format-padding = 2
+format-exec-spacing = 35
+label = "%output:50:50 ﬋%"
+format-exe-offset  = 35
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
+
+[module/x11]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 11)"
+tail = true
+exec-if = [[ $(wq qt_windows) -gt 10 ]]
+click-left = wq foco 11 
+click-right = wq close 11p )
+scroll-up = wq tiled 11  
+scroll-down = wq floating 11p ) 
+doubleclick-left = wq node_proximo_desktop 11  
+format-padding = 2
+format-exec-spacing = 35
+label = "%output:50:50 ﬋%"
+format-exe-offset  = 35
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
+
+[module/x12]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 12)"
+tail = true
+exec-if = [[ $(wq qt_windows) -gt 11 ]]
+click-left = wq foco 12 
+click-right = wq close 12 
+scroll-up = wq tiled 12  
+scroll-down = wq floating 12  
+doubleclick-left = wq node_proximo_desktop 12  
+format-padding = 2
+format-exec-spacing = 35
+label = "%output:50:50 ﬋%"
+format-exe-offset  = 35
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
+
+[module/x13]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 13)"
+tail = true
+exec-if = [[ $(wq qt_windows) -gt 12 ]]
+click-left = wq foco 13 
+click-right = wq close 13 
+scroll-up = wq tiled 13  
+scroll-down = wq floating 13  
+doubleclick-left = wq node_proximo_desktop 13  
+format-padding = 2
+format-exec-spacing = 35
+label = "%output:50:50 ﬋%"
+format-exe-offset  = 35
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
+
+[module/x14]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 14)"
+tail = true
+exec-if = [[ $(wq qt_windows) -gt 13 ]]
+click-left = bspc node $(head /tmp/labels.txt |awk {'print $1'}|sed -n 14 
+click-right = wq close 14 
+scroll-up = wq tiled 14  
+scroll-down = wq floating 14  
+doubleclick-left = wq node_proximo_desktop 14  
+format-padding = 2
+format-exec-spacing = 35
+label = "%output:50:50 ﬋%"
+format-exe-offset  = 35
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
+
+[module/x15]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 15)"
+tail = true
+exec-if = [[ $(wq qt_windows) -gt 14 ]]
+click-left = wq foco 15 
+click-right = wq close 15 
+scroll-up = wq tiled 15  
+scroll-down = wq floating 15  
+doubleclick-left = wq node_proximo_desktop 15  
+format-padding = 2
+format-exec-spacing = 35
+label = "%output:50:50 ﬋%"
+format-exe-offset  = 35
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
+
+[module/x16]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 16)"
+tail = true
+exec-if = [[ $(wq qt_windows) -gt 15 ]]
+click-left = wq foco 16 
+click-right = wq close 16 
+scroll-up = wq tiled 16  
+scroll-down = wq floating 16  
+doubleclick-left = wq node_proximo_desktop 16  
+format-padding = 2
+format-exec-spacing = 35
+label = "%output:50:50 ﬋%"
+format-exe-offset  = 35
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
+
+[module/x17]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 17)"tail = true
+exec-if = [[ $(wq qt_windows) -gt 16 ]]
+click-left = wq foco 17 
+click-right = wq close 17 
+scroll-up = wq tiled 17  
+scroll-down = wq floating 17  
+doubleclick-left = wq node_proximo_desktop 17  
+format-padding = 2
+format-exec-spacing = 35
+label = "%output:50:50 ﬋%"
+format-exe-offset  = 35
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
+
+[module/x18]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 18)"
+tail = true
+exec-if = [[ $(wq qt_windows) -gt 17 ]]
+click-left = wq foco 18 
+click-right = wq close 18 
+scroll-up = wq tiled 18  
+scroll-down = wq floating 18  
+doubleclick-left = wq node_proximo_desktop 18  
+format-padding = 2
+format-exec-spacing = 35
+label = "%output:50:50 ﬋%"
+format-exe-offset  = 35
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
+
+[module/x19]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 19)"
+tail = true
+exec-if = [[ $(wq qt_windows) -gt 18 ]]
+click-left = wq foco 19 
+click-right = wq close 19 
+scroll-up = wq tiled 19  
+scroll-down = bspc node $(wq label 19  
+doubleclick-left = wq node_proximo_desktop 19  
+format-padding = 2
+format-exec-spacing = 35
+label = "%output:50:50 ﬋%"
+format-exe-offset  = 35
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
+
+[module/x20]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 20)"
+tail = true
+exec-if = [[ $(wq qt_windows) -gt 19 ]]
+click-left = wq foco 20 
+click-right = wq close 20 
+scroll-up = wq tiled 20  
+scroll-down = wq floating 20  
+doubleclick-left = wq node_proximo_desktop 20  
+format-padding = 2
+format-exec-spacing = 35
+label = "%output:50:50 ﬋%"
+format-exe-offset  = 35
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
+
+[module/x21]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 21)"tail = true
+exec-if = [[ $(wq qt_windows) -gt 120 ]]
+click-left = wq foco 21 
+click-right = wq close 21 
+scroll-up = wq tiled 21  
+scroll-down = wq floating 21  
+doubleclick-left = wq node_proximo_desktop 21  
+format-padding = 2
+format-exec-spacing = 35
+label = "%output:50:50 ﬋%"
+format-exe-offset  = 35
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
+
+[module/x22]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 22)"
+tail = true
+exec-if = [[ $(wq qt_windows) -gt 21 ]]
+click-left = wq foco 22 
+click-right = wq close 22 
+scroll-up = wq tiled 22  
+scroll-down = wq floating 22  
+doubleclick-left = wq node_proximo_desktop 22  
+format-padding = 2
+format-exec-spacing = 35
+label = "%output:50:50 ﬋%"
+format-exe-offset  = 35
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
+
+[module/x23]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 23)"
+tail = true
+exec-if = [[ $(wq qt_windows) -gt 22 ]]
+click-left = wq foco 23 
+click-right = wq close 23 
+scroll-up = wq tiled 23  
+scroll-down = wq floating 23  
+doubleclick-left = wq node_proximo_desktop 23  
+format-padding = 2
+format-exec-spacing = 35
+label = "%output:50:50 ﬋%"
+format-exe-offset  = 35
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
+
+[module/x24]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 24)"
+tail = true
+exec-if = [[ $(wq qt_windows) -gt 23 ]]
+click-left = wq foco 24 
+click-right = wq close 24 
+scroll-up = wq tiled 24  
+scroll-down = wq floating 24  
+doubleclick-left = wq node_proximo_desktop 24  
+format-padding = 2
+format-exec-spacing = 35
+label = "%output:50:50 ﬋%"
+format-exe-offset  = 35
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
+
+[module/x25]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 25)"
+tail = true
+exec-if = [[ $(wq qt_windows) -gt 24 ]]
+click-left = wq foco 25 
+click-right = wq close 25 
+scroll-up = wq tiled 25  
+scroll-down = wq floating 25  
+doubleclick-left = wq node_proximo_desktop 25  
+format-padding = 2
+format-exec-spacing = 35
+label = "%output:50:50 ﬋%"
+format-exe-offset  = 35
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
+
+[module/x26]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 26)"
+tail = true
+exec-if = [[ $(wq qt_windows) -gt 25 ]]
+click-left = wq foco 26 
+click-right = wq close 26 
+scroll-up = wq tiled 26  
+scroll-down = wq floating 26  
+doubleclick-left = wq node_proximo_desktop 26  
+format-padding = 2
+format-exec-spacing = 35
+label = "%output:50:50 ﬋%"
+format-exe-offset  = 35
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
+
+[module/x27]
+type = custom/script
+interval = 0.5
+exec = echo %{T4}"$(wq label 27)"
+tail = true
+exec-if = [[ $(wq qt_windows) -gt 26 ]]
+click-left = wq foco 27 
+click-right = wq close 27 
+scroll-up = wq tiled 27  
+scroll-down = wq floating 27  
+doubleclick-left = wq node_proximo_desktop 27 
+format-padding = 2
+format-exec-spacing = 35
+label = "%output:50:50 ﬋%"
+format-exe-offset  = 35
+format-foreground = ${colors.background1}
+format-background = ${colors.prata}
