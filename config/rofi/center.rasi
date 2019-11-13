@@ -1,0 +1,64 @@
+configuration {
+    show-icons:   true;
+    sidebar-mode: false;
+   display-ssh:                   "ssh";
+   display-run:                    "  ";
+   display-drun:                   "   ";
+   display-window:                 "";
+   display-combi:                  "Go to:";
+}
+
+* {
+    background-color: transparent;
+    background:                     #00000066;
+    background-alt:                 #E5E9F047;
+    text-color:                     #D8DEE9;
+    selected-text-color:            #000000;
+    primary:                        #A3BE8C;
+    urgent:                         #BF616A;
+    spacing:          10;
+    columns: 2;
+}
+
+#window {
+    font: "UbuntuCondensed 15";
+    transparency: "real";
+    background-color: @background;
+}
+
+#entry  {
+    expand:                         false;
+    width:                          10em;
+    margin:                         10px -190px 10px 70px;
+    border-radius:                  12;
+    padding:                        10px 10px 10px 10px;
+    background-color:               #ffffff20;
+    border:                         0px 0px solid 0px 0px;
+    border-color:                   @text-color;
+    font:                           "SFNS Display 12";
+}
+
+#inputbar {
+    border: 15px;
+    border-radius:  10px 10px 10px 10px;
+}
+
+#message {
+    border: 10px;
+}
+
+#hdum {
+    orientation: horizontal;
+    children: [ dummy3, mainbox, dummy4 ];
+}
+
+#element selected {
+    text-color: #38ff0f;
+}
+
+#listview {
+    spacing:    15px;
+    lines:      7;
+    border: 20px;
+    border-radius:  10px 10px 10px 10px;
+}

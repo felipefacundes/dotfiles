@@ -1,0 +1,1 @@
+rofi -combi-modi drun,window -show combi -modi combi -font "SF Pro Display 9" -bw 5 -location 0 -terminal xterm -columns 2 -lines 10 -show-icons -color-normal "#cc1E1B1C,#cc5FAACD,#cc391F29,#cc5FAACD,#cc101010" -color-window "#cc1E1B1C, #cc5FAACD, #cc101010" -width 50 -padding 15 -line-padding 3 -line-margin 2 -combi-hide-mode-prefix True
