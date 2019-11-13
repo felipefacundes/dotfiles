@@ -1,0 +1,63 @@
+[theme]
+name = "plain"
+[theme.overrides]
+idle_bg = "#2A2A36"
+idle_fg = "#F8F8F2"
+
+[icons]
+name = "awesome"
+
+[[block]]
+block = "focused_window"
+max_width = 21
+
+[[block]]
+block = "music"
+
+[[block]]
+block = "disk_space"
+path = "/home"
+alias = "/"
+info_type = "available"
+unit = "GB"
+interval = 20
+warning = 20.0
+alert = 10.0
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{MAg} GB"
+format_swap = "{SUm} MB"
+
+[[block]]
+block = "cpu"
+interval = 1
+
+[[block]]
+block = "load"
+interval = 1
+format = " {1m} {5m} {15m}"
+
+[[block]]
+block = "backlight"
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "temperature"
+collapsed = false
+interval = 10
+format = "{min}° min, {max}° max, {average}° avg"
+
+[[block]]
+block = "battery"
+upower = true
+format = "{percentage}% {time}"
+
+[[block]]
+block = "time"
+interval = 60
+
+format = "%a %d/%m %R"

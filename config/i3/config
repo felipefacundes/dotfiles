@@ -1,0 +1,441 @@
+# Crédito: Felipe Facundes
+# Telegram: @FeFacundes
+# Dúvidas: https://i3wm.org/docs/userguide.html
+
+####################################################################
+######################### A J U S T E S ############################
+####################################################################
+
+#set $gaps_inner_default 10
+#set $gaps_outer_default 0
+#gaps inner $gaps_inner_default
+#gaps outer $gaps_outer_default
+
+
+# Mod1 = $alt
+# Mod4 = Super
+set $papel bash -c 'feh --bg-scale "$(find /home/$USER/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n1)"'
+#set $menu dmenu_path | rofi -show drun | xargs i3msg exec
+set $alt Mod1
+set $mod Mod4
+
+# Fonte
+
+font pango:DejaVu Sans Mono 8
+#font pango:Fantasque Sans Mono 9
+
+floating_modifier $mod
+
+# só funciona no i3 e não no sway: new_window pixel 0
+default_border pixel 3
+
+# smart|urgent|focus|none
+focus_on_window_activation focus
+
+####################################################################
+############################# B A R ################################
+####################################################################
+# i3status
+# Status Bar:
+#
+# Read `man 5 i3-bar` for more information about this section.
+#bar {
+    #position top
+
+    # When the status_command prints a new line to stdout, i3bar updates.
+    # The default just shows the current date and time.
+    # status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
+    #font pango:Fira Sans, FontAwesome 13
+    #status_command i3status-rs ~/.config/i3/status.toml
+    #status_command i3status-rs ~/.config/i3/Cargo.toml
+    #hidden_state hide
+    #tray_output yes
+    #strip_workspace_numbers yes
+
+    # colors {
+    #     statusline #ffffff
+    #     background #323232
+    #     inactive_workspace #32323200 #32323200 #5c5c5c
+    # }
+    # colors {
+    #     separator #666666
+    #     background #000000
+    #     statusline #dddddd
+    #     focused_workspace #0088CC #0088CC #ffffff
+    #     active_workspace #333333 #333333 #ffffff
+    #     inactive_workspace #333333 #333333 #888888
+    #     urgent_workspace #2f343a #900000 #ffffff
+    # }
+    #colors {
+    #    background #282A36
+    #    statusline #F8F8F2
+    #    separator  #44475A
+    #
+    #    focused_workspace  #44475A #44475A #F8F8F2
+    #    active_workspace   #282A36 #44475A #F8F8F2
+    #    inactive_workspace #282A36 #282A36 #BFBFBF
+    #    urgent_workspace   #FF5555 #FF5555 #F8F8F2
+    #    binding_mode       #FF5555 #FF5555 #F8F8F2
+    #}
+#}
+
+####################################################################
+####################### C O R E S ##################################
+####################################################################
+
+# só funciona no i3 e não no sway: set_from_resource $bg background
+
+# classe                borda   fundo   texto   ind.    borda filho
+client.focused          #ffffff #474747 #ffffff #ffffff   #ffffff
+client.focused_inactive #f9a3a3 #212121 #fc5757 #ffffff   #f96a6a
+client.unfocused        #ffffff #474747 #ffffff #ff0000   #ffffff
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+####################################################################
+###################### A T A L H O S ###############################
+####################################################################
+
+# Reiniciar o sistema
+bindsym Control+Shift+Mod1+backspace exec openrc-shutdown --reboot now
+
+# Desligar o sistema
+bindsym Control+Shift+Mod1+delete exec openrc-shutdown --poweroff now
+
+# Atualizar o sistema
+bindsym Mod4+u exec sakura -t "Atualizar o ArchLinux" -e sudo pacman -Syyu --noconfirm
+
+# Mude seu papel de parede  #antes mude o caminho das imagens em "ajustes" (3ª sessão)
+bindsym Control+Mod1+w exec $papel
+
+# Volume
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+bindsym XF86AudioMicMute exec "amixer set Capture toggle"
+
+#bindsym XF86AudioRaiseVolume exec "amixer set Master 1%+ unmute"
+#bindsym XF86AudioLowerVolume exec "amixer set Master 1%- unmute"
+#bindsym XF86AudioMute exec "amixer set Master toggle"
+#bindsym XF86AudioMicMute exec "amixer set Capture toggle"
+
+# Brilho
+bindsym XF86MonBrightnessUp exec "light -A 2"
+bindsym XF86MonBrightnessDown exec "light -U 2"
+
+#bindsym --whole-window Mod4+Shift+button4 exec "light -A 2"
+#bindsym --whole-window Mod4+Shift+button5 exec "light -U 2"
+#bindsym XF86MonBrightnessUp exec /bin/xbacklight -dec 15
+#bindsym XF86MonBrightnessDown exec /bin/xbacklight -inc 15
+
+# Firefox
+bindsym Control+Mod4+f exec firefox
+
+# https://www.qwant.com
+bindsym Control+Mod4+w exec firefox --new-tab https://www.qwant.com
+
+#https://www.ecosia.org/
+bindsym Control+Mod4+e exec firefox --new-tab https://www.ecosia.org/
+
+#https://duckduckgo.com/
+bindsym Control+Mod4+d exec firefox --new-tab https://duckduckgo.com/
+
+# Arquivos
+bindsym Shift+Mod4+f exec xdg-open ~
+
+# Arquivos
+bindsym Mod4+n exec xdg-open ~
+
+# Inkscape
+bindsym Control+Mod4+i exec inkscape
+
+# Gimp
+bindsym Control+Mod4+g exec gimp
+
+# Gimp
+bindsym Control+Mod4+a exec arandr
+
+# Iniciar terminal
+#bindsym Mod4+Return exec i3-sensible-terminal
+bindsym Mod4+t exec sakura -m
+bindsym Mod4+Return exec sakura -m
+bindsym Shift+Mod4+t exec termite
+bindsym Shift+Mod4+Return exec termite
+
+# "Assasquinar" janela (mata essa "pomba" seu "assasquino")
+bindsym Control+q kill
+bindsym Mod4+q kill
+bindsym Mod4+Shift+q kill
+bindsym Mod1+F4 kill
+
+# Alterar config do i3
+bindsym Control+Mod1+c exec xdg-open ~/.config/i3/config
+
+# Matar i3
+bindsym Control+Mod4+q exec pkill -9 i3
+
+# Sair do i3
+bindsym Mod4+Shift+e exit
+
+# Mudar foco
+bindsym Mod4+j focus left
+bindsym Mod1+Shift+Tab focus left
+bindsym Mod4+k focus down
+bindsym Mod4+Tab focus down
+bindsym Mod4+i focus up
+bindsym Mod4+Shift+Tab focus up
+bindsym Mod4+l focus right
+bindsym Mod1+Tab focus right
+
+# Alternativa
+bindsym Mod4+Left focus left
+bindsym Mod4+Down focus down
+bindsym Mod4+Up focus up
+bindsym Mod4+Right focus right
+
+# Mover janela focada
+bindsym Mod4+Shift+j move left
+bindsym Mod4+Shift+k move down
+bindsym Mod4+Shift+i move up
+bindsym Mod4+Shift+l move right
+
+# Alternativa
+bindsym Mod4+Shift+Left move left
+bindsym Mod4+Shift+Down move down
+bindsym Mod4+Shift+Up move up
+bindsym Mod4+Shift+Right move right
+
+# Orientação horizontal
+bindsym Mod4+h split h
+
+# Orientação vertical
+bindsym Mod4+v split v
+
+# Entrar em modo tela cheia
+bindsym Mod4+f fullscreen toggle
+bindsym Mod1+F11 fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym Mod4+s layout stacking
+bindsym Mod4+w layout tabbed
+bindsym Mod4+e layout toggle split
+
+# Tela maximizada/floating
+bindsym Mod4+Shift+space floating toggle
+bindsym Mod4+a floating toggle
+
+# change focus between tiling / floating windows
+bindsym Mod4+space focus mode_toggle
+
+# Centro
+bindsym Mod4+Shift+c move position center
+
+# Sway reload
+bindsym Mod4+Shift+r reload
+
+# Sway reload
+bindsym Mod1+Shift+e exit
+
+# Lançadores de programas
+bindsym Mod4+x exec rofi -show drun
+bindsym Mod1+F2 exec rofi -show drun
+bindsym Mod4+z exec ~/.config/rofi/rofimenu.sh
+bindsym Mod1+F1 exec ~/.config/rofi/rofimenu.sh
+bindsym Control+space exec synapse
+
+# Lock
+bindsym Control+alt+l exec i3lock
+
+# Screenshot
+bindsym Print exec scrot "/home/$USER/Imagens/Captura de Tela/Captura de tela de $(date +"%d-%m-%Y %H:%M:%S").png"
+
+####################################################################
+################ A R E A S #########################################
+####################################################################
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+################
+#set $ws1 ""
+#set $ws2 ""
+#set $ws3 ""
+#set $ws4 ""
+#set $ws5 ""
+#set $ws6 ""
+#set $ws7 ""
+#set $ws8 ""
+#set $ws9 ""
+#set $ws10 ""
+
+# Navegar pelas workspaces
+bindsym Mod4+1 workspace number $ws1
+bindsym Mod4+2 workspace number $ws2
+bindsym Mod4+3 workspace number $ws3
+bindsym Mod4+4 workspace number $ws4
+bindsym Mod4+5 workspace number $ws5
+bindsym Mod4+6 workspace number $ws6
+bindsym Mod4+7 workspace number $ws7
+bindsym Mod4+8 workspace number $ws8
+bindsym Mod4+9 workspace number $ws9
+bindsym Mod4+0 workspace number $ws10
+
+# Mover foco para as workspace
+bindsym Mod4+Shift+1 move container to workspace number $ws1
+bindsym Mod4+Shift+2 move container to workspace number $ws2
+bindsym Mod4+Shift+3 move container to workspace number $ws3
+bindsym Mod4+Shift+4 move container to workspace number $ws4
+bindsym Mod4+Shift+5 move container to workspace number $ws5
+bindsym Mod4+Shift+6 move container to workspace number $ws6
+bindsym Mod4+Shift+7 move container to workspace number $ws7
+bindsym Mod4+Shift+8 move container to workspace number $ws8
+bindsym Mod4+Shift+9 move container to workspace number $ws9
+bindsym Mod4+Shift+0 move container to workspace number $ws10
+
+bindsym Mod4+d workspace back_and_forth
+
+####################################################################
+################ R E G R A S #######################################
+####################################################################
+
+# Sakura (Terminal
+
+for_window [class="(Sakura)"]floating enable, move position center
+
+# Termite (Terminal)
+
+for_window [class="(Termite)"]floating enable, move position center
+
+# Telegram (Desktop)
+
+for_window [class="(Telegram)"]floating enable, move position center
+
+# Thunar (Gerenciador de arquivos)
+
+for_window [class="(Thunar)"]floating enable, move position center
+
+# VLC (Player de música/Vídeo)
+
+for_window [class="(vlc)"]floating enable, move position center
+
+# Mousepad (Editor de texto)
+
+for_window [class="(Mousepad)"]floating enable, move position center
+
+# Gedit (Editor de texto)
+
+for_window [class="(Gedit)"]floating enable, move position center
+
+# Feh (Gerenciador de imagens)
+
+for_window [class="(Feh)"]floating enable, move position center
+
+# Viewnior (Gerenciador de imagens)
+
+for_window [class="(Viewnior)"]floating enable, move position center
+
+# Gucharmap (Mapa de caracteres)
+
+for_window [class="(Gucharmap)"]floating enable, move position center
+
+# Qbittorrent (Gerenciador torrent)
+
+for_window [class="(Qbittorrent)"]floating enable, move position center
+
+# PopcornTime (Streamer de filmes)
+
+for_window [class="(popcorntime)"]floating enable, move position center
+
+####################################################################
+################ G R U P O S #######################################
+####################################################################
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym i resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or Mod4+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym Mod4+r mode "default"
+}
+bindsym Mod4+r mode "resize"
+
+####################################################################
+################ G A P S ###########################################
+####################################################################
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0|d (local), Shift + +|-|0|d (global)
+set $mode_gaps_inner Inner Gaps: +|-|0|d (local), Shift + +|-|0|d (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym d gaps inner current set $gaps_inner_default, mode "default"
+        bindsym Shift+d gaps inner all set $gaps_inner_default, mode "default"
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym d gaps outer current set $gaps_outer_default, mode "default"
+        bindsym Shift+d gaps outer all set $gaps_outer_default, mode "default"
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+####################################################################
+####################### E X E C U T A R ############################
+####################################################################
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id polybar top
+exec --no-startup-id xfce4-panel --disable-wm-check
+exec --no-startup-id bash -c 'feh --bg-scale "$(find /home/$USER/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n1)"'
+exec --no-startup-id compton --config ~/.config/compton.conf
+#exec --no-startup-id compton xinput disable 11
