@@ -1,6 +1,5 @@
 acl
 adobe-source-code-pro-fonts
-advcp
 adwaita-icon-theme
 alembic
 alsa-lib
@@ -83,7 +82,6 @@ filesystem
 findutils
 firefox
 firefox-i18n-pt-br
-firehol
 flac
 flex
 fontconfig
@@ -107,6 +105,7 @@ gegl
 gettext
 ghostscript
 giflib
+gifsicle
 gimp
 git
 glew
@@ -121,6 +120,7 @@ gnupg
 gnutls
 gobject-introspection-runtime
 gpgme
+gpicview
 gpm
 graphite
 grep
@@ -150,7 +150,6 @@ hplip
 hspell
 htop
 hunspell
-hunspell-pt-br
 hwids
 hyphen
 iana-etc
@@ -160,7 +159,6 @@ imagemagick
 imlib2
 inkscape
 intel-tbb
-iprange
 iproute2
 ipset
 iptables
@@ -238,7 +236,6 @@ lib32-libxxf86vm
 lib32-llvm-libs
 lib32-lm_sensors
 lib32-lz4
-lib32-mesa-aco-git
 lib32-ncurses
 lib32-pcre
 lib32-readline
@@ -292,7 +289,9 @@ libevdev
 libexif
 libexttextcat
 libffi
+libfm
 libfm-extra
+libfm-gtk2
 libfm-qt
 libfontenc
 libfreehand
@@ -466,7 +465,6 @@ mailcap
 make
 mbedtls
 menu-cache
-mesa-aco-git
 metis
 mkinitcpio
 mkinitcpio-busybox
@@ -519,6 +517,7 @@ pango
 pangomm
 pavucontrol
 pciutils
+pcmanfm
 pcmanfm-qt
 pcre
 pcre2
@@ -602,6 +601,7 @@ redland
 reflector
 rest
 rpcbind
+rsync
 rtkit
 rubberband
 run-parts
@@ -695,10 +695,8 @@ xorg-xrandr
 xorg-xset
 xorgproto
 xvidcore
-xwinwrap-git
 xz
 yaml-cpp
-yay
 youtube-dl
 zeromq
 zip
