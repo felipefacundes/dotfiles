@@ -73,7 +73,7 @@ mode 1920x1080@144Hz
 #subpixel rgb
 # background|bg <color> solid_color
 # Pode ser "90", "180", "270" para rotação; ou "flipped", "flipped-90", "flipped-180", "flipped-270" para aplicar uma rotação e inverter, ou "normal"
-transform 180
+#transform 180
 #dpms on
 #scale 2
 }
@@ -89,7 +89,7 @@ transform 180
 
 # Mod1 = $alt
 # Mod4 = Super
-set $papel bash -c 'pkill -9 swaybg ; swaybg -i "$(find /home/$USER/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n1)"'
+set $papel bash -c 'pkill -9 oguri ; pkill -9 swaybg ; swaybg -i "$(find /home/$USER/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n1)"'
 set $menu dmenu_path | rofi -show drun | xargs swaymsg exec
 set $alt Mod1
 set $mod Mod4
@@ -206,9 +206,9 @@ bindsym Control+Shift+Mod1+backspace exec openrc-shutdown --reboot now
 bindsym Control+Mod1+Escape exec xkill
 
 # TaskManager (Gerenciador de Janelas)
-bindsym Mod4+Escape exec sakura -t HTOP -e htop
-bindsym Mod4+alt+Escape exec sakura -t VTOP -e vtop
-bindsym Mod4+Shift+Escape exec sakura -t GTOP -e gtop
+bindsym Control+Escape exec sakura -t HTOP -e htop
+bindsym Control+Mod4+Escape exec sakura -t VTOP -e vtop
+bindsym Mod4+Escape exec sakura -t GTOP -e gtop
 
 # Desligar o sistema
 bindsym Control+Shift+Mod1+delete exec openrc-shutdown --poweroff now
@@ -325,10 +325,12 @@ bindsym Mod1+Shift+Up move up
 bindsym Mod1+Shift+Right move right
 
 # Orientação horizontal
-bindsym Mod4+h split h
+#bindsym Mod4+h split h
+bindsym Mod4+h layout toggle split
 
 # Orientação vertical
-bindsym Mod4+v split v
+#bindsym Mod4+v split v
+bindsym Mod4+v layout toggle split
 
 # Entrar em modo tela cheia
 bindsym Mod4+f fullscreen toggle
@@ -568,7 +570,9 @@ mode "$mode_gaps_outer" {
 ####################################################################
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec bash -c 'pkill -9 swaybg ; swaybg -i "$(find /home/$USER/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n1)"'
+#exec bash -c 'pkill -9 swaybg ; swaybg -i "$(find /home/$USER/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n1)"'
+
+exec oguri
 
 exec bash -c "pkill -9 pulseaudio ; pulseaudio -vvv --start --realtime=1 --daemonize ; pactl set-default-sink 0 ; sway reload"
 
