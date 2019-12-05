@@ -1,3 +1,7 @@
+#export TERM="xterm-256color"
+#export COLORTERM="truecolor"
+export EDITOR=nvim
+export VISUAL=nvim
 # Path to your oh-my-bash installation.
 export OSH=/home/$USER/.oh-my-bash
 
@@ -133,18 +137,25 @@ alias yd="youtube-dl -i"
 alias a="sudo pacman -Syyuu"
 alias limpawine="rm -rf ~/.local/share/applications/*wine*"
 alias lwine="rm -rf ~/.local/share/applications/*wine*"
-alias mwine="pkill -9 .exe; pkill -9 wine; pkill -9 wineserver"
-alias twine="pkill -9 .exe; pkill -9 wine; pkill -9 wineserver"
-alias all="pkill -9 -u facundes"
+alias mwine="ps ax|egrep '*\.exe'|grep -v 'egrep'|awk '{print $1 }' | xargs kill -9 $1 ; wineserver -k; wineserver -k9; pkill -9 .exe; pkill -9 Steam; pkill -9 steam; pkill -9 Epic; pkill -9 wine; pkill -9 wineserver; killall -9 wine wineserver; killall -9 .exe"
+alias renicewine="ps ax|egrep '*\.exe'|grep -v 'egrep'|awk '{print $1 }' | xargs sudo renice -n -19 -p $1"
+alias all="pkill -9 -u '$USER'"
+alias a="pkill -9 -u '$USER'"
 alias remover="rm ~/.local/share/applications/remover-*.desktop"
 alias temp="sensors k10temp-pci-00c3 | grep --color -i temp1 | lolcat ; sensors amdgpu-pci-0100 | grep --color -i temp1 | lolcat"
 alias reflect="sudo reflector -c Brazil --save /etc/pacman.d/mirrorlist-arch"
 alias mirror="sudo reflector -c Brazil --save /etc/pacman.d/mirrorlist-arch"
 #alias performance="sudo cpupower frequency-set -d 3.3G ; sudo cpupower frequency-set -u 3.3G ; sudo cpupower frequency-set -g performance"
 alias performance="sudo cpupower frequency-set -u 3.3G ; sudo cpupower frequency-set -g performance"
-alias pac_rec_ins="paclog-pkglist <(tail -100 /var/log/pacman.log  | grep -A 3 -i installed) ; \
-echo ------------------------------------------------------------------------- \ 
+alias pachis_ins="paclog-pkglist <(tail -100 /var/log/pacman.log  | grep -A 3 -i installed) ; \
+echo ----- \
 echo 'paclog-pkglist <(tail -100 /var/log/pacman.log  | grep -A 3 -i installed)'"
+alias pachis_ins2="paclog-pkglist <(tail -2000 /var/log/pacman.log  | grep -A 3 -i 'pacman -S') ; \
+echo ----- \
+echo 'paclog-pkglist <(tail -2000 /var/log/pacman.log  | grep -A 3 -i 'pacman -S')'"
+alias pachis_rem="paclog-pkglist <(tail -5000 /var/log/pacman.log  | grep -A 100 -i 'pacman -Rcs') ; \
+echo ----- \
+echo 'paclog-pkglist <(tail -5000 /var/log/pacman.log  | grep -A 100 -i 'pacman -Rcs')'"
 alias pachis="xdg-open /var/log/pacman.log"
 
 function xc() {
