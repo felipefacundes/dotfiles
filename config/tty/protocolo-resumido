@@ -1,3 +1,4 @@
+##DETECTAR_TTY= ps -o tty= $$
 ##export XAUTHORITY=~/.Xauthority
 ##export DISPLAY=':0'
 ### xauth add $DISPLAY . sakura
