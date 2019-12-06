@@ -1,0 +1,11 @@
+##export XAUTHORITY=~/.Xauthority
+##export DISPLAY=':0'
+### xauth add $DISPLAY . sakura
+##rap $DISPLAY $(xauth add $DISPLAY . sakura) USR1
+
+xauth add :0 MIT-MAGIC-COOKIE-1 "$(od -An -N16 -tx /dev/urandom | tr -d ' ')"
+trap 'DISPLAY=:0 "${@:-$sakura}"' USR1
+(trap '' USR1 && exec Xorg :1 -keeptty vt1 -noreset -auth ~/.Xauthority) & pid=$!
+wait "$pid"
+
+### env DISPLAY=:0 XAUTHORITY=~/.Xauthority xauth add $DISPLAY . sakura -m
