@@ -168,6 +168,8 @@ alias temp="sensors k10temp-pci-00c3 | grep --color -i temp1 | lolcat ; sensors 
 alias reflect="sudo reflector -c Brazil --save /etc/pacman.d/mirrorlist-arch"
 alias mirror="sudo reflector -c Brazil --save /etc/pacman.d/mirrorlist-arch"
 #alias performance="sudo cpupower frequency-set -d 3.3G ; sudo cpupower frequency-set -u 3.3G ; sudo cpupower frequency-set -g performance"
+alias game="sudo cpupower frequency-set -u 3.3G ; sudo cpupower frequency-set -g performance ; echo --- ; \
+echo 'sudo cpupower frequency-set -u 3.3G ; sudo cpupower frequency-set -g performance'"
 alias performance="sudo cpupower frequency-set -u 3.3G ; sudo cpupower frequency-set -g performance ; echo --- ; \
 echo 'sudo cpupower frequency-set -u 3.3G ; sudo cpupower frequency-set -g performance'"
 alias pachis_ins="paclog-pkglist <(tail -100 /var/log/pacman.log  | grep -A 3 -i installed) ; echo --- ; \
@@ -183,6 +185,9 @@ alias brilho="xrandr --output HDMI-A-0 --brightness 0.8 ; echo --- ; echo xrandr
 alias gamma="xgamma -gamma .90 ; echo --- ; echo xgamma -gamma .90"
 alias gama="xgamma -gamma .90 ; echo --- ; echo xgamma -gamma .90"
 alias blue="xgamma -bgamma 1.1 ; xgamma -rgamma .8 ; echo --- ; echo 'xgamma -bgamma 1.1 ; xgamma -rgamma .8'"
+alias gt="ffmpeg -video_size 1360x768 -framerate 25 -f x11grab -i :0.0 -f pulse -ac 2 -i default ~/Videos/Tela_$(date +%d-%m-%Y_%H:%M:%S).mkv ; echo --- ; echo 'ffmpeg -video_size 1360x768 -framerate 25 -f x11grab -i :0.0 -f pulse -ac 2 -i default ~/Videos/Tela_$(date +%d-%m-%Y_%H:%M:%S).mkv'"
+alias gif="echo 'ffmpeg -i Tela_09-12-2019_14:40:57.mkv -filter_complex '[0:v] palettegen' palette.png ; ffmpeg -ss 00:00:26.00 -t 8 -r 23 -i Tela_09-12-2019_14:40:57.mkv -i palette.png -filter_complex '[0:v][1:v] paletteuse' -pix_fmt rgb24 -s 616x182 GuildWars2.gif'"
+alias criargif="echo 'ffmpeg -i Tela_09-12-2019_14:40:57.mkv -filter_complex '[0:v] palettegen' palette.png ; ffmpeg -ss 00:00:26.00 -t 8 -r 23 -i Tela_09-12-2019_14:40:57.mkv -i palette.png -filter_complex '[0:v][1:v] paletteuse' -pix_fmt rgb24 -s 616x182 GuildWars2.gif'"
 
 function xc() {
   xcode=`xcode-select -p | sed 's/\(.*\)\(Xcode.*\.app\).*/\2/'`
