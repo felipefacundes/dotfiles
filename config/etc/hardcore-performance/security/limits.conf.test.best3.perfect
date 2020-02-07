@@ -1,0 +1,39 @@
+hard stack unlimited
+nproc unlimited
+nofile 1048576
+memlock unlimited
+as unlimited
+cpu unlimited
+fsize unlimited
+memlock unlimited
+msgqueue unlimited
+locks unlimited
+* hard nofile 1048576
+@audio - rtprio 99
+@audio - memlock unlimited
+@audio - nice -19
+@video - rtprio 99
+@video - memlock unlimited
+@video - nice -19
+
+* soft nice -5
+* hard nice -5
+
+* soft rtprio 99
+* hard rtprio 99
+
+root hard nice -20
+* soft nofile 165536
+root soft nofile 165536
+root hard nofile 1048576
+
+* soft nproc 165536
+* hard nproc 165536
+root soft nproc 165536
+root hard nproc 165536
+
+* soft memlock unlimited
+* hard memlock unlimited
+root soft memlock unlimited
+root hard memlock unlimited
+
