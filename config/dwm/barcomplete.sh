@@ -22,6 +22,3 @@ done
 
 # BAT=$(acpi -a | grep on-line) ; if [ -e $BAT ] ; then echo  ; else echo ⚡ ; fi
 # $(acpi -a | grep on-line | cut -c12-13)
-# retire o hashtag e verá o M  ♏
-
-# retire o hashtag e verá o raio |  ⚡
