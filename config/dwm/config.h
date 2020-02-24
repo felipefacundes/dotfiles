@@ -106,7 +106,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_b,      spawn,          SHCMD ("cd ~ ; mkdir -p .local/bin/ ; cd .local/bin/ ; wget -nc https://raw.githubusercontent.com/felipefacundes/dotfiles/master/config/dwm/barcomplete.sh ; pkill -9 barcomplete.sh ; cd ~ ; chmod +x .local/bin/barcomplete.sh ; .local/bin/barcomplete.sh") },
 	{ MODKEY|ControlMask|ShiftMask, XK_BackSpace, spawn,       SHCMD ("openrc-shutdown --reboot now ; reboot") },
 	{ MODKEY|ControlMask|ShiftMask, XK_Delete,  spawn,         SHCMD ("openrc-shutdown --poweroff now ; shutdown -h now") },
-	{ Mod4Mask|ShiftMask,           XK_w,       spawn,         SHCMD ("ps ax|egrep '*\.exe'|grep -v 'egrep'|awk '{print $1 }' | xargs kill -9 $1 ; pkill -9 .exe") },
+	{ Mod4Mask|ShiftMask,           XK_w,       spawn,         SHCMD ("ps ax|egrep '*.exe'|grep -v 'egrep'|awk '{print $1 }' | xargs kill -9 $1 ; pkill -9 .exe") },
 	{ Mod4Mask|ControlMask,         XK_s,       spawn,         SHCMD ("systemctl suspend") },
 	{ Mod4Mask|ControlMask,         XK_n,       spawn,         SHCMD ("sakura -e optimus-manager --switch nvidia --no-confirm ; pkill -9 [dD][wW][mM]") },
 	{ 0,                            0x1008ff2f, spawn,         SHCMD ("systemctl hibernate") },
