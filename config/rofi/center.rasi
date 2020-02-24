@@ -29,7 +29,7 @@ configuration {
 #entry  {
     expand:                         false;
     width:                          10em;
-    margin:                         10px -190px 10px 70px;
+    margin:                         10px -490px 10px 70px;
     border-radius:                  12;
     padding:                        10px 10px 10px 10px;
     background-color:               #ffffff20;
