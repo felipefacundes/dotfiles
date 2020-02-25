@@ -59,6 +59,6 @@ configuration {
 #listview {
     spacing:    13px;
     lines:      7;
-    border: 30px;
+    border: 25px;
     border-radius:  10px 10px 10px 10px;
 }
