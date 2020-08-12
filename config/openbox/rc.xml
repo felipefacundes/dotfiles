@@ -436,7 +436,15 @@
       <action name="UnmaximizeFull"/>
       <action name="MoveToEdgeEast"/>
     </keybind>
+    <keybind key="C-W-Right">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveToEdgeEast"/>
+    </keybind>
     <keybind key="C-W-k">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveToEdgeSouth"/>
+    </keybind>
+    <keybind key="C-W-Down">
       <action name="UnmaximizeFull"/>
       <action name="MoveToEdgeSouth"/>
     </keybind>
@@ -444,11 +452,27 @@
       <action name="UnmaximizeFull"/>
       <action name="MoveToEdgeNorth"/>
     </keybind>
+    <keybind key="C-W-Up">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveToEdgeNorth"/>
+    </keybind>
     <keybind key="C-W-j">
       <action name="UnmaximizeFull"/>
       <action name="MoveToEdgeWest"/>
     </keybind>
+    <keybind key="C-W-Left">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveToEdgeWest"/>
+    </keybind>
     <keybind key="A-W-l">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+      <action name="MoveToEdgeEast"/>
+    </keybind>
+    <keybind key="A-W-Right">
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo">
         <width>50%</width>
@@ -464,7 +488,23 @@
       </action>
       <action name="MoveToEdgeSouth"/>
     </keybind>
+    <keybind key="A-W-Down">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+      <action name="MoveToEdgeSouth"/>
+    </keybind>
     <keybind key="A-W-i">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+      <action name="MoveToEdgeNorth"/>
+    </keybind>
+    <keybind key="A-W-Up">
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo">
         <width>50%</width>
@@ -480,7 +520,23 @@
       </action>
       <action name="MoveToEdgeWest"/>
     </keybind>
+    <keybind key="A-W-Left">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+      <action name="MoveToEdgeWest"/>
+    </keybind>
     <keybind key="S-A-W-l">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>25%</width>
+        <height>25%</height>
+      </action>
+      <action name="MoveToEdgeEast"/>
+    </keybind>
+    <keybind key="S-A-W-Right">
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo">
         <width>25%</width>
@@ -496,7 +552,23 @@
       </action>
       <action name="MoveToEdgeSouth"/>
     </keybind>
+    <keybind key="S-A-W-Down">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>25%</width>
+        <height>25%</height>
+      </action>
+      <action name="MoveToEdgeSouth"/>
+    </keybind>
     <keybind key="S-A-W-i">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>25%</width>
+        <height>25%</height>
+      </action>
+      <action name="MoveToEdgeNorth"/>
+    </keybind>
+    <keybind key="S-A-W-Up">
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo">
         <width>25%</width>
@@ -512,16 +584,36 @@
       </action>
       <action name="MoveToEdgeWest"/>
     </keybind>
+    <keybind key="S-A-W-Left">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>25%</width>
+        <height>25%</height>
+      </action>
+      <action name="MoveToEdgeWest"/>
+    </keybind>
     <keybind key="A-l">
+      <action name="DirectionalFocusEast"/>
+    </keybind>
+    <keybind key="A-Right">
       <action name="DirectionalFocusEast"/>
     </keybind>
     <keybind key="A-k">
       <action name="DirectionalFocusSouth"/>
     </keybind>
+    <keybind key="A-Down">
+      <action name="DirectionalFocusSouth"/>
+    </keybind>
     <keybind key="A-i">
       <action name="DirectionalFocusNorth"/>
     </keybind>
+    <keybind key="A-Up">
+      <action name="DirectionalFocusNorth"/>
+    </keybind>
     <keybind key="A-j">
+      <action name="DirectionalFocusWest"/>
+    </keybind>
+    <keybind key="A-Left">
       <action name="DirectionalFocusWest"/>
     </keybind>
     <keybind key="W-v">
@@ -618,7 +710,15 @@
       <action name="UnmaximizeFull"/>
       <action name="GrowToEdgeEast"/>
     </keybind>
+    <keybind key="W-Right">
+      <action name="UnmaximizeFull"/>
+      <action name="GrowToEdgeEast"/>
+    </keybind>
     <keybind key="W-k">
+      <action name="UnmaximizeFull"/>
+      <action name="GrowToEdgeSouth"/>
+    </keybind>
+    <keybind key="W-Down">
       <action name="UnmaximizeFull"/>
       <action name="GrowToEdgeSouth"/>
     </keybind>
@@ -626,7 +726,15 @@
       <action name="UnmaximizeFull"/>
       <action name="GrowToEdgeNorth"/>
     </keybind>
+    <keybind key="W-Up">
+      <action name="UnmaximizeFull"/>
+      <action name="GrowToEdgeNorth"/>
+    </keybind>
     <keybind key="W-j">
+      <action name="UnmaximizeFull"/>
+      <action name="GrowToEdgeWest"/>
+    </keybind>
+    <keybind key="W-Left">
       <action name="UnmaximizeFull"/>
       <action name="GrowToEdgeWest"/>
     </keybind>
