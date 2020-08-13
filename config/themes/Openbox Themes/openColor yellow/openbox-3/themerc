@@ -1,0 +1,228 @@
+#########################################
+# openColor OpenBox theme               #
+# Created in 2019 by Novomente          #
+# Released under GPLv2 or later license #
+#########################################
+
+
+
+# Window geometry
+################################################################################
+padding.width: 7
+padding.height: 1
+border.width: 3
+window.client.padding.width: 2
+window.client.padding.height: 2
+window.handle.width: 0
+
+
+
+
+
+# Menu geometry
+################################################################################
+menu.border.width: 2
+menu.overlap: 0
+
+
+
+
+
+# Border colors
+################################################################################
+window.active.border.color: #fbbc05
+window.inactive.border.color: #fbbc05
+
+menu.border.color: #fbbc05
+
+window.active.client.color: #fbbc05
+window.inactive.client.color: #edeceb
+
+window.inactive.title.separator.color: #edeceb
+
+
+
+
+
+# Text shadows
+################################################################################
+#window.active.label.text.font: shadow=y:shadowtint=70:shadowoffset=1
+#window.inactive.label.text.font: shadow=y:shadowtint=20:shadowoffset=1
+#menu.items.font: shadow=n
+#menu.title.text.font: shadow=y:shadowtint=70:shadowoffset=1
+
+
+
+
+
+# Window title justification
+################################################################################
+window.label.text.justify: center
+
+
+
+
+
+# Active Windows
+################################################################################
+window.active.title.bg: solid flat
+window.active.title.bg.color: #fbbc05
+
+window.active.label.bg: parentrelative
+window.active.label.text.color: #ffffff
+
+
+!! Active Buttons
+window.active.button.unpressed.bg: solid flat
+window.active.button.unpressed.bg.color: #fbbc05
+window.active.button.unpressed.image.color: #ffffff
+
+window.active.button.hover.bg: solid flat border
+window.active.button.hover.bg.color: #ffffff
+window.active.button.hover.bg.border.color: #000000
+window.active.button.hover.image.color: #000000
+
+window.active.button.pressed.bg: solid flat border
+window.active.button.pressed.bg.color: #000000
+window.active.button.pressed.bg.border.color: #ffffff
+window.active.button.pressed.image.color: #ffffff
+
+
+window.active.button.disabled.bg: solid flat
+window.active.button.disabled.bg.color: #fbbc05
+window.active.button.disabled.image.color: #cccccc
+
+
+window.active.button.toggled.unpressed.bg: solid flat
+window.active.button.toggled.unpressed.bg.color: #fbbc05
+window.active.button.toggled.unpressed.image.color: #ffffff
+
+window.active.button.toggled.hover.bg: solid flat border
+window.active.button.toggled.hover.bg.color: #ffffff
+window.active.button.toggled.hover.bg.border.color: #000000
+window.active.button.toggled.hover.image.color: #000000
+
+window.active.button.toggled.pressed.bg: solid flat border
+window.active.button.toggled.pressed.bg.color: #000000
+window.active.button.toggled.pressed.bg.border.color: #ffffff
+window.active.button.toggled.pressed.image.color: #ffffff
+
+
+
+!!window.active.handle.bg:  flat solid
+!!window.active.handle.bg.color:#fbbc05
+
+!!window.*.grip.bg:  flat solid
+!!window.*.grip.bg.color: #fbbc05
+
+
+
+
+
+# Inactive Windows
+################################################################################
+window.inactive.title.bg: solid flat
+window.inactive.title.bg.color: #edeceb
+
+window.inactive.label.bg: parentrelative
+window.inactive.label.text.color: #000000
+
+window.inactive.button.unpressed.bg: solid flat
+window.inactive.button.unpressed.bg.color: #edeceb
+window.inactive.button.unpressed.image.color: #000000
+
+window.inactive.button.hover.bg: solid flat
+window.inactive.button.hover.bg.color: #000000
+window.inactive.button.hover.image.color: #edeceb
+
+!!window.inactive.button.pressed.bg: solid flat
+!!window.inactive.button.pressed.bg.color: #XXXXXX
+!!window.inactive.button.pressed.image.color: #XXXXXX
+
+window.inactive.button.disabled.bg: solid flat
+window.inactive.button.disabled.bg.color: #edeceb
+window.inactive.button.disabled.image.color: #888888
+
+
+window.inactive.button.toggled.unpressed.bg: solid flat
+window.inactive.button.toggled.unpressed.bg.color: #edeceb
+window.inactive.button.toggled.unpressed.image.color: #000000
+
+window.inactive.button.toggled.hover.bg: solid flat
+window.inactive.button.toggled.hover.bg.color: #000000
+window.inactive.button.toggled.hover.image.color: #edeceb
+
+!!window.inactive.button.toggled.pressed.bg: solid flat
+!!window.inactive.button.toggled.pressed.bg.color: #XXXXXX
+!!window.inactive.button.toggled.pressed.image.color: #XXXXXX
+
+
+
+
+
+# OSD
+################################################################################
+osd.border.width: 3
+osd.border.color: #fbbc05
+
+osd.bg: flat solid
+osd.bg.color: #fbbc05
+osd.label.text.color: #ffffff
+
+osd.active.label.bg: flat solid
+osd.active.label.bg.color: #fbbc05
+osd.active.label.text.color: #ffffff
+
+osd.inactive.label.bg: flat solid
+osd.inactive.label.bg.color: #fbbc05
+osd.inactive.label.text.color: #000000
+
+osd.hilight.bg: flat solid
+osd.hilight.bg.color: #ffffff
+
+osd.unhilight.bg: flat solid
+osd.unhilight.bg.color: #000000
+
+osd.button.unpressed.bg: flat solid border
+osd.button.unpressed.bg.color: #fbbc05
+osd.button.unpressed.*.border.color: #ffffff
+osd.button.unpressed.text.color: #ffffff
+
+!!osd.button.hover.bg: flat solid border
+!!osd.button.hover.bg.color: #edeceb
+!!osd.button.hover.*.border.color: #000000
+!!osd.button.hover.text.color: #000000
+
+osd.button.pressed.bg: flat border 
+osd.button.pressed.bg.color: #000000
+osd.button.pressed.*.border.color: #ffffff
+osd.button.pressed.text.color: #ffffff
+
+osd.button.focused.bg: flat solid border 
+osd.button.focused.bg.color: #fbbc05
+osd.button.focused.*.border.color: #ffffff
+osd.button.focused.text.color: #ffffff
+
+osd.button.focused.box.color: #ffffff
+
+
+
+
+
+# Menus
+################################################################################
+menu.title.bg: flat split
+menu.title.bg.color: #fbbc05
+menu.title.text.color: #ffffff
+
+menu.items.bg: flat solid
+menu.items.bg.color: #edeceb
+
+menu.items.text.color: #000000
+menu.items.disabled.text.color: #888888
+
+menu.items.active.bg: flat split
+menu.items.active.bg.color:  #fbbc05
+menu.items.active.text.color: #ffffff
+menu.items.active.disabled.text.color: #cccccc
+
