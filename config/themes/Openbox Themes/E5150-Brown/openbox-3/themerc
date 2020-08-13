@@ -1,0 +1,162 @@
+# Jorge Cabrera (ju1464)  (https://github.com/ju1464)
+# E-5150-Brown Openbox Theme
+
+# Window geometry
+padding.width: 6
+border.width: 1
+window.client.padding.width: 1
+window.client.padding.height: 0
+window.handle.width: 2
+
+#Menu geometry
+menu.border.width: 4
+menu.overlap.x: -6
+menu.overlap.y: 0
+
+# Border colors 
+window.active.border.color: #cda76c
+window.inactive.border.color: #bb9457
+menu.border.color: #bb9457
+window.active.client.color: #cda76c
+window.inactive.client.color: #bb9457
+
+# Text shadows
+window.active.label.text.font: shadow=s
+window.inactive.label.text.font: shadow=s
+menu.items.font: shadow=s
+menu.title.text.font: shadow=s
+
+# title justification
+window.label.text.justify: center
+menu.title.text.justify: center
+
+### Menu ###
+
+menu.title.bg: Solid Flat
+menu.title.bg.color: #cda76c
+menu.title.text.color: #fcf6f6
+
+menu.items.bg: Solid Flat
+menu.items.bg.color: #bb9457
+menu.items.text.color: #fcf6f6
+menu.items.disabled.text.color: #fcf6f6
+
+menu.items.active.bg: Solid Flat
+menu.items.active.bg.color: #cda76c
+menu.items.active.text.color:#a02c2c
+
+menu.separator.color: #fcf6f6
+menu.separator.width: 1
+menu.separator.padding.width: 0
+menu.separator.padding.height: 10
+
+### Active window ###
+window.active.title.bg: Flat solid
+window.active.title.bg.color: #cda76c
+window.active.title.bg.border.color: #cda76c
+
+window.active.label.bg: Parentrelative
+window.active.label.text.color: #fcf6f6
+
+window.active.handle.bg: Flat solid
+window.active.handle.bg.color: #cda76c
+
+window.active.grip.bg: Flat solid
+window.active.grip.bg.color: #cda76c
+
+window.active.button.unpressed.bg: Flat solid
+window.active.button.unpressed.bg.color: #cda76c
+window.active.button.unpressed.bg.border.color: #cda76c
+window.active.button.unpressed.image.color: #fcf6f6
+
+window.active.button.pressed.bg: Flat solid
+window.active.button.pressed.bg.color: #cda76c
+window.active.button.pressed.bg.border.color: #cda76c
+window.active.button.pressed.image.color: #bb9457
+
+window.active.button.disabled.bg: Flat solid
+window.active.button.disabled.bg.color: #cda76c
+window.active.button.disabled.image.color: #fcf6f6
+
+window.active.button.toggled.unpressed.bg: Flat solid
+window.active.button.toggled.unpressed.bg.color: #cda76c
+window.active.button.toggled.unpressed.bg.border.color: #cda76c
+window.active.button.toggled.unpressed.image.color: #fcf6f6
+
+window.active.button.toggled.pressed.bg: Flat solid
+window.active.button.toggled.pressed.bg.color: #cda76c
+window.active.button.toggled.pressed.bg.border.color: #cda76c
+window.active.button.toggled.pressed.image.color: #a02c2c
+
+window.active.button.toggled.hover.bg: Flat solid
+window.active.button.toggled.hover.bg.color: #cda76c
+window.active.button.toggled.hover.bg.border.color: #cda76c
+window.active.button.toggled.hover.image.color: #a02c2c
+
+window.active.button.hover.bg: Flat solid
+window.active.button.hover.bg.color: #cda76c
+window.active.button.hover.bg.border.color: #cda76c
+window.active.button.hover.image.color: #a02c2c
+
+### Inactive windows ###
+window.inactive.title.bg: Flat solid
+window.inactive.title.bg.color: #bb9457
+window.inactive.title.bg.border.color: #bb9457
+
+window.inactive.label.bg: Parentrelative
+window.inactive.label.text.color: #fcf6f6
+
+window.inactive.handle.bg: Flat solid
+window.inactive.handle.bg.color: #bb9457
+
+window.inactive.grip.bg: Flat solid
+window.inactive.grip.bg.color: #bb9457
+
+window.inactive.button.unpressed.bg: Flat solid
+window.inactive.button.unpressed.bg.color: #bb9457
+window.inactive.button.unpressed.bg.border.color: #bb9457
+window.inactive.button.unpressed.image.color: #fcf6f6
+
+window.inactive.button.pressed.bg: Flat solid
+window.inactive.button.pressed.bg.color: #bb9457
+window.inactive.button.pressed.bg.border.color: #bb9457
+window.inactive.button.pressed.image.color: #bb9457
+
+window.inactive.button.disabled.bg: Flat solid
+window.inactive.button.disabled.bg.color: #bb9457
+window.inactive.button.disabled.image.color: #fcf6f6
+
+window.inactive.button.toggled.unpressed.bg: Flat solid
+window.inactive.button.toggled.unpressed.bg.color: #bb9457
+window.inactive.button.toggled.unpressed.bg.border.color: #bb9457
+window.inactive.button.toggled.unpressed.image.color: #fcf6f6
+
+window.inactive.button.toggled.pressed.bg: Flat solid
+window.inactive.button.toggled.pressed.bg.color: #bb9457
+window.inactive.button.toggled.pressed.bg.border.color: #bb9457
+window.inactive.button.toggled.pressed.image.color: #bb9457
+
+window.inactive.button.toggled.hover.bg: Flat solid
+window.inactive.button.toggled.hover.bg.color: #bb9457
+window.inactive.button.toggled.hover.bg.border.color: #bb9457
+window.inactive.button.toggled.hover.image.color: #bb9457
+
+window.inactive.button.hover.bg: Flat solid
+window.inactive.button.hover.bg.color: #bb9457
+window.inactive.button.hover.bg.border.color: #bb9457
+window.inactive.button.hover.image.color: #bb9457
+
+### On-Screen-Display ###
+osd.border.width: 0
+osd.border.color:  #cda76c
+
+osd.bg: flat border solid
+osd.bg.color: #cda76c
+osd.bg.border.color: #cda76c
+
+osd.label.bg: parentrelative
+osd.label.text.color: #fcf6f6
+
+osd.hilight.bg: flat solid border
+osd.hilight.bg.color: #cda76c
+osd.hilight.bg.border.color: #cda76c
