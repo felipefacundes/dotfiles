@@ -1,0 +1,111 @@
+!! Concrete by daman 
+
+!! Text shadows
+window.active.label.text.font:shadow=y:shadowtint=90:shadowoffset=1
+window.inactive.label.text.font: shadow=n
+menu.items.font:shadow=y:shadowtint=25:shadowoffset=1
+menu.title.text.font:shadow=y:shadowtint=80:shadowoffset=1
+osd.label.text.font: shadow=y:shadowtint=70:shadowoffset=1
+
+
+!! Menu background
+menu.items.bg: raised gradient horizontal
+menu.items.bg.color: #2C3031
+menu.items.bg.colorTo: #525A5B
+
+!! Menu text
+menu.items.text.color: #000000
+menu.items.justify: left
+menu.items.disabled.text.color: #737B8A
+
+!! Menu headers
+menu.title.bg: Flat Gradient Mirrorhorizontal
+menu.title.bg.color: #181D2A
+menu.title.bg.colorTo: #75818C
+menu.title.text.color: #AFC0D1
+menu.title.text.justify: center
+
+!! Selected menu item
+menu.items.active.bg: Sunken gradient horizontal
+menu.items.active.bg.color: #767E8C
+menu.items.active.bg.colorTo: #454B56
+menu.items.active.text.color: #B8BCCC
+
+!! Titlebar
+window.active.title.bg: Raised Gradient Mirrorhorizontal
+window.active.title.bg.color: #181D2A
+window.active.title.bg.colorTo: #7F8F9E
+window.inactive.title.bg: Raised Gradient Mirrorhorizontal
+window.inactive.title.bg.color: #000000
+window.inactive.title.bg.colorTo: #2E3447
+
+!! Titlebar text
+window.label.text.justify: center
+window.active.label.bg: parentrelative
+window.active.label.text.color: #AFC0D1
+window.inactive.label.bg: parentrelative
+window.inactive.label.text.color: #747474
+
+!! Window buttons
+window.*.button.*.bg: parentrelative
+window.active.button.*.hover.bg: Sunken Gradient Vertical border
+window.inactive.button.*.hover.bg: parentrelative
+window.*.button.*.pressed.bg: Sunken Gradient Vertical border
+
+window.active.button.*.hover.bg.color: #4E5354
+window.active.button.*.hover.bg.colorTo: #757591
+window.active.button.*.hover.bg.border.color: #69767C
+window.active.button.*.hover.image.color: #251A45
+
+window.active.button.*.pressed.bg.color: #64778C
+window.active.button.*.pressed.bg.colorTo: #C0CDD9
+window.active.button.*.pressed.image.color: #990016
+window.active.button.*.pressed.bg.border.color: #69767C
+
+window.inactive.button.*.pressed.bg.color: #ffaa64
+window.inactive.button.*.pressed.bg.colorTo: #ffaa64
+window.inactive.button.*.pressed.image.color: #fdceb7
+window.inactive.button.*.pressed.bg.border.color: #f0832c
+
+window.active.button.*.image.color: #AEB4B8
+window.active.button.disabled.image.color: #707070
+window.inactive.button.*.image.color: #747474
+window.inactive.button.disabled.image.color: #707070
+
+!! Borders
+window.active.border.color: #788A9A
+window.active.title.separator.color: #3F4856
+window.inactive.border.color: #3B3F40
+window.inactive.title.separator.color: #080808
+border.width: 2
+padding.width: 1
+menu.border.width: 2
+window.handle.width: 0
+window.active.client.color:  #080808
+window.inactive.client.color:  #080808
+window.client.padding.width: 2
+window.client.padding.height: 2
+menu.overlap: 0
+
+
+!! On-screen displays
+
+osd.border.width: 3
+osd.border.color:  #788A9A
+
+osd.bg: Sunken diagonal gradient
+osd.bg.color: #181D2A
+osd.bg.colorTo: #7F8F9E
+
+osd.hilight.bg: Raised gradient splitvertical
+osd.hilight.bg.color: #6C7E8F
+osd.hilight.bg.color.splitTo: #BFC6CB
+osd.hilight.bg.colorTo: #627382
+osd.hilight.bg.colorTo.splitTo: #4A505E
+
+osd.unhilight.bg: flat gradient vertical
+osd.unhilight.bg.color: #3A4E61
+osd.unhilight.bg.colorTo: #C0CDD9
+
+osd.label.bg: Parentrelative
+osd.label.text.color: #AFC0D1
