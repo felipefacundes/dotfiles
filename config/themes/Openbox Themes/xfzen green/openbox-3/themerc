@@ -1,0 +1,95 @@
+!! an openbox theme based on the platinum gtk theme by roberto
+!! http://all-hope.deviantart.com
+
+!! menu title
+menu.title.bg: raised gradient vertical
+menu.title.bg.color:  #292929
+menu.title.bg.colorTo: #212121
+
+!! use these if you have the split gradient patch
+!! menu.title.bg: flat gradient split
+!! menu.title.bg.color: #90a5b8
+!! menu.title.bg.colorTo: #90a5b8
+
+menu.title.text.color:#989898
+menu.title.text.justify: left
+
+!! menu items
+menu.items.bg: flat solid
+menu.items.bg.color:#181818
+menu.bg.border.color:#282828
+menu.items.text.color:#525252
+menu.items.justify: left
+menu.items.disabled.text.color: #bebebe 
+menu.items.active.bg: flat solid
+menu.items.active.bg.color:#252525
+menu.items.active.bg.colorTo:  #545962
+menu.items.active.text.color:#8FEA26
+menu.items.active.bg.border.color: #b9bec6
+
+!! window title
+window.active.title.bg: flat solid
+window.active.title.bg.color: #181818
+window.active.title.bg.colorTo: #212121
+window.active.title.separator.color: #181818
+
+window.inactive.title.bg: flat solid
+window.inactive.title.bg.color:  #181818
+window.inactive.title.bg.colorTo:  #151515
+window.inactive.title.separator.color: #181818
+
+!! window text
+window.label.text.justify: center
+window.active.label.bg: parentrelative
+window.active.label.bg.color: #484848
+window.active.label.bg.colorTo: #161616
+window.active.label.text.color:#8FEA26
+window.inactive.label.bg: parentrelative
+window.inactive.label.text.color: #636363
+
+!! window borders etc
+window.active.client.color: #ffffff
+window.inactive.client.color: #e0e0e0
+
+window.active.handle.bg:flat solid
+window.active.handle.bg.color:#181818
+window.active.handle.bg.colorTo:#222222
+window.active.grip.bg: parentrelative
+window.active.grip.bg.color: #FD8828
+window.active.grip.bg.colorTo:#D5782C
+
+window.inactive.handle.bg: flat solid
+window.inactive.handle.bg.color: #181818
+window.inactive.handle.bg.colorTo: #191919
+window.inactive.grip.bg: parentrelative
+window.inactive.grip.bg.color: #282828
+window.inactive.grip.bg.colorTo: #191919
+!! window buttons
+window.active.button.unpressed.bg: parentrelative
+window.active.button.unpressed.bg.color:#FD8828
+window.active.button.unpressed.bg.colorTo:#D5782C
+window.active.button.*.image.color:#8FEA26
+!window.active.button.hover.bg: flat border
+!window.active.button.hover.bg.color: #667685
+!window.active.button.hover.bg.border.color: #bbd7f4
+window.active.button.pressed.bg: parentrelative
+window.active.button.pressed.bg.color: #D5782C
+window.active.button.pressed.bg.colorTo:#FD8828
+window.active.button.pressed.image.color:#000000
+window.inactive.button.*.bg: parentrelative
+window.inactive.button.*.image.color:#636363
+
+!! misc settings
+!border.color: #000000
+border.color: #303030
+border.width: 1
+padding.width: 2
+window.handle.width: 0
+window.client.padding.width: 0
+menu.overlap: 2
+
+!! fonts, sorry if you don't have these but I'm too lazy to change it :P
+!window.active.label.text.font:verdana:pixelsize=10:bold:shadow=y:shadowoffset=1:shadowtint=200
+!window.inactive.label.text.font:verdana:pixelsize=10:bold:shadow=n
+!menu.items.font:verdana:pixelsize=10
+!menu.title.text.font:verdana:pixelsize=10:bold:shadow=y:shadowoffset=1:shadowtint=200

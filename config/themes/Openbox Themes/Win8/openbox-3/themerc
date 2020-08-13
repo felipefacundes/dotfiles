@@ -1,0 +1,156 @@
+# Bismillah
+# Theme is modified by hendra (hendra_mayendra@yahoo.co.id) in 2019 
+# Theme inspired by Windows 8 (C)Microsoft
+# Based on LubuntuArc Openbox theme
+# Buttons from colorBlue (Pardon forget it)
+# Copyright (C) 2015 Dino Duratović <dinomol at mail dot com>
+#
+# Inspired by and made for horst3180's Arc GTK theme
+# https://github.com/horst3180/Arc-theme
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+### WINDOW
+border.width: 1
+
+window.client.padding.width: 7
+window.client.padding.height: 7
+window.handle.width: 0
+
+padding.width: 20
+padding.height: 4
+
+window.active.border.color: #70a2c8
+window.inactive.border.color: #d3d4d3
+window.active.title.separator.color: #84beec
+window.inactive.title.separator.color: #ebebeb
+window.active.client.color: #84beec 
+window.inactive.client.color: #ebebeb
+
+window.active.label.text.color: #1a1a1a
+window.inactive.label.text.color: #1a1a1a
+
+window.active.button.unpressed.image.color: #1a1a1a
+window.active.button.close.unpressed.image.color: #e65a5a
+window.active.button.pressed.image.color: #5294E2
+window.active.button.close.pressed.image.color: #a84242
+window.active.button.disabled.image.color: #2d3036
+window.active.button.close.hover.image.color: #d60000
+
+window.active.button.toggled.unpressed.image.color: #576375
+window.active.button.toggled.pressed.image.color: #5294E2
+window.active.button.toggled.hover.image.color: #afb8c5
+window.inactive.button.unpressed.image.color: #bdbdbd
+window.inactive.button.close.unpressed.image.color: #bdbdbd
+window.inactive.button.pressed.image.color: #5294E2
+window.inactive.button.close.pressed.image.color:#a84242
+window.inactive.button.disabled.image.color:#bdbdbd
+window.inactive.button.hover.image.color: #c6d0dd
+window.inactive.button.close.hover.image.color: #d60000
+
+window.inactive.button.toggled.unpressed.image.color: #D3DAE3
+window.inactive.button.toggled.pressed.image.color: #5294E2
+window.inactive.button.toggled.hover.image.color: #acb5c1
+
+window.active.title.bg: flat solid
+window.active.title.bg.color: #84beec
+window.active.label.bg: flat solid
+window.active.label.bg.color: #84beec
+#window.active.handle.bg: texture
+#window.active.grip.bg: texture
+window.inactive.title.bg: flat solid
+window.inactive.title.bg.color: #ebebeb
+window.inactive.label.bg: flat solid
+window.inactive.label.bg.color: #ebebeb
+#window.inactive.handle.bg: texture
+#window.inactive.grip.bg: texture
+
+window.active.button.unpressed.bg: parentrelative
+window.active.button.close.unpressed.bg: solid flat
+window.active.button.close.unpressed.bg.color: #ffffff
+window.active.button.pressed.bg: parentrelative
+window.active.button.pressed.bgcolor: parentrelative
+window.active.button.close.pressed.bg: solid
+window.active.button.close.pressed.bg.color: #ffffff
+window.active.button.hover.bg: solid flat
+window.active.button.hover.bg.color: #9ba4b8
+window.active.button.close.hover.bg: solid flat
+window.active.button.close.hover.bg.color: #ffffff
+window.active.button.disabled.bg: parentrelative
+window.active.button.toggled.unpressed.bg: parentrelative
+window.active.button.toggled.pressed.bg: parentrelative
+window.active.button.toggled.hover.bg: parentrelative
+window.inactive.button.unpressed.bg: parentrelative
+window.inactive.button.pressed.bg: parentrelative
+window.inactive.button.hover.bg: parentrelative
+window.inactive.button.close.hover.bg: solid flat
+window.inactive.button.close.hover.bg.color: #ffffff
+
+window.inactive.button.disabled.bg: parentrelative
+window.inactive.button.toggled.unpressed.bg: parentrelative
+window.inactive.button.toggled.pressed.bg: parentrelative
+window.inactive.button.toggled.hover.bg: parentrelative
+
+window.label.text.justify: center
+
+#window.active.label.text.font: text shadow 
+#window.inactive.label.text.font: text shadow
+
+### MENU
+menu.border.width: 1
+menu.separator.width: 1
+menu.separator.padding.width: 10
+menu.separator.padding.height: 2
+
+menu.overlap.x: 0
+menu.overlap.y: 0
+
+menu.border.color: #70a2c8 
+menu.separator.color: #70a2c8
+
+menu.title.text.color: #1a1a1a
+menu.items.text.color: #1a1a1a
+menu.items.disabled.text.color: #76797F
+menu.items.active.text.color: #1a1a1a
+menu.items.active.disabled.text.color: #b2b4ba
+
+menu.items.bg: flat solid
+menu.items.bg.color: #eff0f1
+menu.items.active.bg:  flat 
+menu.items.active.bg.color: #5bb9ef
+menu.title.bg: flat solid
+menu.title.bg.color: #eff0f1
+
+menu.title.text.justify: center
+
+#menu.items.font: text shadow
+#menu.title.text.font: text shadow
+
+### OSD
+osd.border.width: 1
+
+osd.border.color: #84beec
+
+osd.label.text.color: #1a1a1a
+
+osd.bg: flat solid
+osd.bg.color: #f0f0f0
+osd.label.bg: flat solid
+osd.label.bg.color: #f0f0f0
+osd.hilight.bg: flat solid
+osd.hilight.bg.color: #5294E2
+osd.unhilight.bg: flat solid
+osd.unhilight.bg.color: #000000
+
+#osd.label.text.font: text shadow
