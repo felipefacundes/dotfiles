@@ -48,7 +48,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>KDE</name>
+    <name>E5150-Blue</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -275,28 +275,58 @@
     </keybind>
     <keybind key="W-e">
       <action name="Execute">
-        <command>howl</command>
+        <command>xed</command>
         <startupnotify>
           <enabled>yes</enabled>
-          <wmclass>howl</wmclass>
-          <name>howl</name>
-          <icon>howl</icon>
+          <wmclass>xed</wmclass>
+          <name>xed</name>
+          <icon>xed</icon>
         </startupnotify>
       </action>
     </keybind>
     <keybind key="C-A-r">
       <action name="Execute">
-        <command>bash -c 'sakura -e ffmpeg -video_size 1920x1080 -framerate 25 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -bsf:v h264_mp4toannexb -max_muxing_queue_size 9999 -f mp4 -movflags frag_keyframe+empty_moov "/home/$USER/Vídeos/HD/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
+        <command>bash -c 'sakura -e ffmpeg -video_size 1920x1080 -framerate 25 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -bsf:v h264_mp4toannexb -max_muxing_queue_size 9999 -f mp4 -movflags frag_keyframe+empty_moov "/home/$USER/V&#xED;deos/HD/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
       </action>
     </keybind>
     <keybind key="C-A-s">
       <action name="Execute">
-        <command>bash -c 'sakura -e ffmpeg -video_size 1920x1080 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -preset ultrafast -tune zerolatency -maxrate 10000k -bufsize 20000k -pix_fmt yuv420p -framerate 25 -g 52 -max_muxing_queue_size 9999 -f mp4 -bsf:v h264_mp4toannexb -movflags frag_keyframe+empty_moov "/home/$USER/Vídeos/HD/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
+        <command>bash -c 'sakura -e ffmpeg -video_size 1920x1080 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -preset ultrafast -tune zerolatency -maxrate 10000k -bufsize 20000k -pix_fmt yuv420p -framerate 25 -g 52 -max_muxing_queue_size 9999 -f mp4 -bsf:v h264_mp4toannexb -movflags frag_keyframe+empty_moov "/home/$USER/V&#xED;deos/HD/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
       </action>
     </keybind>
     <keybind key="S-A-r">
       <action name="Execute">
         <command>obs</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-p">
+      <action name="Execute">
+        <command>catt play_toggle</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-Up">
+      <action name="Execute">
+        <command>catt volumeup 5</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-Down">
+      <action name="Execute">
+        <command>catt volumedown 5</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-Right">
+      <action name="Execute">
+        <command>catt ffwd</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-Left">
+      <action name="Execute">
+        <command>catt rewind</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-s">
+      <action name="Execute">
+        <command>bash -c 'zenity --icon-name applications-multimedia --info --title="Status da Reprodução" --text="$(catt status)" --width="600" height="600"'</command>
       </action>
     </keybind>
     <keybind key="C-A-p">
@@ -595,25 +625,13 @@
     <keybind key="A-l">
       <action name="DirectionalFocusEast"/>
     </keybind>
-    <keybind key="A-Right">
-      <action name="DirectionalFocusEast"/>
-    </keybind>
     <keybind key="A-k">
-      <action name="DirectionalFocusSouth"/>
-    </keybind>
-    <keybind key="A-Down">
       <action name="DirectionalFocusSouth"/>
     </keybind>
     <keybind key="A-i">
       <action name="DirectionalFocusNorth"/>
     </keybind>
-    <keybind key="A-Up">
-      <action name="DirectionalFocusNorth"/>
-    </keybind>
     <keybind key="A-j">
-      <action name="DirectionalFocusWest"/>
-    </keybind>
-    <keybind key="A-Left">
       <action name="DirectionalFocusWest"/>
     </keybind>
     <keybind key="W-v">
@@ -1350,10 +1368,9 @@
     <!-- show the manage desktops section in the client-list-(combined-)menu -->
   </menu>
   <applications>
-    <!-- orage does get decorations though.
-       calender app, see http://www.xfce.org/projects/orage/ -->
-    <application class="Orage">
-      <decor>yes</decor>
+    <!-- match all windows, and remove their decorations -->
+    <application class="*">
+      <decor>no</decor>
     </application>
     <!-- my xterm with screen in it must always be on desktop 2,
        maximized and below everything else -->
