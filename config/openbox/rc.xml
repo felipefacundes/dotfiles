@@ -324,7 +324,7 @@
         <command>catt rewind</command>
       </action>
     </keybind>
-    <keybind key="W-C-s">
+    <keybind key="W-S-e">
       <action name="Execute">
         <command>catt stop</command>
       </action>
@@ -342,6 +342,11 @@
     <keybind key="W-S-s">
       <action name="Execute">
         <command>bash -c 'zenity --icon-name applications-multimedia --info --title="Status da Reprodução" --text="$(catt status)" --width="600" height="600"'</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-f">
+      <action name="Execute">
+        <command>bash -c 'time=`zenity --entry --text "Defina o tempo que você quer avançar" --title "Tempo do vídeo"` ; catt seek "$time"'</command>
       </action>
     </keybind>
     <keybind key="W-S-y">
