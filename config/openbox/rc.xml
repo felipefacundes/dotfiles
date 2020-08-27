@@ -324,9 +324,29 @@
         <command>catt rewind</command>
       </action>
     </keybind>
+    <keybind key="W-C-s">
+      <action name="Execute">
+        <command>catt stop</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-C-s">
+      <action name="Execute">
+        <command>catt save</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-C-r">
+      <action name="Execute">
+        <command>catt restore</command>
+      </action>
+    </keybind>
     <keybind key="W-S-s">
       <action name="Execute">
         <command>bash -c 'zenity --icon-name applications-multimedia --info --title="Status da Reprodução" --text="$(catt status)" --width="600" height="600"'</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-y">
+      <action name="Execute">
+        <command>bash -c 'you_url=`zenity --entry --text "Insira o link do Youtube ou outro Streaming que deseja ser exibido" --title "Streaming"` ; catt cast "$you_url"'</command>
       </action>
     </keybind>
     <keybind key="C-A-p">
