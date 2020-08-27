@@ -230,7 +230,7 @@
         <command>sakura</command>
       </action>
     </keybind>
-    <keybind key="C-S-W-r">
+    <keybind key="C-S-W-f">
       <action name="Execute">
         <command>firefox --profile ~/.firefox-rofe/</command>
       </action>
