@@ -47,12 +47,13 @@ echo "Vamos às Fontes especiais com íconizadas"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 mkdir -p ~/.fonts
 cd ~/.fonts
-rm -rf *Hack*
-rm -rf MinhasFonts.tar.xz
+rm -f *Hack*
+rm -f Minhas_Fonts.tar.zst
 #wget -nc "https://github.com/felipefacundes/dotfiles/blob/master/fonts/NerdFontHkNF.tar.xz?raw=true" -O NerdFontHkNF.tar.xz
-wget -nc "https://github.com/felipefacundes/dotfiles/blob/master/config/fonts/MinhasFonts.tar.xz?raw=true" -O MinhasFonts.tar.xz
+wget -nc "https://github.com/felipefacundes/dotfiles/blob/master/config/fonts/Minhas_Fonts.tar.zst?raw=true" -O Minhas_Fonts.tar.zst
 #tar -xf NerdFontHkNF.tar.xz
-tar -xf MinhasFonts.tar.xz
+tar -xf Minhas_Fonts.tar.zst
+rm -f Minhas_Fonts.tar.zst
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "Configuração do Sway instalada"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
