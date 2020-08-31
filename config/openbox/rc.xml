@@ -284,14 +284,15 @@
         </startupnotify>
       </action>
     </keybind>
+    <!-- Gravar tela -->
     <keybind key="C-A-r">
       <action name="Execute">
-        <command>bash -c 'sakura -e ffmpeg -video_size 1920x1080 -framerate 25 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -bsf:v h264_mp4toannexb -max_muxing_queue_size 9999 -f mp4 -movflags frag_keyframe+empty_moov "/home/$USER/V&#xED;deos/HD/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
+        <command>bash -c 'sakura -e ffmpeg -video_size 1920x1080 -framerate 15 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -bsf:v h264_mp4toannexb -max_muxing_queue_size 9999 -f mp4 -movflags frag_keyframe+empty_moov "/home/$USER/Vídeos/HD/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
       </action>
     </keybind>
     <keybind key="C-A-s">
       <action name="Execute">
-        <command>bash -c 'sakura -e ffmpeg -video_size 1920x1080 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -preset ultrafast -tune zerolatency -maxrate 10000k -bufsize 20000k -pix_fmt yuv420p -framerate 25 -g 52 -max_muxing_queue_size 9999 -f mp4 -bsf:v h264_mp4toannexb -movflags frag_keyframe+empty_moov "/home/$USER/V&#xED;deos/HD/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
+        <command>bash -c 'sakura -e ffmpeg -video_size 1920x1080 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -preset ultrafast -tune zerolatency -maxrate 10000k -bufsize 20000k -pix_fmt yuv420p -framerate 15 -g 52 -max_muxing_queue_size 9999 -f mp4 -bsf:v h264_mp4toannexb -movflags frag_keyframe+empty_moov "/home/$USER/Vídeos/HD/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
       </action>
     </keybind>
     <keybind key="S-A-r">
@@ -351,7 +352,7 @@
     </keybind>
     <keybind key="W-S-y">
       <action name="Execute">
-        <command>bash -c 'you_url=`zenity --entry --text "Insira o link do Youtube ou outro Streaming que deseja ser exibido" --title "Streaming"` ; catt cast "$you_url"'</command>
+        <command>bash -c 'catt cast $(xclip -selection clipboard -o) #you_url=`zenity --entry --text "Insira o link do Youtube ou outro Streaming que deseja ser exibido" --title "Streaming"` ; catt cast "$you_url"'</command>
       </action>
     </keybind>
     <keybind key="C-A-p">
@@ -392,7 +393,7 @@
     </keybind>
     <keybind key="XF86ScreenSaver">
       <action name="Execute">
-        <command>bash -c "echo 0 &gt; /sys/class/backlight/intel_backlight/brightness"</command>
+        <command>bash -c "echo 0 > /sys/class/backlight/intel_backlight/brightness"</command>
       </action>
     </keybind>
     <keybind key="Print">
@@ -659,6 +660,7 @@
     <keybind key="A-j">
       <action name="DirectionalFocusWest"/>
     </keybind>
+    <!-- Vertical tiling -->
     <keybind key="W-v">
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo">
@@ -683,6 +685,7 @@
         </finalactions>
       </action>
     </keybind>
+    <!-- Horizontal tiling -->
     <keybind key="W-h">
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo">
@@ -706,6 +709,17 @@
           </action>
         </finalactions>
       </action>
+    </keybind>
+    <!-- Restaurar dimensões das janelas -->
+    <keybind key="A-W-r">
+     <action name="UnmaximizeFull"/>
+      <action name="NextWindow">
+       <interactive>no</interactive>
+       <dialog>none</dialog>
+       <finalactions>
+       <action name="UnmaximizeFull"/>
+      </finalactions>
+     </action>
     </keybind>
     <keybind key="W-s">
       <action name="UnmaximizeFull"/>
