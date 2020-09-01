@@ -726,7 +726,7 @@ execp_icon_h = 0
 #-------------------------------------
 # Executor 19
 execp = new
-execp_command = echo "$(free -h | grep -Ei '^Mem' | awk '{print " " $3}')"
+execp_command = echo "$(free -h | grep -Ei '^Mem' | awk '{print " " $3 "|" $2}')"
 execp_interval = 1
 execp_has_icon = 0
 execp_cache_icon = 1
@@ -864,7 +864,7 @@ execp_icon_h = 0
 #-------------------------------------
 # Executor 25
 execp = new
-execp_command = echo ﴻ $(uptime | awk '{print $3}' | tr -d ',')
+execp_command = echo ﴻ "$(awk '{print int($1/3600)":"int(($1%3600)/60)}' /proc/uptime)" #"$(uptime | awk '{print $3}' | tr -d ',')"
 execp_interval = 1
 execp_has_icon = 0
 execp_cache_icon = 1
@@ -964,7 +964,7 @@ execp_continuous = 0
 execp_markup = 1
 execp_tooltip = Controle do Chromecast
 execp_lclick_command = catt-gui
-execp_rclick_command = you_url=`zenity --entry --text "Insira o link do Youtube ou outro Streaming que deseja ser exibido" --title "Streaming"` ; catt cast "$you_url"
+execp_rclick_command = catt cast "$(xclip -selection clipboard -o)" #you_url=`zenity --entry --text "Insira o link do Youtube ou outro Streaming que deseja ser exibido" --title "Streaming"` ; catt cast "$you_url"
 execp_mclick_command = catt stop
 execp_uwheel_command = catt volumeup 5
 execp_dwheel_command = catt volumedown 5
