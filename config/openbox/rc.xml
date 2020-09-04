@@ -428,9 +428,16 @@
         <command>bash -c 'cd ~/ ; mkdir -p "$HOME/Imagens/Captura de Tela/" ; scrot -u "$HOME/Imagens/Captura de Tela/Captura de tela de %d-%m-%Y %H:%M:%S.png" ; mkdir -p ~/.local/songs/ ; cd ~/.local/songs/ ; wget -nc https://github.com/felipefacundes/dotfiles/blob/master/config/songs/camera_shutter.mp3?raw=true -O camera_shutter.mp3 ; paplay ~/.local/songs/camera_shutter.ogg'</command>
       </action>
     </keybind>
+    <!-- Papel de parede aleatório -->
     <keybind key="C-A-w">
       <action name="Execute">
         <command>bash -c 'cd ~/ ; mkdir -p ~/Imagens/Wallpapers/ ; nitrogen --set-zoom-fill "$(ls "$HOME"/Imagens/Wallpapers/*[jJpP][nNpP][gG] | shuf -n 1)"'</command>
+      </action>
+    </keybind>
+    <!-- Tema aleatório do painel tint2 -->
+    <keybind key="C-W-p">
+      <action name="Execute">
+        <command>bash -c 'pkill -9 tint2 ; tint2 -c "$(ls -c "$HOME"/.config/tint2/*.tint2rc | shuf -n 1)"'</command>
       </action>
     </keybind>
     <keybind key="C-S-A-d">
