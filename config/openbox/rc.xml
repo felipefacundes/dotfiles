@@ -315,14 +315,26 @@
         <command>catt volumedown 5</command>
       </action>
     </keybind>
+    <!-- Chromecast: avançar streaming -->
     <keybind key="W-S-Right">
       <action name="Execute">
         <command>catt ffwd</command>
       </action>
     </keybind>
+    <keybind key="C-W-S-Right">
+      <action name="Execute">
+        <command>catt ffwd 60</command>
+      </action>
+    </keybind>
+    <!-- Chromecast: retroceder streaming -->
     <keybind key="W-S-Left">
       <action name="Execute">
         <command>catt rewind</command>
+      </action>
+    </keybind>
+    <keybind key="C-W-S-Left">
+      <action name="Execute">
+        <command>catt rewind 60</command>
       </action>
     </keybind>
     <keybind key="W-S-e">
