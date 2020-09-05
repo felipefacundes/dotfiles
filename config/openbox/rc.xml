@@ -431,13 +431,13 @@
     <!-- Papel de parede aleatório -->
     <keybind key="C-A-w">
       <action name="Execute">
-        <command>bash -c 'cd ~/ ; mkdir -p ~/Imagens/Wallpapers/ ; nitrogen --set-zoom-fill "$(ls "$HOME"/Imagens/Wallpapers/*[jJpP][nNpP][gG] | shuf -n 1)"'</command>
+        <command>bash -c 'cd ~/ ; mkdir -p ~/Imagens/Wallpapers/ ; nitrogen --set-zoom-fill "$(ls -c "$HOME"/Imagens/Wallpapers/*[jJpP][nNpP][gG] | shuf -n 1)"'</command>
       </action>
     </keybind>
     <!-- Tema aleatório do painel tint2 -->
     <keybind key="C-W-p">
       <action name="Execute">
-        <command>bash -c 'pkill -9 tint2 ; tint2 -c "$(ls -c "$HOME"/.config/tint2/*.tint2rc | shuf -n 1)"'</command>
+        <command>bash -c 'pkill -9 tint2 ; cp -f "$(ls -c "$HOME"/.config/tint2/*.tint2rc | shuf -n 1)" "$HOME"/.config/tint2/tint2rc ; tint2 -c "$HOME"/.config/tint2/tint2rc'</command>
       </action>
     </keybind>
     <keybind key="C-S-A-d">
