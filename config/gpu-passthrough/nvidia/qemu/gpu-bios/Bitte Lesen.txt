@@ -1,0 +1,6 @@
+Anbei die neuste VBIOS Version.
+
+Zum Flashen, bitte in Windows 7 oder Windows 8/10 über den Gerätemanager den VGA Karten Treiber deinstallieren.
+Anschließend ein CMD Fenster (Eingabefester) öffnen, wichtig dies muss als Administrator geöffnet werden.
+In diesem Fester bitte zum VBios navigieren, um dann die entsprechen BAT Datei zu starten, wie in unserem Beispiel start.BAT.
+

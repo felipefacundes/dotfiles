@@ -1,0 +1,1 @@
+nvflash 7G2.ROM -6

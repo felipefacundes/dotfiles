@@ -1,0 +1,109 @@
+#!/bin/bash
+
+# Opções de audio
+export QEMU_AUDIO_DRV=pa
+export QEMU_PA_SERVER=/run/user/1000/pulse/native
+export QEMU_AUDIO_TIMER_PERIOD=500
+#export CONFIG_PCI=y
+#export CONFIG_VIRTIO_PCI=y
+#export CONFIG_PCI_HOST_GENERIC=y
+#export CONFIG_DRM=y
+#export CONFIG_DRM_VIRTIO_GPU=y
+
+# Use o seguinte comando para gerar endereço MAC
+# printf '52:54:BE:EF:%02X:%02X\n' $((RANDOM%256)) $((RANDOM%256))
+
+# Referência https://github.com/saveriomiroddi/qemu-pinning para setar as propriedades da sua CPU
+
+# dependências necessárias:
+# sudo pacman -S edk2-ovmf virt-viewer qemu dmidecode
+
+#pkexec #zenity --password --title="Iniciando permissões de Administrador" --timeout=10
+sudo echo "Iniciando permissões de Administrador"
+mkdir -p ~/.qemu/logs
+bash -c "sleep 5 && remote-viewer spice://127.0.0.1:5930 > /dev/null 2>&1" &
+#bash -c "while true; do nvidia-smi --query-gpu=utilization.gpu --format=csv >> ~/.qemu/logs/gpu.log; sleep 2; done" &
+#nvidia-settings -q GPUUtilization
+clear
+tput setaf 9 && echo "Caso a tela não abra, execute no terminal o seguinte:"
+tput setaf 14 && echo "remote-viewer spice://127.0.0.1:5930"
+tput setaf 7
+sudo qemu-system-x86_64 \
+  -name "win8.1" \
+  -machine type=q35,accel=kvm \
+  -global ICH9-LPC.disable_s3=1 \
+  -global ICH9-LPC.disable_s4=1 \
+  -enable-kvm \
+  -cpu host,kvm=off,hv_vapic,hv_relaxed,hv_spinlocks=0x1fff,hv_time,hv_vendor_id=12alphanum \
+  -smp 12,sockets=1,cores=6,threads=2 \
+  -m 11G \
+  -rtc clock=host,base=localtime \
+  -device ich9-intel-hda -device hda-output \
+  -serial none \
+  -parallel none \
+  -k pt-br \
+  -nographic \
+  -vga virtio \
+  -device virtio-serial-pci \
+  -device vfio-pci,host=01:00.0,multifunction=on,rombar=0 \
+  -device vfio-pci,host=01:00.1 \
+  -spice port=5930,disable-ticketing \
+  -device virtserialport,chardev=spicechannel0,name=com.redhat.spice.0 \
+  -chardev spicevmc,id=spicechannel0,name=vdagent \
+  -usb \
+  -drive file=/home/rfacundes/Documentos/HD/images-VM/win8.1.img,id=disk,if=none,format=raw,cache=writeback,aio=threads,media=disk \
+  -device ahci,id=ahci \
+  -device ide-hd,drive=disk,bus=ahci.0 \
+  -drive file=/home/rfacundes/Downloads/torrents/Windows\ 8.1\ Pro\ VL\ X64\ MULTi-6\ ESD\ March\ 2016\ \{Generation2\}/W81PRO.VLX64.MULTi6.Mar2016.iso,index=1,media=cdrom \
+  -drive if=pflash,format=raw,readonly=on,file=/usr/share/OVMF/x64/OVMF_CODE.fd \
+  -drive if=pflash,format=raw,file=/home/rfacundes/.qemu/bios/WIN_VARS.fd \
+  -net nic,model=e1000e \
+  -net user \
+  -acpitable file=/home/rfacundes/.qemu/scripts/ssdt1.aml \
+  -smbios type=0,vendor=LENOVO,version=FBKTB4AUS,date=07/01/2015,release=1.180 \
+  -smbios type=1,manufacturer=LENOVO,product=30AH001GPB,version="ThinkStation P300",serial=S4M88119,uuid=cecf333d-6603-e511-97d5-6c0b843f98ba,sku=LENOVO_MT_30AH,family=P300 \
+  -debugcon file:/home/rfacundes/.qemu/logs/qemu.log \
+  -device usb-tablet \
+  -boot menu=on \
+  -boot order=c  # c - Boot inicial pelo Disco Rígido. | Boot d - Boot inicial pelo CD-ROM. | Boot n - Boot pela rede virtual.
+
+#  -device virtio-vga,virgl=on,bus=pcie.0,addr=1c.4,id=vga.0 \
+#  -vga virtio \
+#  -display gtk \
+######
+#  -device vfio-pci,host=01:00.0,multifunction=on,rombar=0 \
+#  -device vfio-pci,host=01:00.1 \
+#  -device virtio-gpu-pci,virgl=on,bus=pcie.0,addr=1c.4,id=gpu \
+#  -display gtk \
+#
+#   -device qxl,bus=pcie.0,addr=1c.4,id=video.2 \
+#
+#>> ~/.qemu/logs/qemu.log
+#  -drive file=/home/rfacundes/Documentos/HD/images-VM/win10.qcow2,id=disk,if=none,format=qcow2,cache=writethrough,aio=threads,media=disk \
+#  -device ide-hd,drive=disk,serial=disk-0 \
+#######
+#  -device ahci,id=ahci \
+#  -device ide-hd,drive=disk,bus=ahci.0 \
+#######
+#   -drive file=/home/rfacundes/Documentos/HD/images-VM/win10.qcow2,id=disk,if=ide,format=qcow2,cache=writethrough,cache.direct=on,aio=native,media=disk \
+#######
+#  -device nvme,drive=NVME1,serial=nvme-1 \
+#######
+#  -smbios file=/home/rfacundes/.qemu/bios/smbios_type_0.bin \
+#  -smbios file=/home/rfacundes/.qemu/bios/smbios_type_1.bin \
+
+#  -spice port=5930,addr=127.0.0.1,disable-ticketing \
+#  -device ioh3420,bus=pcie.0,addr=1c.0,multifunction=on,port=1,chassis=1,id=root.1 \
+#  -device vfio-pci,host=01:00.0,bus=root.1,addr=00.0,x-pci-sub-device-id=0x07b1,x-pci-sub-vendor-id=0x1028,multifunction=on \
+# sockets=1,cores=5,threads=11 \
+#   -cpu host,kvm=off,hv_vapic,hv_relaxed,hv_spinlocks=0x1fff,hv_time,hv_vendor_id=12alphanum \
+#  -spice port=5901,addr=127.0.0.1,disable-ticketing \
+# ,romfile=/home/rfacundes/.qemu/gpu-bios/NVIDIA.GTX1050Ti.4096.190630.rom
+#  -drive if=pflash,format=raw,readonly=on,file=/usr/share/OVMF/x64/OVMF_CODE.fd \
+#  -drive if=pflash,format=raw,file=/usr/share/OVMF/x64/OVMF_VARS.fd \
+#  -mem-prealloc \
+#  -mem-path /dev/hugepages \
+#  -netdev type=tap,id=net0,ifname=tap0,script=tap_ifup,downscript=tap_ifdown,vhost=on \
+#  -device virtio-net-pci,netdev=net0,addr=19.0,mac=52:54:00:11:d5:99 \
+#  -device pci-bridge,addr=12.0,chassis_nr=2,id=head.2 \
+#  -drive file=virtio-win-0.1.141.iso,index=2,media=cdrom \
