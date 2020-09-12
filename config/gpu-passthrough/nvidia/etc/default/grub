@@ -3,7 +3,7 @@
 GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR="Arch"
-GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=0b78ec79-c5f6-457d-bfe9-df5769b9fcc1:rfacundes resume=UUID=64322762-11f0-4cb0-8b90-8f88328b71d8 resume_offset=5419008 quiet nosplash intel_pstate=enable nogpumanager acpi_osi=! acpi_osi=Linux acpi_osi=\"Windows 2015\" pcie_port_pm=off intel_iommu=on rd.driver.pre=vfio-pci vfio-pci.ids=10de:1c8c,10de:0fb9"
+GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=0b78ec79-c5f6-457d-bfe9-df5769b9fcc1:rfacundes resume=UUID=64322762-11f0-4cb0-8b90-8f88328b71d8 resume_offset=5419008 quiet nosplash intel_pstate=enable nogpumanager acpi_osi=! acpi_osi=Linux acpi_osi=\"Windows 2015\" pcie_port_pm=off intel_iommu=on rd.driver.pre=vfio-pci kvm.ignore_msrs=1 vfio-pci.ids=10de:1c8c,10de:0fb9"
 GRUB_CMDLINE_LINUX="crypto=sha512:aes-xts-plain64:512:0"
 
 # Preload both GPT and MBR modules so that they are not missed
