@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# lspci -vnn | grep -iP "vga|amdgpu|nvidia|nouveau|vfio-pci"
 # Opções de audio
 export QEMU_AUDIO_DRV=pa
 export QEMU_PA_SERVER=/run/user/1000/pulse/native
@@ -14,60 +14,70 @@ export QEMU_AUDIO_TIMER_PERIOD=500
 # printf '52:54:BE:EF:%02X:%02X\n' $((RANDOM%256)) $((RANDOM%256))
 
 # Referência https://github.com/saveriomiroddi/qemu-pinning para setar as propriedades da sua CPU
+# https://www.kernel.org/doc/Documentation/vfio.txt
 
 # dependências necessárias:
 # sudo pacman -S edk2-ovmf virt-viewer qemu dmidecode
 
-#pkexec #zenity --password --title="Iniciando permissões de Administrador" --timeout=10
-sudo echo "Iniciando permissões de Administrador"
-mkdir -p ~/.qemu/logs
-bash -c "sleep 5 && remote-viewer spice://127.0.0.1:5930 > /dev/null 2>&1" &
-#bash -c "while true; do nvidia-smi --query-gpu=utilization.gpu --format=csv >> ~/.qemu/logs/gpu.log; sleep 2; done" &
-#nvidia-settings -q GPUUtilization
 clear
 tput setaf 9 && echo "Caso a tela não abra, execute no terminal o seguinte:"
 tput setaf 14 && echo "remote-viewer spice://127.0.0.1:5930"
 tput setaf 7
+
+Intel="0000:00:02.0"
+Nvidia="0000:01:00.0"
+
+dev="0000:00:02.0"
+vendor=$(cat /sys/bus/pci/devices/$dev/vendor)
+device=$(cat /sys/bus/pci/devices/$dev/device)
+
+sudo modprobe vfio vfio_iommu_type1 vfio_pci vhost-net kvm kvm_intel vfio_virqfd
+sudo chown -R "$USER":users /dev/vfio/
+
+#sudo su -c 'echo $vendor $device > /sys/bus/pci/drivers/vfio-pci/new_id'
+#sudo su -c 'echo 0000:01:00.0 > /sys/bus/pci/devices/0000:01:00.0/driver/unbind'
+#sudo su -c 'echo 0000:01:00.0 > /sys/bus/pci/drivers/vfio-pci/bind'
+
+bash -c "sleep 5 && remote-viewer spice://127.0.0.1:5930 > /dev/null 2>&1" &
+
 sudo qemu-system-x86_64 \
   -name "win8.1" \
-  -machine type=q35,accel=kvm \
+  -machine type=q35,accel=kvm -enable-kvm \
   -global ICH9-LPC.disable_s3=1 \
   -global ICH9-LPC.disable_s4=1 \
-  -enable-kvm \
   -cpu host,kvm=off,hv_vapic,hv_relaxed,hv_spinlocks=0x1fff,hv_time,hv_vendor_id=12alphanum \
-  -smp 12,sockets=1,cores=6,threads=2 \
-  -m 11G \
+  -smp 12,sockets=1,cores=6,threads=2 -m 11G \
   -rtc clock=host,base=localtime \
   -device ich9-intel-hda -device hda-output \
-  -k pt-br \
-  -nographic \
-  -device qxl,bus=pcie.0,addr=1c.4,id=video.2 \
-  -vga qxl \
-  -serial none \
-  -parallel none \
+  -k pt-br -nographic -vga virtio \
+  -serial none -parallel none \
   -device ioh3420,bus=pcie.0,addr=1c.0,multifunction=on,port=1,chassis=1,id=root.1 \
-  -device vfio-pci,host=01:00.0,bus=root.1,addr=00.0,x-pci-sub-device-id=0x1c8c,x-pci-sub-vendor-id=0x10de,multifunction=on,romfile=/home/rfacundes/.qemu/gpu-bios/7G2.ROM \
+  -device vfio-pci,host=01:00.0,bus=root.1,addr=00.0,x-pci-sub-device-id=0x07b1,x-pci-sub-vendor-id=0x1028,multifunction=on,x-vga=on,rombar=0 \
   -device pci-bridge,addr=12.0,chassis_nr=2,id=head.2 \
   -device vfio-pci,host=01:00.1 \
   -spice port=5930,disable-ticketing \
   -chardev spicevmc,id=spicechannel0,name=vdagent \
-  -usb \
   -drive file=/home/rfacundes/Documentos/HD/images-VM/win8.1.img,id=disk,if=none,format=raw,cache=writeback,aio=threads,media=disk \
-  -device ahci,id=ahci \
-  -device ide-hd,drive=disk,bus=ahci.0 \
+  -device ahci,id=ahci -device ide-hd,drive=disk,bus=ahci.0 \
   -drive file=/home/rfacundes/Downloads/torrents/Windows\ 8.1\ Pro\ VL\ X64\ MULTi-6\ ESD\ March\ 2016\ \{Generation2\}/W81PRO.VLX64.MULTi6.Mar2016.iso,index=1,media=cdrom \
   -drive if=pflash,format=raw,readonly=on,file=/usr/share/OVMF/x64/OVMF_CODE.fd \
   -drive if=pflash,format=raw,file=/home/rfacundes/.qemu/bios/WIN_VARS.fd \
-  -net nic,model=e1000e \
-  -net user \
+  -smbios type=0,vendor="Insyde Corp.",version=FBKTB4AUS,date=08/05/2019,release=1.28 \
+  -smbios type=1,manufacturer=Acer,product="Nitro AN515-52",version=1.28,serial=NHQ4FAL0069439BE829501,uuid=59de0dc7-6eeb-e911-9733-089798655c62,sku=0000000000000000,family="Nitro 5" \
+  -net nic,model=e1000e -net user \
   -acpitable file=/home/rfacundes/.qemu/scripts/ssdt1.aml \
-  -smbios type=0,vendor=LENOVO,version=FBKTB4AUS,date=07/01/2015,release=1.180 \
-  -smbios type=1,manufacturer=LENOVO,product=30AH001GPB,version="ThinkStation P300",serial=S4M88119,uuid=cecf333d-6603-e511-97d5-6c0b843f98ba,sku=LENOVO_MT_30AH,family=P300 \
+  -smbios file=/home/rfacundes/.qemu/bios/Nitro-AN515-52_2.rom \
   -debugcon file:/home/rfacundes/.qemu/logs/qemu.log \
-  -device usb-tablet \
+  -usb -device usb-tablet \
+  -usb -device usb-host,vendorid=0x0781,productid=0x558b \
   -boot menu=on \
   -boot order=c  # c - Boot inicial pelo Disco Rígido. | Boot d - Boot inicial pelo CD-ROM. | Boot n - Boot pela rede virtual.
 
+#  -device vfio-pci,host=01:00.0,bus=root.1,addr=00.0,x-pci-sub-device-id=0x07b1,x-pci-sub-vendor-id=0x1028,multifunction=on,x-vga=on,romfile=/home/rfacundes/.qemu/gpu-bios/NVIDIA.GTX1050Ti.4096.190630.rom
+
+#  -device pci-assign,host=01:00.0 \
+#  -smbios type=0,vendor=LENOVO,version=FBKTB4AUS,date=07/01/2015,release=1.180 \
+#  -smbios type=1,manufacturer=LENOVO,product=30AH001GPB,version="ThinkStation P300",serial=S4M88119,uuid=cecf333d-6603-e511-97d5-6c0b843f98ba,sku=LENOVO_MT_30AH,family=P300 \
 #  -device intel-iommu,caching-mode=on \
 #  -device virtio-vga,virgl=on,bus=pcie.0,addr=1c.4,id=vga.0 \
 #  -vga virtio \
