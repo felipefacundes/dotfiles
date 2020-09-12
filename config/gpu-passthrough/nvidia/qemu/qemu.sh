@@ -64,15 +64,16 @@ sudo qemu-system-x86_64 \
   -drive if=pflash,format=raw,file=/home/rfacundes/.qemu/bios/WIN_VARS.fd \
   -smbios type=0,vendor="Insyde Corp.",version=FBKTB4AUS,date=08/05/2019,release=1.28 \
   -smbios type=1,manufacturer=Acer,product="Nitro AN515-52",version=1.28,serial=NHQ4FAL0069439BE829501,uuid=59de0dc7-6eeb-e911-9733-089798655c62,sku=0000000000000000,family="Nitro 5" \
+  -bios /home/rfacundes/.qemu/bios/Nitro-AN515-52_2.rom \
   -net nic,model=e1000e -net user \
   -acpitable file=/home/rfacundes/.qemu/scripts/ssdt1.aml \
-  -smbios file=/home/rfacundes/.qemu/bios/Nitro-AN515-52_2.rom \
   -debugcon file:/home/rfacundes/.qemu/logs/qemu.log \
   -usb -device usb-tablet \
   -usb -device usb-host,vendorid=0x0781,productid=0x558b \
   -boot menu=on \
   -boot order=c  # c - Boot inicial pelo Disco Rígido. | Boot d - Boot inicial pelo CD-ROM. | Boot n - Boot pela rede virtual.
 
+#  -bios /usr/share/qemu/bios.bin
 #  -device vfio-pci,host=01:00.0,bus=root.1,addr=00.0,x-pci-sub-device-id=0x07b1,x-pci-sub-vendor-id=0x1028,multifunction=on,x-vga=on,romfile=/home/rfacundes/.qemu/gpu-bios/NVIDIA.GTX1050Ti.4096.190630.rom
 
 #  -device pci-assign,host=01:00.0 \
