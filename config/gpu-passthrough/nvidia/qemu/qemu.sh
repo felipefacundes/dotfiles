@@ -1,5 +1,6 @@
 #!/bin/bash
 # lspci -vnn | grep -iP "vga|amdgpu|nvidia|nouveau|vfio-pci"
+# lspci -nn -D | grep VGA
 # Opções de audio
 export QEMU_AUDIO_DRV=pa
 export QEMU_PA_SERVER=/run/user/1000/pulse/native
@@ -15,6 +16,7 @@ export QEMU_AUDIO_TIMER_PERIOD=500
 
 # Referência https://github.com/saveriomiroddi/qemu-pinning para setar as propriedades da sua CPU
 # https://www.kernel.org/doc/Documentation/vfio.txt
+# https://github.com/intel/nemu/wiki/Testing-VFIO-with-GPU
 
 # dependências necessárias:
 # sudo pacman -S edk2-ovmf virt-viewer qemu dmidecode
