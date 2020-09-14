@@ -26,8 +26,8 @@ export QEMU_AUDIO_TIMER_PERIOD=500
 # https://patchwork.ozlabs.org/project/qemu-devel/cover/20180713130916.4153-1-marcandre.lureau@redhat.com/
 # https://www.kraxel.org/blog/2019/09/display-devices-in-qemu/
 
-
 # https://lists.nongnu.org/archive/html/qemu-devel/2018-08/msg02610.html
+
 
 mkdir -p ~/.qemu/logs
 #bash -c "while true; do nvidia-smi --query-gpu=utilization.gpu --format=csv >> ~/.qemu/logs/gpu.log; sleep 2; done" &
@@ -40,21 +40,17 @@ sudo /usr/lib/qemu/vhost-user-gpu --virgl -s vgpu.sock &
 bash -c "sleep 5 && remote-viewer spice://127.0.0.1:5930 > /dev/null 2>&1" &
 sudo qemu-system-x86_64 \
   -name "win8.1" \
-  -machine type=q35,accel=kvm \
+  -machine type=q35,accel=kvm -enable-kvm \
   -global ICH9-LPC.disable_s3=1 \
   -global ICH9-LPC.disable_s4=1 \
-  -enable-kvm \
-  -cpu host,kvm=off,hv_vapic,hv_relaxed,hv_spinlocks=0x1fff,hv_time,hv_vendor_id=12alphanum \
+  -cpu host,kvm=on,hv_vapic,hv_relaxed,hv_spinlocks=0x1fff,hv_time,hv_vendor_id=12alphanum \
   -smp 12,sockets=1,cores=6,threads=2 \
   -m 11G \
   -rtc clock=host,base=localtime \
   -device ich9-intel-hda -device hda-output \
   -chardev socket,id=vgpu,path=vgpu.sock \
   -device vhost-user-vga,chardev=vgpu \
-  -k pt-br \
-  -nographic \
-  -serial none \
-  -parallel none \
+  -k pt-br -nographic \
   -spice port=5930,disable-ticketing \
   -chardev spicevmc,id=spicechannel0,name=vdagent \
   -device ide-hd,bus=ide.0,drive=disk \
@@ -72,6 +68,7 @@ sudo qemu-system-x86_64 \
   -boot menu=on \
   -boot order=c  # c - Boot inicial pelo Disco Rígido. | Boot d - Boot inicial pelo CD-ROM. | Boot n - Boot pela rede virtual.
 
+#  -serial none -parallel none \
 # https://lists.nongnu.org/archive/html/qemu-devel/2018-08/msg02610.html
 #
 
