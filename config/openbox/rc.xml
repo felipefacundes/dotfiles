@@ -300,16 +300,24 @@
         <command>obs</command>
       </action>
     </keybind>
+    <!-- Chromecast: pausar/reproduzir streaming -->
     <keybind key="W-S-p">
       <action name="Execute">
         <command>catt play_toggle</command>
       </action>
     </keybind>
+    <keybind key="W-S-space">
+      <action name="Execute">
+        <command>catt play_toggle</command>
+      </action>
+    </keybind>
+    <!-- Chromecast: aumentar volume -->
     <keybind key="W-S-Up">
       <action name="Execute">
         <command>catt volumeup 5</command>
       </action>
     </keybind>
+    <!-- Chromecast: abaixar volume -->
     <keybind key="W-S-Down">
       <action name="Execute">
         <command>catt volumedown 5</command>
