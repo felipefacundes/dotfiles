@@ -20,10 +20,10 @@ export ZSH=$HOME/.oh-my-zsh
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
+ZSH_THEME="robbyrussell"
 # See https://github.com/Powerlevel9k/powerlevel9k
-ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_MODE="nerdfont-complete"
+#ZSH_THEME="powerlevel9k/powerlevel9k"
+#POWERLEVEL9K_MODE="nerdfont-complete"
 
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 #POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="↱"
@@ -119,16 +119,16 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ssh root_indicator background_jobs vi
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(history archlinux )
+plugins=(history archlinux)
 
 source $ZSH/oh-my-zsh.sh
 ## Plugins section: Enable fish style features
 # Use syntax highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Use history substring search
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+#source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 # Use autosuggestion
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+#source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # User configuration
 
@@ -155,17 +155,77 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ls="lsd"
+#alias ls="lsd"
 alias reboot="openrc-shutdown --reboot now"
 alias shutdown="openrc-shutdown -p now"
 alias all="pkill -9 -u $USER"
 alias neofetch="~/.make/neofetch/neofetch"
 alias cp="advcp -g"                                             # Advanced copy
 alias aur="yay -S --nodiffmenu --noeditmenu --noupgrademenu --mflags --skipinteg --noconfirm"
-alias vim="echo 'não tem vim, então será aberto o neovim' ; sleep 1 ; nvim"
-alias nano="echo 'não tem nano, então será aberto o neovim' ; sleep 1 ; nvim"
+#alias vim="echo 'não tem vim, então será aberto o neovim' ; sleep 1 ; nvim"
+#alias nano="echo 'não tem nano, então será aberto o vim' ; sleep 1 ; vim"
+alias cpi="cpupower frequency-info"
+alias bi="cd ~/.local/bin"
+alias cp="advcp -g"
+alias reboot="/usr/bin/openrc-shutdown --reboot now"
+alias shutdown="/usr/bin/openrc-shutdown --poweroff now"
+alias matar="pkill -9 -u maria"
+alias yd="youtube-dl -i"
+alias a="sudo pacman -Syyuu"
+alias limpawine="rm -rf ~/.local/share/applications/*wine*"
+alias lwine="rm -rf ~/.local/share/applications/*wine*"
+alias rwine="rm -rf ~/.local/share/applications/*wine*"
+alias remover="rm ~/.local/share/applications/remover-*.desktop"
+alias mwine="ps ax|egrep '*\.exe'|grep -v 'egrep'|awk '{print $1 }' | xargs kill -9 $1 ; wineserver -k; wineserver -k9; pkill -9 .exe; pkill -9 Steam; pkill -9 steam; pkill -9 Epic; pkill -9 wine; pkill -9 wineserver; killall -9 wine wineserver; killall -9 .exe"
+alias renicewine1="ps ax|egrep '*\.exe'|grep -v 'egrep'|awk '{print $1 }' | xargs sudo renice -n -2 -p $1 ; echo --- ; \
+top -bn 1 | grep -Ei --color .exe ; echo --- ; echo 'ps ax|egrep “*\.exe“|grep -v 'egrep'|awk '{print $1 }' | xargs sudo renice -n -2 -p “$ 1“'"
+alias renicewine2="ps ax|egrep '*\.exe'|grep -v 'egrep'|awk '{print $1 }' | xargs sudo renice -n -3 -p $1 ; echo --- ; \
+top -bn 1 | grep -Ei --color .exe ; echo --- ; echo 'ps ax|egrep “*\.exe“|grep -v 'egrep'|awk '{print $1 }' | xargs sudo renice -n -3 -p “$ 1“'"
+alias renicewine3="ps ax|egrep '*\.exe'|grep -v 'egrep'|awk '{print $1 }' | xargs sudo renice -n -5 -p $1 ; echo --- ; \
+top -bn 1 | grep -Ei --color .exe ; echo --- ; echo 'ps ax|egrep “*\.exe“|grep -v 'egrep'|awk '{print $1 }' | xargs sudo renice -n -5 -p “$ 1“'"
+alias renicewine4="ps ax|egrep '*\.exe'|grep -v 'egrep'|awk '{print $1 }' | xargs sudo renice -n -7 -p $1 ; echo --- ; \
+top -bn 1 | grep -Ei --color .exe ; echo --- ; echo 'ps ax|egrep “*\.exe“|grep -v 'egrep'|awk '{print $1 }' | xargs sudo renice -n -7 -p “$ 1“'"
+alias reniceuser1="sudo renice -n -2 -u $USER ; echo --- ; \
+top -bn 1 | grep -Ei --color $USER ; echo --- ; echo 'sudo renice -n -2 -u $USER'"
+alias reniceuser2="sudo renice -n -3 -u $USER ; echo --- ; \
+top -bn 1 | grep -Ei --color $USER ; echo --- ; echo 'sudo renice -n -3 -u $USER'"
+alias reniceuser3="sudo renice -n -5 -u $USER ; echo --- ; \
+top -bn 1 | grep -Ei --color $USER ; echo --- ; echo 'sudo renice -n -5 -u $USER'"
+alias reniceuser4="sudo renice -n -7 -u $USER ; echo --- ; \
+top -bn 1 | grep -Ei --color $USER ; echo --- ; echo 'sudo renice -n -7 -u $USER'"
+alias r1="renice -n -2 -u $USER ; echo --- ; \
+top -bn 1 | grep -Ei --color $USER ; echo --- ; echo 'renice -n -2 -u $USER'"
+alias r2="renice -n -3 -u $USER ; echo --- ; \
+top -bn 1 | grep -Ei --color $USER ; echo --- ; echo 'renice -n -3 -u $USER'"
+alias r3="renice -n -5 -u $USER ; echo --- ; \
+top -bn 1 | grep -Ei --color $USER ; echo --- ; echo 'renice -n -5 -u $USER'"
+alias all="pkill -9 -u $USER"
+alias a="pkill -9 -u $USER"
+alias temp="sensors k10temp-pci-00c3 | grep --color -i temp1 | lolcat ; sensors amdgpu-pci-0100 | grep --color -i temp1 | lolcat"
+alias reflect="sudo reflector -c Brazil --save /etc/pacman.d/mirrorlist-arch"
+alias mirror="sudo reflector -c Brazil --save /etc/pacman.d/mirrorlist-arch"
+#alias performance="sudo cpupower frequency-set -d 3.3G ; sudo cpupower frequency-set -u 3.3G ; sudo cpupower frequency-set -g performance"
+alias game="sudo cpupower frequency-set -u 3.3G ; sudo cpupower frequency-set -g performance ; echo --- ; \
+echo 'sudo cpupower frequency-set -u 3.3G ; sudo cpupower frequency-set -g performance'"
+alias performance="sudo cpupower frequency-set -u 3.3G ; sudo cpupower frequency-set -g performance ; echo --- ; \
+echo 'sudo cpupower frequency-set -u 3.3G ; sudo cpupower frequency-set -g performance'"
+alias pachis_ins="paclog-pkglist <(tail -100 /var/log/pacman.log  | grep -A 3 -i installed) ; echo --- ; \
+echo 'paclog-pkglist <(tail -100 /var/log/pacman.log  | grep -A 3 -i installed)'"
+alias pachis_ins2="paclog-pkglist <(tail -2000 /var/log/pacman.log  | grep -A 3 -i 'pacman -S') ; echo --- ; \
+echo 'paclog-pkglist <(tail -2000 /var/log/pacman.log  | grep -A 3 -i 'pacman -S')'"
+alias pachis_rem="paclog-pkglist <(tail -5000 /var/log/pacman.log  | grep -A 100 -i 'pacman -Rcs') ; echo --- ; \
+echo 'paclog-pkglist <(tail -5000 /var/log/pacman.log  | grep -A 100 -i 'pacman -Rcs')'"
+alias pachis="xdg-open /var/log/pacman.log"
+alias listmonitor="xrandr --listmonitors ; echo --- ; echo xrandr --listmonitors"
+alias monitorlist="xrandr --listmonitors ; echo --- ; echo xrandr --listmonitors"
+alias brilho="xrandr --output HDMI-A-0 --brightness 0.8 ; echo --- ; echo xrandr --output HDMI-A-0 --brightness 0.8"
+alias gamma="xgamma -gamma .90 ; echo --- ; echo xgamma -gamma .90"
+alias gama="xgamma -gamma .90 ; echo --- ; echo xgamma -gamma .90"
+alias blue="xgamma -bgamma 1.1 ; xgamma -rgamma .8 ; echo --- ; echo 'xgamma -bgamma 1.1 ; xgamma -rgamma .8'"
+alias gt="ffmpeg -video_size 1360x768 -framerate 25 -f x11grab -i :0.0 -f pulse -ac 2 -i default ~/Videos/Tela_$(date +%d-%m-%Y_%H:%M:%S).mkv ; echo --- ; echo 'ffmpeg -video_size 1360x768 -framerate 25 -f x11grab -i :0.0 -f pulse -ac 2 -i default ~/Videos/Tela_$(date +%d-%m-%Y_%H:%M:%S).mkv'"
+alias gif="echo 'ffmpeg -i Tela_09-12-2019_14:40:57.mkv -filter_complex '[0:v] palettegen' palette.png ; ffmpeg -ss 00:00:26.00 -t 8 -r 23 -i Tela_09-12-2019_14:40:57.mkv -i palette.png -filter_complex '[0:v][1:v] paletteuse' -pix_fmt rgb24 -s 616x182 GuildWars2.gif'"
+alias criargif="echo 'ffmpeg -i Tela_09-12-2019_14:40:57.mkv -filter_complex '[0:v] palettegen' palette.png ; ffmpeg -ss 00:00:26.00 -t 8 -r 23 -i Tela_09-12-2019_14:40:57.mkv -i palette.png -filter_complex '[0:v][1:v] paletteuse' -pix_fmt rgb24 -s 616x182 GuildWars2.gif'"
 
 # Autostart
-~/.make/neofetch/neofetch --size 00px --cpu_temp C --bold on --travis --underline_char  --separator  | lolcat
+#~/.make/neofetch/neofetch --size 00px --cpu_temp C --bold on --travis --underline_char  --separator  | lolcat
 #--image_size none --crop_mode fill --w3m --source $HOME/Imagens/Wallpapers/gow.jpg
-
