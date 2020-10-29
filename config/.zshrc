@@ -151,19 +151,22 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
+
+############################################################################################
+# My Aliases
 #
-# Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#alias ls="lsd"
+# alias ls="lsd"
+# alias vim="echo 'não tem vim, então será aberto o neovim' ; sleep 1 ; nvim"
+# alias nano="echo 'não tem nano, então será aberto o vim' ; sleep 1 ; vim"
+#
 alias reboot="openrc-shutdown --reboot now"
 alias shutdown="openrc-shutdown -p now"
 alias all="pkill -9 -u $USER"
 alias neofetch="~/.make/neofetch/neofetch"
 alias cp="advcp -g"                                             # Advanced copy
 alias aur="yay -S --nodiffmenu --noeditmenu --noupgrademenu --mflags --skipinteg --noconfirm"
-#alias vim="echo 'não tem vim, então será aberto o neovim' ; sleep 1 ; nvim"
-#alias nano="echo 'não tem nano, então será aberto o vim' ; sleep 1 ; vim"
 alias cpi="cpupower frequency-info"
 alias bi="cd ~/.local/bin"
 alias cp="advcp -g"
@@ -225,6 +228,9 @@ alias blue="xgamma -bgamma 1.1 ; xgamma -rgamma .8 ; echo --- ; echo 'xgamma -bg
 alias gt="ffmpeg -video_size 1360x768 -framerate 25 -f x11grab -i :0.0 -f pulse -ac 2 -i default ~/Videos/Tela_$(date +%d-%m-%Y_%H:%M:%S).mkv ; echo --- ; echo 'ffmpeg -video_size 1360x768 -framerate 25 -f x11grab -i :0.0 -f pulse -ac 2 -i default ~/Videos/Tela_$(date +%d-%m-%Y_%H:%M:%S).mkv'"
 alias gif="echo 'ffmpeg -i Tela_09-12-2019_14:40:57.mkv -filter_complex '[0:v] palettegen' palette.png ; ffmpeg -ss 00:00:26.00 -t 8 -r 23 -i Tela_09-12-2019_14:40:57.mkv -i palette.png -filter_complex '[0:v][1:v] paletteuse' -pix_fmt rgb24 -s 616x182 GuildWars2.gif'"
 alias criargif="echo 'ffmpeg -i Tela_09-12-2019_14:40:57.mkv -filter_complex '[0:v] palettegen' palette.png ; ffmpeg -ss 00:00:26.00 -t 8 -r 23 -i Tela_09-12-2019_14:40:57.mkv -i palette.png -filter_complex '[0:v][1:v] paletteuse' -pix_fmt rgb24 -s 616x182 GuildWars2.gif'"
+alias pip-upgrade-all="echo 'sudo pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo pip install -U' ; sudo pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo pip install -U"
+alias pip-upgrade-all-2="echo 'sudo pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo pip install -U' ; sudo pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo pip install -U"
+############################################################################################
 
 # Autostart
 #~/.make/neofetch/neofetch --size 00px --cpu_temp C --bold on --travis --underline_char  --separator  | lolcat
