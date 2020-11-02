@@ -48,12 +48,12 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 mkdir -p ~/.fonts
 cd ~/.fonts
 rm -f *Hack*
-rm -f Minhas_Fonts.tar.zst
+rm -f Minhas_Fonts_2.tar.zst
 #wget -nc "https://github.com/felipefacundes/dotfiles/blob/master/fonts/NerdFontHkNF.tar.xz?raw=true" -O NerdFontHkNF.tar.xz
-wget -nc "https://github.com/felipefacundes/dotfiles/blob/master/config/fonts/Minhas_Fonts.tar.zst?raw=true" -O Minhas_Fonts.tar.zst
+wget -nc "https://github.com/felipefacundes/dotfiles/blob/master/config/fonts/Minhas_Fonts_2.tar.zst?raw=true" -O Minhas_Fonts_2.tar.zst
 #tar -xf NerdFontHkNF.tar.xz
-tar -xf Minhas_Fonts.tar.zst
-rm -f Minhas_Fonts.tar.zst
+tar -xf Minhas_Fonts_2.tar.zst
+rm -f Minhas_Fonts_2.tar.zst
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "Configuração do Sway instalada"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
