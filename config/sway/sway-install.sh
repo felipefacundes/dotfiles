@@ -59,7 +59,7 @@ echo "Configuração do Sway instalada"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "Vamos instalar às depêndencias para ArchLinux ou derivados (Manjaro e etc...)"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-sudo pacman -S sakura pavucontrol rofi awesome-terminal-fonts xorg-xkill pcmanfm gtop htop xsensors gsimplecal cpupower grim mako slurp sway swaybg swaylock waybar wayland wayland-protocols wl-clipboard wlroots xorg-server-xwayland termite atool ffmpegthumbnailer highlight libcaca lynx mediainfo odt2txt perl-image-exiftool python-chardet ranger light network-manager --noconfirm
+sudo pacman -S sakura pavucontrol rofi jgmenu lxmenu-data awesome-terminal-fonts xorg-xkill nemo cinnamon-translations gtop htop xsensors gsimplecal cpupower grim mako slurp sway swaybg swaylock waybar wayland wayland-protocols wl-clipboard wlroots xorg-server-xwayland termite atool ffmpegthumbnailer highlight libcaca lynx mediainfo odt2txt perl-image-exiftool python-chardet ranger light networkmanager --noconfirm
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "Criação de Felipe Facundes"
 echo "Telegram: @FeFacundes"
