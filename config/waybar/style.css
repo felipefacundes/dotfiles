@@ -16,7 +16,7 @@ window#waybar {
 	color: transparent;
 	background: transparent;
 }
-#custom-rofi,
+#custom-jgmenu,
 #custom-terminal,
 #custom-firefox,
 #custom-arquivos,
@@ -37,7 +37,7 @@ window#waybar {
 	background: #1a1a1a;
     opacity: 0.7;
 }
-#custom-rofi {
+#custom-jgmenu {
 	color: #0061ff;
 }
 #custom-terminal {
@@ -102,7 +102,7 @@ window#waybar {
 #custom-desligar {
 	color: #ff0000;
 }
-#custom-rofi,
+#custom-jgmenu,
 #clock,
 #pulseaudio,
 #backlight,
