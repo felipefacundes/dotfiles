@@ -9,7 +9,7 @@
 	"position": "top",
 
 	"modules-left": [
-        "custom/rofi",
+        "custom/jgmenu",
         "custom/right-arrow-dark",
 		"custom/right-arrow-light",
         "custom/arquivos",
@@ -70,15 +70,17 @@
 		"format": "",
 		"tooltip": false
 	},
-	"custom/rofi": {
-		"format": "⨇rcⱨ",
-        "on-click": "pcmanfm menu://applications",
+	"custom/jgmenu": {
+		//"format": "⨇rcⱨ",
+		"format": "Menu",
+        "on-click": "rm ~/.jgmenu-lockfile ; jgmenu",
         "on-click-right": "rofi -show drun -theme ~/.config/rofi/center.rasi",
         "on-click-middle": "pkill -9 rofi"
     },
         "custom/pacman": {
         // "format": "Ⲣ  Ꝓ ⰐℙꝒᎮᗣᗧ•🍒 {}",
-        "format": "Ⲣᗣᗧ•{}🍒",
+        //"format": "Ⲣᗣᗧ•{}",
+        "format": "Pᗣᗧ•{}",
         "interval": 1,                        // every hour
         "exec": "pacman -Qq | wc -l",         // packages
         "exec-if": "exit 0",                  // always run; consider advanced run conditions
@@ -93,7 +95,7 @@
     },
     "custom/arquivos": {
 		"format": "",
-        "on-click": "pcmanfm",
+        "on-click": "nemo",
         "on-click-right": "sakura -e ranger",
         "on-click-middle": "bash -c 'pkill -9 pcmanfm ; pkill -9 ranger'"
     },
