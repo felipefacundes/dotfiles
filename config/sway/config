@@ -1,3 +1,4 @@
+#!/bin/bash
 # 😉 Crédito: Felipe Facundes
 #  Telegram: @FeFacundes
 #  Telegram Group: t.me/winehq_linux
@@ -73,7 +74,7 @@ mode 1920x1080@144Hz
 #subpixel rgb
 # background|bg <color> solid_color
 # Pode ser "90", "180", "270" para rotação; ou "flipped", "flipped-90", "flipped-180", "flipped-270" para aplicar uma rotação e inverter, ou "normal"
-#transform 180
+transform 180
 #dpms on
 #scale 2
 }
@@ -252,7 +253,7 @@ bindsym Control+Mod4+m exec min
 
 # Firefox
 bindsym Control+Mod4+f exec firefox
-bindsym Control+Mod4+Shift+r exec firefox --profile ~/.firefox-rofe/
+bindsym Control+Mod4+Shift+f exec firefox --profile ~/.firefox-rofe/
 
 # https://www.qwant.com
 bindsym Control+Mod4+w exec firefox --new-tab https://www.qwant.com
@@ -570,12 +571,17 @@ mode "$mode_gaps_outer" {
 ####################################################################
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-#exec bash -c 'pkill -9 swaybg ; swaybg -i "$(find /home/$USER/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n1)"'
+exec bash -c 'pkill -9 swaybg ; swaybg -i "$(find /home/$USER/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n1)"'
 
-exec oguri
+#exec oguri
 
-exec bash -c "pkill -9 pulseaudio ; pulseaudio -vvv --start --realtime=1 --daemonize ; pactl set-default-sink 0 ; sway reload"
+exec copyq
 
-exec clipit
+exec bash -c "while true; do anyremote -f /usr/share/anyremote/cfg-data/Server-mode/all-in-one2.cfg -s socket:5197 ; done"
 
-#exec qbittorrent
+exec bash -c "while true; do minidlnad -f /home/$USER/.config/minidlna/minidlna.conf -P /home/$USER/.config/minidlna/minidlna.pid ; done"
+
+exec pulseaudio --start
+exec pactl set-card-profile 0 output:analog-stereo+input:analog-stereo
+exec pactl upload-sample /home/$USER/.local/songs/media-center-family-facundes.ogg
+exec paplay /home/$USER/.local/songs/media-center-family-facundes.ogg --volume=76767
