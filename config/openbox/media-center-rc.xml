@@ -297,12 +297,12 @@
     <!-- Gravar tela -->
     <keybind key="C-A-r">
       <action name="Execute">
-        <command>bash -c 'sakura -e ffmpeg -video_size 1366x768 -framerate 15 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -bsf:v h264_mp4toannexb -max_muxing_queue_size 9999 -f mp4 -movflags frag_keyframe+empty_moov "/home/$USER/V&#xED;deos/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
+        <command>bash -c 'sakura -e ffmpeg -video_size 1366x768 -framerate 15 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -bsf:v h264_mp4toannexb -max_muxing_queue_size 9999 -f mp4 -movflags frag_keyframe+empty_moov "/home/$USER/Vídeos/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
       </action>
     </keybind>
     <keybind key="C-A-s">
       <action name="Execute">
-        <command>bash -c 'sakura -e ffmpeg -video_size 1366x768 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -preset ultrafast -tune zerolatency -maxrate 10000k -bufsize 20000k -pix_fmt yuv420p -framerate 15 -g 52 -max_muxing_queue_size 9999 -f mp4 -bsf:v h264_mp4toannexb -movflags frag_keyframe+empty_moov "/home/$USER/V&#xED;deos/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
+        <command>bash -c 'sakura -e ffmpeg -video_size 1366x768 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -preset ultrafast -tune zerolatency -maxrate 10000k -bufsize 20000k -pix_fmt yuv420p -framerate 15 -g 52 -max_muxing_queue_size 9999 -f mp4 -bsf:v h264_mp4toannexb -movflags frag_keyframe+empty_moov "/home/$USER/Vídeos/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
       </action>
     </keybind>
     <!-- Tela Normal (Notebook Asus X202E - Vivo Book ) -->
@@ -384,12 +384,12 @@
     </keybind>
     <keybind key="W-S-s">
       <action name="Execute">
-        <command>bash -c 'zenity --icon-name applications-multimedia --info --title="Status da Reprodu&#xE7;&#xE3;o" --text="$(catt status)" --width="600" height="600"'</command>
+        <command>bash -c 'zenity --icon-name applications-multimedia --info --title="Status da Reprodução" --text="$(catt status)" --width="600" height="600"'</command>
       </action>
     </keybind>
     <keybind key="W-S-f">
       <action name="Execute">
-        <command>bash -c 'time=`zenity --entry --text "Defina o tempo que voc&#xEA; quer avan&#xE7;ar" --title "Tempo do v&#xED;deo"` ; catt seek "$time"'</command>
+        <command>bash -c 'time=`zenity --entry --text "Defina o tempo que você quer avançar" --title "Tempo do vídeo"` ; catt seek "$time"'</command>
       </action>
     </keybind>
     <keybind key="W-S-y">
