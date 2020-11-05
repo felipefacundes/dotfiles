@@ -235,6 +235,16 @@
         <command>firefox --profile ~/.firefox-rofe/</command>
       </action>
     </keybind>
+    <keybind key="C-S-W-p">
+      <action name="Execute">
+        <command>firefox www.primevideo.com</command>
+      </action>
+    </keybind>
+    <keybind key="C-S-W-n">
+      <action name="Execute">
+        <command>firefox www.netflix.com</command>
+      </action>
+    </keybind>
     <keybind key="C-W-f">
       <action name="Execute">
         <command>bash -c 'firefox #="$(pidof firefox)" ; if [ -e $firefox ]; then firefox; else echo no; fi'</command>
@@ -517,7 +527,7 @@
     <keybind key="W-a">
       <action name="ToggleMaximizeFull"/>
     </keybind>
-    <keybind key="A-F11">
+    <keybind key="F11">
       <action name="ToggleFullscreen"/>
     </keybind>
     <keybind key="C-W-h">
