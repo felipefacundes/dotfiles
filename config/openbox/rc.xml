@@ -48,7 +48,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>E5150-Blue</name>
+    <name>FF-BlendColors-GrayTones</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -210,7 +210,7 @@
         <command>rofi -show drun -theme ~/.config/rofi/center.rasi</command>
       </action>
     </keybind>
-    <keybind key="W-F1">
+    <keybind key="W-S-F2">
       <action name="Execute">
         <command>xfdashboard</command>
       </action>
@@ -233,6 +233,16 @@
     <keybind key="C-S-W-f">
       <action name="Execute">
         <command>firefox --profile ~/.firefox-rofe/</command>
+      </action>
+    </keybind>
+    <keybind key="C-S-W-p">
+      <action name="Execute">
+        <command>firefox www.primevideo.com</command>
+      </action>
+    </keybind>
+    <keybind key="C-S-W-n">
+      <action name="Execute">
+        <command>firefox www.netflix.com</command>
       </action>
     </keybind>
     <keybind key="C-W-f">
@@ -287,12 +297,24 @@
     <!-- Gravar tela -->
     <keybind key="C-A-r">
       <action name="Execute">
-        <command>bash -c 'sakura -e ffmpeg -video_size 1920x1080 -framerate 15 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -bsf:v h264_mp4toannexb -max_muxing_queue_size 9999 -f mp4 -movflags frag_keyframe+empty_moov "/home/$USER/Vídeos/HD/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
+        <command>bash -c 'sakura -e ffmpeg -video_size 1366x768 -framerate 15 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -bsf:v h264_mp4toannexb -max_muxing_queue_size 9999 -f mp4 -movflags frag_keyframe+empty_moov "/home/$USER/V&#xED;deos/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
       </action>
     </keybind>
     <keybind key="C-A-s">
       <action name="Execute">
-        <command>bash -c 'sakura -e ffmpeg -video_size 1920x1080 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -preset ultrafast -tune zerolatency -maxrate 10000k -bufsize 20000k -pix_fmt yuv420p -framerate 15 -g 52 -max_muxing_queue_size 9999 -f mp4 -bsf:v h264_mp4toannexb -movflags frag_keyframe+empty_moov "/home/$USER/Vídeos/HD/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
+        <command>bash -c 'sakura -e ffmpeg -video_size 1366x768 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -preset ultrafast -tune zerolatency -maxrate 10000k -bufsize 20000k -pix_fmt yuv420p -framerate 15 -g 52 -max_muxing_queue_size 9999 -f mp4 -bsf:v h264_mp4toannexb -movflags frag_keyframe+empty_moov "/home/$USER/V&#xED;deos/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
+      </action>
+    </keybind>
+    <!-- Tela Normal (Notebook Asus X202E - Vivo Book ) -->
+    <keybind key="A-S-F1">
+      <action name="Execute">
+        <command>bash -c 'xrandr --output LVDS1 --primary --mode 1366x768 --pos 0x0 --rotate normal --output DP1 --off --output HDMI1 --off --output VGA1 --off --output VIRTUAL1 --off'</command>
+      </action>
+    </keybind>
+    <!-- Inverter tela (Monitor AOC x Notebook Asus X202E - Vivo Book ) -->
+    <keybind key="A-S-F2">
+      <action name="Execute">
+        <command>bash -c 'xrandr --output LVDS1 --primary --mode 1366x768 --pos 1920x0 --rotate normal --output DP1 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate inverted --output VGA1 --off --output VIRTUAL1 --off'</command>
       </action>
     </keybind>
     <keybind key="S-A-r">
@@ -362,12 +384,12 @@
     </keybind>
     <keybind key="W-S-s">
       <action name="Execute">
-        <command>bash -c 'zenity --icon-name applications-multimedia --info --title="Status da Reprodução" --text="$(catt status)" --width="600" height="600"'</command>
+        <command>bash -c 'zenity --icon-name applications-multimedia --info --title="Status da Reprodu&#xE7;&#xE3;o" --text="$(catt status)" --width="600" height="600"'</command>
       </action>
     </keybind>
     <keybind key="W-S-f">
       <action name="Execute">
-        <command>bash -c 'time=`zenity --entry --text "Defina o tempo que você quer avançar" --title "Tempo do vídeo"` ; catt seek "$time"'</command>
+        <command>bash -c 'time=`zenity --entry --text "Defina o tempo que voc&#xEA; quer avan&#xE7;ar" --title "Tempo do v&#xED;deo"` ; catt seek "$time"'</command>
       </action>
     </keybind>
     <keybind key="W-S-y">
@@ -403,17 +425,17 @@
     </keybind>
     <keybind key="XF86MonBrightnessDown">
       <action name="Execute">
-        <command>light -U 2</command>
+        <command>bash -c "xbacklight -dec +2 ; light -U 2"</command>
       </action>
     </keybind>
     <keybind key="XF86MonBrightnessUp">
       <action name="Execute">
-        <command>light -A 2</command>
+        <command>bash -c "xbacklight -inc +2 ; light -A 2"</command>
       </action>
     </keybind>
     <keybind key="XF86ScreenSaver">
       <action name="Execute">
-        <command>bash -c "echo 0 > /sys/class/backlight/intel_backlight/brightness"</command>
+        <command>bash -c "xbacklight -set 0 ; echo 0 > /sys/class/backlight/intel_backlight/brightness"</command>
       </action>
     </keybind>
     <keybind key="Print">
@@ -504,6 +526,9 @@
     </keybind>
     <keybind key="W-a">
       <action name="ToggleMaximizeFull"/>
+    </keybind>
+    <keybind key="F11">
+      <action name="ToggleFullscreen"/>
     </keybind>
     <keybind key="C-W-h">
       <action name="ToggleMaximizeHorz"/>
@@ -739,14 +764,14 @@
     </keybind>
     <!-- Restaurar dimensões das janelas -->
     <keybind key="A-W-r">
-     <action name="UnmaximizeFull"/>
+      <action name="UnmaximizeFull"/>
       <action name="NextWindow">
-       <interactive>no</interactive>
-       <dialog>none</dialog>
-       <finalactions>
-       <action name="UnmaximizeFull"/>
-      </finalactions>
-     </action>
+        <interactive>no</interactive>
+        <dialog>none</dialog>
+        <finalactions>
+          <action name="UnmaximizeFull"/>
+        </finalactions>
+      </action>
     </keybind>
     <keybind key="W-s">
       <action name="UnmaximizeFull"/>
@@ -859,6 +884,21 @@
     </keybind>
     <keybind key="S-A-4">
       <action name="SendToDesktopDown"/>
+    </keybind>
+    <!-- move a janela para outro monitor -->
+    <keybind key="W-F1">
+      <action name="MoveResizeTo">
+        <x>center</x>
+        <y>center</y>
+        <monitor>1</monitor>
+      </action>
+    </keybind>
+    <keybind key="W-F2">
+      <action name="MoveResizeTo">
+        <x>center</x>
+        <y>center</y>
+        <monitor>2</monitor>
+      </action>
     </keybind>
     <keybind key="W-1">
       <action name="GoToDesktop">
@@ -1436,7 +1476,7 @@
   <applications>
     <!-- match all windows, and remove their decorations -->
     <application class="*">
-      <decor>no</decor>
+      <decor>yes</decor>
     </application>
     <!-- my xterm with screen in it must always be on desktop 2,
        maximized and below everything else -->
