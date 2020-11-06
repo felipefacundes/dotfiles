@@ -161,7 +161,7 @@ source $ZSH/oh-my-zsh.sh
 # alias vim="echo 'não tem vim, então será aberto o neovim' ; sleep 1 ; nvim"
 # alias nano="echo 'não tem nano, então será aberto o vim' ; sleep 1 ; vim"
 #
-alias reboot="openrc-shutdown --reboot now"
+
 alias shutdown="openrc-shutdown -p now"
 alias all="pkill -9 -u $USER"
 alias neofetch="~/.make/neofetch/neofetch"
@@ -170,8 +170,9 @@ alias aur="yay -S --nodiffmenu --noeditmenu --noupgrademenu --mflags --skipinteg
 alias cpi="cpupower frequency-info"
 alias bi="cd ~/.local/bin"
 alias cp="advcp -g"
-alias reboot="/usr/bin/openrc-shutdown --reboot now"
-alias shutdown="/usr/bin/openrc-shutdown --poweroff now"
+#alias reboot="/usr/bin/openrc-shutdown --reboot now"
+alias shutdown="/usr/bin/openrc-shutdown --poweroff now ; systemctl poweroff -i"
+alias des="/usr/bin/openrc-shutdown --poweroff now ; systemctl poweroff -i"
 alias matar="pkill -9 -u maria"
 alias yd="youtube-dl -i"
 alias a="sudo pacman -Syyuu"
@@ -230,6 +231,16 @@ alias gif="echo 'ffmpeg -i Tela_09-12-2019_14:40:57.mkv -filter_complex '[0:v] p
 alias criargif="echo 'ffmpeg -i Tela_09-12-2019_14:40:57.mkv -filter_complex '[0:v] palettegen' palette.png ; ffmpeg -ss 00:00:26.00 -t 8 -r 23 -i Tela_09-12-2019_14:40:57.mkv -i palette.png -filter_complex '[0:v][1:v] paletteuse' -pix_fmt rgb24 -s 616x182 GuildWars2.gif'"
 alias pip-upgrade-all="echo 'sudo pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo pip install -U' ; sudo pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo pip install -U"
 alias pip-upgrade-all-2="echo 'sudo pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo pip install -U' ; sudo pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo pip install -U"
+alias mute="pactl set-sink-mute 0 toggle ; pactl set-sink-mute 4 toggle"
+alias volume="pactl set-sink-volume 0 "
+alias vol="pactl set-sink-volume 0 "
+alias ffp="ffplay2.8"
+alias up="sudo pacman -Syyu"
+alias mi="convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -deskew 40% -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0 *.[jJpP][nNpP][gG] best-image-out-$(date +"%d-%m-%Y_%H:%M:%S").jpg"
+alias mij="convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -deskew 40% -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0 *.[jJpP][nNpP][gG] best-image-out-$(date +"%d-%m-%Y_%H:%M:%S").jpg"
+alias mip="convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -deskew 40% -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0 *.[jJpP][nNpP][gG] best-image-out-$(date +"%d-%m-%Y_%H:%M:%S").png"
+alias miw="convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -deskew 40% -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0 *.[jJpP][nNpP][gG] best-image-out-$(date +"%d-%m-%Y_%H:%M:%S").webp"
+
 ############################################################################################
 
 # Autostart
