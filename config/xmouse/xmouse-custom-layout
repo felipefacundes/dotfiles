@@ -100,6 +100,7 @@ M³.Down<xmousesep>xdotool mousemove_relative -- 0 105<xmousesep>2<xmousesep>#ff
 C.Right<xmousesep>xdotool click 3<xmousesep>2<xmousesep>#faffff
 Scroll Up<xmousesep>xdotool click 4<xmousesep>5<xmousesep>#faffff
 Scroll Down<xmousesep>xdotool click 5<xmousesep>5<xmousesep>#faffff
+<xmousesep><xmousesep>10<xmousesep>#ffffff
 Adjust<xmousesep>xrandr --output LVDS1 --primary --mode 1366x768 --pos 1920x0 --rotate normal --output DP1 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate inverted --output VGA1 --off --output VIRTUAL1 --off<xmousesep>2<xmousesep>#ffffff
 Prime<xmousesep>xdotool key ctrl+shift+super+p<xmousesep>2<xmousesep>#34aeeb
 Netflix<xmousesep>xdotool key ctrl+shift+super+n<xmousesep>2<xmousesep>#ff2626
