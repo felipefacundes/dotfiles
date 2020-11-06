@@ -42,9 +42,10 @@ Open<xmousesep>xdotool key ctrl+o<xmousesep>2<xmousesep>#E6B3FF
 Save<xmousesep>xdotool key ctrl+s<xmousesep>2<xmousesep>#E6B3FF
 Find<xmousesep>xdotool key ctrl+f<xmousesep>2<xmousesep>#E6B3FF
 Print<xmousesep>xdotool key ctrl+p<xmousesep>2<xmousesep>#E6B3FF
+Prt Sc<xmousesep>xdotool ctrl+Print<xmousesep>2<xmousesep>#E6B3FF
 Select all<xmousesep>xdotool key ctrl+a<xmousesep>4<xmousesep>#E6B3FF
--Zoom<xmousesep>xdotool key ctrl+minus<xmousesep>3<xmousesep>#E6B3FF
-+Zoom<xmousesep>xdotool key ctrl+plus<xmousesep>3<xmousesep>#E6B3FF
+-Zoom<xmousesep>xdotool key ctrl+minus<xmousesep>2<xmousesep>#E6B3FF
++Zoom<xmousesep>xdotool key ctrl+plus<xmousesep>2<xmousesep>#E6B3FF
 Undo<xmousesep>xdotool key ctrl+z<xmousesep>2<xmousesep>#F7E6FF
 Redo<xmousesep>xdotool key ctrl+y<xmousesep>2<xmousesep>#F7E6FF
 Copy<xmousesep>xdotool key ctrl+c<xmousesep>2<xmousesep>#F7E6FF
@@ -77,14 +78,14 @@ Space<xmousesep>xdotool key space<xmousesep>4<xmousesep>#e6f737
 WWW<xmousesep>xdotool key ctrl+super+f<xmousesep>2<xmousesep>#e6ccb3
 URL<xmousesep>xdotool key ctrl+l<xmousesep>2<xmousesep>#e6ccb3
 Toggle<xmousesep>xdotool key super+a<xmousesep>2<xmousesep>#F27278
-Mov.Up<xmousesep>xdotool key alt+super+Up<xmousesep>2<xmousesep>#FFFFB3
-Gr.Left<xmousesep>xdotool key super+Left<xmousesep>2<xmousesep>#FFFFFF
-Gr.Up<xmousesep>xdotool key super+Up<xmousesep>2<xmousesep>#FFFFFF
-Gr.Right<xmousesep>xdotool key super+Right<xmousesep>2<xmousesep>#FFFFFF
-Mov.Left<xmousesep>xdotool key alt+super+Left<xmousesep>2<xmousesep>#FFFFB3
-Mov.Down<xmousesep>xdotool key alt+super+Down<xmousesep>2<xmousesep>#FFFFB3
-Mov.Right<xmousesep>xdotool key alt+super+Right<xmousesep>2<xmousesep>#FFFFB3
-Gr.Down<xmousesep>xdotool key super+Down<xmousesep>2<xmousesep>#FFFFFF
+Mov.Up<xmousesep>xdotool key alt+super+Up<xmousesep>2<xmousesep>#87faaf
+Gr.Left<xmousesep>xdotool key super+Left<xmousesep>2<xmousesep>#b4dbc2
+Gr.Up<xmousesep>xdotool key super+Up<xmousesep>2<xmousesep>#b4dbc2
+Gr.Right<xmousesep>xdotool key super+Right<xmousesep>2<xmousesep>#b4dbc2
+Mov.Left<xmousesep>xdotool key alt+super+Left<xmousesep>2<xmousesep>#87faaf
+Mov.Down<xmousesep>xdotool key alt+super+Down<xmousesep>2<xmousesep>#87faaf
+Mov.Right<xmousesep>xdotool key alt+super+Right<xmousesep>2<xmousesep>#87faaf
+Gr.Down<xmousesep>xdotool key super+Down<xmousesep>2<xmousesep>#b4dbc2
 F11<xmousesep>xdotool key F11<xmousesep>2<xmousesep>#e6f7ff
 <xmousesep><xmousesep>10<xmousesep>#ffffff
 C.Left<xmousesep>xdotool click 1<xmousesep>2<xmousesep>#faffff
