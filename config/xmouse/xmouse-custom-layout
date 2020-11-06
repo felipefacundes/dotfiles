@@ -3,19 +3,19 @@ Min<xmousesep>xdotool windowminimize $(xdotool getactivewindow)<xmousesep>1<xmou
 Max<xmousesep>xdotool windowsize $(xdotool getactivewindow) 100% 100%<xmousesep>1<xmousesep>#FFCC66
 Toggle<xmousesep>xdotool key super+a<xmousesep>2<xmousesep>#F27278
 Show<xmousesep>xdotool key super+d<xmousesep>1<xmousesep>#F15699
-Xkill<xmousesep>xdotool key ctrl+alt+Escape<xmousesep>1<xmousesep>#db8fa3
-Wkill<xmousesep>xdotool getwindowfocus windowkill<xmousesep>1<xmousesep>#FFe6e6
+Xkill<xmousesep>xdotool key ctrl+alt+Escape<xmousesep>1<xmousesep>#d991a4
+Wkill<xmousesep>xdotool getwindowfocus windowkill<xmousesep>1<xmousesep>#ffe8e8
 X<xmousesep>xdotool key alt+F4<xmousesep>2<xmousesep>#ed2154
 Files<xmousesep>xdotool key super+n<xmousesep>2<xmousesep>#d9d632
 Apps<xmousesep>xdotool key alt+F2<xmousesep>2<xmousesep>#4ad4ca
->_<xmousesep>xdotool key super+t<xmousesep>2<xmousesep>#b0b0b0
+>_<xmousesep>xdotool key super+t<xmousesep>2<xmousesep>#adadad
 Menu<xmousesep>xdotool key alt+F1<xmousesep>2<xmousesep>#10ebc6
 Synapse<xmousesep>xdotool key ctrl+space<xmousesep>2<xmousesep>#61ffc5
 <Dsk<xmousesep>xdotool key ctrl+alt+Left<xmousesep>1<xmousesep>#FFFFB3
-F1<xmousesep>xdotool key F1<xmousesep>1<xmousesep>#FFFFFF
-F2<xmousesep>xdotool key F2<xmousesep>1<xmousesep>#FFFFFF
-F3<xmousesep>xdotool key F3<xmousesep>1<xmousesep>#FFFFFF
-F4<xmousesep>xdotool key F4<xmousesep>1<xmousesep>#FFFFFF
+F1<xmousesep>xdotool key F1<xmousesep>1<xmousesep>#ffffff
+F2<xmousesep>xdotool key F2<xmousesep>1<xmousesep>#ffffff
+F3<xmousesep>xdotool key F3<xmousesep>1<xmousesep>#ffffff
+F4<xmousesep>xdotool key F4<xmousesep>1<xmousesep>#ffffff
 F5<xmousesep>xdotool key F5<xmousesep>1<xmousesep>#FFFFFF
 F6<xmousesep>xdotool key F6<xmousesep>1<xmousesep>#FFFFFF
 F7<xmousesep>xdotool key F7<xmousesep>1<xmousesep>#FFFFFF
@@ -42,9 +42,10 @@ Open<xmousesep>xdotool key ctrl+o<xmousesep>2<xmousesep>#E6B3FF
 Save<xmousesep>xdotool key ctrl+s<xmousesep>2<xmousesep>#E6B3FF
 Find<xmousesep>xdotool key ctrl+f<xmousesep>2<xmousesep>#E6B3FF
 Print<xmousesep>xdotool key ctrl+p<xmousesep>2<xmousesep>#E6B3FF
+Prt Sc<xmousesep>xdotool key ctrl+Print<xmousesep>2<xmousesep>#E6B3FF
 Select all<xmousesep>xdotool key ctrl+a<xmousesep>4<xmousesep>#E6B3FF
--Zoom<xmousesep>xdotool key ctrl+minus<xmousesep>3<xmousesep>#E6B3FF
-+Zoom<xmousesep>xdotool key ctrl+plus<xmousesep>3<xmousesep>#E6B3FF
+-Zoom<xmousesep>xdotool key ctrl+minus<xmousesep>2<xmousesep>#E6B3FF
++Zoom<xmousesep>xdotool key ctrl+plus<xmousesep>2<xmousesep>#E6B3FF
 Undo<xmousesep>xdotool key ctrl+z<xmousesep>2<xmousesep>#F7E6FF
 Redo<xmousesep>xdotool key ctrl+y<xmousesep>2<xmousesep>#F7E6FF
 Copy<xmousesep>xdotool key ctrl+c<xmousesep>2<xmousesep>#F7E6FF
@@ -77,14 +78,14 @@ Space<xmousesep>xdotool key space<xmousesep>4<xmousesep>#e6f737
 WWW<xmousesep>xdotool key ctrl+super+f<xmousesep>2<xmousesep>#e6ccb3
 URL<xmousesep>xdotool key ctrl+l<xmousesep>2<xmousesep>#e6ccb3
 Toggle<xmousesep>xdotool key super+a<xmousesep>2<xmousesep>#F27278
-Mov.Up<xmousesep>xdotool key alt+super+Up<xmousesep>2<xmousesep>#FFFFB3
-Gr.Left<xmousesep>xdotool key super+Left<xmousesep>2<xmousesep>#FFFFFF
-Gr.Up<xmousesep>xdotool key super+Up<xmousesep>2<xmousesep>#FFFFFF
-Gr.Right<xmousesep>xdotool key super+Right<xmousesep>2<xmousesep>#FFFFFF
-Mov.Left<xmousesep>xdotool key alt+super+Left<xmousesep>2<xmousesep>#FFFFB3
-Mov.Down<xmousesep>xdotool key alt+super+Down<xmousesep>2<xmousesep>#FFFFB3
-Mov.Right<xmousesep>xdotool key alt+super+Right<xmousesep>2<xmousesep>#FFFFB3
-Gr.Down<xmousesep>xdotool key super+Down<xmousesep>2<xmousesep>#FFFFFF
+Mov.Up<xmousesep>xdotool key alt+super+Up<xmousesep>2<xmousesep>#87faaf
+Gr.Left<xmousesep>xdotool key super+Left<xmousesep>2<xmousesep>#b4dbc2
+Gr.Up<xmousesep>xdotool key super+Up<xmousesep>2<xmousesep>#b4dbc2
+Gr.Right<xmousesep>xdotool key super+Right<xmousesep>2<xmousesep>#b4dbc2
+Mov.Left<xmousesep>xdotool key alt+super+Left<xmousesep>2<xmousesep>#87faaf
+Mov.Down<xmousesep>xdotool key alt+super+Down<xmousesep>2<xmousesep>#87faaf
+Mov.Right<xmousesep>xdotool key alt+super+Right<xmousesep>2<xmousesep>#87faaf
+Gr.Down<xmousesep>xdotool key super+Down<xmousesep>2<xmousesep>#b4dbc2
 F11<xmousesep>xdotool key F11<xmousesep>2<xmousesep>#e6f7ff
 <xmousesep><xmousesep>10<xmousesep>#ffffff
 C.Left<xmousesep>xdotool click 1<xmousesep>2<xmousesep>#faffff
@@ -97,10 +98,8 @@ M¹.Down<xmousesep>xdotool mousemove_relative -- 0 10<xmousesep>2<xmousesep>#ffd
 M¹.Right<xmousesep>xdotool mousemove_relative -- 10 0<xmousesep>2<xmousesep>#ffd500
 M³.Down<xmousesep>xdotool mousemove_relative -- 0 105<xmousesep>2<xmousesep>#ffa600
 C.Right<xmousesep>xdotool click 3<xmousesep>2<xmousesep>#faffff
-Scroll Up<xmousesep>xdotool click 4<xmousesep>5<xmousesep>#ffffff
-Scroll Down<xmousesep>xdotool click 5<xmousesep>5<xmousesep>#ffffff
-<xmousesep><xmousesep>10<xmousesep>#ffffff
-Adjust<xmousesep>xrandr --output LVDS1 --primary --mode 1366x768 --pos 1920x0 --rotate normal --output DP1 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate inverted --output VGA1 --off --output VIRTUAL1 --off<xmousesep>2<xmousesep>#FFFFB3
+Scroll Up<xmousesep>xdotool click 4<xmousesep>5<xmousesep>#faffff
+Scroll Down<xmousesep>xdotool click 5<xmousesep>5<xmousesep>#faffff
+Adjust<xmousesep>xrandr --output LVDS1 --primary --mode 1366x768 --pos 1920x0 --rotate normal --output DP1 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate inverted --output VGA1 --off --output VIRTUAL1 --off<xmousesep>2<xmousesep>#ffffff
 Prime<xmousesep>xdotool key ctrl+shift+super+p<xmousesep>2<xmousesep>#34aeeb
 Netflix<xmousesep>xdotool key ctrl+shift+super+n<xmousesep>2<xmousesep>#ff2626
-Restart X<xmousesep>pkill -9 -u $USER<xmousesep>10<xmousesep>#ffffff
