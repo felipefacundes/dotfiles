@@ -97,6 +97,8 @@ M¹.Down<xmousesep>xdotool mousemove_relative -- 0 10<xmousesep>2<xmousesep>#ffd
 M¹.Right<xmousesep>xdotool mousemove_relative -- 10 0<xmousesep>2<xmousesep>#ffd500
 M³.Down<xmousesep>xdotool mousemove_relative -- 0 105<xmousesep>2<xmousesep>#ffa600
 C.Right<xmousesep>xdotool click 3<xmousesep>2<xmousesep>#faffff
+Scroll Up<xmousesep>xdotool click 4<xmousesep>5<xmousesep>#ffffff
+Scroll Down<xmousesep>xdotool click 5<xmousesep>5<xmousesep>#ffffff
 <xmousesep><xmousesep>10<xmousesep>#ffffff
 Adjust<xmousesep>xrandr --output LVDS1 --primary --mode 1366x768 --pos 1920x0 --rotate normal --output DP1 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate inverted --output VGA1 --off --output VIRTUAL1 --off<xmousesep>2<xmousesep>#FFFFB3
 Prime<xmousesep>xdotool key ctrl+shift+super+p<xmousesep>2<xmousesep>#34aeeb
