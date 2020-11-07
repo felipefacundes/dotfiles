@@ -58,7 +58,7 @@ POWERLEVEL9K_SHORTEN_DELIMITER=""
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 POWERLEVEL9K_DIR_SHOW_WRITABLE=true
 #POWERLEVEL9K_HOME_SUB_ICON=$'\UE18D ' # <-
-#POWERLEVEL9K_HOME_ICON='  ﴂ,邏,ﳟ        調       '
+#POWERLEVEL9K_HOME_ICON='  ﴂ 邏 ﳟ        調       '
 POWERLEVEL9K_HOME_ICON='    '
 
 # Lado Esquerdo
@@ -140,9 +140,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-#,export EDITOR='vim'
+#export EDITOR='vim'
 # else
-#,export EDITOR='mvim'
+#export EDITOR='nvim'
 # fi
 
 # Compilation flags
@@ -215,12 +215,12 @@ alias game="sudo cpupower frequency-set -u 3.3G ; sudo cpupower frequency-set -g
 echo 'sudo cpupower frequency-set -u 3.3G ; sudo cpupower frequency-set -g performance'"
 alias performance="sudo cpupower frequency-set -u 3.3G ; sudo cpupower frequency-set -g performance ; echo --- ; \
 echo 'sudo cpupower frequency-set -u 3.3G ; sudo cpupower frequency-set -g performance'"
-alias pachis_ins="paclog-pkglist <(tail -100 /var/log/pacman.log,| grep -A 3 -i installed) ; echo --- ; \
-echo 'paclog-pkglist <(tail -100 /var/log/pacman.log,| grep -A 3 -i installed)'"
-alias pachis_ins2="paclog-pkglist <(tail -2000 /var/log/pacman.log,| grep -A 3 -i 'pacman -S') ; echo --- ; \
-echo 'paclog-pkglist <(tail -2000 /var/log/pacman.log,| grep -A 3 -i 'pacman -S')'"
-alias pachis_rem="paclog-pkglist <(tail -5000 /var/log/pacman.log,| grep -A 100 -i 'pacman -Rcs') ; echo --- ; \
-echo 'paclog-pkglist <(tail -5000 /var/log/pacman.log,| grep -A 100 -i 'pacman -Rcs')'"
+alias pachis_ins="paclog-pkglist <(tail -100 /var/log/pacman.log | grep -A 3 -i installed) ; echo --- ; \
+echo 'paclog-pkglist <(tail -100 /var/log/pacman.log | grep -A 3 -i installed)'"
+alias pachis_ins2="paclog-pkglist <(tail -2000 /var/log/pacman.log | grep -A 3 -i 'pacman -S') ; echo --- ; \
+echo 'paclog-pkglist <(tail -2000 /var/log/pacman.log | grep -A 3 -i 'pacman -S')'"
+alias pachis_rem="paclog-pkglist <(tail -5000 /var/log/pacman.log | grep -A 100 -i 'pacman -Rcs') ; echo --- ; \
+echo 'paclog-pkglist <(tail -5000 /var/log/pacman.log | grep -A 100 -i 'pacman -Rcs')'"
 alias pachis="xdg-open /var/log/pacman.log"
 alias listmonitor="xrandr --listmonitors ; echo --- ; echo xrandr --listmonitors"
 alias monitorlist="xrandr --listmonitors ; echo --- ; echo xrandr --listmonitors"
@@ -231,8 +231,8 @@ alias blue='xgamma -bgamma 1.1 ; xgamma -rgamma .8 ; echo --- ; echo "xgamma -bg
 alias gt='ffmpeg -video_size 1366x768 -framerate 25 -f x11grab -i $DISPLAY -f pulse -ac 2 -i default ~/Videos/Tela_$(date +%d-%m-%Y_%H:%M:%S).mkv ; echo --- ; echo "ffmpeg -video_size 1360x768 -framerate 25 -f x11grab -i :0.0 -f pulse -ac 2 -i default ~/Videos/Tela_$(date +%d-%m-%Y_%H:%M:%S).mkv"'
 alias gif="echo 'ffmpeg -i Tela_09-12-2019_14:40:57.mkv -filter_complex '[0:v] palettegen' palette.png ; ffmpeg -ss 00:00:26.00 -t 8 -r 23 -i Tela_09-12-2019_14:40:57.mkv -i palette.png -filter_complex '[0:v][1:v] paletteuse' -pix_fmt rgb24 -s 616x182 GuildWars2.gif'"
 alias criargif="echo 'ffmpeg -i Tela_09-12-2019_14:40:57.mkv -filter_complex '[0:v] palettegen' palette.png ; ffmpeg -ss 00:00:26.00 -t 8 -r 23 -i Tela_09-12-2019_14:40:57.mkv -i palette.png -filter_complex '[0:v][1:v] paletteuse' -pix_fmt rgb24 -s 616x182 GuildWars2.gif'"
-alias pip-upgrade-all="echo 'sudo pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1,| xargs -n1 sudo pip install -U' ; sudo pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1,| xargs -n1 sudo pip install -U"
-alias pip-upgrade-all-2="echo 'sudo pip freeze --local | grep -v '^\-e' | cut -d = -f 1,| xargs -n1 sudo pip install -U' ; sudo pip freeze --local | grep -v '^\-e' | cut -d = -f 1,| xargs -n1 sudo pip install -U"
+alias pip-upgrade-all="echo 'sudo pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 sudo pip install -U' ; sudo pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 sudo pip install -U"
+alias pip-upgrade-all-2="echo 'sudo pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 sudo pip install -U' ; sudo pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 sudo pip install -U"
 alias mute="pactl set-sink-mute 0 toggle ; pactl set-sink-mute 4 toggle"
 alias volume="pactl set-sink-volume 0 "
 alias vol="pactl set-sink-volume 0 "
