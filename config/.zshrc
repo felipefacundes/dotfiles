@@ -58,7 +58,7 @@ POWERLEVEL9K_SHORTEN_DELIMITER=""
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 POWERLEVEL9K_DIR_SHOW_WRITABLE=true
 #POWERLEVEL9K_HOME_SUB_ICON=$'\UE18D ' # <-
-#POWERLEVEL9K_HOME_ICON='  ﴂ  邏  ﳟ        調       '
+#POWERLEVEL9K_HOME_ICON='  ﴂ,邏,ﳟ        調       '
 POWERLEVEL9K_HOME_ICON='    '
 
 # Lado Esquerdo
@@ -140,9 +140,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
+#,export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#,export EDITOR='mvim'
 # fi
 
 # Compilation flags
@@ -164,13 +164,12 @@ source $ZSH/oh-my-zsh.sh
 #
 
 alias shutdown="openrc-shutdown -p now"
-alias all="pkill -9 -u $USER"
+alias all='pkill -9 -u "$USER"'
 alias neofetch="~/.make/neofetch/neofetch"
-alias cp="advcp -g"                                             # Advanced copy
+alias cp="advcp -g" # Advanced copy
 alias aur="yay -S --nodiffmenu --noeditmenu --noupgrademenu --mflags --skipinteg --noconfirm"
 alias cpi="cpupower frequency-info"
 alias bi="cd ~/.local/bin"
-alias cp="advcp -g"
 #alias reboot="/usr/bin/openrc-shutdown --reboot now"
 alias shutdown="/usr/bin/openrc-shutdown --poweroff now ; systemctl poweroff -i"
 alias des="/usr/bin/openrc-shutdown --poweroff now ; systemctl poweroff -i"
@@ -216,30 +215,32 @@ alias game="sudo cpupower frequency-set -u 3.3G ; sudo cpupower frequency-set -g
 echo 'sudo cpupower frequency-set -u 3.3G ; sudo cpupower frequency-set -g performance'"
 alias performance="sudo cpupower frequency-set -u 3.3G ; sudo cpupower frequency-set -g performance ; echo --- ; \
 echo 'sudo cpupower frequency-set -u 3.3G ; sudo cpupower frequency-set -g performance'"
-alias pachis_ins="paclog-pkglist <(tail -100 /var/log/pacman.log  | grep -A 3 -i installed) ; echo --- ; \
-echo 'paclog-pkglist <(tail -100 /var/log/pacman.log  | grep -A 3 -i installed)'"
-alias pachis_ins2="paclog-pkglist <(tail -2000 /var/log/pacman.log  | grep -A 3 -i 'pacman -S') ; echo --- ; \
-echo 'paclog-pkglist <(tail -2000 /var/log/pacman.log  | grep -A 3 -i 'pacman -S')'"
-alias pachis_rem="paclog-pkglist <(tail -5000 /var/log/pacman.log  | grep -A 100 -i 'pacman -Rcs') ; echo --- ; \
-echo 'paclog-pkglist <(tail -5000 /var/log/pacman.log  | grep -A 100 -i 'pacman -Rcs')'"
+alias pachis_ins="paclog-pkglist <(tail -100 /var/log/pacman.log,| grep -A 3 -i installed) ; echo --- ; \
+echo 'paclog-pkglist <(tail -100 /var/log/pacman.log,| grep -A 3 -i installed)'"
+alias pachis_ins2="paclog-pkglist <(tail -2000 /var/log/pacman.log,| grep -A 3 -i 'pacman -S') ; echo --- ; \
+echo 'paclog-pkglist <(tail -2000 /var/log/pacman.log,| grep -A 3 -i 'pacman -S')'"
+alias pachis_rem="paclog-pkglist <(tail -5000 /var/log/pacman.log,| grep -A 100 -i 'pacman -Rcs') ; echo --- ; \
+echo 'paclog-pkglist <(tail -5000 /var/log/pacman.log,| grep -A 100 -i 'pacman -Rcs')'"
 alias pachis="xdg-open /var/log/pacman.log"
 alias listmonitor="xrandr --listmonitors ; echo --- ; echo xrandr --listmonitors"
 alias monitorlist="xrandr --listmonitors ; echo --- ; echo xrandr --listmonitors"
 alias brilho="xrandr --output HDMI-A-0 --brightness 0.8 ; echo --- ; echo xrandr --output HDMI-A-0 --brightness 0.8"
 alias gamma="xgamma -gamma .90 ; echo --- ; echo xgamma -gamma .90"
 alias gama="xgamma -gamma .90 ; echo --- ; echo xgamma -gamma .90"
-alias blue="xgamma -bgamma 1.1 ; xgamma -rgamma .8 ; echo --- ; echo 'xgamma -bgamma 1.1 ; xgamma -rgamma .8'"
-alias gt="ffmpeg -video_size 1360x768 -framerate 25 -f x11grab -i :0.0 -f pulse -ac 2 -i default ~/Videos/Tela_$(date +%d-%m-%Y_%H:%M:%S).mkv ; echo --- ; echo 'ffmpeg -video_size 1360x768 -framerate 25 -f x11grab -i :0.0 -f pulse -ac 2 -i default ~/Videos/Tela_$(date +%d-%m-%Y_%H:%M:%S).mkv'"
+alias blue='xgamma -bgamma 1.1 ; xgamma -rgamma .8 ; echo --- ; echo "xgamma -bgamma 1.1 ; xgamma -rgamma .8"'
+alias gt='ffmpeg -video_size 1366x768 -framerate 25 -f x11grab -i $DISPLAY -f pulse -ac 2 -i default ~/Videos/Tela_$(date +%d-%m-%Y_%H:%M:%S).mkv ; echo --- ; echo "ffmpeg -video_size 1360x768 -framerate 25 -f x11grab -i :0.0 -f pulse -ac 2 -i default ~/Videos/Tela_$(date +%d-%m-%Y_%H:%M:%S).mkv"'
 alias gif="echo 'ffmpeg -i Tela_09-12-2019_14:40:57.mkv -filter_complex '[0:v] palettegen' palette.png ; ffmpeg -ss 00:00:26.00 -t 8 -r 23 -i Tela_09-12-2019_14:40:57.mkv -i palette.png -filter_complex '[0:v][1:v] paletteuse' -pix_fmt rgb24 -s 616x182 GuildWars2.gif'"
 alias criargif="echo 'ffmpeg -i Tela_09-12-2019_14:40:57.mkv -filter_complex '[0:v] palettegen' palette.png ; ffmpeg -ss 00:00:26.00 -t 8 -r 23 -i Tela_09-12-2019_14:40:57.mkv -i palette.png -filter_complex '[0:v][1:v] paletteuse' -pix_fmt rgb24 -s 616x182 GuildWars2.gif'"
-alias pip-upgrade-all="echo 'sudo pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo pip install -U' ; sudo pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo pip install -U"
-alias pip-upgrade-all-2="echo 'sudo pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo pip install -U' ; sudo pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo pip install -U"
+alias pip-upgrade-all="echo 'sudo pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1,| xargs -n1 sudo pip install -U' ; sudo pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1,| xargs -n1 sudo pip install -U"
+alias pip-upgrade-all-2="echo 'sudo pip freeze --local | grep -v '^\-e' | cut -d = -f 1,| xargs -n1 sudo pip install -U' ; sudo pip freeze --local | grep -v '^\-e' | cut -d = -f 1,| xargs -n1 sudo pip install -U"
 alias mute="pactl set-sink-mute 0 toggle ; pactl set-sink-mute 4 toggle"
 alias volume="pactl set-sink-volume 0 "
 alias vol="pactl set-sink-volume 0 "
 alias ffp="ffplay2.8"
-alias mi="tput setaf 6; echo -e '\nA imagem será convertida na resolução 4k\n'; tput setaf 1; echo -e 'Comando a ser executado:\n'; tput setaf 3; echo -e 'convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -deskew 40% -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0\n'; convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -deskew 40% -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0"
-alias 4k="tput setaf 6; echo -e '\nA imagem será convertida na resolução 4k\n'; tput setaf 1; echo -e 'Comando a ser executado:\n'; tput setaf 3; echo -e 'convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -deskew 40% -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0\n'; convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -deskew 40% -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0"
+alias mi='tput setaf 6; echo -e "\nA imagem será convertida na resolução desejada.\nPorém, antes execute o comando "export resolution=XxY":\nComo exemplo será usada o padrão FullHD (1920x1080)\nLembrando que HD é 1280x720\n4k = 3840x2160\n8k fulldome = 8192×8192 (67.1 megapixels)\n"; tput setaf 3; echo "export resolution=1920x1080\n"; tput setaf 1; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e "convert -adaptive-resize $resolution -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -deskew 40% -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0\n"; convert -adaptive-resize "$resolution" -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -deskew 40% -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0'
+alias rs='tput setaf 6; echo -e "\nA imagem será convertida na resolução desejada.\nPorém, antes execute o comando "export resolution=XxY":\nComo exemplo será usada o padrão FullHD (1920x1080)\nLembrando que HD é 1280x720\n4k = 3840x2160\n8k fulldome = 8192×8192 (67.1 megapixels)\n"; tput setaf 3; echo "export resolution=1920x1080\n"; tput setaf 1; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e "convert -adaptive-resize $resolution -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -deskew 40% -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0\n"; convert -adaptive-resize "$resolution" -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -deskew 40% -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0'
+alias resize='tput setaf 6; echo -e "\nA imagem será convertida na resolução desejada.\nPorém, antes execute o comando "export resolution=XxY":\nComo exemplo será usada o padrão FullHD (1920x1080)\nLembrando que HD é 1280x720\n4k = 3840x2160\n8k fulldome = 8192×8192 (67.1 megapixels)\n"; tput setaf 3; echo "export resolution=1920x1080\n"; tput setaf 1; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e "convert -adaptive-resize $resolution -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -deskew 40% -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0\n"; convert -adaptive-resize "$resolution" -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -deskew 40% -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0'
+alias 4k='tput setaf 6; echo -e "\nA imagem será convertida na resolução 4k\n"; tput setaf 1; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e "convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -deskew 40% -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0\n"; convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -deskew 40% -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0'
 alias 4kj-m='convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -deskew 40% -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0 *.[jJpP][nNpP][gG] -set filename:base "%[basename]" "%[filename:base]-4k.jpg"'
 alias 4kp-m='convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -deskew 40% -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0 *.[jJpP][nNpP][gG] -set filename:base "%[basename]" "%[filename:base]-4k.png"'
 alias 4kw-m='convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -deskew 40% -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0 *.[jJpP][nNpP][gG] -set filename:base "%[basename]" "%[filename:base]-4k.webp"'
@@ -247,6 +248,7 @@ alias 4kj='tput setaf 6; echo -e "\nAs imagens serão convertidas na resolução
 alias 4kp='tput setaf 6; echo -e "\nAs imagens serão convertidas na resolução 4k\n"; tput setaf 1; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e "for i in *.[jJpP][nNpP][gG]; do convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -deskew 40% -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+01 '$i' '${i/.[jJpP][nNpP][gG]/-4k.png}'; rm '${i/}'; done\n"; for i in *.[jJpP][nNpP][gG]; do convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -deskew 40% -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+01 $i ${i/.[jJpP][nNpP][gG]/-4k.png}; rm ${i/}; done'
 alias 4kw='tput setaf 6; echo -e "\nAs imagens serão convertidas na resolução 4k\n"; tput setaf 1; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e "for i in *.[jJpP][nNpP][gG]; do convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -deskew 40% -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+01 '$i' '${i/.[jJpP][nNpP][gG]/-4k.webp}'; rm '${i/}'; done\n"; for i in *.[jJpP][nNpP][gG]; do convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -deskew 40% -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+01 $i ${i/.[jJpP][nNpP][gG]/-4k.webp}; rm ${i/}; done'
 
+alias vim-remove-space='tput setaf 11; echo -e "Comandos simples para remover espaços em branco indesejados\n-----------------------------------------------------------\nEm uma pesquisa, \s encontra um espaço em branco (um espaço ou uma guia) e \+ encontra uma ou mais ocorrências.\n\nO comando a seguir exclui qualquer espaço em branco no final de cada linha. Se nenhum espaço em branco for encontrado, nenhuma alteração ocorre e o esinalizador significa que nenhum erro é exibido.\n\n:%s/\s\+$//e\n\nO seguinte exclui qualquer espaço em branco inicial no início de cada linha.\n\n:%s/^\s\+//e\n\nMesma coisa (:le = :left = left-align alinhar à esquerda dado intervalo; % = todas as linhas):\n:%le\n\nCom o mapeamento a seguir, um usuário pode pressionar F5 para excluir todos os espaços em branco à direita. A variável _sé usada para salvar e restaurar o último registro de padrão de pesquisa (assim, da próxima vez que o usuário pressionar n, ele continuará sua última pesquisa) e :nohlé usada para desligar o realce da pesquisa (para que os espaços finais não sejam realçados enquanto o usuário digita). O esinalizador é usado no comando substitute para que nenhum erro seja mostrado se o espaço em branco final não for encontrado. Ao contrário de antes, o texto de substituição deve ser especificado para usar o sinalizador necessário.\n\n:nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>\n\nSe você quiser remover todas as lihas em branco, use:\n\n:g/^\s*$/d\n\nSe quiser vírgulas. Assim: (:s///) em cada linha (%) para substituir todos (g) os espaços em branco contínuos (\s\+) por uma vírgula (,). Use:\n\n:%s/\s\+/,/g\n\nOutra maneira de fazer isso:\n\n:%s/\s\{1,}/,/gc\n\nAo converter um arquivo de texto com cabeçalhos e campos de texto com espaço. Use:\n\n:%s/\s\{2,}/,/g\n\nRemova espaços no meio da linha, e retire o excesso de tabulação:\n\n:%s/\([^ ]\+ \) \+/\1/g\n\nIsso pesquisará cada ocorrência que não tenha precedência em branco e substituirá o seguinte conjunto de espaços por apenas um espaço.\nIsso, no entanto, deixará um único espaço à direita nas linhas que tinham vários espaços à direita. Para corrigir isso, use o comando:\n\n:%s/ *$//"'
 
 ############################################################################################
 
