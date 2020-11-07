@@ -461,7 +461,7 @@
     <!-- Papel de parede aleatório -->
     <keybind key="C-A-w">
       <action name="Execute">
-        <command>bash -c 'cd ~/ ; mkdir -p ~/Imagens/Wallpapers/ ; nitrogen --set-zoom-fill '$(find "$HOME"/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n 1)''</command>
+        <command>bash -c 'cd ~/ ; mkdir -p ~/Imagens/Wallpapers/ ; nitrogen --set-zoom-fill "$(find "$HOME"/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n 1)"'</command>
       </action>
     </keybind>
     <!-- Tema aleatório do painel tint2 -->
