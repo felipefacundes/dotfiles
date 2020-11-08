@@ -181,11 +181,7 @@ alias ug="apt upgrade"
 alias upg="apt upgrade"
 alias e="exit"
 alias myssh="echo ssh facundes@192.168.1.66 ; ssh facundes@192.168.1.66"
-alias sshrdp="echo ssh -qnN -L 3389:127.0.0.1
-:3389 192.168.1.66
- ; ssh -qnN -L 3389:127.0.0.1
-:3389 192.168.1.66
-"
+alias sshrdp="echo ssh -qnN -L 3389:127.0.0.1:3389 192.168.1.66 ; ssh -qnN -L 3389:127.0.0.1:3389 192.168.1.66"
 alias myssh="echo ssh facundes@192.168.1.66 ; ssh facundes@192.168.1.66"
 alias igjssh="echo ssh facundes@192.168.1.84 ; ssh facundes@192.168.1.84"
 alias rsync2ssh="echo rsync -avzh /sdcard/rsync facundes@192.168.1.66:/home/facundes ; rsync -avzh /sdcard/rsync facundes@192.168.1.66:/home/facundes"
