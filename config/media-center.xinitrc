@@ -6,6 +6,7 @@
 ########################################################################################
 ################################## Scripts do Usuário ##################################
 ########################################################################################
+export DISPLAY=':0'
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_SESSION_TYPE=x11
 xrdb $HOME/.Xresources
@@ -32,12 +33,13 @@ export SSH_AUTH_SOCK
 #anyremote -f /usr/share/anyremote/cfg-data/Server-mode/smplayer.cfg -s socket:5197 &
 pkill -9 minidlnad
 bash -c "while true; do minidlnad -f /home/$USER/.config/minidlna/minidlna.conf -P /home/$USER/.config/minidlna/minidlna.pid ; done" &
+pkill -9 minidlnad
 #bash -c "while true; do systemctl --user start anyremote.service ; done" &
 #bash -c "while true; do anyremote -f /usr/share/anyremote/cfg-data/Server-mode/all-in-one2.cfg -s socket:5197 ; done" &
 #bash -c "while true; do freerdp-shadow-cli /sec:tls ; done" &
 #/usr/bin/crd --start &
 #systemctl --user start chrome-remote-desktop &
-nitrogen --set-zoom-fill "$(ls "$HOME"/Imagens/Wallpapers/*[jJpP][nNpP][gG] | shuf -n 1)" &
+nitrogen --set-zoom-fill "$(find "$HOME"/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n 1)" &
 xcompmgr &
 copyq &
 dbus-run-session openbox &
@@ -101,6 +103,7 @@ fi
 ############################## Papel de Parede Aleatório ###############################
 ########################################################################################
 while true; do
-  nitrogen --set-zoom-fill "$(ls "$HOME"/Imagens/Wallpapers/*[jJpP][nNpP][gG] | shuf -n 1)"
+  #nitrogen --set-zoom-fill "$(ls -c "$HOME"/Imagens/Wallpapers/*[jJpP][nNpP][gG] | shuf -n 1)"
+  nitrogen --set-zoom-fill "$(find "$HOME"/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n 1)"
   sleep 10
 done
