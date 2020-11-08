@@ -102,6 +102,10 @@ export PATH=$PATH:/sdcard/.bin
 export EDITOR=vim
 export VISUAL=vim
 cd /sdcard
+alias mv='tput setaf 11; echo -e "mv -v --backup=t\n"; tput setaf 7; mv -v --backup=t'
+alias mvd='echo "mv file (date +%d-%m-%Y_%H:%M:%S)"'
+alias bkp='ls -v | cat -n | while read n f; do mv -n "$f" "$f.$n"; done'
+alias yd="youtube-dl -i"
 alias gif="echo 'ffmpeg -i Tela_09-12-2019_14:40:57.mkv -filter_complex '[0:v] palettegen' palette.png ; ffmpeg -ss 00:00:26.00 -t 8 -r 23 -i Tela_09-12-2019_14:40:57.mkv -i palette.png -filter_complex '[0:v][1:v] paletteuse' -pix_fmt rgb24 -s 616x182 GuildWars2.gif'"
 alias criargif="echo 'ffmpeg -i Tela_09-12-2019_14:40:57.mkv -filter_complex '[0:v] palettegen' palette.png ; ffmpeg -ss 00:00:26.00 -t 8 -r 23 -i Tela_09-12-2019_14:40:57.mkv -i palette.png -filter_complex '[0:v][1:v] paletteuse' -pix_fmt rgb24 -s 616x182 GuildWars2.gif'"
 alias pip-upgrade-all="echo 'sudo pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 sudo pip install -U' ; sudo pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 sudo pip install -U"
