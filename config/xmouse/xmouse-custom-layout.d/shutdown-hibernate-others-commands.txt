@@ -1,0 +1,8 @@
+Adjust 2<xmousesep>xrandr --output LVDS1 --off --output DP1 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate inverted --output VGA1 --off --output VIRTUAL1 --off<xmousesep>2<xmousesep>#ffffff
+ShowMouse<xmousesep>xdotool mousemove --sync 1770 10<xmousesep>2<xmousesep>#ffffff
+Prime<xmousesep>xdotool key ctrl+shift+super+p<xmousesep>2<xmousesep>#34aeeb
+Netflix<xmousesep>xdotool key ctrl+shift+super+n<xmousesep>2<xmousesep>#ff2626
+<xmousesep><xmousesep>10<xmousesep>#ffffff
+Reboot<xmousesep>xdotool key ctrl+alt+shift+BackSpace<xmousesep>3<xmousesep>#ffffff
+Hibernate<xmousesep>xdotool key ctrl+alt+shift+h<xmousesep>3<xmousesep>#ffffb3
+Shutdown<xmousesep>xdotool key ctrl+alt+shift+d<xmousesep>4<xmousesep>#ff2626
