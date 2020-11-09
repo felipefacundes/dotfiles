@@ -166,6 +166,8 @@ source $ZSH/oh-my-zsh.sh
 
 alias shutdown="openrc-shutdown -p now"
 alias all='pkill -9 -u "$USER"'
+alias wget='tput setaf 9; echo -e "\nAtenção!\n"; tput setaf 6; echo -e "Baixe sites completos com WGET\n"; tput setaf 11; echo -e "wget -r -p -E --execute=robots=off --limit-rate=100k --convert-links --random-wait -U mozilla\n"; tput setaf 7; wget'
+alias dd='dd --help; tput setaf 9; echo -e "\nAtenção!\n"; tput setaf 6; echo -e "Crie pendrives bootáveis de SO: BSDs e Distros Linux\n"; tput setaf 11; echo -e "sudo dd if=DISTRO.iso of=/dev/sdX bs=70k oflag=direct conv=sync status=progress && sync\n"; tput setaf 7; dd'
 alias neofetch="~/.make/neofetch/neofetch"
 alias cp="advcp -g" # Advanced copy
 alias mv='tput setaf 11; echo -e "mv -v --backup=t\n"; tput setaf 7; mv -v --backup=t'
@@ -259,6 +261,15 @@ alias bkp='ls -v | cat -n | while read n f; do mv -n "$f" "$f.$n"; done'
 alias igjssh="echo ssh iar3@192.168.1.84 ; ssh iar3@192.168.1.84"
 alias ssh2send="echo scp file user@ip.x.x.x:/home/facundes"
 alias rsync2ssh="echo rsync -avzh --progress /diretório facundes@192.168.1.XX:/home/usuário"
+alias ulight='tput setaf 6; echo -e "Será aplicado curvas de brilho na(s) imagen(s)\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e ""convert -function polynomial "-0.762,3.333,-5.167,3.595,-0.000""\n" ; convert -function polynomial "-0.762,3.333,-5.167,3.595,-0.000" '
+alias ulight-m='tput setaf 6; echo -e "Será aplicado curvas de brilho na(s) imagen(s)\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e ""convert -function polynomial "-0.762,3.333,-5.167,3.595,-0.000" *.[jJpP][nNpP][gG] -set filename:base "%[basename]" "%[filename:base]-light.jpg""\n" ; convert -function polynomial "-0.762,3.333,-5.167,3.595,-0.000" *.[jJpP][nNpP][gG] -set filename:base "%[basename]" "%[filename:base]-light.jpg"'
+alias light-hight='tput setaf 6; echo -e "Será aplicado curvas de brilho na(s) imagen(s)\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e ""convert -function polynomial "-0.762,3.333,-5.167,3.595,-0.000""\n" ; convert -function polynomial "-0.762,3.333,-5.167,3.595,-0.000" '
+alias light-hight-m='tput setaf 6; echo -e "Será aplicado curvas de brilho na(s) imagen(s)\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e ""convert -function polynomial "-0.762,3.333,-5.167,3.595,-0.000" *.[jJpP][nNpP][gG] -set filename:base "%[basename]" "%[filename:base]-light.jpg""\n" ; convert -function polynomial "-0.762,3.333,-5.167,3.595,-0.000" *.[jJpP][nNpP][gG] -set filename:base "%[basename]" "%[filename:base]-light.jpg"'
+alias negative-black='tput setaf 6; echo -e "Será aplicado efeito de negativo em modo escuro na(s) imagen(s)\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e ""convert -function polynomial "-0.331,1.111,-2.033,1.442,-0.000""\n" ; convert -function polynomial "-0.331,1.111,-2.033,1.442,-0.000" '
+alias negative-black-m='tput setaf 6; echo -e "Será aplicado efeito de negativo em modo escuro na(s) imagen(s)\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e ""convert -function polynomial "-0.331,1.111,-2.033,1.442,-0.000" *.[jJpP][nNpP][gG] -set filename:base "%[basename]" "%[filename:base]-negative-black.jpg""\n" ; convert -function polynomial "-0.331,1.111,-2.033,1.442,-0.000" *.[jJpP][nNpP][gG] -set filename:base "%[basename]" "%[filename:base]-negative-black.jpg"'
+alias contrast-dark='tput setaf 6; echo -e "Será aplicado curvas de contrast na(s) imagen(s) para escurecer\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e ""convert -function polynomial "-0.762 * x^4   + 3.333 * x^3   +  -5.167 * x^2  + 3.595 * x  + 0""\n" ; convert -function polynomial "-0.762 * x^4   + 3.333 * x^3   +  -5.167 * x^2  + 3.595 * x  + 0" '
+alias contrast-dark-m='tput setaf 6; echo -e "Será aplicado curvas de contrast na(s) imagen(s) para escurecer\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e ""convert -function polynomial "-0.762 * x^4   + 3.333 * x^3   +  -5.167 * x^2  + 3.595 * x  + 0" *.[jJpP][nNpP][gG] -set filename:base "%[basename]" "%[filename:base]-contrast-dark.jpg""\n" ; convert -function polynomial "-0.762 * x^4   + 3.333 * x^3   +  -5.167 * x^2  + 3.595 * x  + 0" *.[jJpP][nNpP][gG] -set filename:base "%[basename]" "%[filename:base]-contrast-dark.jpg"'
+alias im-options='echo -e ""convert -channel RGB -contrast-stretch 1x1%"\n"convert -level 25%,75%"\n"convert +level 0x120%"\n"convert -sharpen  0x4"\n"convert -contrast -contrast -contrast"\n"convert -fx "u*125/102" +repage"\n"convert -channel green -fx "u*42/255" +repage"\n"convert -function Polynomial "-3.786,5.767,-1.543,0.562,0""\n\n"Visit:"\n"https://legacy.imagemagick.org/Usage/color_mods/"\n"https://im.snibgo.com/ckbkClut.htm""'
 
 ############################################################################################
 
