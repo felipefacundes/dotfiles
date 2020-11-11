@@ -498,7 +498,12 @@
     </keybind>
     <keybind key="C-A-Escape">
       <action name="Execute">
-        <command>xkill</command>
+        <command>xkill #xkill -button 1</command>
+      </action>
+    </keybind>
+    <keybind key="W-q">
+      <action name="Execute">
+        <command>xdotool getwindowfocus windowkill</command>
       </action>
     </keybind>
     <keybind key="C-Escape">
@@ -1105,10 +1110,6 @@
       <action name="Close"/>
     </keybind>
     <keybind key="C-q">
-      <action name="Close"/>
-      <action name="NextWindow"/>
-    </keybind>
-    <keybind key="W-q">
       <action name="Close"/>
       <action name="NextWindow"/>
     </keybind>
