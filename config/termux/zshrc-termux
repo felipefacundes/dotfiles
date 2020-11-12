@@ -165,10 +165,12 @@ alias sshrdp="echo ssh -qnN -L 3389:127.0.0.1:3389 192.168.1.66 ; ssh -qnN -L 33
 alias myssh="echo ssh facundes@192.168.1.66 ; ssh facundes@192.168.1.66"
 alias igjssh="echo ssh iar3@192.168.1.84 ; ssh iar3@192.168.1.84"
 alias ssh2send="echo scp file user@ip.x.x.x:/home/user"
-alias scp='tput setaf 11; echo -e "scp file user@ip.x.x.x:/~/\n\n"; tput setaf 7; scp'
+alias scp='tput setaf 11; echo -e "scp file user@ip.x.x.x:/home/user/\n\n"; tput setaf 7; scp'
 alias ftp='tput setaf 11; echo -e "ftp 192.168.X.X 2121\n\n"; tput setaf 7; ftp'
 alias ssh='tput setaf 11; echo -e "ssh -p 22 user@192.168.X.X\n\n"; tput setaf 7; ssh'
 alias sftp='tput setaf 11; echo -e ""sftp -P 2222 user@192.168.X.X"\n\n"Faça Download de diretórios com: get -r"\n\n"; tput setaf 7; sftp'
 alias rsync2ssh="echo rsync -avzh --progress /diretório usuário@192.168.X.X:/home/usuário"
 alias rsync='tput setaf 11; echo -e """Envie arquivos e diretórios via rsync usando a porta 22 (ssh)""\n\n""rsync -avzh --progress /diretório usuário@192.168.1.XX:/home/usuário""\n"; tput setaf 7; rsync'
 alias zshrc='echo -e "mv -v --backup=t ~/.zshrc ~/.zshrc.bkp && curl -S https://raw.githubusercontent.com/felipefacundes/dotfiles/master/config/termux/zshrc-termux > ~/.zshrc"'
+alias meuip='echo -e "'"curl -s checkip.dyndns.org | awk '{ print $NF }'"'\n'"curl -s https://icanhazip.com"'\n'"curl -s https://checkip.amazonaws.com"'\n\n"Ou com perl:"\n'"lwp-request -o text checkip.dyndns.org | awk '{ print $NF }'"'"'
+alias myip='echo -e "'"curl -s checkip.dyndns.org | awk '{ print $NF }'"'\n'"curl -s https://icanhazip.com"'\n'"curl -s https://checkip.amazonaws.com"'\n\n"Ou com perl:"\n'"lwp-request -o text checkip.dyndns.org | awk '{ print $NF }'"'"'
