@@ -265,7 +265,7 @@ alias mouse-coordinates='eval $(xdotool getmouselocation --shell); tput setaf 3;
 alias bkp='ls -v | cat -n | while read n f; do mv -n "$f" "$f.$n"; done'
 alias igjssh="echo ssh iar3@192.168.1.84 ; ssh iar3@192.168.1.84"
 alias ssh2send="echo scp file user@ip.x.x.x:/home/user"
-alias scp='tput setaf 11; echo -e "scp file user@ip.x.x.x:/~/\n\n"; tput setaf 7; scp'
+alias scp='tput setaf 11; echo -e "scp file user@ip.x.x.x:/home/user/\n\n"; tput setaf 7; scp'
 alias ftp='tput setaf 11; echo -e "ftp 192.168.X.X 2121\n\n"; tput setaf 7; ftp'
 alias ssh='tput setaf 11; echo -e "ssh -p 22 user@192.168.X.X\n\n"; tput setaf 7; ssh'
 alias sftp='tput setaf 11; echo -e ""sftp -P 2222 user@192.168.X.X"\n\n"Faça Download de diretórios com: get -r"\n\n"; tput setaf 7; sftp'
@@ -279,6 +279,8 @@ alias negative-black='tput setaf 6; echo -e "Será aplicado efeito de negativo e
 alias negative-black-m='tput setaf 6; echo -e "Será aplicado efeito de negativo em modo escuro na(s) imagen(s)\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e ""convert -function polynomial "-0.331,1.111,-2.033,1.442,-0.000" *.[jJpP][nNpP][gG] -set filename:base "%[basename]" "%[filename:base]-negative-black.jpg""\n" ; convert -function polynomial "-0.331,1.111,-2.033,1.442,-0.000" *.[jJpP][nNpP][gG] -set filename:base "%[basename]" "%[filename:base]-negative-black.jpg"'
 alias contrast-dark='tput setaf 6; echo -e "Será aplicado curvas de contrast na(s) imagen(s) para escurecer\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e ""convert -function polynomial "-0.762 * x^4   + 3.333 * x^3   +  -5.167 * x^2  + 3.595 * x  + 0""\n" ; convert -function polynomial "-0.762 * x^4   + 3.333 * x^3   +  -5.167 * x^2  + 3.595 * x  + 0" '
 alias contrast-dark-m='tput setaf 6; echo -e "Será aplicado curvas de contrast na(s) imagen(s) para escurecer\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e ""convert -function polynomial "-0.762 * x^4   + 3.333 * x^3   +  -5.167 * x^2  + 3.595 * x  + 0" *.[jJpP][nNpP][gG] -set filename:base "%[basename]" "%[filename:base]-contrast-dark.jpg""\n" ; convert -function polynomial "-0.762 * x^4   + 3.333 * x^3   +  -5.167 * x^2  + 3.595 * x  + 0" *.[jJpP][nNpP][gG] -set filename:base "%[basename]" "%[filename:base]-contrast-dark.jpg"'
+alias meuip='echo -e "'"curl -s checkip.dyndns.org | awk '{ print $NF }'"'\n'"curl -s https://icanhazip.com"'\n'"curl -s https://checkip.amazonaws.com"'\n\n"Ou com perl:"\n'"lwp-request -o text checkip.dyndns.org | awk '{ print $NF }'"'"'
+alias myip='echo -e "'"curl -s checkip.dyndns.org | awk '{ print $NF }'"'\n'"curl -s https://icanhazip.com"'\n'"curl -s https://checkip.amazonaws.com"'\n\n"Ou com perl:"\n'"lwp-request -o text checkip.dyndns.org | awk '{ print $NF }'"'"'
 
 ############################################################################################
 
