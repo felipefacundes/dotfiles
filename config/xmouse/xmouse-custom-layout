@@ -71,8 +71,8 @@ Forward><xmousesep>xdotool key XF86Forward<xmousesep>4<xmousesep>#f2e5d9
 +<xmousesep>xdotool key ctrl+t<xmousesep>1<xmousesep>#e6ccb3
 -<xmousesep>xdotool key ctrl+w<xmousesep>1<xmousesep>#e6ccb3
 Reopen Last Tab<xmousesep>xdotool key ctrl+shift+t<xmousesep>4<xmousesep>#e6ccb3
-<-<xmousesep>xdotool key ctrl+shift+Tab<xmousesep>2<xmousesep>#e6ccb3
--><xmousesep>xdotool key ctrl+Tab<xmousesep>2<xmousesep>#e6ccb3
+<-<xmousesep>xdotool key ctrl+Prior<xmousesep>2<xmousesep>#e6ccb3
+-><xmousesep>xdotool key ctrl+Next<xmousesep>2<xmousesep>#e6ccb3
 Monitor<xmousesep>xdotool key super+F1<xmousesep>2<xmousesep>#e69811
 Space<xmousesep>xdotool key space<xmousesep>4<xmousesep>#e6f737
 WWW<xmousesep>xdotool key ctrl+super+f<xmousesep>2<xmousesep>#e6ccb3
