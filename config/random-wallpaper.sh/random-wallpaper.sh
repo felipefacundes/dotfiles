@@ -50,8 +50,9 @@ done;
 ################ Papel de Parede não aleatório, ou seja, em Sequência ##################
 ########################################################################################
 #while true;
-#    do for i in *.[jJpP][nNpP][gG];
-#    do find "$HOME"/Imagens/Wallpapers/ -name "$i" -exec nitrogen --set-zoom-fill {} \;
+#    do cd "$HOME"/Imagens/Wallpapers/4k/;
+#    for i in *.[jJpP][nNpP][gG];
+#    do nitrogen --set-zoom-fill "$i";
 #    sleep 10;
 #    done;
 #done
