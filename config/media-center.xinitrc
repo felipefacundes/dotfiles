@@ -18,6 +18,7 @@ xset r rate 350 60 # auto repeat delay:  350    repeat rate:  60
 ########################################################################################
 tint2 &
 xinput disable 11 # Desabilitar o touch screen
+xinput disable 12 # Desabilitar o touch screen
 volumeicon &
 #vncserver &
 #-auth & # Esta opção inicia o freerdp sem autenticação e sem segurança.
@@ -41,7 +42,8 @@ pkill -9 minidlnad
 #systemctl --user start chrome-remote-desktop &
 nitrogen --set-zoom-fill "$(find "$HOME"/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n 1)" &
 xcompmgr &
-copyq &
+#copyq &
+/usr/bin/xfce4-clipman &
 dbus-run-session openbox &
 qbittorrent &
 bash -c "sleep 16h; systemctl poweroff -i" &
@@ -102,8 +104,18 @@ fi
 ########################################################################################
 ############################## Papel de Parede Aleatório ###############################
 ########################################################################################
-while true; do
-  #nitrogen --set-zoom-fill "$(ls -c "$HOME"/Imagens/Wallpapers/*[jJpP][nNpP][gG] | shuf -n 1)"
-  nitrogen --set-zoom-fill "$(find "$HOME"/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n 1)"
-  sleep 10
+#while true; do
+#  #nitrogen --set-zoom-fill "$(ls -c "$HOME"/Imagens/Wallpapers/*[jJpP][nNpP][gG] | shuf -n 1)"
+#  nitrogen --set-zoom-fill "$(find "$HOME"/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n 1)"
+#  sleep 10
+#done
+
+########################################################################################
+############################## Papel de Parede em Sequência ############################
+########################################################################################
+while true;
+    do for i in *.[jJpP][nNpP][gG];
+    do find "$HOME"/Imagens/Wallpapers/ -name "$i" -exec nitrogen --set-zoom-fill {} \;
+    sleep 10;
+    done;
 done
