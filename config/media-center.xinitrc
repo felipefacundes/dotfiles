@@ -32,9 +32,9 @@ export SSH_AUTH_SOCK
 #ksuperkey -e 'Super_R=Alt_L|F1' &
 #anyremote -f /usr/share/anyremote/cfg-data/Server-mode/mouse.cfg -s socket:5197 &
 #anyremote -f /usr/share/anyremote/cfg-data/Server-mode/smplayer.cfg -s socket:5197 &
-pkill -9 minidlnad
+bash -c "sleep 30 && pkill -9 minidlnad" &
 bash -c "while true; do minidlnad -f /home/$USER/.config/minidlna/minidlna.conf -P /home/$USER/.config/minidlna/minidlna.pid ; done" &
-pkill -9 minidlnad
+bash -c "sleep 60 && pkill -9 minidlnad" &
 #bash -c "while true; do systemctl --user start anyremote.service ; done" &
 #bash -c "while true; do anyremote -f /usr/share/anyremote/cfg-data/Server-mode/all-in-one2.cfg -s socket:5197 ; done" &
 #bash -c "while true; do freerdp-shadow-cli /sec:tls ; done" &
@@ -111,11 +111,12 @@ fi
 #done
 
 ########################################################################################
-############################## Papel de Parede em Sequência ############################
+################ Papel de Parede não aleatório, ou seja, em Sequência ##################
 ########################################################################################
 while true;
-    do for i in *.[jJpP][nNpP][gG];
-    do find "$HOME"/Imagens/Wallpapers/ -name "$i" -exec nitrogen --set-zoom-fill {} \;
+    do cd "$HOME"/Imagens/Wallpapers/4k/;
+    for i in *.[jJpP][nNpP][gG];
+    do nitrogen --set-zoom-fill "$i";
     sleep 10;
     done;
 done
