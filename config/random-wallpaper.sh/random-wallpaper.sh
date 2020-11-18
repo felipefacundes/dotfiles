@@ -7,9 +7,6 @@
 # Sinal 'kill' recebido | Descomente a linha de baixo caso use o script, diretamente no ~/.xinitrc
 # trap "break ; exit" 1 2 3 15
 
-# Defina um tempo mínimo de 15 segundos, antes de executar o script. Isso evita e corrige erros.
-sleep 1
-
 # O padrão: -name "*[jJpP][nNpP][gG]" serve para pesquisar jpg e png. Mude para "-type f" caso queira qualquer tipo de arquivo.
 while true;
 # DIR = Diretório da sua preferência
@@ -49,3 +46,12 @@ done;
 # Busca recursiva com find
 # "$(find "$HOME"/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n 1)"
 
+########################################################################################
+################ Papel de Parede não aleatório, ou seja, em Sequência ##################
+########################################################################################
+#while true;
+#    do for i in *.[jJpP][nNpP][gG];
+#    do find "$HOME"/Imagens/Wallpapers/ -name "$i" -exec nitrogen --set-zoom-fill {} \;
+#    sleep 10;
+#    done;
+#done
