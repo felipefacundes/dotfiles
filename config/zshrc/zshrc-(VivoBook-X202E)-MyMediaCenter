@@ -249,10 +249,11 @@ alias pip-upgrade-all-2="echo 'sudo pip freeze --local | grep -v '^\-e' | cut -d
 alias mute="pactl set-sink-mute 0 toggle ; pactl set-sink-mute 4 toggle"
 alias volume="pactl set-sink-volume 0 "
 alias vol="pactl set-sink-volume 0 "
-alias ffp.leg='for i in *.[mM][pPkK][vV4]; do name="${i%.*}"; echo $name; ffplay2.8 "$i" -vf subtitles="${name}.srt"; done'
+alias ffp.leg='echo "Antes, execute export video=arquivo.m.."; for i in "$video"; do name="${i%.*}"; echo $name; ffplay2.8 "$i" -vf subtitles="${name}.srt"; done'
 alias ffp='for i in *.[mM][pPkK][vV4]; do ffplay2.8 "$i" -vf subtitles="${i/.[mM][pPkK][vV4]/.srt}"; done'
-alias ffp.f='for i in *.[mM][pPkK][vV4]; do name="${i%.*}"; echo $name; ffplay2.8 "$i" -vf subtitles="${name}.forced.srt"; done'
-alias ffp.f.leg='for i in *.[mM][pPkK][vV4]; do ffplay2.8 "$i" -vf subtitles="${i/.[mM][pPkK][vV4]/.forced.srt}"; done'
+alias ffp.f='for i in *.[mM][kKpP][vV4]; do name="${i%.*}"; echo $name; ffplay2.8 "$i" -vf subtitles="${name}.forced.srt"; done'
+alias ffp.f.leg='echo "Antes, execute export video=arquivo.m.."; for i in "$video"; do ffplay2.8 "$i" -vf subtitles="${i/.[mM][pPkK][vV4]/.forced.srt}"; done'
+alias testevideo='ls *.[mM][pPkK][vV4]; ls *.[sS][rR][tT]'
 alias mi='tput setaf 6; echo -e "\nA imagem será convertida na resolução desejada.\nPorém, antes execute o comando "export resolution=XxY":\nComo exemplo será usada o padrão FullHD (1920x1080)\nLembrando que HD é 1280x720\n4k = 3840x2160\n8k fulldome = 8192×8192 (67.1 megapixels)\n"; tput setaf 3; echo "export resolution=1920x1080\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e "convert -adaptive-resize $resolution -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0\n"; convert -adaptive-resize "$resolution" -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0'
 alias rs='tput setaf 6; echo -e "\nA imagem será convertida na resolução desejada.\nPorém, antes execute o comando "export resolution=XxY":\nComo exemplo será usada o padrão FullHD (1920x1080)\nLembrando que HD é 1280x720\n4k = 3840x2160\n8k fulldome = 8192×8192 (67.1 megapixels)\n"; tput setaf 3; echo "export resolution=1920x1080\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e "convert -adaptive-resize $resolution -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0\n"; convert -adaptive-resize "$resolution" -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0'
 alias resize='tput setaf 6; echo -e "\nA imagem será convertida na resolução desejada.\nPorém, antes execute o comando "export resolution=XxY":\nComo exemplo será usada o padrão FullHD (1920x1080)\nLembrando que HD é 1280x720\n4k = 3840x2160\n8k fulldome = 8192×8192 (67.1 megapixels)\n"; tput setaf 3; echo "export resolution=1920x1080\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e "convert -adaptive-resize $resolution -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0\n"; convert -adaptive-resize "$resolution" -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0'
@@ -289,8 +290,11 @@ alias myip='echo -e "'"curl -s checkip.dyndns.org | awk '{ print $NF }'"'\n'"cur
 alias Enter='xdotool key Return'
 alias Ent='xdotool key Return'
 alias Min='xdotool windowminimize $(xdotool getactivewindow)'
+alias f='firefox'
+alias p='export DISPLAY=':0' && unset HISTFILE && firefox --private-window'
+alias private='export DISPLAY=':0' && unset HISTFILE && firefox --private-window'
 
-############################################################################################
+############################################################################
 
 # Autostart
 #~/.make/neofetch/neofetch --size 00px --cpu_temp C --bold on --travis --underline_char  --separator  | lolcat
