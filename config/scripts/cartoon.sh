@@ -12,7 +12,7 @@ PreCartoon2=/tmp/pre-cartoon2.jpg
 		\( -clone 3 -negate -blur 0x4 \) \
 		\( -clone 3 -clone 4 -compose over -compose colordodge -composite \
 			-evaluate pow 4 -threshold 4 -statistic median 3x3 \) \
-			-delete 0,1,3,4 -compose over -compose multiply -composite -set filename:base "%[basename]" "%[filename:base]-cartoon.jpg"
+			-delete 0,1,3,4 -compose over -compose multiply -composite "${@/.[jJpP][nNpP][gG]/-cartoon.jpg}"
 
 rm /tmp/pre-cartoon1.jpg
 rm /tmp/pre-cartoon2.jpg
