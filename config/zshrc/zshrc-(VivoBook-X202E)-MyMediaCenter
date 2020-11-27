@@ -294,6 +294,8 @@ alias f='firefox'
 alias p='export DISPLAY=":0" && unset HISTFILE && firefox --private-window'
 alias private='export DISPLAY=":0" && unset HISTFILE && firefox --private-window'
 alias ex='export'
+alias undevel='sudo pacman -Rcs autoconf texinfo pkgconf patch make m4 groff flex binutils automake autoconf gcc'
+alias devel='sudo pacman -S autoconf texinfo pkgconf patch make m4 groff flex binutils automake autoconf gcc'
 alias pallete='echo "convert imagem.jpg -format %c -colorspace LAB -colors 5 histogram:info:- | sort -n -r"'
 alias paleta='echo "convert imagem.jpg -format %c -colorspace LAB -colors 5 histogram:info:- | sort -n -r"'
 # https://stackoverflow.com/questions/26889358/generate-color-palette-from-image-with-imagemagic
