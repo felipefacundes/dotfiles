@@ -165,7 +165,8 @@ source $ZSH/oh-my-zsh.sh
 
 ######################################
 ############### System ###############
-
+alias udisksctl='tput setaf 11; echo -e "Exemplo:\n\nudisksctl mount -b /dev/sdb1\n"; tput setaf 7; udisksctl'
+alias udisks="udisksctl"
 alias wget='tput setaf 9; echo -e "\nAtenção!\n"; tput setaf 6; echo -e "Baixe sites completos com WGET\n"; tput setaf 11; echo -e "wget -r -p -E --execute=robots=off --limit-rate=100k --convert-links --random-wait -U mozilla\n"; tput setaf 7; wget'
 alias dd='dd --help; tput setaf 9; echo -e "\nAtenção!\n"; tput setaf 6; echo -e "Crie pendrives bootáveis de SO: BSDs e Distros Linux\n"; tput setaf 11; echo -e "sudo dd if=DISTRO.iso of=/dev/sdX bs=70k oflag=direct conv=sync status=progress && sync\n"; tput setaf 7; dd'
 alias neofetch="~/.make/neofetch/neofetch"
