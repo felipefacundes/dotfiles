@@ -165,6 +165,8 @@ source $ZSH/oh-my-zsh.sh
 
 ######################################
 ############### System ###############
+alias adb-server='tput setaf 11; echo "Adicione às regras no seu firewall:\n\n tcp dport 5037 accept\n\n e depois:\n\n adb kill-server && sudo adb start-server\n\n"; adb kill-server && sudo adb start-server'
+alias zstd='tput setaf 11; echo -e "Exemplo:\n\nzstd arquivo --ultra -22 -o arquivo.zst\n"; tput setaf 7; zstd'
 alias udisksctl='tput setaf 11; echo -e "Exemplo:\n\nudisksctl mount -b /dev/sdb1\n"; tput setaf 7; udisksctl'
 alias udisks="udisksctl"
 alias wget='tput setaf 9; echo -e "\nAtenção!\n"; tput setaf 6; echo -e "Baixe sites completos com WGET\n"; tput setaf 11; echo -e "wget -r -p -E --execute=robots=off --limit-rate=100k --convert-links --random-wait -U mozilla\n"; tput setaf 7; wget'
