@@ -480,6 +480,11 @@
         <command>bash -c "systemctl hibernate"</command>
       </action>
     </keybind>
+    <keybind key="XF86Sleep">
+      <action name="Execute">
+        <command>bash -c "systemctl suspend"</command>
+      </action>
+    </keybind>
     <keybind key="C-S-A-BackSpace">
       <action name="Execute">
         <command>bash -c "/bin/openrc-shutdown --reboot now ; systemctl -i reboot"</command>
@@ -1482,7 +1487,7 @@
   <applications>
     <!-- match all windows, and remove their decorations -->
     <application class="*">
-      <decor>yes</decor>
+      <decor>no</decor>
     </application>
     <!-- my xterm with screen in it must always be on desktop 2,
        maximized and below everything else -->
