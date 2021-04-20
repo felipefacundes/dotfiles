@@ -1,0 +1,11 @@
+<network>
+  <name>default</name>
+  <forward mode='nat' dev='br0'/>
+  <bridge name='virbr0' stp='on' delay='2'/>
+  <ip address='192.168.223.1' netmask='255.255.255.0'>
+    <dhcp>
+      <range start='192.168.223.141' end='192.168.223.254'/>
+      <host name='clone0' ip='192.168.223.143'/>
+    </dhcp>
+  </ip>
+</network>

@@ -1,0 +1,15 @@
+<video>
+  <model type="qxl" ram="65536" vram="524288" vgamem="16384" heads="1" primary="yes"/>
+  <address type="pci" domain="0x0000" bus="0x00" slot="0x01" function="0x0"/>
+</video>
+
+
+Ou...
+
+
+<video>
+  <model type="virtio" vram="524288" heads="1" primary="yes">
+    <acceleration accel3d="yes"/>
+  </model>
+  <address type="pci" domain="0x0000" bus="0x00" slot="0x01" function="0x0"/>
+</video>
