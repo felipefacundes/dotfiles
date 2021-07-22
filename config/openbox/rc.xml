@@ -222,17 +222,22 @@
     </keybind>
     <keybind key="W-t">
       <action name="Execute">
-        <command>sakura -m</command>
+        <command>terminator -m</command>
       </action>
     </keybind>
     <keybind key="W-Return">
       <action name="Execute">
-        <command>sakura</command>
+        <command>terminator</command>
       </action>
     </keybind>
     <keybind key="C-S-W-f">
       <action name="Execute">
-        <command>firefox --profile ~/.firefox-rofe/</command>
+        <command>bash -c 'mkdir -p ~/.firefox-rofe/ ; firefox --profile ~/.firefox-rofe/'</command>
+      </action>
+    </keybind>
+    <keybind key="C-S-W-m">
+      <action name="Execute">
+        <command>bash -c 'mkdir -p ~/.firefox-mobile/ ; firefox --profile ~/.firefox-mobile/'</command>
       </action>
     </keybind>
     <keybind key="C-S-W-p">
@@ -278,6 +283,17 @@
         </startupnotify>
       </action>
     </keybind>
+    <keybind key="C-W-m">
+      <action name="Execute">
+        <command>bash -c "pkill -9 vmg ; vmg"</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <wmclass>vmg</wmclass>
+          <name>vmg</name>
+          <icon>vmg</icon>
+        </startupnotify>
+      </action>
+    </keybind>
     <keybind key="W-n">
       <action name="Execute">
         <command>xdg-open ~/</command>
@@ -297,24 +313,24 @@
     <!-- Gravar tela -->
     <keybind key="C-A-r">
       <action name="Execute">
-        <command>bash -c 'sakura -e ffmpeg -video_size 1366x768 -framerate 15 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -bsf:v h264_mp4toannexb -max_muxing_queue_size 9999 -f mp4 -movflags frag_keyframe+empty_moov "/home/$USER/V&#xED;deos/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
+        <command>bash -c 'terminator -e ffmpeg -video_size 1366x768 -framerate 15 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -bsf:v h264_mp4toannexb -max_muxing_queue_size 9999 -f mp4 -movflags frag_keyframe+empty_moov "/home/$USER/V&#xED;deos/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
       </action>
     </keybind>
     <keybind key="C-A-s">
       <action name="Execute">
-        <command>bash -c 'sakura -e ffmpeg -video_size 1366x768 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -preset ultrafast -tune zerolatency -maxrate 10000k -bufsize 20000k -pix_fmt yuv420p -framerate 15 -g 52 -max_muxing_queue_size 9999 -f mp4 -bsf:v h264_mp4toannexb -movflags frag_keyframe+empty_moov "/home/$USER/V&#xED;deos/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
+        <command>bash -c 'terminator -e ffmpeg -video_size 1366x768 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -preset ultrafast -tune zerolatency -maxrate 10000k -bufsize 20000k -pix_fmt yuv420p -framerate 15 -g 52 -max_muxing_queue_size 9999 -f mp4 -bsf:v h264_mp4toannexb -movflags frag_keyframe+empty_moov "/home/$USER/V&#xED;deos/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
       </action>
     </keybind>
     <!-- Tela Normal (Notebook Asus X202E - Vivo Book ) -->
     <keybind key="A-S-F1">
       <action name="Execute">
-        <command>bash -c 'xrandr --output LVDS1 --primary --mode 1366x768 --pos 0x0 --rotate normal --output DP1 --off --output HDMI1 --off --output VGA1 --off --output VIRTUAL1 --off'</command>
+        <command>bash -c 'xrandr --output HDMI-0 --off --output eDP-1-1 --mode 1680x1050 --pos 0x0 --rotate normal ; xrandr --output HDMI-0 --off --output eDP-1-1 --mode 1920x1080 --pos 0x0 --rotate normal'</command>
       </action>
     </keybind>
     <!-- Inverter tela (Monitor AOC x Notebook Asus X202E - Vivo Book ) -->
     <keybind key="A-S-F2">
       <action name="Execute">
-        <command>bash -c 'xrandr --output LVDS1 --primary --mode 1366x768 --pos 1920x0 --rotate normal --output DP1 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate inverted --output VGA1 --off --output VIRTUAL1 --off'</command>
+        <command>bash -c 'xrandr --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate inverted --output eDP-1-1 --mode 1920x1080 --pos 0x0 --rotate normal'</command>
       </action>
     </keybind>
     <keybind key="S-A-r">
@@ -513,12 +529,12 @@
     </keybind>
     <keybind key="C-Escape">
       <action name="Execute">
-        <command>sakura -t HTOP -e htop</command>
+        <command>terminator -T HTOP -e htop</command>
       </action>
     </keybind>
     <keybind key="W-u">
       <action name="Execute">
-        <command>bash -c "sakura -m -e sudo pacman -Syyu --noconfirm; sudo mkinitcpio -P; sudo grub-mkconfig -o /boot/grub/grub.cfg"</command>
+        <command>bash -c "terminator -m -e sudo pacman -Syyu --noconfirm; sudo mkinitcpio -P; sudo grub-mkconfig -o /boot/grub/grub.cfg"</command>
       </action>
     </keybind>
     <keybind key="C-W-o">
@@ -542,7 +558,7 @@
     <keybind key="W-a">
       <action name="ToggleMaximizeFull"/>
     </keybind>
-    <keybind key="F11">
+    <keybind key="A-F11">
       <action name="ToggleFullscreen"/>
     </keybind>
     <keybind key="C-W-h">
