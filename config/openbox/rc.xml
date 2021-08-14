@@ -215,19 +215,19 @@
         <command>xfdashboard</command>
       </action>
     </keybind>
-    <keybind key="C-space">
+    <keybind key="C-S-space">
       <action name="Execute">
         <command>synapse</command>
       </action>
     </keybind>
     <keybind key="W-t">
       <action name="Execute">
-        <command>terminator -m</command>
+        <command>kitty</command>
       </action>
     </keybind>
     <keybind key="W-Return">
       <action name="Execute">
-        <command>terminator</command>
+        <command>kitty</command>
       </action>
     </keybind>
     <keybind key="C-S-W-f">
@@ -272,6 +272,17 @@
         </startupnotify>
       </action>
     </keybind>
+    <keybind key="C-W-w">
+      <action name="Execute">
+        <command>bash -c "eval $(ps ax|egrep '*\.exe'|grep -v 'egrep'|awk '{print $1 }' | xargs kill -9 $1 ; pkill -9 .exe)"</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <wmclass>matar-wine</wmclass>
+          <name>matar-wine</name>
+          <icon>matar-wine</icon>
+        </startupnotify>
+      </action>
+    </keybind>
     <keybind key="C-A-t">
       <action name="Execute">
         <command>qbittorrent</command>
@@ -313,12 +324,12 @@
     <!-- Gravar tela -->
     <keybind key="C-A-r">
       <action name="Execute">
-        <command>bash -c 'terminator -e ffmpeg -video_size 1366x768 -framerate 15 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -bsf:v h264_mp4toannexb -max_muxing_queue_size 9999 -f mp4 -movflags frag_keyframe+empty_moov "/home/$USER/V&#xED;deos/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
+        <command>bash -c 'kitty -e ffmpeg -video_size 1920x1080 -framerate 15 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -bsf:v h264_mp4toannexb -max_muxing_queue_size 9999 -f mp4 -movflags frag_keyframe+empty_moov "/home/$USER/V&#xED;deos/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
       </action>
     </keybind>
     <keybind key="C-A-s">
       <action name="Execute">
-        <command>bash -c 'terminator -e ffmpeg -video_size 1366x768 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -preset ultrafast -tune zerolatency -maxrate 10000k -bufsize 20000k -pix_fmt yuv420p -framerate 15 -g 52 -max_muxing_queue_size 9999 -f mp4 -bsf:v h264_mp4toannexb -movflags frag_keyframe+empty_moov "/home/$USER/V&#xED;deos/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
+        <command>bash -c 'kitty -e ffmpeg -video_size 1920x1080 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -preset ultrafast -tune zerolatency -maxrate 10000k -bufsize 20000k -pix_fmt yuv420p -framerate 15 -g 52 -max_muxing_queue_size 9999 -f mp4 -bsf:v h264_mp4toannexb -movflags frag_keyframe+empty_moov "/home/$USER/V&#xED;deos/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
       </action>
     </keybind>
     <!-- Tela Normal (Notebook Asus X202E - Vivo Book ) -->
@@ -529,12 +540,12 @@
     </keybind>
     <keybind key="C-Escape">
       <action name="Execute">
-        <command>terminator -T HTOP -e htop</command>
+        <command>kitty -t HTOP -e htop</command>
       </action>
     </keybind>
     <keybind key="W-u">
       <action name="Execute">
-        <command>bash -c "terminator -m -e sudo pacman -Syyu --noconfirm; sudo mkinitcpio -P; sudo grub-mkconfig -o /boot/grub/grub.cfg"</command>
+        <command>bash -c "kitty -e sudo pacman -Syyu --noconfirm; sudo mkinitcpio -P; sudo grub-mkconfig -o /boot/grub/grub.cfg"</command>
       </action>
     </keybind>
     <keybind key="C-W-o">
