@@ -1,0 +1,65 @@
+#!/bin/sh
+exec tail -n +3 $0
+# This file provides an easy way to add custom menu entries.  Simply type the
+# menu entries you want to add after this comment.  Be careful not to change
+# the 'exec tail' line above.
+menuentry "RWindows 10" --class windows --class os {
+		insmod part_gpt
+		insmod fat
+		insmod chain
+        insmod search_fs_uuid
+        search --no-floppy --fs-uuid --set=root 2511-8009
+        chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+}
+
+menuentry "Windows 10 Modo de Recupação" --class windows --class os {
+		insmod part_gpt
+		insmod fat
+		insmod chain
+        insmod search_fs_uuid
+        set root=UUID=CAA80FD2A80FBC47
+        search --no-floppy --fs-uuid --set=root CAA80FD2A80FBC47
+        linux16 /wimboot
+        initrd16 \
+        newc:boot.sdi:/Recovery/WindowsRE/boot.sdi \
+        newc:boot.wim:/Recovery/WindowsRE/Winre.wim root=UUID=CAA80FD2A80FBC47
+}
+
+menuentry 'BIOS - Configurações da Firmware' {
+	fwsetup
+}
+
+menuentry "Reiniciar" {
+reboot
+}
+
+menuentry "Desligar" {
+halt
+}
+
+# FUNCIONA:
+
+#menuentry "Windows 10" --class windows --class os {
+#		insmod part_gpt
+#		insmod fat
+#		insmod chain
+#        insmod search_fs_uuid
+#        set root=UUID=A68A-0B93
+#        search --no-floppy --fs-uuid --set=root A68A-0B93
+#        chainloader /EFI/Microsoft/Boot/bootmgfw.efi root=UUID=A68A-0B93
+#}
+
+# TESTE Boot Recovery do Windows
+
+#menuentry "Windows 10 Recovery" --class windows --class os {
+#		insmod part_gpt
+#		insmod fat
+#		insmod chain
+#        insmod search_fs_uuid
+#        set root=UUID=CAA80FD2A80FBC47
+#        search --no-floppy --fs-uuid --set=root CAA80FD2A80FBC47
+#        linux16 /wimboot
+#        initrd16 \
+#        newc:boot.sdi:/Recovery/WindowsRE/boot.sdi \
+#        newc:boot.wim:/Recovery/WindowsRE/Winre.wim root=UUID=CAA80FD2A80FBC47
+#}
