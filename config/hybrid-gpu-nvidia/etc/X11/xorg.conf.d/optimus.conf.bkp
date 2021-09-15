@@ -1,0 +1,7 @@
+Section "Device"
+	Identifier "nvidia"
+	Driver "modesetting"
+	BusID "PCI:1:0:0"
+	Option "DRI" "3"
+EndSection
+
