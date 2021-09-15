@@ -1,0 +1,39 @@
+#
+# /home/rfacundes/.nvidia-settings-rc
+#
+# Configuration file for nvidia-settings - the NVIDIA X Server Settings utility
+# Generated on Wed Sep 15 20:42:48 2021
+#
+
+# ConfigProperties:
+
+RcFileLocale = C
+DisplayStatusBar = Yes
+SliderTextEntries = Yes
+IncludeDisplayNameInConfigFile = No
+ShowQuitDialog = No
+UpdateRulesOnProfileNameChange = Yes
+Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
+Timer = Thermal_Monitor_(GPU_0),Yes,1000
+Timer = Memory_Used_(GPU_0),Yes,3000
+
+# Attributes:
+
+0/SyncToVBlank=0
+0/LogAniso=0
+0/FSAA=0
+0/TextureClamping=1
+0/FXAA=0
+0/AllowFlipping=1
+0/FSAAAppControlled=1
+0/LogAnisoAppControlled=1
+0/OpenGLImageSettings=3
+0/FSAAAppEnhanced=0
+0/ShowGraphicsVisualIndicator=0
+[DPY:HDMI-0]/Dithering=0
+[DPY:HDMI-0]/DitheringMode=0
+[DPY:HDMI-0]/DitheringDepth=0
+[DPY:HDMI-0]/ColorSpace=0
+[DPY:HDMI-0]/ColorRange=0
+[DPY:HDMI-0]/SynchronousPaletteUpdates=0
+[gpu:0]/GPUPowerMizerMode=3
