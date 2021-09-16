@@ -11,7 +11,7 @@ EndSection
 Section "ServerLayout"
 	Identifier "layout"
 	Screen 0 "nvidia"
-	Inactive "integrated"
+	Inactive "intel"
 EndSection
 
 Section "Device"
@@ -19,7 +19,7 @@ Section "Device"
 	Driver "nvidia"
 	BusID "PCI:1:0:0"
 	Option "Coolbits" "28"
-	Option "RegistryDwords" "PowerMizerEnable=0x1; PerfLevelSrc=0x2222; PowerMizerDefault=0x3; PowerMizerDefaultAC=0x3"
+	Option "RegistryDwords" "PowerMizerEnable=0x1 PerfLevelSrc=0x3322; PowerMizerDefault=0x1; PowerMizerDefaultAC=0x1"
 EndSection
 
 Section "Screen"
@@ -29,14 +29,13 @@ Section "Screen"
 EndSection
 
 Section "Device"
-	Identifier "integrated"
+	Identifier "intel"
 	Driver "modesetting"
 	BusID "PCI:0:2:0"
-	Option "AccelMethod" "glamor"
 EndSection
 
 Section "Screen"
-	Identifier "integrated"
-	Device "integrated"
+	Identifier "intel"
+	Device "intel"
 EndSection
 
