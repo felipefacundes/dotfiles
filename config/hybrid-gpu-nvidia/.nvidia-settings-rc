@@ -37,3 +37,4 @@ Timer = Memory_Used_(GPU_0),Yes,3000
 [DPY:HDMI-0]/ColorRange=0
 [DPY:HDMI-0]/SynchronousPaletteUpdates=0
 [gpu:0]/GPUPowerMizerMode=3
+[gpu:0]/GPUMemoryTransferRateOffset[3]=7008
