@@ -11,8 +11,7 @@ EndSection
 Section "ServerLayout"
 	Identifier "layout"
 	Screen 0 "nvidia"
-	Inactive "intel"
-	Option "AllowNVIDIAGPUScreens"
+	Inactive "integrated"
 EndSection
 
 Section "Device"
@@ -20,6 +19,10 @@ Section "Device"
 	Driver "nvidia"
 	BusID "PCI:1:0:0"
 	Option "Coolbits" "28"
+	Option "NoLogo" "1"
+	Option "ConnectedMonitor" "DFP"
+	Option "RegistryDwords" "EnableBrightnessControl=1"
+	Option "RegistryDwords" "PowerMizerEnable=0x1; PerfLevelSrc=0x2222; PowerMizerDefault=0x3; PowerMizerDefaultAC=0x3"
 EndSection
 
 Section "Screen"
@@ -29,13 +32,14 @@ Section "Screen"
 EndSection
 
 Section "Device"
-	Identifier "intel"
+	Identifier "integrated"
 	Driver "modesetting"
 	BusID "PCI:0:2:0"
+	Option "AccelMethod" "glamor"
 EndSection
 
 Section "Screen"
-	Identifier "intel"
-	Device "intel"
+	Identifier "integrated"
+	Device "integrated"
 EndSection
 

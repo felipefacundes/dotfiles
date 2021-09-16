@@ -12,7 +12,6 @@ Section "ServerLayout"
 	Identifier "layout"
 	Screen 0 "nvidia"
 	Inactive "intel"
-	Option "AllowNVIDIAGPUScreens"
 EndSection
 
 Section "Device"
@@ -20,6 +19,7 @@ Section "Device"
 	Driver "nvidia"
 	BusID "PCI:1:0:0"
 	Option "Coolbits" "28"
+	Option "RegistryDwords" "PowerMizerEnable=0x1 PerfLevelSrc=0x3322; PowerMizerDefault=0x1; PowerMizerDefaultAC=0x1"
 EndSection
 
 Section "Screen"

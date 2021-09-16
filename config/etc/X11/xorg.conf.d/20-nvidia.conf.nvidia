@@ -1,0 +1,9 @@
+Section "Device"
+        Identifier "Nvidia Card"
+        Driver "nvidia"
+        VendorName "NVIDIA Corporation"
+        BoardName "GeForce GTX 1050 Ti"
+        Option "NoLogo" "1"
+        Option "ConnectedMonitor" "DFP"
+        Option "RegistryDwords" "EnableBrightnessControl=1"
+EndSection
