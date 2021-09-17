@@ -2,5 +2,5 @@
 ##################################
 # A nautilus script to open terminal in the current directory
 # place in ~/.local/share/nautilus/scripts
-##################################
+######## Use your favorite terminal or x-terminal-emulator
 kitty --working-directory="$(echo "$NAUTILUS_SCRIPT_CURRENT_URI" | cut -c 8-)"
