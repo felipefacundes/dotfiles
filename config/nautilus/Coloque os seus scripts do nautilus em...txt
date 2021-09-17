@@ -1,0 +1,1 @@
+Coloque os seus scripts do nautilus em ~/.local/share/nautilus/scripts
