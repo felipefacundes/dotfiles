@@ -207,12 +207,17 @@
     </keybind>
     <keybind key="A-F2">
       <action name="Execute">
-        <command>rofi -show drun -theme ~/.config/rofi/center.rasi</command>
+        <command>rofi -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launchers/misc/row_dock.rasi</command>
+      </action>
+    </keybind>
+    <keybind key="A-F3">
+      <action name="Execute">
+        <command>rofi -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launchers/misc/appdrawer.rasi</command>
       </action>
     </keybind>
     <keybind key="W-S-F2">
       <action name="Execute">
-        <command>xfdashboard</command>
+        <command>rofi -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launchers/misc/screen.rasi</command>
       </action>
     </keybind>
     <keybind key="C-S-space">
@@ -228,6 +233,11 @@
     <keybind key="W-Return">
       <action name="Execute">
         <command>kitty</command>
+      </action>
+    </keybind>
+    <keybind key="W-p">
+      <action name="Execute">
+        <command>qpdfview</command>
       </action>
     </keybind>
     <keybind key="C-S-W-f">
