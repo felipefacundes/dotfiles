@@ -237,7 +237,12 @@
     </keybind>
     <keybind key="W-p">
       <action name="Execute">
-        <command>qpdfview</command>
+        <command>evince</command>
+      </action>
+    </keybind>
+    <keybind key="W-A-p">
+      <action name="Execute">
+        <command>xpad -t</command>
       </action>
     </keybind>
     <keybind key="C-S-W-f">
@@ -295,7 +300,7 @@
     </keybind>
     <keybind key="C-A-t">
       <action name="Execute">
-        <command>qbittorrent</command>
+        <command>bash -c "$HOME/.local/bin/toggle-transmission-gtk"</command>
         <startupnotify>
           <enabled>yes</enabled>
           <wmclass>qbittorrent</wmclass>
@@ -442,6 +447,17 @@
           <wmclass>pavucontrol</wmclass>
           <name>pavucontrol</name>
           <icon>pavucontrol</icon>
+        </startupnotify>
+      </action>
+    </keybind>
+    <keybind key="C-W-c">
+      <action name="Execute">
+        <command>~/.local/bin/picom-toggle.sh</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <wmclass>composite</wmclass>
+          <name>composite</name>
+          <icon>composite</icon>
         </startupnotify>
       </action>
     </keybind>
