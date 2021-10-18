@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <openbox_config xmlns="http://openbox.org/3.4/rc" xmlns:xi="http://www.w3.org/2001/XInclude">
   <!--
-# 😉 Crédito: Felipe Facundes
+# 😉 Credits: Felipe Facundes
 #  Telegram: @FeFacundes
 #  Telegram Group: t.me/winehq_linux
 # 😅 Dúvidas:  http://openbox.org/wiki/Main_Page
@@ -278,7 +278,7 @@
     </keybind>
     <keybind key="W-w">
       <action name="Execute">
-        <command>bash -c 'firefox="$(pidof firefox)" ; if [ -e $firefox ]; then firefox; else echo no; fi'</command>
+        <command>bash -c 'xrefresh; zenity --ellipsize --info --text "$(wmctrl -l)"; export entry=`zenity --entry --text="Enter window id." --entry-text="Enter window id."`; wmctrl -ia "$entry"'</command>
         <startupnotify>
           <enabled>yes</enabled>
           <wmclass>firefox</wmclass>
@@ -325,18 +325,25 @@
         <command>xdg-open ~/</command>
       </action>
     </keybind>
+    <!-- Bluetooth Menu -->
+    <keybind key="W-b">
+      <action name="Execute">
+        <command>~/.local/bin/rofi-bluetooth</command>
+      </action>
+    </keybind>
+    <!-- Correcting errors -->
     <keybind key="W-e">
       <action name="Execute">
-        <command>xed</command>
+        <command>bash -c 'xrefresh; pulseaudio -k; wmctrl -l; pulseaudio --start; zenity --title "Correcting errors" --error --ellipsize --text "Correcting errors:\n\nSound, video, WM..."'</command>
         <startupnotify>
           <enabled>yes</enabled>
-          <wmclass>xed</wmclass>
-          <name>xed</name>
-          <icon>xed</icon>
+          <wmclass>Correcting errors</wmclass>
+          <name>Correcting errors</name>
+          <icon>Correcting errors</icon>
         </startupnotify>
       </action>
     </keybind>
-    <!-- Gravar tela -->
+    <!-- Screen Record -->
     <keybind key="C-A-r">
       <action name="Execute">
         <command>bash -c 'kitty -e ffmpeg -video_size 1920x1080 -framerate 15 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -bsf:v h264_mp4toannexb -max_muxing_queue_size 9999 -f mp4 -movflags frag_keyframe+empty_moov "/home/$USER/V&#xED;deos/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
@@ -452,12 +459,23 @@
     </keybind>
     <keybind key="C-W-c">
       <action name="Execute">
-        <command>~/.local/bin/picom-toggle.sh</command>
+        <command>bash -c "pkill -9 xcompmgr; pkill -9 xcompmgr; picom --experimental-backends --backend glx --xrender-sync-fence"</command>
         <startupnotify>
           <enabled>yes</enabled>
-          <wmclass>composite</wmclass>
-          <name>composite</name>
-          <icon>composite</icon>
+          <wmclass>picom</wmclass>
+          <name>picom</name>
+          <icon>picom</icon>
+        </startupnotify>
+      </action>
+    </keybind>
+    <keybind key="C-S-W-c">
+      <action name="Execute">
+        <command>bash -c "pkill -9 picom; pkill -9 picom; xcompmgr"</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <wmclass>xcompmgr</wmclass>
+          <name>xcompmgr</name>
+          <icon>xcompmgr</icon>
         </startupnotify>
       </action>
     </keybind>
