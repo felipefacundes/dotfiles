@@ -2,8 +2,8 @@
 <openbox_config xmlns="http://openbox.org/3.4/rc" xmlns:xi="http://www.w3.org/2001/XInclude">
   <!--
 # 😉 Credits: Felipe Facundes
-#  Telegram: @FeFacundes
-#  Telegram Group: t.me/winehq_linux
+# 﨧 Telegram: @FeFacundes
+# 﨧 Telegram Group: t.me/winehq_linux
 # 😅 Dúvidas:  http://openbox.org/wiki/Main_Page
 #              http://openbox.org/wiki/Special:Search/Help
 #              http://openbox.org/wiki/Help:Actions
@@ -188,6 +188,7 @@
     <moveButton>Middle</moveButton>
     <!-- 'Left', 'Middle', 'Right' -->
   </dock>
+  <!-- launchers -->
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
     <keybind key="A-F1">
@@ -210,6 +211,11 @@
         <command>rofi -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launchers/misc/row_dock.rasi</command>
       </action>
     </keybind>
+    <keybind key="XF86Search">
+      <action name="Execute">
+        <command>rofi -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launchers/misc/row_dock.rasi</command>
+      </action>
+    </keybind>
     <keybind key="A-F3">
       <action name="Execute">
         <command>rofi -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launchers/misc/appdrawer.rasi</command>
@@ -223,6 +229,12 @@
     <keybind key="C-S-space">
       <action name="Execute">
         <command>synapse</command>
+      </action>
+    </keybind>
+    <!-- Hour in big size -->
+    <keybind key="C-W-t">
+      <action name="Execute">
+        <command>kitty -e ~/.local/bin/hour.sh</command>
       </action>
     </keybind>
     <keybind key="W-t">
@@ -267,7 +279,29 @@
     </keybind>
     <keybind key="C-W-f">
       <action name="Execute">
-        <command>bash -c 'firefox #="$(pidof firefox)" ; if [ -e $firefox ]; then firefox; else echo no; fi'</command>
+        <command>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then notify-send "Firefox" "Opened"; else firefox; fi'</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <wmclass>firefox</wmclass>
+          <name>firefox</name>
+          <icon>firefox</icon>
+        </startupnotify>
+      </action>
+    </keybind>
+    <keybind key="XF86WWW">
+      <action name="Execute">
+        <command>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then notify-send "Firefox" "Opened"; else firefox; fi'</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <wmclass>firefox</wmclass>
+          <name>firefox</name>
+          <icon>firefox</icon>
+        </startupnotify>
+      </action>
+    </keybind>
+    <keybind key="XF86Mail">
+      <action name="Execute">
+        <command>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then notify-send "Firefox" "Opened"; else firefox gmail.com; fi'</command>
         <startupnotify>
           <enabled>yes</enabled>
           <wmclass>firefox</wmclass>
@@ -321,6 +355,11 @@
       </action>
     </keybind>
     <keybind key="W-n">
+      <action name="Execute">
+        <command>xdg-open ~/</command>
+      </action>
+    </keybind>
+    <keybind key="XF86HomePage">
       <action name="Execute">
         <command>xdg-open ~/</command>
       </action>
@@ -448,7 +487,7 @@
     </keybind>
     <keybind key="C-A-p">
       <action name="Execute">
-        <command>pavucontrol</command>
+        <command>bash -c 'pavuc=`wmctrl -l | grep "Controle de volume" | head -n 1 | awk "{print $1 }"`; if pidof pavucontrol; then wmctrl -ic "$pavuc"; else pavucontrol; fi'</command>
         <startupnotify>
           <enabled>yes</enabled>
           <wmclass>pavucontrol</wmclass>
@@ -481,17 +520,17 @@
     </keybind>
     <keybind key="XF86AudioMute">
       <action name="Execute">
-        <command>bash -c "pactl set-sink-mute 0 toggle ; pactl set-sink-mute 4 toggle"</command>
+        <command>bash -c "ponymix toggle #pactl set-sink-mute 0 toggle ; pactl set-sink-mute 4 toggle"</command>
       </action>
     </keybind>
     <keybind key="XF86AudioLowerVolume">
       <action name="Execute">
-        <command>bash -c "pactl set-sink-volume 0 -5% ; pactl set-sink-volume 4 -5%"</command>
+        <command>bash -c "ponymix decrease 2% ; pactl set-sink-volume 0 -3% ; pactl set-sink-volume 4 -3%"</command>
       </action>
     </keybind>
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
-        <command>bash -c "pactl set-sink-volume 0 +5% ; pactl set-sink-volume 4 +5%"</command>
+        <command>bash -c "ponymix increase 2% ; pactl set-sink-volume 0 +3% ; pactl set-sink-volume 4 +3%"</command>
       </action>
     </keybind>
     <keybind key="XF86MonBrightnessDown">
@@ -542,6 +581,11 @@
       </action>
     </keybind>
     <keybind key="C-S-A-d">
+      <action name="Execute">
+        <command>bash -c "/bin/openrc-shutdown --poweroff now ; systemctl -i poweroff"</command>
+      </action>
+    </keybind>
+    <keybind key="C-S-W-d">
       <action name="Execute">
         <command>bash -c "/bin/openrc-shutdown --poweroff now ; systemctl -i poweroff"</command>
       </action>
