@@ -48,7 +48,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>FF-BlendColors-GrayTones</name>
+    <name>FF-Mogno</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -191,7 +191,7 @@
   <!-- launchers -->
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
-    <keybind key="A-F1">
+    <keybind key="W-F1">
       <action name="Execute">
         <command>bash -c "rm ~/.jgmenu-lockfile ; jgmenu"</command>
       </action>
@@ -211,9 +211,20 @@
         <command>rofi -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launchers/misc/row_dock.rasi</command>
       </action>
     </keybind>
+    <keybind key="A-F1">
+      <action name="Execute">
+        <command>rofi-search</command>
+      </action>
+    </keybind>
     <keybind key="XF86Search">
       <action name="Execute">
-        <command>rofi -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launchers/misc/row_dock.rasi</command>
+        <command>rofi-search</command>
+      </action>
+    </keybind>
+    <!-- Calculator -->
+    <keybind key="XF86Calculator">
+      <action name="Execute">
+        <command>mate-calc</command>
       </action>
     </keybind>
     <keybind key="A-F3">
@@ -247,7 +258,7 @@
         <command>kitty</command>
       </action>
     </keybind>
-    <keybind key="W-p">
+    <keybind key="C-A-p">
       <action name="Execute">
         <command>evince</command>
       </action>
@@ -279,7 +290,7 @@
     </keybind>
     <keybind key="C-W-f">
       <action name="Execute">
-        <command>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then notify-send "Firefox" "Opened"; else firefox; fi'</command>
+        <command>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then notify-send "Firefox" "Opened"; else nohup firefox &gt;/dev/null 2&gt;1; sleep 4; exec xdotool key alt+3; fi'</command>
         <startupnotify>
           <enabled>yes</enabled>
           <wmclass>firefox</wmclass>
@@ -321,6 +332,17 @@
         </startupnotify>
       </action>
     </keybind>
+    <keybind key="C-A-v">
+      <action name="Execute">
+        <command>bash -c 'pkill -9 tv-default-volu; export script=~/.local/bin/tv-default-volume.sh; export Current_Volume=`~/.local/bin/Current_Volume.sh` export old_vol=`cat "$script" | head -5 | sed -n 5p | cut -c 16-17 | grep -E "[^[:blank:]]"`; export new_vol=`zenity --text "Current volume is $Current_Volume.\nVolume is limited on $old_vol.\n\nEnter new volume:" --entry`; sed -i "5s/$old_vol/$new_vol/" "$script" | sed -i "5s/=$/=$new_vol/" "$script"; "$script"'</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <wmclass>firefox</wmclass>
+          <name>firefox</name>
+          <icon>firefox</icon>
+        </startupnotify>
+      </action>
+    </keybind>
     <keybind key="C-W-w">
       <action name="Execute">
         <command>bash -c "eval $(ps ax|egrep '*\.exe'|grep -v 'egrep'|awk '{print $1 }' | xargs kill -9 $1 ; pkill -9 .exe)"</command>
@@ -354,6 +376,19 @@
         </startupnotify>
       </action>
     </keybind>
+    <!-- Hide Mouse pointer -->
+    <keybind key="W-m">
+      <action name="Execute">
+        <command>bash -c "unclutter -idle 0"</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <wmclass>Hide Mouse pointer</wmclass>
+          <name>Hide Mouse pointer</name>
+          <icon>Hide Mouse pointer</icon>
+        </startupnotify>
+      </action>
+    </keybind>
+    <!-- File Manager -->
     <keybind key="W-n">
       <action name="Execute">
         <command>xdg-open ~/</command>
@@ -368,6 +403,12 @@
     <keybind key="W-b">
       <action name="Execute">
         <command>~/.local/bin/rofi-bluetooth</command>
+      </action>
+    </keybind>
+    <!-- Clipman History -->
+    <keybind key="C-A-c">
+      <action name="Execute">
+        <command>xfce4-clipman-history</command>
       </action>
     </keybind>
     <!-- Correcting errors -->
@@ -393,16 +434,22 @@
         <command>bash -c 'kitty -e ffmpeg -video_size 1920x1080 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -preset ultrafast -tune zerolatency -maxrate 10000k -bufsize 20000k -pix_fmt yuv420p -framerate 15 -g 52 -max_muxing_queue_size 9999 -f mp4 -bsf:v h264_mp4toannexb -movflags frag_keyframe+empty_moov "/home/$USER/V&#xED;deos/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
       </action>
     </keybind>
-    <!-- Tela Normal (Notebook Asus X202E - Vivo Book ) -->
+    <!-- Tela Normal -->
     <keybind key="A-S-F1">
       <action name="Execute">
-        <command>bash -c 'xrandr --output HDMI-0 --off --output eDP-1-1 --mode 1680x1050 --pos 0x0 --rotate normal ; xrandr --output HDMI-0 --off --output eDP-1-1 --mode 1920x1080 --pos 0x0 --rotate normal'</command>
+        <command>bash -c 'xrandr --output HDMI-0 --off --output eDP-1-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal; xrandr --output HDMI-1-0 --off --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal'</command>
       </action>
     </keybind>
     <!-- Inverter tela (Monitor AOC x Notebook Asus X202E - Vivo Book ) -->
     <keybind key="A-S-F2">
       <action name="Execute">
-        <command>bash -c 'xrandr --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate inverted --output eDP-1-1 --mode 1920x1080 --pos 0x0 --rotate normal'</command>
+        <command>bash -c 'xrandr --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate inverted --output eDP-1-1 --mode 1920x1080 --pos 0x0 --rotate normal; xrandr --output HDMI-1-0 --mode 1920x1080 --pos 0x0 --rotate inverted --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal; pactl set-card-profile 0 off'</command>
+      </action>
+    </keybind>
+    <!-- Inverter tela e desativar display do notebook -->
+    <keybind key="A-S-F3">
+      <action name="Execute">
+        <command>bash -c 'xrandr --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate inverted --output eDP-1-1 --off; xrandr --output HDMI-1-0 --mode 1920x1080 --pos 0x0 --rotate inverted --output eDP-1 --off; pactl set-card-profile 0 off'</command>
       </action>
     </keybind>
     <keybind key="S-A-r">
@@ -485,7 +532,7 @@
         <command>bash -c 'catt cast $(xclip -selection clipboard -o) #you_url=`zenity --entry --text "Insira o link do Youtube ou outro Streaming que deseja ser exibido" --title "Streaming"` ; catt cast "$you_url"'</command>
       </action>
     </keybind>
-    <keybind key="C-A-p">
+    <keybind key="W-p">
       <action name="Execute">
         <command>bash -c 'pavuc=`wmctrl -l | grep "Controle de volume" | head -n 1 | awk "{print $1 }"`; if pidof pavucontrol; then wmctrl -ic "$pavuc"; else pavucontrol; fi'</command>
         <startupnotify>
@@ -580,7 +627,7 @@
         <command>bash -c 'pkill -9 tint2 ; cp -f "$(ls -c "$HOME"/.config/tint2/*.tint2rc | shuf -n 1)" "$HOME"/.config/tint2/tint2rc ; tint2 -c "$HOME"/.config/tint2/tint2rc'</command>
       </action>
     </keybind>
-    <keybind key="C-S-A-d">
+    <keybind key="C-A-d">
       <action name="Execute">
         <command>bash -c "/bin/openrc-shutdown --poweroff now ; systemctl -i poweroff"</command>
       </action>
@@ -628,7 +675,7 @@
     </keybind>
     <keybind key="C-Escape">
       <action name="Execute">
-        <command>kitty -t HTOP -e htop</command>
+        <command>kitty -e htop</command>
       </action>
     </keybind>
     <keybind key="W-u">
