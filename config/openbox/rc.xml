@@ -245,7 +245,7 @@
     <!-- Hour in big size -->
     <keybind key="C-W-t">
       <action name="Execute">
-        <command>kitty -e ~/.local/bin/hour.sh</command>
+        <command>bash -c "echo `date +%T` | osd_cat -d 3 -s 1 -A center -l 1 -p middle -O 1 --color=#00ff73 --shadow=1 -f '-*-helvetica-bold-*-*-*-150-*-*-*-*-*-*'"</command>
       </action>
     </keybind>
     <keybind key="W-t">
@@ -354,17 +354,13 @@
         </startupnotify>
       </action>
     </keybind>
+    <!-- Transmission-->
     <keybind key="C-A-t">
       <action name="Execute">
         <command>bash -c "$HOME/.local/bin/toggle-transmission-gtk"</command>
-        <startupnotify>
-          <enabled>yes</enabled>
-          <wmclass>qbittorrent</wmclass>
-          <name>qbittorrent</name>
-          <icon>qbittorrent</icon>
-        </startupnotify>
       </action>
     </keybind>
+    <!-- Accessibility Zoom Screen -->
     <keybind key="C-W-m">
       <action name="Execute">
         <command>bash -c "pkill -9 vmg ; vmg"</command>
@@ -572,12 +568,12 @@
     </keybind>
     <keybind key="XF86AudioLowerVolume">
       <action name="Execute">
-        <command>bash -c "ponymix decrease 2% ; pactl set-sink-volume 0 -3% ; pactl set-sink-volume 4 -3%"</command>
+        <command>bash -c "ponymix decrease 2% ; pactl set-sink-volume 0 -3% ; pactl set-sink-volume 4 -3%; pkill -9 osd_cat; xrefresh; echo Volume:\ `pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'` | osd_cat -d 1 -s 30 -A center -l 1 -p middle -o 30 --color=#00ff73 --shadow=1 -f '-*-helvetica-bold-*-*-*-64-*-*-*-*-*-*'"</command>
       </action>
     </keybind>
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
-        <command>bash -c "ponymix increase 2% ; pactl set-sink-volume 0 +3% ; pactl set-sink-volume 4 +3%"</command>
+        <command>bash -c "ponymix increase 2% ; pactl set-sink-volume 0 +3% ; pactl set-sink-volume 4 +3%; pkill -9 osd_cat; xrefresh; echo Volume:\ `pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'` | osd_cat -d 1 -s 30 -A center -l 1 -p middle -o 30 --color=#00ff73 --shadow=1 -f '-*-helvetica-bold-*-*-*-64-*-*-*-*-*-*'"</command>
       </action>
     </keybind>
     <keybind key="XF86MonBrightnessDown">
