@@ -1590,7 +1590,7 @@
       </mousebind>
       <mousebind action="Press" button="Right">
         <action name="ShowMenu">
-          <menu>root-menu</menu>
+          <!--menu>root-menu</menu-->
         </action>
       </mousebind>
     </context>
