@@ -1,13 +1,18 @@
-#export TERM="xterm-256color"
-#export COLORTERM="truecolor"
-export EDITOR=nvim
-export VISUAL=nvim
+# Enable the subsequent settings only in interactive sessions
+case $- in
+  *i*) ;;
+    *) return;;
+esac
+
 # Path to your oh-my-bash installation.
-export OSH=/home/$USER/.oh-my-bash
+export OSH=/home/rfacundes/.oh-my-bash
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
-OSH_THEME="powerline"
+#OSH_THEME="font"
+#OSH_THEME="powerline"
+OSH_THEME="agnoster"
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -17,6 +22,9 @@ OSH_THEME="powerline"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
+#
+# Deprecated option
+# DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_OSH_DAYS=13
@@ -46,6 +54,10 @@ OSH_THEME="powerline"
 # Would you like to use another custom folder than $OSH/custom?
 # OSH_CUSTOM=/path/to/new-custom-folder
 
+# To disable the uses of "sudo" by oh-my-bash, please set "false" to
+# this variable.  The default behavior for the empty value is "true".
+OMB_USE_SUDO=true
+
 # Which completions would you like to load? (completions can be found in ~/.oh-my-bash/completions/*)
 # Custom completions may be added to ~/.oh-my-bash/custom/completions/
 # Example format: completions=(ssh git bundler gem pip pip3)
@@ -73,7 +85,14 @@ plugins=(
   bashmarks
 )
 
-source $OSH/oh-my-bash.sh
+# Which plugins would you like to conditionally load? (plugins can be found in ~/.oh-my-bash/plugins/*)
+# Custom plugins may be added to ~/.oh-my-bash/custom/plugins/
+# Example format: 
+#  if [ "$DISPLAY" ] || [ "$SSH" ]; then
+#      plugins+=(tmux-autoattach)
+#  fi
+
+source "$OSH"/oh-my-bash.sh
 
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -94,16 +113,30 @@ source $OSH/oh-my-bash.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-bash libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-bash
-# users are encouraged to define aliases within the OSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias bashconfig="mate ~/.bashrc"
-# alias ohmybash="mate ~/.oh-my-bash
+export vblank_mode=0
+export __GL_SYNC_TO_VBLANK=0
+###################################################################################################
+##### ███╗   ███╗██╗   ██╗    ███████╗███████╗████████╗████████╗██╗███╗   ██╗ ██████╗ ███████╗
+##### ████╗ ████║╚██╗ ██╔╝    ██╔════╝██╔════╝╚══██╔══╝╚══██╔══╝██║████╗  ██║██╔════╝ ██╔════╝
+##### ██╔████╔██║ ╚████╔╝     ███████╗█████╗     ██║      ██║   ██║██╔██╗ ██║██║  ███╗███████╗
+##### ██║╚██╔╝██║  ╚██╔╝      ╚════██║██╔══╝     ██║      ██║   ██║██║╚██╗██║██║   ██║╚════██║
+##### ██║ ╚═╝ ██║   ██║       ███████║███████╗   ██║      ██║   ██║██║ ╚████║╚██████╔╝███████║
+##### ╚═╝     ╚═╝   ╚═╝       ╚══════╝╚══════╝   ╚═╝      ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚══════
+###################################################################################################
+########################################### MY SETTINGS ###########################################
 
-##################################################
+#prompt_context() {
+#  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+#    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+#  fi
+#}
+
+prompt_context() {
+  # Custom (Random emoji)
+  emojis=("🔥" "👑" "😎" "🐵" "🚀" "💡" "🎉" "🔑" "🇧🇷" "" "🚦" "🌙" "😃" "░A░r░c░h░" "𝐀𝐫𝐜𝐡" "░▒▓█ 𝔸𝕣𝕔𝕙 █▓▒░" "▀▄▀▄▀▄ Ａｒｃｈ ▄▀▄▀▄▀" "▌│█║▌║▌║ 𝘼𝙧𝙘𝙝 ║▌║▌║█│▌")
+  RAND_EMOJI_N=$(( $RANDOM % ${#emojis[@]} + 1))
+  prompt_segment black default "${emojis[$RAND_EMOJI_N]} "
+}
 
 export HISTFILESIZE=100000
 export HISTSIZE=100000
@@ -121,23 +154,164 @@ export PS1="\[\e[32m\]\t \[$txtgrn\]\u\[$txtwht\]@\[$txtgrn\]\h \[$txtylw\]\w\[$
 export PATH=$PATH:~/.local/bin
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
-export EDITOR=nvim
-#export RBENV_ROOT=/usr/local/var/rbenv
+export EDITOR=vim
+export VISUAL=vim
+#complete -cf pacman
+complete -abcdefgjksuv pacman
+#complete -cf sudo
+complete -abcdefgjksuv sudo
+########################################################################################################
+##### ███╗   ███╗██╗   ██╗    ███████╗██╗   ██╗███╗   ██╗ ██████╗████████╗██╗ ██████╗ ███╗   ██╗███████╗
+##### ████╗ ████║╚██╗ ██╔╝    ██╔════╝██║   ██║████╗  ██║██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║██╔════╝
+##### ██╔████╔██║ ╚████╔╝     █████╗  ██║   ██║██╔██╗ ██║██║        ██║   ██║██║   ██║██╔██╗ ██║███████╗
+##### ██║╚██╔╝██║  ╚██╔╝      ██╔══╝  ██║   ██║██║╚██╗██║██║        ██║   ██║██║   ██║██║╚██╗██║╚════██║
+##### ██║ ╚═╝ ██║   ██║       ██║     ╚██████╔╝██║ ╚████║╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║███████║
+##### ╚═╝     ╚═╝   ╚═╝       ╚═╝      ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝
+########################################################################################################
+############################################# MY FUNCTIONS #############################################
+check_hd()
+{
+clear -T "$TERM"
 
-# Aliases
+sudo su -c '
+    umount /dev/mapper/HD-HD_lv
+    e2fsck -f -y /dev/mapper/HD-HD_lv
+    e2fsck -p /dev/mapper/HD-HD_lv
+    tune2fs -c 1 /dev/mapper/rootvg-rootlv
+    tune2fs -c 1 /dev/mapper/HD-HD_lv
+    mount /dev/mapper/HD-HD_lv /home/rfacundes/Documentos/HD
+    e4defrag -c /dev/mapper/HD-HD_lv
+    e4defrag -c /home/rfacundes/Documentos/HD
+    e4defrag -c /dev/mapper/rootvg-rootlv
+    e4defrag -c /
+'
 
-alias ls="lsd"
+tput setaf 2
+cat <<'EOF'
+###################
+Comandos executados:
+###################
+
+umount /dev/mapper/HD-HD_lv
+e2fsck -f -y /dev/mapper/HD-HD_lv
+e2fsck -p /dev/mapper/HD-HD_lv
+tune2fs -c 1 /dev/mapper/rootvg-rootlv
+tune2fs -c 1 /dev/mapper/HD-HD_lv
+mount /dev/mapper/HD-HD_lv /home/rfacundes/Documentos/HD
+e4defrag -c /dev/mapper/HD-HD_lv
+e4defrag -c /home/rfacundes/Documentos/HD
+e4defrag -c /dev/mapper/rootvg-rootlv
+e4defrag -c /
+
+EOF
+tput sgr0
+}
+
+performance_hd()
+{
+export device=sdb
+green='\033[1;32m'
+nc='\033[0m' # No Color
+sudo su -c "
+    hdparm -I /dev/${device}
+    hdparm -Tt /dev/${device}
+    echo
+    echo
+    echo -e 'Command: ${green}hdparm -a /dev/${device}${nc}'
+    hdparm -a /dev/${device}
+    hdparm -a254 /dev/${device}
+    echo
+    echo
+    echo -e 'Command: ${green}hdparm -m /dev/${device}${nc}'
+    hdparm -m /dev/${device}
+    #hdparm -m16 /dev/${device}
+    hdparm -m0 --yes-i-know-what-i-am-doing /dev/${device}
+    echo
+    echo
+    echo -e 'Command: ${green}hdparm -M /dev/${device}${nc}'
+    hdparm -M /dev/${device}
+    hdparm -M 128 /dev/${device}
+    echo
+    echo
+    echo -e 'Command: ${green}hdparm -W /dev/${device}${nc}'
+    hdparm -W /dev/${device}
+    echo
+    echo
+    echo -e 'Command: ${green}hdparm -B /dev/${device}${nc}'
+    hdparm -B /dev/${device}
+    hdparm -B254 /dev/${device}
+    echo
+    echo
+    echo -e 'Command: ${green}hdparm -d0 /dev/${device}${nc}'
+    hdparm -d0 /dev/${device}
+    hdparm -Tt /dev/${device}
+    hdparm -t --direct /dev/${device}
+"
+}
+
+tv_volume()
+{
+    cat <<'EOF'
+Command:
+~/.local/bin/lgtv audio getStatus | grep -Ev '^[[:blank:]]*$' | tail -1 | sed 's|}||g' | sed 's|{||g' | sed 's|"||g' | cut -c 233-236 | cut -d':' -f 2
+
+EOF
+
+    echo Volume: `~/.local/bin/lgtv audio getStatus \
+    | grep -Ev '^[[:blank:]]*$' \
+    | tail -1 | sed 's|}||g' \
+    | sed 's|{||g' \
+    | sed 's|"||g' \
+    | cut -c 233-236 \
+    | cut -d':' -f 2`
+}
+#########################################################
+#####  █████╗ ██╗     ██╗ █████╗ ███████╗███████╗███████╗
+##### ██╔══██╗██║     ██║██╔══██╗██╔════╝██╔════╝██╔════╝
+##### ███████║██║     ██║███████║███████╗█████╗  ███████╗
+##### ██╔══██║██║     ██║██╔══██║╚════██║██╔══╝  ╚════██║
+##### ██║  ██║███████╗██║██║  ██║███████║███████╗███████║
+##### ╚═╝  ╚═╝╚══════╝╚═╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════
+#########################################################
+######################## ALIASES ########################
+# Set personal aliases, overriding those provided by oh-my-bash libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-bash
+# users are encouraged to define aliases within the OSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias bashconfig="mate ~/.bashrc"
+# alias ohmybash="mate ~/.oh-my-bash"
+######################################
+############### System ###############
+alias playongit_review='bash ~/.local/bin/base_for_create_installation_script.sh'
+alias c='clear'
+alias u='sudo pacman -Syyu --noconfirm'
+alias list-gpu='tput bold; tput setaf 3; echo "xrandr --listproviders"; tput sgr0; echo; xrandr --listproviders'
+alias gpu-list='list-gpu'
+alias INTEL='tput bold; tput setaf 3; echo "xrandr --setprovideroutputsource modesetting modesetting"; tput sgr0; xrandr --setprovideroutputsource modesetting modesetting'
+alias NVIDIA='tput bold; tput setaf 3; echo "xrandr --setprovideroutputsource modesetting NVIDIA-0"; tput sgr0; xrandr --setprovideroutputsource modesetting NVIDIA-0'
+alias kl='setxkbmap -option "terminate:ctrl_alt_bksp"; xdotool key ctrl+alt+BackSpace'
+alias wget='tput setaf 9; echo -e "\nAtenção!\n"; tput setaf 6; echo -e "Baixe sites completos com WGET\n"; tput setaf 11; echo -e "wget -r -p -E --execute=robots=off --limit-rate=100k --convert-links --random-wait -U mozilla\n"; tput setaf 7; wget'
+alias dd='dd --help; tput setaf 9; echo -e "\nAtenção!\n"; tput setaf 6; echo -e "Crie pendrives bootáveis de SO: BSDs e Distros Linux\n"; tput setaf 11; echo -e "sudo dd if=DISTRO.iso of=/dev/sdX bs=70k oflag=direct conv=sync status=progress && sync\n"; tput setaf 7; dd'
+alias neofetch="~/.make/neofetch/neofetch"
+alias cp="advcp -g" # Advanced copy
+alias mv='tput setaf 11; echo -e "mv -v --backup=t\n"; tput setaf 7; mv -v --backup=t'
+alias mvd='echo "mv file (date +%d-%m-%Y_%H:%M:%S)"'
+alias aur="yay -S --nodiffmenu --noeditmenu --noupgrademenu --mflags --skipinteg --noconfirm"
 alias cpi="cpupower frequency-info"
 alias bi="cd ~/.local/bin"
-alias cp="advcp -g"
-alias reboot="/usr/bin/openrc-shutdown --reboot now"
-alias shutdown="/usr/bin/openrc-shutdown --poweroff now"
-alias matar="pkill -9 -u maria"
-alias yd="youtube-dl -i"
-alias a="sudo pacman -Syyuu"
-alias limpawine="rm -rf ~/.local/share/applications/*wine*"
+alias shutdown="openrc-shutdown -p now; systemctl poweroff -i; shutdown -h now"
+#alias reboot="/usr/bin/openrc-shutdown --reboot now"
+alias des="shutdown"
+alias cleanswap-force='sudo swapoff /dev/zram0 && sudo swapoff -a; sudo swapon /dev/zram0 -p 10; sudo swapon -a; cat /proc/swaps; echo "Memória Swap liberada"'
+alias cleanram='sudo su -c "echo 1 > /proc/sys/vm/drop_caches"; sudo su -c "echo 2 > /proc/sys/vm/drop_caches"; sudo su -c "echo 3 > /proc/sys/vm/drop_caches"; free -h'
+alias clean='sudo su -c "echo 1 > /proc/sys/vm/drop_caches"; sudo su -c "echo 2 > /proc/sys/vm/drop_caches"; sudo su -c "echo 3 > /proc/sys/vm/drop_caches"; sudo swapoff /dev/zram0 && sudo swapoff -a; sudo swapon /dev/zram0 -p 10; sudo swapon -a; cat /proc/swaps; free -h; echo "Memória RAM e Swap liberadas"'
+alias up="sudo pacman -Syyu"
+alias so="echo source ~/.zshrc; source ~/.zshrc"
 alias lwine="rm -rf ~/.local/share/applications/*wine*"
-alias rwine="rm -rf ~/.local/share/applications/*wine*"
+alias limpawine="lwine"
+alias rwine="lwine"
 alias remover="rm ~/.local/share/applications/remover-*.desktop"
 alias mwine="ps ax|egrep '*\.exe'|grep -v 'egrep'|awk '{print $1 }' | xargs kill -9 $1 ; wineserver -k; wineserver -k9; pkill -9 .exe; pkill -9 Steam; pkill -9 steam; pkill -9 Epic; pkill -9 wine; pkill -9 wineserver; killall -9 wine wineserver; killall -9 .exe"
 alias renicewine1="ps ax|egrep '*\.exe'|grep -v 'egrep'|awk '{print $1 }' | xargs sudo renice -n -2 -p $1 ; echo --- ; \
@@ -156,57 +330,122 @@ alias reniceuser3="sudo renice -n -5 -u $USER ; echo --- ; \
 top -bn 1 | grep -Ei --color $USER ; echo --- ; echo 'sudo renice -n -5 -u $USER'"
 alias reniceuser4="sudo renice -n -7 -u $USER ; echo --- ; \
 top -bn 1 | grep -Ei --color $USER ; echo --- ; echo 'sudo renice -n -7 -u $USER'"
-alias r1="renice -n -2 -u $USER ; echo --- ; \
-top -bn 1 | grep -Ei --color $USER ; echo --- ; echo 'renice -n -2 -u $USER'"
-alias r2="renice -n -3 -u $USER ; echo --- ; \
-top -bn 1 | grep -Ei --color $USER ; echo --- ; echo 'renice -n -3 -u $USER'"
-alias r3="renice -n -5 -u $USER ; echo --- ; \
-top -bn 1 | grep -Ei --color $USER ; echo --- ; echo 'renice -n -5 -u $USER'"
-alias all="pkill -9 -u $USER"
+alias r1="reniceuser1"
+alias r2="reniceuser2"
+alias r3="reniceuser3"
+alias r4="reniceuser4"
 alias a="pkill -9 -u $USER"
+alias all="a"
+alias matar="a"
 alias temp="sensors k10temp-pci-00c3 | grep --color -i temp1 | lolcat ; sensors amdgpu-pci-0100 | grep --color -i temp1 | lolcat"
 alias reflect="sudo reflector -c Brazil --save /etc/pacman.d/mirrorlist-arch"
-alias mirror="sudo reflector -c Brazil --save /etc/pacman.d/mirrorlist-arch"
+alias mirror="reflect"
 #alias performance="sudo cpupower frequency-set -d 3.3G ; sudo cpupower frequency-set -u 3.3G ; sudo cpupower frequency-set -g performance"
 alias game="sudo cpupower frequency-set -u 3.3G ; sudo cpupower frequency-set -g performance ; echo --- ; \
 echo 'sudo cpupower frequency-set -u 3.3G ; sudo cpupower frequency-set -g performance'"
-alias performance="sudo cpupower frequency-set -u 3.3G ; sudo cpupower frequency-set -g performance ; echo --- ; \
-echo 'sudo cpupower frequency-set -u 3.3G ; sudo cpupower frequency-set -g performance'"
-alias pachis_ins="paclog-pkglist <(tail -100 /var/log/pacman.log  | grep -A 3 -i installed) ; echo --- ; \
-echo 'paclog-pkglist <(tail -100 /var/log/pacman.log  | grep -A 3 -i installed)'"
-alias pachis_ins2="paclog-pkglist <(tail -2000 /var/log/pacman.log  | grep -A 3 -i 'pacman -S') ; echo --- ; \
-echo 'paclog-pkglist <(tail -2000 /var/log/pacman.log  | grep -A 3 -i 'pacman -S')'"
-alias pachis_rem="paclog-pkglist <(tail -5000 /var/log/pacman.log  | grep -A 100 -i 'pacman -Rcs') ; echo --- ; \
-echo 'paclog-pkglist <(tail -5000 /var/log/pacman.log  | grep -A 100 -i 'pacman -Rcs')'"
-alias pachis="xdg-open /var/log/pacman.log"
+alias performance="game"
+alias pachis_ins="paclog-pkglist <(tail -100 /var/log/pacman.log | grep -A 3 -i installed) ; echo --- ; \
+echo 'paclog-pkglist <(tail -100 /var/log/pacman.log | grep -A 3 -i installed)'"
+alias pachis_ins2="paclog-pkglist <(tail -2000 /var/log/pacman.log | grep -A 3 -i 'pacman -S') ; echo --- ; \
+echo 'paclog-pkglist <(tail -2000 /var/log/pacman.log | grep -A 3 -i 'pacman -S')'"
+alias pachis_rem="paclog-pkglist <(tail -5000 /var/log/pacman.log | grep -A 100 -i 'pacman -Rcs') ; echo --- ; \
+echo 'paclog-pkglist <(tail -5000 /var/log/pacman.log | grep -A 100 -i 'pacman -Rcs')'"
+alias pachis="less /var/log/pacman.log #xdg-open"
 alias listmonitor="xrandr --listmonitors ; echo --- ; echo xrandr --listmonitors"
-alias monitorlist="xrandr --listmonitors ; echo --- ; echo xrandr --listmonitors"
+alias monitorlist="listmonitor"
 alias brilho="xrandr --output HDMI-A-0 --brightness 0.8 ; echo --- ; echo xrandr --output HDMI-A-0 --brightness 0.8"
 alias gamma="xgamma -gamma .90 ; echo --- ; echo xgamma -gamma .90"
-alias gama="xgamma -gamma .90 ; echo --- ; echo xgamma -gamma .90"
-alias blue="xgamma -bgamma 1.1 ; xgamma -rgamma .8 ; echo --- ; echo 'xgamma -bgamma 1.1 ; xgamma -rgamma .8'"
-alias gt="ffmpeg -video_size 1360x768 -framerate 25 -f x11grab -i :0.0 -f pulse -ac 2 -i default ~/Videos/Tela_$(date +%d-%m-%Y_%H:%M:%S).mkv ; echo --- ; echo 'ffmpeg -video_size 1360x768 -framerate 25 -f x11grab -i :0.0 -f pulse -ac 2 -i default ~/Videos/Tela_$(date +%d-%m-%Y_%H:%M:%S).mkv'"
+alias gama="gamma"
+alias blue='xgamma -bgamma 1.1 ; xgamma -rgamma .8 ; echo --- ; echo "xgamma -bgamma 1.1 ; xgamma -rgamma .8"'
+alias pip-upgrade-all="echo 'sudo pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 sudo pip install -U' ; sudo su -c 'pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U'"
+alias pip-upgrade-all-2="echo 'sudo pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 sudo pip install -U' ; sudo su -c 'pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U'"
+alias mute="pactl set-sink-mute 0 toggle ; pactl set-sink-mute 4 toggle"
+alias volume="pactl set-sink-volume 0 "
+alias vol="pactl set-sink-volume 0 "
+alias ffp.leg='echo "Antes, execute export v=arquivo.m.."; for i in "$v"; do name="${i%.*}"; echo $name; ffplay2.8 "$i" -vf subtitles="${name}.srt"; done'
+alias ffp='for i in *.[mM][pPkK][vV4]; do ffplay2.8 "$i" -vf subtitles="${i/.[mM][pPkK][vV4]/.srt}"; done'
+alias ffp.f='for i in *.[mM][kKpP][vV4]; do name="${i%.*}"; echo $name; ffplay2.8 "$i" -vf subtitles="${name}.forced.srt"; done'
+alias ffp.f.leg='echo "Antes, execute export v=arquivo.m.."; for i in "$v"; do ffplay2.8 "$i" -vf subtitles="${i/.[mM][pPkK][vV4]/.forced.srt}"; done'
+alias testevideo='ls *.[mM][pPkK][vV4]; ls *.[sS][rR][tT]'
+alias meuip='echo -e "'"curl -s checkip.dyndns.org | awk '{ print $NF }'"'\n'"curl -s https://icanhazip.com"'\n'"curl -s https://checkip.amazonaws.com"'\n\n"Ou com perl:"\n'"lwp-request -o text checkip.dyndns.org | awk '{ print $NF }'"'"'
+alias myip='meuip'
+alias Ent='xdotool key Return'
+alias Enter='Ent'
+alias Min='xdotool windowminimize $(xdotool getactivewindow)'
+alias f='firefox'
+alias p='export DISPLAY=":0" && unset HISTFILE && firefox --private-window'
+alias private='p'
+alias ex='export'
+alias undevel='sudo pacman -Rcs autoconf texinfo pkgconf patch make m4 groff flex binutils automake autoconf gcc'
+alias devel='sudo pacman -S autoconf texinfo pkgconf patch make m4 groff flex binutils automake autoconf gcc'
+alias vim-remove-space='tput setaf 11; echo -e "Comandos simples para remover espaços em branco indesejados\n-----------------------------------------------------------\nEm uma pesquisa, \s encontra um espaço em branco (um espaço ou uma guia) e \+ encontra uma ou mais ocorrências.\n\nO comando a seguir exclui qualquer espaço em branco no final de cada linha. Se nenhum espaço em branco for encontrado, nenhuma alteração ocorre e o esinalizador significa que nenhum erro é exibido.\n\n:%s/\s\+$//e\n\nO seguinte exclui qualquer espaço em branco inicial no início de cada linha.\n\n:%s/^\s\+//e\n\nMesma coisa (:le = :left = left-align alinhar à esquerda dado intervalo; % = todas as linhas):\n:%le\n\nCom o mapeamento a seguir, um usuário pode pressionar F5 para excluir todos os espaços em branco à direita. A variável _sé usada para salvar e restaurar o último registro de padrão de pesquisa (assim, da próxima vez que o usuário pressionar n, ele continuará sua última pesquisa) e :nohlé usada para desligar o realce da pesquisa (para que os espaços finais não sejam realçados enquanto o usuário digita). O esinalizador é usado no comando substitute para que nenhum erro seja mostrado se o espaço em branco final não for encontrado. Ao contrário de antes, o texto de substituição deve ser especificado para usar o sinalizador necessário.\n\n:nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>\n\nSe você quiser remover todas as lihas em branco, use:\n\n:g/^\s*$/d\n\nSe quiser vírgulas. Assim: (:s///) em cada linha (%) para substituir todos (g) os espaços em branco contínuos (\s\+) por uma vírgula (,). Use:\n\n:%s/\s\+/,/g\n\nOutra maneira de fazer isso:\n\n:%s/\s\{1,}/,/gc\n\nAo converter um arquivo de texto com cabeçalhos e campos de texto com espaço. Use:\n\n:%s/\s\{2,}/,/g\n\nRemova espaços no meio da linha, e retire o excesso de tabulação:\n\n:%s/\([^ ]\+ \) \+/\1/g\n\nIsso pesquisará cada ocorrência que não tenha precedência em branco e substituirá o seguinte conjunto de espaços por apenas um espaço.\nIsso, no entanto, deixará um único espaço à direita nas linhas que tinham vários espaços à direita. Para corrigir isso, use o comando:\n\n:%s/ *$//"'
+alias mouse-coordinates='eval $(xdotool getmouselocation --shell); tput setaf 3; echo -e "eval $(xdotool getmouselocation --shell) ; echo $X $Y\n"; xdotool getmouselocation'
+alias mouse-coordenadas='mouse-coordinates'
+alias bkp='ls -v | cat -n | while read n f; do mv -n "$f" "$f.$n"; done'
+alias igjssh="echo ssh iar3@192.168.1.84 ; ssh iar3@192.168.1.84"
+alias ssh2send="echo scp file user@ip.x.x.x:/home/user"
+alias scp='tput setaf 11; echo -e "scp file user@ip.x.x.x:/home/user/\n\n"; tput setaf 7; scp'
+alias ftp='tput setaf 11; echo -e "ftp 192.168.X.X 2121\n\n"; tput setaf 7; ftp'
+alias ssh='tput setaf 11; echo -e "ssh -p 22 user@192.168.X.X\n\n"; tput setaf 7; ssh'
+alias sftp='tput setaf 11; echo -e ""sftp -P 2222 user@192.168.X.X"\n\n"Faça Download de diretórios com: get -r"\n\n"; tput setaf 7; sftp'
+alias rsync2ssh="echo rsync -avzh --progress /diretório usuário@192.168.X.X:/home/usuário"
+alias rsync='tput setaf 11; echo -e """Envie arquivos e diretórios via rsync usando a porta 22 (ssh)""\n\n""rsync -avzh --progress /diretório usuário@192.168.1.XX:/home/usuário""\n"; tput setaf 7; rsync'
+
+#######################################
+########## Photos and Videos ##########
+
+alias im-options='tput setaf 11; echo -e "\n"Veja mais opções, com:"\n"convert --help"\n\n"Olhe os exemplos abaixo:"\n\n"convert -channel RGB -contrast-stretch 1x1%"\n"convert -level 25%,75%"\n"convert +level 0x120%"\n"convert -sharpen  0x4"\n"convert -contrast -contrast -contrast"\n"convert -fx "u*125/102" +repage"\n"convert -channel green -fx "u*42/255" +repage"\n"convert -function Polynomial "-3.786,5.767,-1.543,0.562,0""\n"convert -sigmoidal-contrast 2,0%"\n"convert -sigmoidal-contrast 15x30%"\n""convert -normalize -unsharp 12x25 (Para aumentar a nitidez)""\n""convert imagem.jpg -colors 5 paleta.jpg (Para extrair às cores dominantes, e depois melhorar a imagem com Gimp > Duplicar Camada > Menu - Inverter cor > e em camadas > extrair grãos)""\n\n"Visite:"\n"https://legacy.imagemagick.org/Usage/color_mods/"\n"https://im.snibgo.com/ckbkClut.htm"\n"https://www.imagemagick.org/Usage/mapping/"\n"https://www.imagemagick.org/Usage/thumbnails/"\n"https://legacy.imagemagick.org/Usage/transform/"\n""https://www.imagemagick.org/discourse-server/viewtopic.php?t=35836""\n"https://legacy.imagemagick.org/Usage/photos/"\n"https://stackoverflow.com/questions/26889358/generate-color-palette-from-image-with-imagemagic"\n\n"; tput setaf 7'
+alias convert='im-options; convert'
+alias ima="cd ~/Imagens"
+alias wpp="cd ~/Imagens/Wallpapers"
+alias wallpp="wpp"
+alias yd="youtube-dl -i"
+alias gt='ffmpeg -video_size 1366x768 -framerate 15 -f x11grab -i $DISPLAY -f pulse -ac 2 -i default ~/Vídeos/Tela_$(date +%d-%m-%Y_%H:%M:%S).mkv ; echo --- ; echo "ffmpeg -video_size 1360x768 -framerate 15 -f x11grab -i :0.0 -f pulse -ac 2 -i default ~/Vídeos/Tela_$(date +%d-%m-%Y_%H:%M:%S).mkv"'
 alias gif="echo 'ffmpeg -i Tela_09-12-2019_14:40:57.mkv -filter_complex '[0:v] palettegen' palette.png ; ffmpeg -ss 00:00:26.00 -t 8 -r 23 -i Tela_09-12-2019_14:40:57.mkv -i palette.png -filter_complex '[0:v][1:v] paletteuse' -pix_fmt rgb24 -s 616x182 GuildWars2.gif'"
-alias criargif="echo 'ffmpeg -i Tela_09-12-2019_14:40:57.mkv -filter_complex '[0:v] palettegen' palette.png ; ffmpeg -ss 00:00:26.00 -t 8 -r 23 -i Tela_09-12-2019_14:40:57.mkv -i palette.png -filter_complex '[0:v][1:v] paletteuse' -pix_fmt rgb24 -s 616x182 GuildWars2.gif'"
-
-function xc() {
-  xcode=`xcode-select -p | sed 's/\(.*\)\(Xcode.*\.app\).*/\2/'`
-  find "$1" -name "*.xcodeproj" -maxdepth 1 | xargs -I file open -a $xcode "file"
-}
-
-DISABLE_UPDATE_PROMPT=true
-DISABLE_AUTO_UPDATE=true
-
-~/.make/neofetch/neofetch --cpu_temp
-#sensors k10temp-pci-00c3 | grep --color -i temp1 | lolcat
-#sensors amdgpu-pci-0100 | grep --color -i temp1 | lolcat
-
-#complete -cf pacman
-complete -abcdefgjksuv pacman
-#complete -cf sudo
-complete -abcdefgjksuv sudo
-
-export vblank_mode=0
-export __GL_SYNC_TO_VBLANK=0
-
-
+alias criargif="gif"
+alias mi='tput setaf 6; echo -e "\nA imagem será convertida na resolução desejada.\nPorém, antes execute o comando "export resolution=XxY":\nComo exemplo será usada o padrão FullHD (1920x1080)\nLembrando que HD é 1280x720\n4k = 3840x2160\n8k fulldome = 8192×8192 (67.1 megapixels)\n"; tput setaf 3; echo "export resolution=1920x1080\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e "convert -adaptive-resize $resolution -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0\n"; convert -adaptive-resize "$resolution" -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0'
+alias rs='mi'
+alias resize='mi'
+alias 4k='tput setaf 6; echo -e "\nA imagem será convertida na resolução 4k\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e "convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0\n"; convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0'
+alias 4kj-m='convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0 *.[jJpP][nNpP][gG] -set filename:base "%[basename]" "%[filename:base]-4k.jpg" ; jpegoptim *.jpg'
+alias 4kp-m='convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0 *.[jJpP][nNpP][gG] -set filename:base "%[basename]" "%[filename:base]-4k.png"'
+alias 4kw-m='convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+0 *.[jJpP][nNpP][gG] -set filename:base "%[basename]" "%[filename:base]-4k.webp"'
+alias 4kj='tput setaf 6; echo -e "\nAs imagens serão convertidas na resolução 4k\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e "for i in *.[jJpP][nNpP][gG]; do convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+01 '$i' '${i/.[jJpP][nNpP][gG]/-4k.jpg}'; rm '${i/}'; done\n"; for i in *.[jJpP][nNpP][gG]; do convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+01 $i ${i/.[jJpP][nNpP][gG]/-4k.jpg}; rm ${i/}; done ; jpegoptim *.jpg'
+alias 4kp='tput setaf 6; echo -e "\nAs imagens serão convertidas na resolução 4k\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e "for i in *.[jJpP][nNpP][gG]; do convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+01 '$i' '${i/.[jJpP][nNpP][gG]/-4k.png}'; rm '${i/}'; done\n"; for i in *.[jJpP][nNpP][gG]; do convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+01 $i ${i/.[jJpP][nNpP][gG]/-4k.png}; rm ${i/}; done'
+alias 4kw='tput setaf 6; echo -e "\nAs imagens serão convertidas na resolução 4k\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e "for i in *.[jJpP][nNpP][gG]; do convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+01 '$i' '${i/.[jJpP][nNpP][gG]/-4k.webp}'; rm '${i/}'; done\n"; for i in *.[jJpP][nNpP][gG]; do convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+01 $i ${i/.[jJpP][nNpP][gG]/-4k.webp}; rm ${i/}; done'
+alias ulight='tput setaf 6; echo -e "Será aplicado curvas de brilho na(s) imagen(s)\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e ""convert -function polynomial "-0.762,3.333,-5.167,3.595,-0.000""\n" ; convert -function polynomial "-0.762,3.333,-5.167,3.595,-0.000" '
+alias ulight-m='tput setaf 6; echo -e "Será aplicado curvas de brilho na(s) imagen(s)\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e ""convert -function polynomial "-0.762,3.333,-5.167,3.595,-0.000" *.[jJpP][nNpP][gG] -set filename:base "%[basename]" "%[filename:base]-light.jpg""\n" ; convert -function polynomial "-0.762,3.333,-5.167,3.595,-0.000" *.[jJpP][nNpP][gG] -set filename:base "%[basename]" "%[filename:base]-light.jpg"'
+alias light-hight='tput setaf 6; echo -e "Será aplicado curvas de brilho na(s) imagen(s)\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e ""convert -function polynomial "-0.762,3.333,-5.167,3.595,-0.000""\n" ; convert -function polynomial "-0.762,3.333,-5.167,3.595,-0.000" '
+alias light-hight-m='tput setaf 6; echo -e "Será aplicado curvas de brilho na(s) imagen(s)\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e ""convert -function polynomial "-0.762,3.333,-5.167,3.595,-0.000" *.[jJpP][nNpP][gG] -set filename:base "%[basename]" "%[filename:base]-light.jpg""\n" ; convert -function polynomial "-0.762,3.333,-5.167,3.595,-0.000" *.[jJpP][nNpP][gG] -set filename:base "%[basename]" "%[filename:base]-light.jpg"'
+alias negative-black='tput setaf 6; echo -e "Será aplicado efeito de negativo em modo escuro na(s) imagen(s)\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e ""convert -function polynomial "-0.331,1.111,-2.033,1.442,-0.000""\n" ; convert -function polynomial "-0.331,1.111,-2.033,1.442,-0.000" '
+alias negative-black-m='tput setaf 6; echo -e "Será aplicado efeito de negativo em modo escuro na(s) imagen(s)\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e ""convert -function polynomial "-0.331,1.111,-2.033,1.442,-0.000" *.[jJpP][nNpP][gG] -set filename:base "%[basename]" "%[filename:base]-negative-black.jpg""\n" ; convert -function polynomial "-0.331,1.111,-2.033,1.442,-0.000" *.[jJpP][nNpP][gG] -set filename:base "%[basename]" "%[filename:base]-negative-black.jpg"'
+alias contrast-dark='tput setaf 6; echo -e "Será aplicado curvas de contrast na(s) imagen(s) para escurecer\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e ""convert -function polynomial "-0.762 * x^4   + 3.333 * x^3   +  -5.167 * x^2  + 3.595 * x  + 0""\n" ; convert -function polynomial "-0.762 * x^4   + 3.333 * x^3   +  -5.167 * x^2  + 3.595 * x  + 0" '
+alias contrast-dark-m='tput setaf 6; echo -e "Será aplicado curvas de contrast na(s) imagen(s) para escurecer\n"; tput setaf 9; echo -e "Comando a ser executado:\n"; tput setaf 3; echo -e ""convert -function polynomial "-0.762 * x^4   + 3.333 * x^3   +  -5.167 * x^2  + 3.595 * x  + 0" *.[jJpP][nNpP][gG] -set filename:base "%[basename]" "%[filename:base]-contrast-dark.jpg""\n" ; convert -function polynomial "-0.762 * x^4   + 3.333 * x^3   +  -5.167 * x^2  + 3.595 * x  + 0" *.[jJpP][nNpP][gG] -set filename:base "%[basename]" "%[filename:base]-contrast-dark.jpg"'
+alias remaster='tput setaf 11; echo -e """convert -adaptive-resize 3840x2160 -contrast-stretch 0,3% -normalize -strip -type TrueColor -modulate 99,99 -colorspace sRGB -depth 16 -channel rgba -interlace Plane -gaussian-blur 0.05 -density 300 -strip +repage -fuzz 50% -quality 100% -unsharp 2x2.5+2.7+01""\n\n""convert -normalize -unsharp 12x25  --Ou-- convert -normalize -unsharp 2x2.5+2.7+01""\n\n""convert -auto-gamma -auto-level -normalize -unsharp 1x2""\n\n""convert -channel RGB -contrast-stretch 4x8%""\n\n""Krita > Duplicar camada > Inverter cor > Camadas do modo "normal", para "clarear gama" > achatar imagem""\n\n""Ou no Gimp...""\n\n""ImageMagick: convert imagem.jpg -colors 5 paleta.jpg (Para extrair às cores dominantes, e depois melhorar a imagem com Gimp > Duplicar Camada > Menu - Inverter cor > e em camadas > extrair grãos)""\n\n""Gimp > Duplicar camada > Inverter cor > Camadas do modo "normal", para "extrair grãos" > achatar imagem""\n\n""Gimp > Duplicar camada > Menu - Filtros > Blur > Gaussian Blur (valores - 20x25 ou 20x40) > Menu - Cores > Inverter e depois Dessaturar > Em camadas use o modo Sobrepor (Overlay)"" "'
+alias remasterizar='remaster'
+alias realce='remaster'
+alias realçar='remaster'
+alias enhancer='remaster'
+alias pallete='echo "convert imagem.jpg -format %c -colorspace LAB -colors 5 histogram:info:- | sort -n -r"'
+alias paleta='pallete'
+# https://stackoverflow.com/questions/26889358/generate-color-palette-from-image-with-imagemagic
+# https://www.imagemagick.org/discourse-server/viewtopic.php?t=2896
+alias cor-dominante='echo convert imagem.jpg +dither -colors 5 -unique-colors cor-resultante.jpg'
+alias cor-dominante2='echo convert imagem.jpg +dither -colors 5 -colors cor-resultante.jpg'
+alias cor2pallete='echo convert imagem.jpg +dither -colors 5 -define histogram:unique-colors=true -format "%c" histogram:info:'
+alias cartoonize='for i in *.[jJpP][nNpP][gG]; do convert "$i" -colors 64 -paint 4 -compose over -compose multiply -modulate 100,150,100 -posterize 24 -blur 0x2 -set filename:base "%[basename]" "%[filename:base]-cartoon.jpg"; done'
+# https://imagemagick.org/discourse-server/viewtopic.php?t=31416
+# https://graphicdesign.stackexchange.com/questions/28561/how-can-i-achieve-this-cartoon-effect
+# http://mariovalle.name/postprocessing/ImageTools.html
+# https://askubuntu.com/questions/703184/how-to-transform-an-image-into-a-cartoon-from-command-line
+# http://www.fmwconcepts.com/imagemagick/cartoon/
+# https://stackoverflow.com/questions/47017741/image-filter-to-cartoonize-and-colorize
+alias cartoonize2='for i in *.[jJpP][nNpP][gG]; do convert "$i" \( -clone 0 -blur 0x5 \) \( -clone 0 -fill black -colorize 100 \) \( -clone 0 -define convolve:scale="!" -define morphology:compose=Lighten -morphology Convolve  "Sobel:>" -negate -evaluate pow 5 -negate -level 30x100% \) -delete 0 -compose over -composite -set filename:base "%[basename]" "%[filename:base]-cartoon.jpg"; done'
+alias cartoonize3='for i in *.[jJpP][nNpP][gG]; do convert "$i" -colors 64 -paint 4 -compose over -compose multiply -modulate 100,150,100 -posterize 24 -blur 0x2 -define morphology:compose=Lighten -morphology Convolve "Sobel:>" -negate -evaluate pow 5 -negate -level 30x100% -set filename:base "%[basename]" "%[filename:base]-cartoon.jpg"; done'
+alias cartoonize4='for i in *.[jJpP][nNpP][gG]; do convert -quiet "$i" +repage -depth 8 -selective-blur 0x5+10% /tmp/pre-cartoon1.mpc; convert /tmp/pre-cartoon1.mpc -level 0x60% -colorspace gray -posterize 6 -depth 8 -gamma 2.2 /tmp/pre-cartoon2.mpc; export PreCartoon1=/tmp/pre-cartoon1.mpc; export PreCartoon2=/tmp/pre-cartoon2.mpc; convert "$PreCartoon1" \( "$PreCartoon2" -blur 0x1 \) \( -clone 0 -clone 1 -compose over -compose multiply -composite -modulate 100,150,100 \) \( -clone 0 -colorspace gray \) \( -clone 3 -negate -blur 0x2 \) \( -clone 3 -clone 4 -compose over -compose colordodge -composite -evaluate pow 4 -threshold 90% -statistic median 3x3 \) -delete 0,1,3,4 -compose over -compose multiply -composite "${i/.[jJpP][nNpP][gG]/-cartoon.jpg}"; rm /tmp/pre-cartoon1.mpc; rm /tmp/pre-cartoon2.mpc; done'
+alias cartoonize4-other-method='for i in *.[jJpP][pPnN][gG]; do convert "$i" +repage -depth 8 -selective-blur 0x5+10%% \( -clone 0 -level 0x60%% -colorspace gray -posterize 6 -depth 8 -gamma 2.2 -blur 0x1 \) \( -clone 0 -clone 1 -compose multiply -composite -modulate 100,150,100 \) \( -clone 0 -colorspace gray \) \( -clone 3 -negate -blur 0x2 \) \( -clone 3 -clone 4 -compose colordodge -composite -evaluate pow 4 -threshold 90%% -statistic median 3x3 \) -delete 0,1,3,4 -compose multiply -composite "${i/.[jJpP][pPnN][gG]/-cartoon.jpg}"; done'
+alias cartoonize5='export convolution=0.70; export dx="-$convolution,0,$convolution,-$convolution,0,$convolution,-$convolution,0,$convolution"; export dy="$convolution,$convolution,$convolution,0,0,0,-$convolution,-$convolution,-$convolution"; for i in *.[jJpP][nNpP][gG]; do convert "$i" -quiet -regard-warnings $@ -colorspace RGB +repage /tmp/pre-cartoon1.jpg; convert \( /tmp/pre-cartoon1.jpg -median 2 \) \( -size 1x256 gradient: -rotate 90 -fx "floor(u*10+0.5)/10" \) -clut /tmp/pre-cartoon2.jpg; convert \( /tmp/pre-cartoon1.jpg -colorspace gray -median 2 \) \( -clone 0 -bias 50% -convolve "$dx" -solarize 50% \) \( -clone 0 -bias 50% -convolve "$dy" -solarize 50% \) \( -clone 1 -clone 1 -compose multiply -composite -gamma 2 \) \( -clone 2 -clone 2 -compose multiply -composite -gamma 2 \) -delete 0-2 -compose plus -composite -threshold 75% /tmp/pre-cartoon3.jpg; convert /tmp/pre-cartoon2.jpg /tmp/pre-cartoon3.jpg -compose multiply -composite "${i/.[jJpP][nNpP][gG]/-cartoon.jpg}"; rm /tmp/pre-cartoon1.jpg /tmp/pre-cartoon2.jpg /tmp/pre-cartoon3.jpg; done'
+alias cartoonize6='for i in *.[jJpP][nNpP][gG]; do convert -quiet "$i" +repage -depth 8 -selective-blur 0x5+10% /tmp/pre-cartoon1.jpg; convert /tmp/pre-cartoon1.jpg -level 0x60 -set colorspace RGB -colorspace gray -posterize 6 -depth 8 -colorspace sRGB /tmp/pre-cartoon2.jpg; export PreCartoon1=/tmp/pre-cartoon1.jpg; export PreCartoon2=/tmp/pre-cartoon2.jpg; convert "$PreCartoon1" \( "$PreCartoon2" -blur 0x1 \) \( -clone 0 -clone 1 -compose over -compose multiply -composite -modulate 100,150,100 \) \( -clone 0 -set colorspace RGB -colorspace gray \) \( -clone 3 -negate -blur 0x4 \) \( -clone 3 -clone 4 -compose over -compose colordodge -composite -evaluate pow 4 -threshold 4 -statistic median 3x3 \) -delete 0,1,3,4 -compose over -compose multiply -composite "${i/.[jJpP][nNpP][gG]/-cartoon.jpg}"; rm /tmp/pre-cartoon1.jpg; rm /tmp/pre-cartoon2.jpg; done'
+alias cartoonize6-remover-espinhas='cartoonize5'
+alias cartoonize7='for i in *[jJpP][nNpP][gG]; do convert "$i" -colorspace gray -kuwahara 3 -unsharp 0x2+4+0 \( xc:blue xc:red xc:yellow +append \) -clut "${i/.[jJpP][nNpP][gG]/-cartoon.jpg}"; done'
+alias cartoonize8='for i in *[jJpP][nNpP][gG]; do convert "$i" -kuwahara 3 -unsharp 0x2+4+0 "${i/.[jJpP][nNpP][gG]/-cartoon.jpg}"; done'
