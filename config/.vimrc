@@ -1,3 +1,21 @@
+set nocompatible
+filetype plugin on       " may already be in your .vimrc
+
+augroup lexical
+  autocmd!
+  autocmd FileType markdown,mkd call lexical#init()
+  autocmd FileType textile call lexical#init()
+  autocmd FileType text call lexical#init({ 'spell': 0 })
+augroup END
+
+set spelllang=pt,en
+set spell spelllang=pt,en
+let g:lexical#spell = 1
+let g:lexical#spelllang = ['en_us','pt_br',]
+" let g:lexical#spell_key = '<leader>s'
+" let g:lexical#dictionary = ['/usr/share/hunspell/pt_BR.dic',]
+" let g:lexical#dictionary_key = '<leader>k'
+" let g:lexical#thesaurus = ['~/.vim/thesaurus/palavras.txt',]
 call plug#begin()
 " The default plugin directory will be as follows:
 "   - Vim (Linux/macOS): '~/.vim/plugged'
@@ -9,8 +27,17 @@ call plug#begin()
 
 " Make sure you use single quotes
 
+" CoCInstall
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Vim-Lexical
+Plug 'reedes/vim-lexical'
+
 " GDScript
 Plug 'calviken/vim-gdscript3'
+
+" PHP Complete
+Plug 'shawncplus/phpcomplete.vim'
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
