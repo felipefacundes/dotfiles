@@ -199,55 +199,6 @@ On_IPurple='\033[0;105m'  # Purple
 On_ICyan='\033[0;106m'    # Cyan
 On_IWhite='\033[0;107m'   # White
 
-###################################################################################################
-##### ███╗   ███╗██╗   ██╗    ███████╗███████╗████████╗████████╗██╗███╗   ██╗ ██████╗ ███████╗
-##### ████╗ ████║╚██╗ ██╔╝    ██╔════╝██╔════╝╚══██╔══╝╚══██╔══╝██║████╗  ██║██╔════╝ ██╔════╝
-##### ██╔████╔██║ ╚████╔╝     ███████╗█████╗     ██║      ██║   ██║██╔██╗ ██║██║  ███╗███████╗
-##### ██║╚██╔╝██║  ╚██╔╝      ╚════██║██╔══╝     ██║      ██║   ██║██║╚██╗██║██║   ██║╚════██║
-##### ██║ ╚═╝ ██║   ██║       ███████║███████╗   ██║      ██║   ██║██║ ╚████║╚██████╔╝███████║
-##### ╚═╝     ╚═╝   ╚═╝       ╚══════╝╚══════╝   ╚═╝      ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚══════
-###################################################################################################
-########################################### MY SETTINGS ###########################################
-
-#prompt_context() {
-#  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-#    prompt_segment black default "${Yellow}${USER}"
-#  fi
-#}
-
-#prompt_context() {
-#    prompt_segment black default ""
-#}
-
-prompt_context() {
-  # Custom (Random emoji)
-  emojis=("🔥" "👑" "😎" "🐵" "🚀" "💡" "🎉" "🔑" "🇧🇷" "" "🚦" "🌙" "😃" "░A░r░c░h░" "𝐀𝐫𝐜𝐡" "░▒▓ 𝔸𝕣𝕔𝕙 ▓▒░" "▀▄▀▄ Ａｒｃｈ ▄▀▄▀" "║▌║ 𝘼𝙧𝙘𝙝 ║▌║")
-  RAND_EMOJI_N=$(( $RANDOM % ${#emojis[@]} + 1))
-  prompt_segment black default "${emojis[$RAND_EMOJI_N]} "
-}
-
-export HISTFILESIZE=100000
-export HISTSIZE=100000
-export HISTCONTROL=ignoreboth
-export HISTTIMEFORMAT="%F %T "
-shopt -s histappend
-
-# Terminal settings
-shopt -s checkwinsize
-#export PROMPT_COMMAND='history -a'
-#export GITAWAREPROMPT=~/.bash/git-aware-prompt
-#source $GITAWAREPROMPT/main.sh
-export PS1="\[\e[32m\]\t \[$txtgrn\]\u\[$txtwht\]@\[$txtgrn\]\h \[$txtylw\]\w\[$txtrst\] \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\n\$ "
-#export PATH="$PATH:~/Library/Python/2.7/bin:$HOME/Library/Haskell/bin"
-export PATH=$PATH:~/.local/bin
-export CLICOLOR=1
-export LSCOLORS=ExFxCxDxBxegedabagacad
-export EDITOR=vim
-export VISUAL=vim
-#complete -cf pacman
-complete -abcdefgjksuv pacman
-#complete -cf sudo
-complete -abcdefgjksuv sudo
 ########################################################################################################
 ##### ███╗   ███╗██╗   ██╗    ███████╗██╗   ██╗███╗   ██╗ ██████╗████████╗██╗ ██████╗ ███╗   ██╗███████╗
 ##### ████╗ ████║╚██╗ ██╔╝    ██╔════╝██║   ██║████╗  ██║██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║██╔════╝
@@ -262,16 +213,16 @@ check_hd()
 clear -T "$TERM"
 
 sudo su -c '
-    umount /dev/mapper/HD-HD_lv
-    e2fsck -f -y /dev/mapper/HD-HD_lv
-    e2fsck -p /dev/mapper/HD-HD_lv
-    tune2fs -c 1 /dev/mapper/rootvg-rootlv
-    tune2fs -c 1 /dev/mapper/HD-HD_lv
-    mount /dev/mapper/HD-HD_lv /home/rfacundes/Documentos/HD
-    e4defrag -c /dev/mapper/HD-HD_lv
-    e4defrag -c /home/rfacundes/Documentos/HD
-    e4defrag -c /dev/mapper/rootvg-rootlv
-    e4defrag -c /
+	umount /dev/mapper/HD-HD_lv
+	e2fsck -f -y /dev/mapper/HD-HD_lv
+	e2fsck -p /dev/mapper/HD-HD_lv
+	tune2fs -c 1 /dev/mapper/rootvg-rootlv
+	tune2fs -c 1 /dev/mapper/HD-HD_lv
+	mount /dev/mapper/HD-HD_lv /home/rfacundes/Documentos/HD
+	e4defrag -c /dev/mapper/HD-HD_lv
+	e4defrag -c /home/rfacundes/Documentos/HD
+	e4defrag -c /dev/mapper/rootvg-rootlv
+	e4defrag -c /
 '
 
 tput setaf 2
@@ -353,6 +304,113 @@ EOF
     | cut -c 233-236 \
     | cut -d':' -f 2`
 }
+
+default-mime()
+{
+	cat <<'EOF'
+	xdg-mime default ranger.desktop inode/directory
+	xdg-mime default vim.desktop text/plain
+	xdg-mime default vim.desktop application/x-shellscript
+	xdg-mime default vim.desktop text/x-chdr
+	xdg-mime default vim.desktop text/event-stream
+	xdg-mime default vim.desktop text/x-python
+	xdg-mime default links.desktop text/html
+	xdg-mime default llpp.desktop application/pdf
+	xdg-mime default feh.desktop image/x-icon
+	xdg-mime default feh.desktop image/bmp 
+	xdg-mime default feh.desktop image/jpeg
+	xdg-mime default feh.desktop image/png
+	xdg-mime default feh.desktop image/tiff
+	xdg-mime default feh.desktop image/gif
+	xdg-mime default feh.desktop image/svg+xml
+	
+	Or edit file:
+	~/.config/mimeapps.list
+EOF
+}
+
+
+# Remove duplicate lines
+duplicate_lines()
+{
+    sort "$@" | uniq
+}
+delete_duplicate_bash_history()
+{
+    duplicate_lines ~/.bash_history > ~/.bash_history_temp; 
+    rm ~/.bash_history; 
+    mv ~/.bash_history_temp ~/.bash_history >/dev/null
+}
+###################################################################################################
+##### ███╗   ███╗██╗   ██╗    ███████╗███████╗████████╗████████╗██╗███╗   ██╗ ██████╗ ███████╗
+##### ████╗ ████║╚██╗ ██╔╝    ██╔════╝██╔════╝╚══██╔══╝╚══██╔══╝██║████╗  ██║██╔════╝ ██╔════╝
+##### ██╔████╔██║ ╚████╔╝     ███████╗█████╗     ██║      ██║   ██║██╔██╗ ██║██║  ███╗███████╗
+##### ██║╚██╔╝██║  ╚██╔╝      ╚════██║██╔══╝     ██║      ██║   ██║██║╚██╗██║██║   ██║╚════██║
+##### ██║ ╚═╝ ██║   ██║       ███████║███████╗   ██║      ██║   ██║██║ ╚████║╚██████╔╝███████║
+##### ╚═╝     ╚═╝   ╚═╝       ╚══════╝╚══════╝   ╚═╝      ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚══════
+###################################################################################################
+########################################### MY SETTINGS ###########################################
+
+#prompt_context() {
+#  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+#    prompt_segment black default "${Yellow}${USER}"
+#  fi
+#}
+
+#prompt_context() {
+#    prompt_segment black default ""
+#}
+
+prompt_context() {
+  # Custom (Random emoji)
+  emojis=("🔥" "👑" "😎" "🐵" "🚀" "💡" "🎉" "🔑" "🇧🇷" "" "🚦" "🌙" "😃" "░A░r░c░h░" "𝐀𝐫𝐜𝐡" "░▒▓ 𝔸𝕣𝕔𝕙 ▓▒░" "▀▄▀▄ Ａｒｃｈ ▄▀▄▀" "║▌║ 𝘼𝙧𝙘𝙝 ║▌║")
+  RAND_EMOJI_N=$(( $RANDOM % ${#emojis[@]} + 1))
+  prompt_segment black default "${emojis[$RAND_EMOJI_N]} "
+}
+
+# Eternal bash history.
+# ---------------------
+# Undocumented feature which sets the size to "unlimited".
+# http://stackoverflow.com/questions/9457233/unlimited-bash-history
+###export HISTFILESIZE === 100000
+export HISTFILESIZE=
+###export HISTSIZE === 100000
+export HISTSIZE=
+### ignoreboth    ignorespace:ignoredups
+export HISTCONTROL=ignoredups
+export HISTTIMEFORMAT="[%F %T] "
+# Change the file location because certain bash sessions truncate .bash_history file upon close.
+# http://superuser.com/questions/575479/bash-history-truncated-to-500-lines-on-each-login
+export HISTFILE=~/.bash_history
+
+# Force prompt to write history after every command.
+# http://superuser.com/questions/20900/bash-history-loss
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+shopt -s histappend
+stophistory () {
+  PROMPT_COMMAND="bash_prompt_command"
+  echo 'History recording stopped. Make sure to `kill -9 $$` at the end of the session.'
+}
+
+shopt -s checkwinsize
+###export PROMPT_COMMAND='history -a'
+###export GITAWAREPROMPT=~/.bash/git-aware-prompt
+###source $GITAWAREPROMPT/main.sh
+export PS1="\[\e[32m\]\t \[$txtgrn\]\u\[$txtwht\]@\[$txtgrn\]\h \[$txtylw\]\w\[$txtrst\] \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\n\$ "
+###export PATH="$PATH:~/Library/Python/2.7/bin:$HOME/Library/Haskell/bin"
+export PATH=$PATH:~/.local/bin
+export b=~/.local/bin
+export CLICOLOR=1
+export LSCOLORS=ExFxCxDxBxegedabagacad
+export EDITOR=vim
+export VISUAL=vim
+###complete -cf pacman
+###complete -abcdefgjksuv pacman
+###complete -cf sudo
+###complete -abcdefgjksuv sudo
+
+sed -i 's|/dev/sd[abc][1234]|/dev/sdX|g' ~/.bash_history
+sed -i 's|/dev/sd[abc]|/dev/sdX|g' ~/.bash_history
 #########################################################
 #####  █████╗ ██╗     ██╗ █████╗ ███████╗███████╗███████╗
 ##### ██╔══██╗██║     ██║██╔══██╗██╔════╝██╔════╝██╔════╝
@@ -372,6 +430,12 @@ EOF
 # alias ohmybash="mate ~/.oh-my-bash"
 ######################################
 ############### System ###############
+alias duplicate_lines='duplicate'
+alias clip="echo -e 'xclip -selection clipboard -i < input_file\nOr\nxclip -sel c < input_file'"
+alias clipcopy='clip'
+alias pbcopy='clip'
+alias clipboard='clip'
+alias b='cd ~/.local/bin'
 alias playongit_review='bash ~/.local/bin/base_for_create_installation_script.sh'
 alias c='clear'
 alias u='sudo pacman -Syyu --noconfirm'
@@ -383,7 +447,7 @@ alias kl='setxkbmap -option "terminate:ctrl_alt_bksp"; xdotool key ctrl+alt+Back
 alias wget='tput setaf 9; echo -e "\nAtenção!\n"; tput setaf 6; echo -e "Baixe sites completos com WGET\n"; tput setaf 11; echo -e "wget -r -p -E --execute=robots=off --limit-rate=100k --convert-links --random-wait -U mozilla\n"; tput setaf 7; wget'
 alias dd='dd --help; tput setaf 9; echo -e "\nAtenção!\n"; tput setaf 6; echo -e "Crie pendrives bootáveis de SO: BSDs e Distros Linux\n"; tput setaf 11; echo -e "sudo dd if=DISTRO.iso of=/dev/sdX bs=70k oflag=direct conv=sync status=progress && sync\n"; tput setaf 7; dd'
 alias neofetch="~/.make/neofetch/neofetch"
-alias cp="advcp -g" # Advanced copy
+alias cp="advcp -pgr" # Advanced copy
 alias mv='tput setaf 11; echo -e "mv -v --backup=t\n"; tput setaf 7; mv -v --backup=t'
 alias mvd='echo "mv file (date +%d-%m-%Y_%H:%M:%S)"'
 alias aur="yay -S --nodiffmenu --noeditmenu --noupgrademenu --mflags --skipinteg --noconfirm"
@@ -455,8 +519,8 @@ alias ffp='for i in *.[mM][pPkK][vV4]; do ffplay2.8 "$i" -vf subtitles="${i/.[mM
 alias ffp.f='for i in *.[mM][kKpP][vV4]; do name="${i%.*}"; echo $name; ffplay2.8 "$i" -vf subtitles="${name}.forced.srt"; done'
 alias ffp.f.leg='echo "Antes, execute export v=arquivo.m.."; for i in "$v"; do ffplay2.8 "$i" -vf subtitles="${i/.[mM][pPkK][vV4]/.forced.srt}"; done'
 alias testevideo='ls *.[mM][pPkK][vV4]; ls *.[sS][rR][tT]'
-alias meuip='echo -e "'"curl -s checkip.dyndns.org | awk '{ print $NF }'"'\n'"curl -s https://icanhazip.com"'\n'"curl -s https://checkip.amazonaws.com"'\n\n"Ou com perl:"\n'"lwp-request -o text checkip.dyndns.org | awk '{ print $NF }'"'"'
-alias myip='meuip'
+alias meuip='echo -e "'"curl -s checkip.dyndns.org | awk '{ print $NF }'"'\n'"curl -s checkip.dyndns.org | grep -Eo '[0-9\.]+'"'\n'"curl -s https://icanhazip.com"'\n'"curl -s https://checkip.amazonaws.com"'\n\n"Ou com perl:"\n'"lwp-request -o text checkip.dyndns.org | awk '{ print $NF }'"'"'
+alias my_ip='meuip'
 alias Ent='xdotool key Return'
 alias Enter='Ent'
 alias Min='xdotool windowminimize $(xdotool getactivewindow)'
@@ -537,3 +601,5 @@ alias cartoonize6='for i in *.[jJpP][nNpP][gG]; do convert -quiet "$i" +repage -
 alias cartoonize6-remover-espinhas='cartoonize5'
 alias cartoonize7='for i in *[jJpP][nNpP][gG]; do convert "$i" -colorspace gray -kuwahara 3 -unsharp 0x2+4+0 \( xc:blue xc:red xc:yellow +append \) -clut "${i/.[jJpP][nNpP][gG]/-cartoon.jpg}"; done'
 alias cartoonize8='for i in *[jJpP][nNpP][gG]; do convert "$i" -kuwahara 3 -unsharp 0x2+4+0 "${i/.[jJpP][nNpP][gG]/-cartoon.jpg}"; done'
+
+. ~/.bash_aliases
