@@ -603,6 +603,7 @@
         <command>bash -c "ponymix increase 2% ; pactl set-sink-volume 0 +3% ; pactl set-sink-volume 4 +3%; pkill -9 osd_cat; xrefresh; echo Volume:\ `pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'` | osd_cat -d 1 -s 30 -A center -l 1 -p middle -o 30 --color=#00ff73 --shadow=1 -f '-*-helvetica-bold-*-*-*-64-*-*-*-*-*-*'"</command>
       </action>
     </keybind>
+    <!-- Brightness Adjustment -->
     <keybind key="XF86MonBrightnessDown">
       <action name="Execute">
         <command>bash -c "xbacklight -dec +2 ; light -U 2"</command>
@@ -615,9 +616,15 @@
     </keybind>
     <keybind key="XF86ScreenSaver">
       <action name="Execute">
-        <command>bash -c "xbacklight -set 0 ; echo 0 &gt; /sys/class/backlight/intel_backlight/brightness"</command>
+        <command>bash -c "xbacklight -set 0 ; echo 0 | tee /sys/class/backlight/intel_backlight/brightness"</command>
       </action>
     </keybind>
+    <keybind key="C-A-0">
+      <action name="Execute">
+        <command>bash -c "xbacklight -set 0 ; echo 0 | tee /sys/class/backlight/intel_backlight/brightness"</command>
+      </action>
+    </keybind>
+    <!-- Print Screen -->
     <keybind key="Print">
       <action name="Execute">
         <command>bash -c 'cd ~/ ; mkdir -p "$HOME/Imagens/Captura de Tela/" ; scrot "$HOME/Imagens/Captura de Tela/Captura de tela de %d-%m-%Y %H:%M:%S.png" ; mkdir -p ~/.local/songs/ ; cd ~/.local/songs/ ; wget -nc https://github.com/felipefacundes/dotfiles/blob/master/config/songs/camera_shutter.mp3?raw=true -O camera_shutter.mp3 ; paplay ~/.local/songs/camera_shutter.ogg'</command>
@@ -638,7 +645,7 @@
         <command>bash -c 'cd ~/ ; mkdir -p "$HOME/Imagens/Captura de Tela/" ; scrot -u "$HOME/Imagens/Captura de Tela/Captura de tela de %d-%m-%Y %H:%M:%S.png" ; mkdir -p ~/.local/songs/ ; cd ~/.local/songs/ ; wget -nc https://github.com/felipefacundes/dotfiles/blob/master/config/songs/camera_shutter.mp3?raw=true -O camera_shutter.mp3 ; paplay ~/.local/songs/camera_shutter.ogg'</command>
       </action>
     </keybind>
-    <!-- Papel de parede aleatório -->
+    <!-- Random Wallpaper -->
     <keybind key="C-A-w">
       <action name="Execute">
         <command>bash -c 'cd ~/ ; mkdir -p ~/Imagens/Wallpapers/ ; feh --bg-fill "$(find "$HOME"/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n1)" #nitrogen --set-zoom-fill'</command>
