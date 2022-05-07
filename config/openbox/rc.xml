@@ -328,7 +328,7 @@
         </startupnotify>
       </action>
     </keybind>
-    <keybind key="W-w">
+    <keybind key="S-W-w">
       <action name="Execute">
         <command>bash -c 'xrefresh; zenity --ellipsize --info --text "$(wmctrl -l)"; export entry=`zenity --entry --text="Enter window id." --entry-text="Enter window id."`; wmctrl -ia "$entry"'</command>
         <startupnotify>
@@ -392,12 +392,12 @@
       </action>
     </keybind>
     <!-- Mouse Scroll -->
-    <keybind key="W-S-w">
+    <keybind key="W-w">
       <action name="Execute">
         <command>xdotool click 4</command>
       </action>
     </keybind>
-    <keybind key="W-S-s">
+    <keybind key="W-s">
       <action name="Execute">
         <command>xdotool click 5</command>
       </action>
@@ -978,7 +978,7 @@
         </finalactions>
       </action>
     </keybind>
-    <keybind key="W-s">
+    <keybind key="C-W-a">
       <action name="UnmaximizeFull"/>
       <action name="NextWindow"/>
     </keybind>
