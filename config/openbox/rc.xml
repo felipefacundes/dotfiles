@@ -48,7 +48,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>FF-Mogno</name>
+    <name>KDE</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -258,11 +258,18 @@
         <command>kitty</command>
       </action>
     </keybind>
+    <!-- PDF Reader -->
     <keybind key="C-A-p">
       <action name="Execute">
-        <command>evince</command>
+        <command>foxitreader #llpp</command>
       </action>
     </keybind>
+    <keybind key="C-S-A-p">
+      <action name="Execute">
+        <command>llpp</command>
+      </action>
+    </keybind>
+    <!-- Postit -->
     <keybind key="W-A-p">
       <action name="Execute">
         <command>xpad -t</command>
@@ -290,7 +297,7 @@
     </keybind>
     <keybind key="C-W-f">
       <action name="Execute">
-        <command>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then notify-send "Firefox" "Opened"; else nohup firefox &gt;/dev/null 2&gt;1; sleep 4; exec xdotool key alt+3; fi'</command>
+        <command>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then xdotool search "Mozilla Firefox" windowactivate --sync key --clearmodifiers ctrl+l; else nohup firefox &gt;/dev/null 2&gt;1; sleep 4; exec xdotool key alt+3; fi'</command>
         <startupnotify>
           <enabled>yes</enabled>
           <wmclass>firefox</wmclass>
@@ -301,7 +308,7 @@
     </keybind>
     <keybind key="XF86WWW">
       <action name="Execute">
-        <command>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then notify-send "Firefox" "Opened"; else firefox; fi'</command>
+        <command>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then xdotool search "Mozilla Firefox" windowactivate --sync key --clearmodifiers ctrl+l; else firefox; fi'</command>
         <startupnotify>
           <enabled>yes</enabled>
           <wmclass>firefox</wmclass>
@@ -312,7 +319,7 @@
     </keybind>
     <keybind key="XF86Mail">
       <action name="Execute">
-        <command>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then notify-send "Firefox" "Opened"; else firefox gmail.com; fi'</command>
+        <command>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then xdotool search "Mozilla Firefox" windowactivate --sync key --clearmodifiers ctrl+l; else firefox gmail.com; fi'</command>
         <startupnotify>
           <enabled>yes</enabled>
           <wmclass>firefox</wmclass>
@@ -384,13 +391,34 @@
         </startupnotify>
       </action>
     </keybind>
+    <!-- Mouse Scroll -->
+    <keybind key="W-S-w">
+      <action name="Execute">
+        <command>xdotool click 4</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-s">
+      <action name="Execute">
+        <command>xdotool click 5</command>
+      </action>
+    </keybind>
     <!-- File Manager -->
-    <keybind key="W-n">
+    <keybind key="W-f">
+      <action name="Execute">
+        <command>bash -c "rofi -theme ~/.config/rofi/launchers/misc/row_dock.rasi -modi file-browser-extended -show file-browser-extended -file-browser-oc-search-path -file-browser-exclude Documents -file-browser-exclude Welcome*Desktop*"</command>
+      </action>
+    </keybind>
+    <keybind key="S-W-f">
+      <action name="Execute">
+        <command>rofi -theme ~/.config/rofi/launchers/misc/row_dock.rasi -file-browser-show-hidden -file-browser-oc-search-path -show file-browser-extended</command>
+      </action>
+    </keybind>
+    <keybind key="XF86HomePage">
       <action name="Execute">
         <command>xdg-open ~/</command>
       </action>
     </keybind>
-    <keybind key="XF86HomePage">
+    <keybind key="W-n">
       <action name="Execute">
         <command>xdg-open ~/</command>
       </action>
@@ -399,12 +427,6 @@
     <keybind key="W-b">
       <action name="Execute">
         <command>~/.local/bin/rofi-bluetooth</command>
-      </action>
-    </keybind>
-    <!-- Clipman History -->
-    <keybind key="C-A-c">
-      <action name="Execute">
-        <command>xfce4-clipman-history</command>
       </action>
     </keybind>
     <!-- Correcting errors -->
@@ -433,13 +455,13 @@
     <!-- Tela Normal -->
     <keybind key="A-S-F1">
       <action name="Execute">
-        <command>bash -c 'xrandr --output HDMI-0 --off --output eDP-1-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal; xrandr --output HDMI-1-0 --off --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal'</command>
+        <command>bash -c 'xrandr --output eDP-1-1 --primary --mode 1920x1080 --rate 120.00 --pos 0x0 --rotate normal --output HDMI-0 --off; xrandr --output eDP-1 --primary --mode 1920x1080 --rate 120.00 --pos 0x0 --rotate normal --output HDMI-1-0 --off'</command>
       </action>
     </keybind>
     <!-- Inverter tela (Monitor AOC x Notebook Asus X202E - Vivo Book ) -->
     <keybind key="A-S-F2">
       <action name="Execute">
-        <command>bash -c 'xrandr --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate inverted --output eDP-1-1 --mode 1920x1080 --pos 0x0 --rotate normal; xrandr --output HDMI-1-0 --mode 1920x1080 --pos 0x0 --rotate inverted --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal; pactl set-card-profile 0 off'</command>
+        <command>bash -c 'xrandr --output eDP-1-1 --mode 1920x1080 --rate 120.00 --pos 0x0 --rotate normal --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate inverted; xrandr --output eDP-1 --mode 1920x1080 --rate 120.00 --pos 0x0 --rotate normal --output HDMI-1-0 --mode 1920x1080 --pos 0x0 --rotate inverted; pactl set-card-profile 0 off'</command>
       </action>
     </keybind>
     <!-- Inverter tela e desativar display do notebook -->
@@ -456,12 +478,12 @@
     <!-- Chromecast: pausar/reproduzir streaming -->
     <keybind key="W-S-p">
       <action name="Execute">
-        <command>catt play_toggle</command>
+        <command>bash -c 'catt play_toggle; export pause=false; if (("$pause" = false)); then ~/.local/bin/lgtv media.controls pause; export pause=true; else ~/.local/bin/lgtv media.controls play; fi'</command>
       </action>
     </keybind>
-    <keybind key="W-S-space">
+    <keybind key="W-XF86AudioPlay">
       <action name="Execute">
-        <command>catt play_toggle</command>
+        <command>bash -c 'catt play_toggle; export pause=false; if (("$pause" = false)); then ~/.local/bin/lgtv media.controls pause; export pause=true; else ~/.local/bin/lgtv media.controls play; fi'</command>
       </action>
     </keybind>
     <!-- Chromecast: aumentar volume -->
@@ -513,12 +535,12 @@
         <command>catt restore</command>
       </action>
     </keybind>
-    <keybind key="W-S-s">
+    <keybind key="W-S-i">
       <action name="Execute">
         <command>bash -c 'zenity --icon-name applications-multimedia --info --title="Status da Reprodu&#xE7;&#xE3;o" --text="$(catt status)" --width="600" height="600"'</command>
       </action>
     </keybind>
-    <keybind key="W-S-f">
+    <keybind key="W-S-t">
       <action name="Execute">
         <command>bash -c 'time=`zenity --entry --text "Defina o tempo que voc&#xEA; quer avan&#xE7;ar" --title "Tempo do v&#xED;deo"` ; catt seek "$time"'</command>
       </action>
@@ -537,6 +559,11 @@
           <name>pavucontrol</name>
           <icon>pavucontrol</icon>
         </startupnotify>
+      </action>
+    </keybind>
+    <keybind key="C-A-a">
+      <action name="Execute">
+        <command>bash -c 'pavuc=`wmctrl -l | grep "Controle de volume" | head -n 1 | awk "{print $1 }"`; if pidof pavucontrol; then wmctrl -ic "$pavuc"; else pavucontrol; fi'</command>
       </action>
     </keybind>
     <keybind key="C-W-c">
@@ -614,7 +641,7 @@
     <!-- Papel de parede aleatório -->
     <keybind key="C-A-w">
       <action name="Execute">
-        <command>bash -c 'cd ~/ ; mkdir -p ~/Imagens/Wallpapers/ ; nitrogen --set-zoom-fill "$(find "$HOME"/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n 1)"'</command>
+        <command>bash -c 'cd ~/ ; mkdir -p ~/Imagens/Wallpapers/ ; feh --bg-fill "$(find "$HOME"/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n1)" #nitrogen --set-zoom-fill'</command>
       </action>
     </keybind>
     <!-- Tema aleatório do painel tint2 -->
@@ -634,6 +661,11 @@
       </action>
     </keybind>
     <keybind key="C-S-A-h">
+      <action name="Execute">
+        <command>bash -c "systemctl hibernate"</command>
+      </action>
+    </keybind>
+    <keybind key="C-A-h">
       <action name="Execute">
         <command>bash -c "systemctl hibernate"</command>
       </action>
@@ -1271,10 +1303,6 @@
     </keybind>
     <keybind key="A-F4">
       <action name="Close"/>
-    </keybind>
-    <keybind key="C-q">
-      <action name="Close"/>
-      <action name="NextWindow"/>
     </keybind>
     <keybind key="C-S-q">
       <action name="Close"/>
