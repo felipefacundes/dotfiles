@@ -364,7 +364,7 @@
     <!-- Transmission-->
     <keybind key="C-A-t">
       <action name="Execute">
-        <command>bash -c "$HOME/.local/bin/toggle-transmission-gtk"</command>
+        <command>bash -c 'check_transmission="/tmp/check-transmission-gtk.txt"; transmission=`wmctrl -l | grep Transmission | head -n 1 | awk "{print $1 }"`; if pidof transmission-gtk; then wmctrl -ic "$transmission"; else transmission-gtk; fi; if [ ! -e "$check_transmission" ]; then touch "$check_transmission"; transmission-gtk; sleep 0.50; xdotool windowsize "$(xdotool getactivewindow)" 100% 100%; else rm "$check_transmission"; wmctrl -ic "$transmission"; fi'</command>
       </action>
     </keybind>
     <!-- Accessibility Zoom Screen -->
@@ -609,19 +609,30 @@
         <command>bash -c "xbacklight -dec +2 ; light -U 2"</command>
       </action>
     </keybind>
+    <keybind key="A-S-Left">
+      <action name="Execute">
+        <command>bash -c "xbacklight -dec +2 ; light -U 2"</command>
+      </action>
+    </keybind>
     <keybind key="XF86MonBrightnessUp">
       <action name="Execute">
         <command>bash -c "xbacklight -inc +2 ; light -A 2"</command>
       </action>
     </keybind>
+    <keybind key="A-S-Right">
+      <action name="Execute">
+        <command>bash -c "xbacklight -inc +2 ; light -A 2"</command>
+      </action>
+    </keybind>
+    <!-- Toggle Brightness 0/1.3 -->
     <keybind key="XF86ScreenSaver">
       <action name="Execute">
-        <command>bash -c "xbacklight -set 0 ; echo 0 | tee /sys/class/backlight/intel_backlight/brightness"</command>
+        <command>bash -c 'export max_brightness=`cat /sys/class/backlight/intel_backlight/max_brightness`; export check_brightness="/tmp/brightness_check.txt"; export brightness=`echo "$max_brightness"/3.3 | bc`; if [ ! -e "$check_brightness" ]; then touch "${check_brightness}"; echo 0 | tee /sys/class/backlight/intel_backlight/brightness; else rm "${check_brightness}"; echo "${brightness}" | tee /sys/class/backlight/intel_backlight/brightness; fi'</command>
       </action>
     </keybind>
     <keybind key="C-A-0">
       <action name="Execute">
-        <command>bash -c "xbacklight -set 0 ; echo 0 | tee /sys/class/backlight/intel_backlight/brightness"</command>
+        <command>bash -c 'export max_brightness=`cat /sys/class/backlight/intel_backlight/max_brightness`; export check_brightness="/tmp/brightness_check.txt"; export brightness=`echo "$max_brightness"/3.3 | bc`; if [ ! -e "$check_brightness" ]; then touch "${check_brightness}"; echo 0 | tee /sys/class/backlight/intel_backlight/brightness; else rm "${check_brightness}"; echo "${brightness}" | tee /sys/class/backlight/intel_backlight/brightness; fi'</command>
       </action>
     </keybind>
     <!-- Print Screen -->
