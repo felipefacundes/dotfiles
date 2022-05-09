@@ -275,14 +275,26 @@
         <command>xpad -t</command>
       </action>
     </keybind>
+    <!-- Web Browser: Firefox -->
+    <keybind key="C-W-f">
+      <action name="Execute">
+        <command>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then xdotool search "Mozilla Firefox" windowactivate --sync key --clearmodifiers ctrl+l; else nohup firefox > /dev/null; sleep 4; exec xdotool key alt+3; fi'</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <wmclass>firefox</wmclass>
+          <name>firefox</name>
+          <icon>firefox</icon>
+        </startupnotify>
+      </action>
+    </keybind>
     <keybind key="C-S-W-f">
       <action name="Execute">
-        <command>bash -c 'mkdir -p ~/.firefox-rofe/ ; firefox --profile ~/.firefox-rofe/'</command>
+        <command>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then xdotool search "Mozilla Firefox" windowactivate --sync key --clearmodifiers ctrl+l; else mkdir -p ~/.firefox-rofe/ ; firefox --profile ~/.firefox-rofe/'</command>
       </action>
     </keybind>
     <keybind key="C-S-W-m">
       <action name="Execute">
-        <command>bash -c 'mkdir -p ~/.firefox-mobile/ ; firefox --profile ~/.firefox-mobile/'</command>
+        <command>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then xdotool search "Mozilla Firefox" windowactivate --sync key --clearmodifiers ctrl+l; else firefox --profile ~/.firefox-mobile/'</command>
       </action>
     </keybind>
     <keybind key="C-S-W-p">
@@ -295,9 +307,9 @@
         <command>firefox www.netflix.com</command>
       </action>
     </keybind>
-    <keybind key="C-W-f">
+    <keybind key="XF86WWW">
       <action name="Execute">
-        <command>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then xdotool search "Mozilla Firefox" windowactivate --sync key --clearmodifiers ctrl+l; else nohup firefox &gt;/dev/null 2&gt;1; sleep 4; exec xdotool key alt+3; fi'</command>
+        <command>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then xdotool search "Mozilla Firefox" windowactivate --sync key --clearmodifiers ctrl+l; else nohup firefox > /dev/null; sleep 4; exec xdotool key alt+3; fi'</command>
         <startupnotify>
           <enabled>yes</enabled>
           <wmclass>firefox</wmclass>
@@ -306,26 +318,19 @@
         </startupnotify>
       </action>
     </keybind>
-    <keybind key="XF86WWW">
+    <keybind key="C-S-W-g">
       <action name="Execute">
-        <command>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then xdotool search "Mozilla Firefox" windowactivate --sync key --clearmodifiers ctrl+l; else firefox; fi'</command>
-        <startupnotify>
-          <enabled>yes</enabled>
-          <wmclass>firefox</wmclass>
-          <name>firefox</name>
-          <icon>firefox</icon>
-        </startupnotify>
+        <command>firefox www.gmail.com</command>
+      </action>
+    </keybind>
+    <keybind key="C-W-g">
+      <action name="Execute">
+        <command>firefox www.gmail.com</command>
       </action>
     </keybind>
     <keybind key="XF86Mail">
       <action name="Execute">
-        <command>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then xdotool search "Mozilla Firefox" windowactivate --sync key --clearmodifiers ctrl+l; else firefox gmail.com; fi'</command>
-        <startupnotify>
-          <enabled>yes</enabled>
-          <wmclass>firefox</wmclass>
-          <name>firefox</name>
-          <icon>firefox</icon>
-        </startupnotify>
+        <command>firefox www.gmail.com</command>
       </action>
     </keybind>
     <keybind key="S-W-w">
@@ -333,20 +338,9 @@
         <command>bash -c 'xrefresh; zenity --ellipsize --info --text "$(wmctrl -l)"; export entry=`zenity --entry --text="Enter window id." --entry-text="Enter window id."`; wmctrl -ia "$entry"'</command>
         <startupnotify>
           <enabled>yes</enabled>
-          <wmclass>firefox</wmclass>
-          <name>firefox</name>
-          <icon>firefox</icon>
-        </startupnotify>
-      </action>
-    </keybind>
-    <keybind key="C-A-v">
-      <action name="Execute">
-        <command>bash -c 'pkill -9 tv-default-volu; export script=~/.local/bin/tv-default-volume.sh; export Current_Volume=`~/.local/bin/Current_Volume.sh` export old_vol=`cat "$script" | head -5 | sed -n 5p | cut -c 16-17 | grep -E "[^[:blank:]]"`; export new_vol=`zenity --text "Current volume is $Current_Volume.\nVolume is limited on $old_vol.\n\nEnter new volume:" --entry`; sed -i "5s/$old_vol/$new_vol/" "$script" | sed -i "5s/=$/=$new_vol/" "$script"; "$script"'</command>
-        <startupnotify>
-          <enabled>yes</enabled>
-          <wmclass>firefox</wmclass>
-          <name>firefox</name>
-          <icon>firefox</icon>
+          <wmclass>active_window</wmclass>
+          <name>active_window</name>
+          <icon>active_window</icon>
         </startupnotify>
       </action>
     </keybind>
@@ -475,7 +469,20 @@
         <command>obs</command>
       </action>
     </keybind>
-    <!-- Chromecast: pausar/reproduzir streaming -->
+    <!--                            Streaming Multimedia Control                            -->
+    <!-- LGTVWebOS: Set Max Volume -->
+    <keybind key="C-A-v">
+      <action name="Execute">
+        <command>bash -c 'pkill -9 tv-default-volu; export script=~/.local/bin/tv-default-volume.sh; export Current_Volume=`~/.local/bin/Current_Volume.sh` export old_vol=`cat "$script" | head -5 | sed -n 5p | cut -c 16-17 | grep -E "[^[:blank:]]"`; export new_vol=`zenity --text "Current volume is $Current_Volume.\nVolume is limited on $old_vol.\n\nEnter new volume:" --entry`; sed -i "5s/$old_vol/$new_vol/" "$script" | sed -i "5s/=$/=$new_vol/" "$script"; "$script"'</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <wmclass>set_max_vol_lgtv</wmclass>
+          <name>set_max_vol_lgtv</name>
+          <icon>set_max_vol_lgtv</icon>
+        </startupnotify>
+      </action>
+    </keybind>
+    <!-- Chromecast/LGTVWebOS: pause/play streaming -->
     <keybind key="W-S-p">
       <action name="Execute">
         <command>bash -c 'catt play_toggle; export pause=false; if (("$pause" = false)); then ~/.local/bin/lgtv media.controls pause; export pause=true; else ~/.local/bin/lgtv media.controls play; fi'</command>
