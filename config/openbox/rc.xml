@@ -396,6 +396,43 @@
         <command>xdotool click 5</command>
       </action>
     </keybind>
+    <!-- Mouse Click -->
+    <keybind key="W-e">
+      <action name="Execute">
+        <command>xdotool click 1</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-q">
+      <action name="Execute">
+        <command>xdotool click 2</command>
+      </action>
+    </keybind>
+    <keybind key="W-q">
+      <action name="Execute">
+        <command>xdotool click 3</command>
+      </action>
+    </keybind>
+    <!-- Mouse Move -->
+        <keybind key="W-Up">
+      <action name="Execute">
+        <command>xdotool mousemove_relative -- 0 -10</command>
+      </action>
+    </keybind>
+    <keybind key="W-Down">
+      <action name="Execute">
+        <command>xdotool mousemove_relative -- 0 10</command>
+      </action>
+    </keybind>
+    <keybind key="W-Left">
+      <action name="Execute">
+        <command>xdotool mousemove_relative -- -10 0</command>
+      </action>
+    </keybind>
+    <keybind key="W-Right">
+      <action name="Execute">
+        <command>xdotool mousemove_relative -- 10 0</command>
+      </action>
+    </keybind>
     <!-- File Manager -->
     <keybind key="W-f">
       <action name="Execute">
@@ -424,7 +461,7 @@
       </action>
     </keybind>
     <!-- Correcting errors -->
-    <keybind key="W-e">
+    <keybind key="C-W-e">
       <action name="Execute">
         <command>bash -c 'xrefresh; pulseaudio -k; wmctrl -l; pulseaudio --start; zenity --title "Correcting errors" --error --ellipsize --text "Correcting errors:\n\nSound, video, WM..."'</command>
         <startupnotify>
@@ -485,12 +522,12 @@
     <!-- Chromecast/LGTVWebOS: pause/play streaming -->
     <keybind key="W-S-p">
       <action name="Execute">
-        <command>bash -c 'catt play_toggle; export pause=false; if (("$pause" = false)); then ~/.local/bin/lgtv media.controls pause; export pause=true; else ~/.local/bin/lgtv media.controls play; fi'</command>
+        <command>bash -c 'catt play_toggle; check_pause="/tmp/pause_streaming_check.txt"; if [ ! -e "$check_pause" ]; then touch "${check_pause}"; ~/.local/bin/lgtv media.controls pause; else rm "${check_pause}"; ~/.local/bin/lgtv media.controls play; fi'</command>
       </action>
     </keybind>
     <keybind key="W-XF86AudioPlay">
       <action name="Execute">
-        <command>bash -c 'catt play_toggle; export pause=false; if (("$pause" = false)); then ~/.local/bin/lgtv media.controls pause; export pause=true; else ~/.local/bin/lgtv media.controls play; fi'</command>
+        <command>bash -c 'catt play_toggle; check_pause="/tmp/pause_streaming_check.txt"; if [ ! -e "$check_pause" ]; then touch "${check_pause}"; ~/.local/bin/lgtv media.controls pause; else rm "${check_pause}"; ~/.local/bin/lgtv media.controls play; fi'</command>
       </action>
     </keybind>
     <!-- Chromecast: aumentar volume -->
@@ -721,7 +758,7 @@
         <command>xkill #xkill -button 1</command>
       </action>
     </keybind>
-    <keybind key="W-q">
+    <keybind key="C-W-q">
       <action name="Execute">
         <command>xdotool getwindowfocus windowkill</command>
       </action>
@@ -1049,15 +1086,7 @@
       <action name="UnmaximizeFull"/>
       <action name="GrowToEdgeEast"/>
     </keybind>
-    <keybind key="W-Right">
-      <action name="UnmaximizeFull"/>
-      <action name="GrowToEdgeEast"/>
-    </keybind>
     <keybind key="W-k">
-      <action name="UnmaximizeFull"/>
-      <action name="GrowToEdgeSouth"/>
-    </keybind>
-    <keybind key="W-Down">
       <action name="UnmaximizeFull"/>
       <action name="GrowToEdgeSouth"/>
     </keybind>
@@ -1065,15 +1094,7 @@
       <action name="UnmaximizeFull"/>
       <action name="GrowToEdgeNorth"/>
     </keybind>
-    <keybind key="W-Up">
-      <action name="UnmaximizeFull"/>
-      <action name="GrowToEdgeNorth"/>
-    </keybind>
     <keybind key="W-j">
-      <action name="UnmaximizeFull"/>
-      <action name="GrowToEdgeWest"/>
-    </keybind>
-    <keybind key="W-Left">
       <action name="UnmaximizeFull"/>
       <action name="GrowToEdgeWest"/>
     </keybind>
@@ -1330,10 +1351,6 @@
       <action name="Close"/>
     </keybind>
     <keybind key="C-S-q">
-      <action name="Close"/>
-      <action name="PreviousWindow"/>
-    </keybind>
-    <keybind key="S-W-q">
       <action name="Close"/>
       <action name="PreviousWindow"/>
     </keybind>
