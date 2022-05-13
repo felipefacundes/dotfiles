@@ -335,7 +335,7 @@
     </keybind>
     <keybind key="S-W-w">
       <action name="Execute">
-        <command>bash -c 'xrefresh; zenity --ellipsize --info --text "$(wmctrl -l)"; export entry=`zenity --entry --text="Enter window id." --entry-text="Enter window id."`; wmctrl -ia "$entry"'</command>
+        <command>bash -c 'xrefresh; zenity --ellipsize --info --text "$(wmctrl -l)"; entry=`zenity --entry --text="Enter window id." --entry-text="Enter window id."`; wmctrl -ia "$entry"'</command>
         <startupnotify>
           <enabled>yes</enabled>
           <wmclass>active_window</wmclass>
@@ -397,7 +397,7 @@
       </action>
     </keybind>
     <!-- Mouse Click -->
-    <keybind key="W-e">
+    <keybind key="W-q">
       <action name="Execute">
         <command>xdotool click 1</command>
       </action>
@@ -407,13 +407,13 @@
         <command>xdotool click 2</command>
       </action>
     </keybind>
-    <keybind key="W-q">
+    <keybind key="W-e">
       <action name="Execute">
         <command>xdotool click 3</command>
       </action>
     </keybind>
     <!-- Mouse Move -->
-        <keybind key="W-Up">
+    <keybind key="W-Up">
       <action name="Execute">
         <command>xdotool mousemove_relative -- 0 -10</command>
       </action>
@@ -431,6 +431,26 @@
     <keybind key="W-Right">
       <action name="Execute">
         <command>xdotool mousemove_relative -- 10 0</command>
+      </action>
+    </keybind>
+    <keybind key="C-W-Up">
+      <action name="Execute">
+        <command>xdotool mousemove_relative -- 0 -40</command>
+      </action>
+    </keybind>
+    <keybind key="C-W-Down">
+      <action name="Execute">
+        <command>xdotool mousemove_relative -- 0 40</command>
+      </action>
+    </keybind>
+    <keybind key="C-W-Left">
+      <action name="Execute">
+        <command>xdotool mousemove_relative -- -40 0</command>
+      </action>
+    </keybind>
+    <keybind key="C-W-Right">
+      <action name="Execute">
+        <command>xdotool mousemove_relative -- 40 0</command>
       </action>
     </keybind>
     <!-- File Manager -->
@@ -510,7 +530,7 @@
     <!-- LGTVWebOS: Set Max Volume -->
     <keybind key="C-A-v">
       <action name="Execute">
-        <command>bash -c 'pkill -9 tv-default-volu; export script=~/.local/bin/tv-default-volume.sh; export Current_Volume=`~/.local/bin/Current_Volume.sh` export old_vol=`cat "$script" | head -5 | sed -n 5p | cut -c 16-17 | grep -E "[^[:blank:]]"`; export new_vol=`zenity --text "Current volume is $Current_Volume.\nVolume is limited on $old_vol.\n\nEnter new volume:" --entry`; sed -i "5s/$old_vol/$new_vol/" "$script" | sed -i "5s/=$/=$new_vol/" "$script"; "$script"'</command>
+        <command>bash -c 'pkill -9 tv-default-volu; script=~/.local/bin/tv-default-volume.sh; Current_Volume=`~/.local/bin/Current_Volume.sh` old_vol=`cat "$script" | head -5 | sed -n 5p | cut -c 16-17 | grep -E "[^[:blank:]]"`; new_vol=`zenity --text "Current volume is $Current_Volume.\nVolume is limited on $old_vol.\n\nEnter new volume:" --entry`; sed -i "5s/$old_vol/$new_vol/" "$script" | sed -i "5s/=$/=$new_vol/" "$script"; "$script"'</command>
         <startupnotify>
           <enabled>yes</enabled>
           <wmclass>set_max_vol_lgtv</wmclass>
@@ -671,12 +691,12 @@
     <!-- Toggle Brightness 0/1.3 -->
     <keybind key="XF86ScreenSaver">
       <action name="Execute">
-        <command>bash -c 'export max_brightness=`cat /sys/class/backlight/intel_backlight/max_brightness`; export check_brightness="/tmp/brightness_check.txt"; export brightness=`echo "$max_brightness"/3.3 | bc`; if [ ! -e "$check_brightness" ]; then touch "${check_brightness}"; echo 0 | tee /sys/class/backlight/intel_backlight/brightness; else rm "${check_brightness}"; echo "${brightness}" | tee /sys/class/backlight/intel_backlight/brightness; fi'</command>
+        <command>bash -c 'max_brightness=`cat /sys/class/backlight/intel_backlight/max_brightness`; check_brightness="/tmp/brightness_check.txt"; brightness=`perl -e "print ${max_brightness}/3.3" | cut -f1 -d'.'`; if [ ! -e "$check_brightness" ]; then touch "${check_brightness}"; echo 0 | tee /sys/class/backlight/intel_backlight/brightness; else rm "${check_brightness}"; echo "${brightness}" | tee /sys/class/backlight/intel_backlight/brightness; fi'</command>
       </action>
     </keybind>
     <keybind key="C-A-0">
       <action name="Execute">
-        <command>bash -c 'export max_brightness=`cat /sys/class/backlight/intel_backlight/max_brightness`; export check_brightness="/tmp/brightness_check.txt"; export brightness=`echo "$max_brightness"/3.3 | bc`; if [ ! -e "$check_brightness" ]; then touch "${check_brightness}"; echo 0 | tee /sys/class/backlight/intel_backlight/brightness; else rm "${check_brightness}"; echo "${brightness}" | tee /sys/class/backlight/intel_backlight/brightness; fi'</command>
+        <command>bash -c 'max_brightness=`cat /sys/class/backlight/intel_backlight/max_brightness`; check_brightness="/tmp/brightness_check.txt"; brightness=`perl -e "print ${max_brightness}/3.3" | cut -f1 -d'.'`; if [ ! -e "$check_brightness" ]; then touch "${check_brightness}"; echo 0 | tee /sys/class/backlight/intel_backlight/brightness; else rm "${check_brightness}"; echo "${brightness}" | tee /sys/class/backlight/intel_backlight/brightness; fi'</command>
       </action>
     </keybind>
     <!-- Print Screen -->
@@ -811,15 +831,7 @@
       <action name="UnmaximizeFull"/>
       <action name="MoveToEdgeEast"/>
     </keybind>
-    <keybind key="C-W-Right">
-      <action name="UnmaximizeFull"/>
-      <action name="MoveToEdgeEast"/>
-    </keybind>
     <keybind key="C-W-k">
-      <action name="UnmaximizeFull"/>
-      <action name="MoveToEdgeSouth"/>
-    </keybind>
-    <keybind key="C-W-Down">
       <action name="UnmaximizeFull"/>
       <action name="MoveToEdgeSouth"/>
     </keybind>
@@ -827,15 +839,7 @@
       <action name="UnmaximizeFull"/>
       <action name="MoveToEdgeNorth"/>
     </keybind>
-    <keybind key="C-W-Up">
-      <action name="UnmaximizeFull"/>
-      <action name="MoveToEdgeNorth"/>
-    </keybind>
     <keybind key="C-W-j">
-      <action name="UnmaximizeFull"/>
-      <action name="MoveToEdgeWest"/>
-    </keybind>
-    <keybind key="C-W-Left">
       <action name="UnmaximizeFull"/>
       <action name="MoveToEdgeWest"/>
     </keybind>
