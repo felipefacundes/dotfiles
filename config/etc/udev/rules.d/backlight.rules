@@ -1,3 +1,7 @@
+# Detect your user:
+#   command -p id -u
+# The name of the directory depends on the graphics card model. 
+#   ls /sys/class/backlight/
 RUN+="/bin/chgrp video /sys/class/backlight/intel_backlight/brightness"
 RUN+="/bin/chmod g+w /sys/class/backlight/intel_backlight/brightness"
 RUN+="/bin/chown 1000 /sys/class/backlight/intel_backlight/brightness"
