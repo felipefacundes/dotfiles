@@ -691,12 +691,12 @@
     <!-- Toggle Brightness 0/1.3 -->
     <keybind key="XF86ScreenSaver">
       <action name="Execute">
-        <command>bash -c 'max_brightness=`cat /sys/class/backlight/intel_backlight/max_brightness`; check_brightness="/tmp/brightness_check.txt"; brightness=`perl -e "print ${max_brightness}/3.3" | cut -f1 -d'.'`; if [ ! -e "$check_brightness" ]; then touch "${check_brightness}"; echo 0 | tee /sys/class/backlight/intel_backlight/brightness; else rm "${check_brightness}"; echo "${brightness}" | tee /sys/class/backlight/intel_backlight/brightness; fi'</command>
+        <command>bash -c 'vendor=`ls /sys/class/backlight/`; max_brightness=`cat /sys/class/backlight/"${vendor}"/max_brightness`; check_brightness="/tmp/brightness_check.txt"; brightness=`perl -e "print ${max_brightness}/3.3" | cut -f1 -d'.'`; if [ ! -e "$check_brightness" ]; then touch "${check_brightness}"; echo 0 | tee /sys/class/backlight/"${vendor}"/brightness; else rm "${check_brightness}"; echo "${brightness}" | tee /sys/class/backlight/"${vendor}"/brightness; fi'</command>
       </action>
     </keybind>
     <keybind key="C-A-0">
       <action name="Execute">
-        <command>bash -c 'max_brightness=`cat /sys/class/backlight/intel_backlight/max_brightness`; check_brightness="/tmp/brightness_check.txt"; brightness=`perl -e "print ${max_brightness}/3.3" | cut -f1 -d'.'`; if [ ! -e "$check_brightness" ]; then touch "${check_brightness}"; echo 0 | tee /sys/class/backlight/intel_backlight/brightness; else rm "${check_brightness}"; echo "${brightness}" | tee /sys/class/backlight/intel_backlight/brightness; fi'</command>
+        <command>bash -c 'vendor=`ls /sys/class/backlight/`; max_brightness=`cat /sys/class/backlight/"${vendor}"/max_brightness`; check_brightness="/tmp/brightness_check.txt"; brightness=`perl -e "print ${max_brightness}/3.3" | cut -f1 -d'.'`; if [ ! -e "$check_brightness" ]; then touch "${check_brightness}"; echo 0 | tee /sys/class/backlight/"${vendor}"/brightness; else rm "${check_brightness}"; echo "${brightness}" | tee /sys/class/backlight/"${vendor}"/brightness; fi'</command>
       </action>
     </keybind>
     <!-- Print Screen -->
