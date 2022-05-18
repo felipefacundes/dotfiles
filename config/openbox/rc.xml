@@ -662,7 +662,17 @@
         <command>bash -c "ponymix decrease 2% ; pactl set-sink-volume 0 -3% ; pactl set-sink-volume 4 -3%; pkill -9 osd_cat; xrefresh; echo Volume:\ `pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'` | osd_cat -d 1 -s 30 -A center -l 1 -p middle -o 30 --color=#00ff73 --shadow=1 -f '-*-helvetica-bold-*-*-*-64-*-*-*-*-*-*'"</command>
       </action>
     </keybind>
+    <keybind key="A-S-Down">
+      <action name="Execute">
+        <command>bash -c "ponymix decrease 2% ; pactl set-sink-volume 0 -3% ; pactl set-sink-volume 4 -3%; pkill -9 osd_cat; xrefresh; echo Volume:\ `pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'` | osd_cat -d 1 -s 30 -A center -l 1 -p middle -o 30 --color=#00ff73 --shadow=1 -f '-*-helvetica-bold-*-*-*-64-*-*-*-*-*-*'"</command>
+      </action>
+    </keybind>
     <keybind key="XF86AudioRaiseVolume">
+      <action name="Execute">
+        <command>bash -c "ponymix increase 2% ; pactl set-sink-volume 0 +3% ; pactl set-sink-volume 4 +3%; pkill -9 osd_cat; xrefresh; echo Volume:\ `pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'` | osd_cat -d 1 -s 30 -A center -l 1 -p middle -o 30 --color=#00ff73 --shadow=1 -f '-*-helvetica-bold-*-*-*-64-*-*-*-*-*-*'"</command>
+      </action>
+    </keybind>
+    <keybind key="A-S-Up">
       <action name="Execute">
         <command>bash -c "ponymix increase 2% ; pactl set-sink-volume 0 +3% ; pactl set-sink-volume 4 +3%; pkill -9 osd_cat; xrefresh; echo Volume:\ `pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'` | osd_cat -d 1 -s 30 -A center -l 1 -p middle -o 30 --color=#00ff73 --shadow=1 -f '-*-helvetica-bold-*-*-*-64-*-*-*-*-*-*'"</command>
       </action>
