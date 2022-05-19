@@ -1,10 +1,41 @@
+#!/bin/bash
 "*****************************************************************************
-"" Créditos: Felipe Facundes
+"" Credits: Felipe Facundes
 "" Telegram: @FeFacundes
-"" Grupo do Telegram: t.me/winehq_linux
 "*****************************************************************************
 
 " vim-bootstrap b0a75e4
+
+"*****************************************************************************
+"" Ortographic correction
+"*****************************************************************************
+
+augroup lexical
+  autocmd!
+  autocmd FileType markdown,mkd call lexical#init()
+  autocmd FileType textile call lexical#init()
+  autocmd FileType text call lexical#init({ 'spell': 0 })
+augroup END
+
+set spelllang=pt,en
+set spell spelllang=pt,en
+set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+let g:lexical#spell = 1
+let g:lexical#spelllang = ['en_us','pt_br',]
+" let g:lexical#spell_key = '<leader>s'
+" let g:lexical#dictionary = ['/usr/share/hunspell/pt_BR.dic',]
+" let g:lexical#dictionary_key = '<leader>k'
+" let g:lexical#thesaurus = ['~/.vim/thesaurus/palavras.txt',]
+call plug#begin()
+" The default plugin directory will be as follows:
+"   - Vim (Linux/macOS): '~/.vim/plugged'
+"   - Vim (Windows): '~/vimfiles/plugged'
+"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
+" You can specify a custom plugin directory by passing it as the argument
+"   - e.g. `call plug#begin('~/.vim/plugged')`
+"   - Avoid using standard Vim directory names like 'plugin'
+
+" Make sure you use single quotes
 
 "*****************************************************************************
 "" Vim-PLug core
@@ -38,8 +69,11 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 "" Plug install packages
 "*****************************************************************************
 Plug 'scrooloose/nerdtree'
+""Plug 'preservim/nerdtree'
+Plug 'preservim/nerdcommenter'
+""Plug 'scrooloose/nerdtree-git-plugin'
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'tpope/vim-commentary'
+""Plug 'vim-scripts/nerdtree-tabs'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -52,6 +86,18 @@ Plug 'majutsushi/tagbar'
 Plug 'scrooloose/syntastic'
 Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
+Plug 'tpope/vim-commentary'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'reedes/vim-lexical'
+Plug 'calviken/vim-gdscript3'
+Plug 'shawncplus/phpcomplete.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+" Any valid git URL is allowed
+Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+" Multiple Plug commands can be written in a single line using | separators
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 
 if isdirectory('/usr/local/opt/fzf')
@@ -115,10 +161,12 @@ Plug 'ludwig/split-manpage.vim'
 
 " go
 "" Go Lang Bundle
-Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
+""Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+""Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
 " polyglot
 let g:polyglot_disabled = ['go']
