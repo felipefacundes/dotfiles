@@ -1,4 +1,3 @@
-#!/bin/bash
 "*****************************************************************************
 "" Credits: Felipe Facundes
 "" Telegram: @FeFacundes
@@ -19,7 +18,7 @@ augroup END
 
 set spelllang=pt,en
 set spell spelllang=pt,en
-set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+""set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
 let g:lexical#spell = 1
 let g:lexical#spelllang = ['en_us','pt_br',]
 " let g:lexical#spell_key = '<leader>s'
@@ -45,7 +44,7 @@ if has('vim_starting')
 endif
 
 let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
-
+""let g:loaded_perl_provider = 0
 let g:vim_bootstrap_langs = "c,go,html,javascript"
 let g:vim_bootstrap_editor = "nvim"				" nvim or vim
 
@@ -122,7 +121,7 @@ endif
 
 if v:version >= 704
   "" Snippets
-  Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 endif
 
 Plug 'honza/vim-snippets'
@@ -155,7 +154,7 @@ Plug 'ervandew/supertab'
 Plug 'schickling/vim-bufonly'
 
 " c
-Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
+"Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']} "Este plugin é lento demais
 Plug 'ludwig/split-manpage.vim'
 
 
