@@ -48,7 +48,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>KDE</name>
+    <name>TissueBox-Lime</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -61,7 +61,7 @@
       D: omnipresent (on all desktops).
   -->
     <keepBorder>yes</keepBorder>
-    <animateIconify>yes</animateIconify>
+    <animateIconify>no</animateIconify>
     <font place="ActiveWindow">
       <name>Sans</name>
       <size>12</size>
@@ -278,7 +278,7 @@
     <!-- Web Browser: Firefox -->
     <keybind key="C-W-f">
       <action name="Execute">
-        <command>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then xdotool search "Mozilla Firefox" windowactivate --sync key --clearmodifiers ctrl+l; else nohup firefox > /dev/null; sleep 4; exec xdotool key alt+3; fi'</command>
+        <command>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then xdotool search "Mozilla Firefox" windowactivate --sync key --clearmodifiers ctrl+l; else nohup firefox &gt; /dev/null; sleep 4; exec xdotool key alt+3; fi'</command>
         <startupnotify>
           <enabled>yes</enabled>
           <wmclass>firefox</wmclass>
@@ -309,7 +309,7 @@
     </keybind>
     <keybind key="XF86WWW">
       <action name="Execute">
-        <command>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then xdotool search "Mozilla Firefox" windowactivate --sync key --clearmodifiers ctrl+l; else nohup firefox > /dev/null; sleep 4; exec xdotool key alt+3; fi'</command>
+        <command>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then xdotool search "Mozilla Firefox" windowactivate --sync key --clearmodifiers ctrl+l; else nohup firefox &gt; /dev/null; sleep 4; exec xdotool key alt+3; fi'</command>
         <startupnotify>
           <enabled>yes</enabled>
           <wmclass>firefox</wmclass>
