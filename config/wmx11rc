@@ -1,11 +1,31 @@
 #!/bin/bash
-export DESKTOP_SESSION=mate
-export XDG_CURRENT_DESKTOP=MATE
-export QT_QPA_PLATFORM=xcb
+
+# User-specific variables should be placed in $HOME/.config/openbox/environment
+#
+
+# set main XDG variables
+export XDG_CONFIG_DIRS=/etc/xdg
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_DIRS=/usr/local/share:/usr/share
+export XDG_DATA_HOME="${HOME}/.local/share"
+export XDG_CURRENT_DESKTOP=OPENBOX
+export XDG_SESSION_DESKTOP=openbox
+export XDG_MENU_PREFIX=openbox-
+
+# clean DM influence
+export DESKTOP_SESSION=openbox
+unset GDMSESSION
+
+# for reducing GTK stderr spam
+export NO_AT_BRIDGE=1
+
+# fix and sync Qt and GTK theming
+export GTK2_RC_FILES="${HOME}/.gtkrc-2.0:${XDG_CONFIG_HOME}/gtk-2.0/gtkrc:/etc/gtk-2.0/gtkrc"
 export QT_QPA_PLATFORMTHEME=gtk2
+export QT_QPA_PLATFORM=xcb
 export QT_STYLE_OVERRIDE=gtk2
-export GTK2_RC_FILES=~/.gtkrc-2.0
 export GTK_RC_FILES=~/.config/gtk-3.0/settings.ini
+
 # see https://unix.stackexchange.com/a/295652/332452
 source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
 
@@ -66,6 +86,18 @@ Random_Wallpaper()
     feh --bg-fill "$(find "${HOME}"/Imagens/Wallpapers/ -name '*[jJpP][nNpP][gG]' | shuf -n 1)"
     ###nitrogen --set-zoom-fill $(find /home/$USER/Imagens/Wallpapers/ -name '*[jJpP][nNpP][gG]' | shuf -n1)
 }
+Xrandr()
+{
+ sleep 2
+###~/.screenlayout/normal.sh &
+###xrandr --setprovideroutputsource modesetting modesetting &
+###xrandr --auto
+###xrandr --output eDP-1-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --off &
+###xrandr --output HDMI-1-0 --off --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal &
+xrandr --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate inverted \
+	--output eDP-1-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal
+}
+
 # this file is run when calling startx
 # default arch init scripts
 #if [ -d /etc/X11/xinit/xinitrc.d ]; then
@@ -81,14 +113,11 @@ Random_Wallpaper()
 #[ -r ~/.xprofile ] && . ~/.xprofile
 
 systemctl --user mask pipewire pipewire-pulse
-###~/.screenlayout/normal.sh &
-###xrandr --setprovideroutputsource modesetting modesetting &
-###xrandr --auto
-###xrandr --output eDP-1-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --off &
-###xrandr --output HDMI-1-0 --off --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal &
-/usr/lib/mate-settings-daemon/mate-settings-daemon & 
+
+#/usr/lib/mate-settings-daemon/mate-settings-daemon &
 Random_Wallpaper &
-#/usr/lib/notify-osd/notify-osd &
+#Xrandr &
+/usr/lib/notify-osd/notify-osd &
 #/usr/lib/mate-notification-daemon/mate-notification-daemon &
 tint2 &
 
@@ -103,19 +132,14 @@ xcompmgr &
 transmission-gtk -m &
 #picom --experimental-backends --backend glx --xrender-sync-fence &
 
-#Cursor_Theme_Fix &
+Cursor_Theme_Fix &
 Battery_Check &
-#battery_check &
-###export $(dbus-launch)
-###exec dbus-launch openbox
-###exec dbus-launch --exit-with-session openbox
-#exec openbox
 
 if test -z "$DBUS_SESSION_BUS_ADDRESS" ; then
       # if not found, launch a new one
       export $(dbus-launch)
       eval `dbus-launch --sh-syntax --exit-with-session openbox`
       echo "D-Bus per-session daemon address is: $DBUS_SESSION_BUS_ADDRESS"
-else 
+else
       exec openbox
 fi
