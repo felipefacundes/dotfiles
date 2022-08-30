@@ -4,7 +4,7 @@
 # 😉 Credits: Felipe Facundes
 # 﨧 Telegram: @FeFacundes
 # 﨧 Telegram Group: t.me/winehq_linux
-# 😅 Dúvidas:  http://openbox.org/wiki/Main_Page
+# 😅 FAQ:  http://openbox.org/wiki/Main_Page
 #              http://openbox.org/wiki/Special:Search/Help
 #              http://openbox.org/wiki/Help:Actions
 -->
@@ -48,7 +48,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>TissueBox-Lime</name>
+    <name>openColor violet</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -191,7 +191,7 @@
   <!-- launchers -->
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
-    <keybind key="W-F1">
+    <keybind key="A-F1">
       <action name="Execute">
         <command>bash -c "rm ~/.jgmenu-lockfile ; jgmenu"</command>
       </action>
@@ -203,7 +203,7 @@
     </keybind>
     <keybind key="W-z">
       <action name="Execute">
-        <command>~/.config/rofi/rofimenu.sh</command>
+        <command>bash -c 'rofi -combi-modi drun,window -show combi -modi combi -font 'SF Pro Display 9' -bw 5 -location 0 -terminal xterm -columns 2 -lines 10 -show-icons -color-normal '#cc1E1B1C,#cc5FAACD,#cc391F29,#cc5FAACD,#cc101010' -color-window '#cc1E1B1C, #cc5FAACD, #cc101010' -width 50 -padding 15 -line-padding 3 -line-margin 2 -combi-hide-mode-prefix True'</command>
       </action>
     </keybind>
     <keybind key="A-F2">
@@ -211,7 +211,7 @@
         <command>rofi -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launchers/misc/row_dock.rasi</command>
       </action>
     </keybind>
-    <keybind key="A-F1">
+    <keybind key="A-w">
       <action name="Execute">
         <command>rofi-search</command>
       </action>
@@ -504,23 +504,30 @@
       </action>
     </keybind>
     <!-- Tela Normal -->
-    <keybind key="A-S-F1">
+    <keybind key="W-F1">
       <action name="Execute">
         <command>bash -c 'xrandr --output eDP-1-1 --primary --mode 1920x1080 --rate 120.00 --pos 0x0 --rotate normal --output HDMI-0 --off; xrandr --output eDP-1 --primary --mode 1920x1080 --rate 120.00 --pos 0x0 --rotate normal --output HDMI-1-0 --off'</command>
       </action>
     </keybind>
     <!-- Inverter tela (Monitor AOC x Notebook Asus X202E - Vivo Book ) -->
-    <keybind key="A-S-F2">
-      <action name="Execute">
-        <command>bash -c 'xrandr --output eDP-1-1 --mode 1920x1080 --rate 120.00 --pos 0x0 --rotate normal --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate inverted; xrandr --output eDP-1 --mode 1920x1080 --rate 120.00 --pos 0x0 --rotate normal --output HDMI-1-0 --mode 1920x1080 --pos 0x0 --rotate inverted; pactl set-card-profile 0 off'</command>
-      </action>
-    </keybind>
-    <!-- Inverter tela e desativar display do notebook -->
-    <keybind key="A-S-F3">
+    <keybind key="W-F2">
       <action name="Execute">
         <command>bash -c 'xrandr --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate inverted --output eDP-1-1 --off; xrandr --output HDMI-1-0 --mode 1920x1080 --pos 0x0 --rotate inverted --output eDP-1 --off; pactl set-card-profile 0 off'</command>
       </action>
     </keybind>
+    <!-- Inverter tela e desativar display do notebook -->
+    <keybind key="W-F3">
+      <action name="Execute">
+        <command>bash -c 'xrandr --output eDP-1-1 --mode 1920x1080 --rate 120.00 --pos 0x0 --rotate normal --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate inverted; xrandr --output eDP-1 --mode 1920x1080 --rate 120.00 --pos 0x0 --rotate normal --output HDMI-1-0 --mode 1920x1080 --pos 0x0 --rotate inverted; pactl set-card-profile 0 off'</command>
+      </action>
+    </keybind>
+    <!-- Tela extendida lado a lado -->
+    <keybind key="W-F4">
+      <action name="Execute">
+        <command>bash -c 'xrandr --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate inverted --output eDP-1-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal; xrandr --output HDMI-1-0 --mode 1920x1080 --pos 0x0 --rotate inverted --output eDP-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal; pactl set-card-profile 0 off'</command>
+      </action>
+    </keybind>
+    <!-- Gravador de tela OBS -->
     <keybind key="S-A-r">
       <action name="Execute">
         <command>obs</command>
@@ -683,6 +690,11 @@
         <command>bash -c "xbacklight -dec +2 ; light -U 2"</command>
       </action>
     </keybind>
+    <keybind key="A-S-Next">
+      <action name="Execute">
+        <command>~/.local/bin/all_bright -</command>
+      </action>
+    </keybind>
     <keybind key="A-S-Left">
       <action name="Execute">
         <command>bash -c "xbacklight -dec +2 ; light -U 2"</command>
@@ -691,6 +703,11 @@
     <keybind key="XF86MonBrightnessUp">
       <action name="Execute">
         <command>bash -c "xbacklight -inc +2 ; light -A 2"</command>
+      </action>
+    </keybind>
+    <keybind key="A-S-Prior">
+      <action name="Execute">
+        <command>~/.local/bin/all_bright +</command>
       </action>
     </keybind>
     <keybind key="A-S-Right">
@@ -984,13 +1001,25 @@
     <keybind key="A-l">
       <action name="DirectionalFocusEast"/>
     </keybind>
+    <keybind key="C-Right">
+      <action name="DirectionalFocusEast"/>
+    </keybind>
     <keybind key="A-k">
+      <action name="DirectionalFocusSouth"/>
+    </keybind>
+    <keybind key="A-Down">
       <action name="DirectionalFocusSouth"/>
     </keybind>
     <keybind key="A-i">
       <action name="DirectionalFocusNorth"/>
     </keybind>
+    <keybind key="A-Up">
+      <action name="DirectionalFocusNorth"/>
+    </keybind>
     <keybind key="A-j">
+      <action name="DirectionalFocusWest"/>
+    </keybind>
+    <keybind key="C-Left">
       <action name="DirectionalFocusWest"/>
     </keybind>
     <!-- Vertical tiling -->
@@ -1151,20 +1180,21 @@
       <action name="SendToDesktopDown"/>
     </keybind>
     <!-- move a janela para outro monitor -->
-    <keybind key="W-F1">
+    <keybind key="C-1">
       <action name="MoveResizeTo">
         <x>center</x>
         <y>center</y>
         <monitor>1</monitor>
       </action>
     </keybind>
-    <keybind key="W-F2">
+    <keybind key="C-2">
       <action name="MoveResizeTo">
         <x>center</x>
         <y>center</y>
         <monitor>2</monitor>
       </action>
     </keybind>
+    <!-- Mudar de Desktop Virtual -->
     <keybind key="W-1">
       <action name="GoToDesktop">
         <to>1</to>
@@ -1667,11 +1697,11 @@
     -->
     <context name="Root">
       <!-- Menus -->
-      <mousebind action="Press" button="Middle">
+      <!--<mousebind action="Press" button="Middle">
         <action name="ShowMenu">
           <menu>client-list-combined-menu</menu>
         </action>
-      </mousebind>
+      </mousebind>-->
       <mousebind action="Press" button="Right">
         <action name="ShowMenu">
           <!--menu>root-menu</menu-->
