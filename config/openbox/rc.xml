@@ -1001,25 +1001,13 @@
     <keybind key="A-l">
       <action name="DirectionalFocusEast"/>
     </keybind>
-    <keybind key="C-Right">
-      <action name="DirectionalFocusEast"/>
-    </keybind>
     <keybind key="A-k">
-      <action name="DirectionalFocusSouth"/>
-    </keybind>
-    <keybind key="A-Down">
       <action name="DirectionalFocusSouth"/>
     </keybind>
     <keybind key="A-i">
       <action name="DirectionalFocusNorth"/>
     </keybind>
-    <keybind key="A-Up">
-      <action name="DirectionalFocusNorth"/>
-    </keybind>
     <keybind key="A-j">
-      <action name="DirectionalFocusWest"/>
-    </keybind>
-    <keybind key="C-Left">
       <action name="DirectionalFocusWest"/>
     </keybind>
     <!-- Vertical tiling -->
