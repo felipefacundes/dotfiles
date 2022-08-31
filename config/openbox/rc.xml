@@ -733,13 +733,13 @@
       </action>
     </keybind>
     <!-- Print Screen with delay -->
-    <keybind key="S-Print">
+    <keybind key="A-S-Print">
       <action name="Execute">
         <command>bash -c 'cd ~/ ; mkdir -p "$HOME/Imagens/Captura de Tela/" ; scrot -d 4 "$HOME/Imagens/Captura de Tela/%Y-%m-%d %H:%M:%S - Captura de Tela.png" ; mkdir -p ~/.local/songs/ ; cd ~/.local/songs/ ; wget -nc https://github.com/felipefacundes/dotfiles/blob/master/config/songs/camera_shutter.mp3?raw=true -O camera_shutter.mp3 ; paplay ~/.local/songs/camera_shutter.ogg'</command>
       </action>
     </keybind>
     <!-- Print Screen: Interactively select a window or rectangle with the mouse.-->
-    <keybind key="A-Print">
+    <keybind key="S-Print">
       <action name="Execute">
         <command>bash -c 'cd ~/ ; mkdir -p "$HOME/Imagens/Captura de Tela/" ; scrot -s "$HOME/Imagens/Captura de Tela/%Y-%m-%d %H:%M:%S - Captura de Tela.png"'</command>
       </action>
