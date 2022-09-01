@@ -741,7 +741,7 @@
     <!-- Print Screen: Interactively select a window or rectangle with the mouse.-->
     <keybind key="S-Print">
       <action name="Execute">
-        <command>bash -c 'cd ~/ ; mkdir -p "$HOME/Imagens/Captura de Tela/" ; scrot -s "$HOME/Imagens/Captura de Tela/%Y-%m-%d %H:%M:%S - Captura de Tela.png"'</command>
+        <command>bash -c 'cd ~/ ; mkdir -p "$HOME/Imagens/Captura de Tela/" ; scrot -f -s "$HOME/Imagens/Captura de Tela/%Y-%m-%d %H:%M:%S - Captura de Tela.png"'</command>
       </action>
     </keybind>
     <!-- Print Screen of currently focused window.-->
