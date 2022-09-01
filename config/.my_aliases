@@ -41,6 +41,7 @@ alias mvd='echo "mv file (date +%d-%m-%Y_%H:%M:%S)"'
 alias aur="yay -S --nodiffmenu --noeditmenu --noupgrademenu --mflags --skipinteg --noconfirm"
 alias cpi="cpupower frequency-info"
 alias bi="cd ~/.local/bin"
+alias py='tput setaf 2; echo -e "install python binaries isolated: python -m venv env\n"; tput setaf 11; echo -e "source ~/.local/bin/python/env/bin/activate\n"; tput sgr0; source ~/.local/bin/python/env/bin/activate'
 alias shutdown="openrc-shutdown -p now; systemctl poweroff -i; shutdown -h now"
 #alias reboot="/usr/bin/openrc-shutdown --reboot now"
 alias des="shutdown"
@@ -93,7 +94,13 @@ echo 'paclog-pkglist <(tail -5000 /var/log/pacman.log | grep -A 100 -i 'pacman -
 alias pachis="less /var/log/pacman.log #xdg-open"
 alias listmonitor="xrandr --listmonitors ; echo --- ; echo xrandr --listmonitors"
 alias monitorlist="listmonitor"
-alias brilho="xrandr --output HDMI-A-0 --brightness 0.8 ; echo --- ; echo xrandr --output HDMI-A-0 --brightness 0.8"
+alias brilho='let i+=5; connected=`xrandr | grep -w connected | cut -f1 -d" "`; for display in $connected; do if (( $i >= 95 )); then i=20; xrandr --output $display --brightness 1.0; echo 100; elif (( $i <= 90 )); then xrandr --output $display --brightness 0.$i; fi;done'
+alias brightness='brilho'
+alias diminuir_brilho='connected=`xrandr | grep -w connected | cut -f1 -d" "`; if [ ! -e /tmp/variable_brightness_value.txt ]; then touch /tmp/variable_brightness_value.txt; echo 99 | tee /tmp/variable_brightness_value.txt &>/dev/null; fi; value=`cat /tmp/variable_brightness_value.txt` &>/dev/null; for display in $connected; do if (( "$value" <= "0" )) &>/dev/null; then xrandr --output "$display" --brightness 0; echo 0 | tee /tmp/variable_brightness_value.txt &>/dev/null; elif (( "$value" > "0" )) &>/dev/null; then echo $(($value - 5)) | tee /tmp/variable_brightness_value.txt &>/dev/null; xrandr --output "$display" --brightness 0.$value; fi; done'
+alias aumentar_brilho='connected=`xrandr | grep -w connected | cut -f1 -d" "`; if [ ! -e /tmp/variable_brightness_value.txt ]; then touch /tmp/variable_brightness_value.txt; echo 99 | tee /tmp/variable_brightness_value.txt &>/dev/null; fi; value=`cat /tmp/variable_brightness_value.txt` &>/dev/null; for display in $connected; do if (( "$value" >= "99" )) &>/dev/null; then xrandr --output "$display" --brightness 1.0; echo 99 | tee /tmp/variable_brightness_value.txt &>/dev/null; elif (( "$value" < "99" )) &>/dev/null; then echo $(($value + 5)) | tee /tmp/variable_brightness_value.txt &>/dev/null; xrandr --output "$display" --brightness 0.$value; fi; done'
+alias xrandr_brilho="echo xrandr --output HDMI-A-0 --brightness 0.8"
+alias xrandr_brightness="xrandr_brilho"
+alias command_brightness="xrandr_brilho"
 alias gamma="xgamma -gamma .90 ; echo --- ; echo xgamma -gamma .90"
 alias gama="gamma"
 alias blue='xgamma -bgamma 1.1 ; xgamma -rgamma .8 ; echo --- ; echo "xgamma -bgamma 1.1 ; xgamma -rgamma .8"'
@@ -137,8 +144,8 @@ alias rsync='tput setaf 11; echo -e """Envie arquivos e diretórios via rsync us
 alias im-options='tput setaf 11; echo -e "\n"Veja mais opções, com:"\n"convert --help"\n\n"Olhe os exemplos abaixo:"\n\n"convert -channel RGB -contrast-stretch 1x1%"\n"convert -level 25%,75%"\n"convert +level 0x120%"\n"convert -sharpen  0x4"\n"convert -contrast -contrast -contrast"\n"convert -fx "u*125/102" +repage"\n"convert -channel green -fx "u*42/255" +repage"\n"convert -function Polynomial "-3.786,5.767,-1.543,0.562,0""\n"convert -sigmoidal-contrast 2,0%"\n"convert -sigmoidal-contrast 15x30%"\n""convert -normalize -unsharp 12x25 (Para aumentar a nitidez)""\n""convert imagem.jpg -colors 5 paleta.jpg (Para extrair às cores dominantes, e depois melhorar a imagem com Gimp > Duplicar Camada > Menu - Inverter cor > e em camadas > extrair grãos)""\n\n"Visite:"\n"https://legacy.imagemagick.org/Usage/color_mods/"\n"https://im.snibgo.com/ckbkClut.htm"\n"https://www.imagemagick.org/Usage/mapping/"\n"https://www.imagemagick.org/Usage/thumbnails/"\n"https://legacy.imagemagick.org/Usage/transform/"\n""https://www.imagemagick.org/discourse-server/viewtopic.php?t=35836""\n"https://legacy.imagemagick.org/Usage/photos/"\n"https://stackoverflow.com/questions/26889358/generate-color-palette-from-image-with-imagemagic"\n\n"; tput setaf 7'
 alias convert='im-options; convert'
 alias pdfimg='tput bold; tput setaf 11; echo -e "Converta determinadas páginas para uma imagem específica:"; tput setaf 2; echo "pdftoppm -<image_format> -f <first page> -l <last page> <pdf_filename> <image_name>"; tput setaf 11; echo -e "\nExemplo:"; tput setaf 2; echo "pdftoppm -jpeg -f 1 -l 2 Meu_Arquivo.pdf Minha_Imagem"'
-alias pdftoimg='pdfimg'
-alias pdftoppm='pdftoppm --help; pdfimg'
+alias pdftoimg='pdfimg; pdftoppm'
+alias pdftoppm='pdfimg; pdftoppm'
 alias ima="cd ~/Imagens"
 alias wpp="cd ~/Imagens/Wallpapers"
 alias wallpp="wpp"
