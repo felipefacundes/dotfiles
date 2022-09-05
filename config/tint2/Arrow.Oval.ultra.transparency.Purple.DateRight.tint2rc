@@ -1,13 +1,13 @@
-#---- Arrow.Oval.Salmon.DateRight.tint2rc ----
+#---- Arrow.Oval.ultra.transparency.Salmon.DateRight.tint2rc ----
 # See https://gitlab.com/o9000/tint2/wikis/Configure for 
 # full documentation of the configuration options.
 #-------------------------------------
 # Gradients
 # Gradient 1
 gradient = vertical
-start_color = #000000 100
-end_color = #000000 100
-color_stop = 70.000000 #000000 100
+start_color = #2d2d2d 80
+end_color = #000000 80
+color_stop = 70.000000 #1c1c1c 80
 
 #-------------------------------------
 # Backgrounds
@@ -44,12 +44,12 @@ border_width = 2
 border_sides = B
 border_content_tint_weight = 100
 background_content_tint_weight = 100
-background_color = #000000 80
-border_color = #000000 80
-background_color_hover = #000000 50
-border_color_hover = #1c1c1c 80
-background_color_pressed = #000000 50
-border_color_pressed = #000000 40
+background_color = #ffffff 100
+border_color = #d9d9d9 100
+background_color_hover = #ffffff 73
+border_color_hover = #d9d9d9 100
+background_color_pressed = #989898 73
+border_color_pressed = #d9d9d9 100
 
 # Background 4: Urgent task
 rounded = 0
@@ -112,8 +112,8 @@ border_width = 1
 border_sides = TBLR
 border_content_tint_weight = 0
 background_content_tint_weight = 0
-background_color = #000000 80
-border_color = #000000 80
+background_color = #000000 50
+border_color = #000000 50
 gradient_id = 0
 background_color_hover = #000000 50
 border_color_hover = #000000 50
@@ -128,14 +128,14 @@ border_width = 3
 border_sides = TBLR
 border_content_tint_weight = 3
 background_content_tint_weight = 3
-background_color = #7041db 50
-border_color = #7041db 50
+background_color = #d67981 50
+border_color = #d67981 50
 gradient_id = 0
-background_color_hover = #7041db 50
-border_color_hover = #7041db 50
+background_color_hover = #d67981 50
+border_color_hover = #d67981 50
 gradient_id_hover = 0
-background_color_pressed = #7041db 50
-border_color_pressed = #7041db 50
+background_color_pressed = #d67981 50
+border_color_pressed = #d67981 50
 gradient_id_pressed = 0
 
 # Background 10: Battery, Clock, Tooltip
@@ -144,8 +144,8 @@ border_width = 7
 border_sides = TBLR
 border_content_tint_weight = 0
 background_content_tint_weight = 0
-background_color = #000000 80
-border_color = #000000 80
+background_color = #000000 50
+border_color = #000000 50
 gradient_id = 0
 background_color_hover = #000000 50
 border_color_hover = #000000 50
@@ -160,7 +160,7 @@ border_width = 2
 border_sides = TBLR
 border_content_tint_weight = 0
 background_content_tint_weight = 0
-background_color = #000000 80
+background_color = #000000 50
 border_color = #000000 50
 gradient_id = 0
 background_color_hover = #000000 50
@@ -172,7 +172,7 @@ gradient_id_pressed = 0
 
 #-------------------------------------
 # Panel
-panel_items = ETEE:EEEEEEEEESEBE
+panel_items = ETE:EEEEEEEEEESEBE
 panel_size = 100% 22
 panel_margin = 0 0
 panel_padding = 3 0 2
@@ -293,7 +293,7 @@ battery_low_cmd = systemctl hibernate
 battery_full_cmd = 
 bat1_font = sans 8
 bat2_font = Sans 0
-battery_font_color = #7041db 100
+battery_font_color = #d67981 100
 bat1_format = 
 bat2_format = 
 battery_padding = 1 1
@@ -333,7 +333,7 @@ execp_mclick_command =
 execp_uwheel_command = 
 execp_dwheel_command = 
 execp_font = DroidSansMono Nerd Font Mono 26
-execp_font_color = #000000 80
+execp_font_color = #000000 40
 execp_padding = 0 0
 execp_background_id = 0
 execp_centered = 0
@@ -342,30 +342,6 @@ execp_icon_h = 0
 
 #-------------------------------------
 # Executor 2
-execp = new
-execp_command = echo "CPU $(cpupower frequency-info | grep -i asserted | cut -c 26-28)$(cpupower frequency-info | grep -i asserted | cut -c 30-33) | $[100-$(vmstat 1 2|tail -1|awk '{print $15}')]% | $(sensors | grep -i Package | sed 3p | sed -r 's/.*:\s+[\+-]?(.*C)\s+.*/\1/')"
-execp_interval = 1
-execp_has_icon = 0
-execp_cache_icon = 1
-execp_continuous = 0
-execp_markup = 1
-execp_monitor = all
-execp_tooltip = Frequência da CPU
-execp_lclick_command = kitty -e watch sensors
-execp_rclick_command = notify-send $(sensors | grep -i Package | sed 3p | sed -r 's/.*:\s+[\+-]?(.*C)\s+.*/\1/')
-execp_mclick_command = kitty -e watch cpupower frequency-info
-execp_uwheel_command = 
-execp_dwheel_command = 
-execp_font = Disney Simple 11
-execp_font_color = #7041db 100
-execp_padding = 7 0
-execp_background_id = 10
-execp_centered = 1
-execp_icon_w = 0
-execp_icon_h = 0
-
-#-------------------------------------
-# Executor 3
 execp = new
 execp_command = echo "" #echo ""
 execp_interval = 0
@@ -381,7 +357,7 @@ execp_mclick_command =
 execp_uwheel_command = 
 execp_dwheel_command = 
 execp_font = DroidSansMono Nerd Font Mono 26
-execp_font_color = #000000 80
+execp_font_color = #000000 40
 execp_padding = 0 0
 execp_background_id = 0
 execp_centered = 0
@@ -389,7 +365,7 @@ execp_icon_w = 0
 execp_icon_h = 0
 
 #-------------------------------------
-# Executor 4
+# Executor 3
 execp = new
 execp_command = echo "" #echo ""
 execp_interval = 0
@@ -405,7 +381,7 @@ execp_mclick_command =
 execp_uwheel_command = 
 execp_dwheel_command = 
 execp_font = DroidSansMono Nerd Font Mono 26
-execp_font_color = #000000 80
+execp_font_color = #000000 40
 execp_padding = 0 0
 execp_background_id = 0
 execp_centered = 0
@@ -413,7 +389,7 @@ execp_icon_w = 0
 execp_icon_h = 0
 
 #-------------------------------------
-# Executor 5
+# Executor 4
 execp = new
 execp_command = echo "$(MUDO=$(pactl list sinks | grep -Ei sim | head -n 9) ; if [ -e $MUDO ] ; then echo $(FONE=$(pactl list sinks | grep -Ei 'Porta ativa: analog-output-headphones') ; if [ -e $FONE ] ; then echo  ; else echo  ; fi) ; else echo 婢 ; fi):$(pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,')%" ##☊ 奄 
 execp_interval = 1
@@ -429,7 +405,31 @@ execp_mclick_command =
 execp_uwheel_command = bash -c "ponymix increase 2% ; pactl set-sink-volume 0 +3% ; pactl set-sink-volume 4 +3%; pkill -9 osd_cat; xrefresh; echo Volume:\ `pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'` | osd_cat -d 1 -s 30 -A center -l 1 -p middle -o 30 --color=#00ff73 --shadow=1 -f '-*-helvetica-bold-*-*-*-64-*-*-*-*-*-*'"
 execp_dwheel_command = bash -c "ponymix decrease 2% ; pactl set-sink-volume 0 -3% ; pactl set-sink-volume 4 -3%; pkill -9 osd_cat; xrefresh; echo Volume:\ `pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'` | osd_cat -d 1 -s 30 -A center -l 1 -p middle -o 30 --color=#00ff73 --shadow=1 -f '-*-helvetica-bold-*-*-*-64-*-*-*-*-*-*'"
 execp_font = Disney Simple 11
-execp_font_color = #7041db 100
+execp_font_color = #d77981 60
+execp_padding = 7 0
+execp_background_id = 10
+execp_centered = 1
+execp_icon_w = 0
+execp_icon_h = 0
+
+#-------------------------------------
+# Executor 5
+execp = new
+execp_command = echo "CPU $(cpupower frequency-info | grep -i asserted | cut -c 26-28)$(cpupower frequency-info | grep -i asserted | cut -c 30-33) | $[100-$(vmstat 1 2|tail -1|awk '{print $15}')]% | $(sensors | grep -i Package | sed 3p | sed -r 's/.*:\s+[\+-]?(.*C)\s+.*/\1/')"
+execp_interval = 1
+execp_has_icon = 0
+execp_cache_icon = 1
+execp_continuous = 0
+execp_markup = 1
+execp_monitor = all
+execp_tooltip = Frequência da CPU
+execp_lclick_command = kitty -e watch sensors
+execp_rclick_command = notify-send $(sensors | grep -i Package | sed 3p | sed -r 's/.*:\s+[\+-]?(.*C)\s+.*/\1/')
+execp_mclick_command = kitty -e watch cpupower frequency-info
+execp_uwheel_command = 
+execp_dwheel_command = 
+execp_font = Disney Simple 11
+execp_font_color = #d67980 60
 execp_padding = 7 0
 execp_background_id = 10
 execp_centered = 1
@@ -453,7 +453,7 @@ execp_mclick_command =
 execp_uwheel_command = 
 execp_dwheel_command = 
 execp_font = Disney Simple 11
-execp_font_color = #7041db 100
+execp_font_color = #d77a82 60
 execp_padding = 7 0
 execp_background_id = 10
 execp_centered = 1
@@ -477,7 +477,7 @@ execp_mclick_command =
 execp_uwheel_command = 
 execp_dwheel_command = 
 execp_font = Disney Simple 11
-execp_font_color = #7041db 100
+execp_font_color = #d87b82 60
 execp_padding = 0 0
 execp_background_id = 10
 execp_centered = 1
@@ -501,7 +501,7 @@ execp_mclick_command =
 execp_uwheel_command = 
 execp_dwheel_command = 
 execp_font = Disney Simple 11
-execp_font_color = #7041db 100
+execp_font_color = #d77981 60
 execp_padding = 7 0
 execp_background_id = 10
 execp_centered = 1
@@ -525,7 +525,7 @@ execp_mclick_command =
 execp_uwheel_command = 
 execp_dwheel_command = 
 execp_font = Disney Simple 14
-execp_font_color = #7041db 100
+execp_font_color = #d67880 60
 execp_padding = 2 2
 execp_background_id = 10
 execp_centered = 1
@@ -549,7 +549,7 @@ execp_mclick_command = catt stop
 execp_uwheel_command = catt volumeup 5
 execp_dwheel_command = catt volumedown 5
 execp_font = Disney Simple 14
-execp_font_color = #7041db 100
+execp_font_color = #d67980 60
 execp_padding = 5 4
 execp_background_id = 10
 execp_centered = 1
@@ -573,7 +573,7 @@ execp_mclick_command =
 execp_uwheel_command = 
 execp_dwheel_command = 
 execp_font = Disney Simple 11
-execp_font_color = #7041db 100
+execp_font_color = #d67981 60
 execp_padding = 0 0
 execp_background_id = 10
 execp_centered = 1
@@ -597,7 +597,7 @@ execp_mclick_command = setxkbmap -option ctrl:nocaps
 execp_uwheel_command = 
 execp_dwheel_command = 
 execp_font = Disney Simple 11
-execp_font_color = #7041db 100
+execp_font_color = #d67980 60
 execp_padding = 0 0
 execp_background_id = 10
 execp_centered = 1
@@ -615,13 +615,13 @@ execp_continuous = 0
 execp_markup = 1
 execp_monitor = all
 execp_tooltip = Data e Hora
-execp_lclick_command = gsimplecal
-execp_rclick_command = gsimplecal
-execp_mclick_command = gsimplecal
+execp_lclick_command = 
+execp_rclick_command = 
+execp_mclick_command = 
 execp_uwheel_command = 
 execp_dwheel_command = 
 execp_font = Disney Simple 11
-execp_font_color = #7041db 100
+execp_font_color = #d67980 60
 execp_padding = 0 0
 execp_background_id = 10
 execp_centered = 1
@@ -645,7 +645,7 @@ execp_mclick_command =
 execp_uwheel_command = 
 execp_dwheel_command = 
 execp_font = DroidSansMono Nerd Font Mono 26
-execp_font_color = #000000 80
+execp_font_color = #000000 40
 execp_padding = 0 0
 execp_background_id = 0
 execp_centered = 0
@@ -658,6 +658,6 @@ tooltip_show_timeout = 0
 tooltip_hide_timeout = 0
 tooltip_padding = 2 2
 tooltip_background_id = 10
-tooltip_font_color = #7041db 100
+tooltip_font_color = #d67981 100
 tooltip_font = Disney Simple 11
 
