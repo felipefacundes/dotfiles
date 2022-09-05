@@ -1,0 +1,82 @@
+#!/bin/bash
+Resposta_Positiva() {
+    tput sgr0
+    sudo su -c 'systemctl stop pacman-auto-update.timer;
+    systemctl stop pacman-auto-update.service'
+    tput bold
+    tput setaf 2
+	echo 'Atualização automática desativada!'
+    sleep 5
+}
+Resposta_Negativa() {
+    tput bold
+    tput setaf 2
+	echo 'Atualização automática permanece ativa!'
+    sleep 5
+}
+
+tput setaf 1
+echo 'Checando atualização do sistema.'
+tput sgr0
+echo '━━━━━━━━━'
+echo 'Pacotes a serem atualizados:'
+tput setaf 3
+checkupdates
+tput sgr0
+echo '━━━━━━━━━'
+UPDATE=`checkupdates`
+if [ -n "$UPDATE" ]; then
+	tput setaf 1
+	echo 'Digite à sua senha de administrador para atualizar o sistema.'
+	tput sgr0
+	echo '━━━━━━━━━'
+	tput setaf 3
+	sudo pacman -Syyu --noconfirm
+else
+	sleep 2
+	clear
+	tput setaf 2
+	echo 'Sistema atualizado.'
+	notify-send 'Sistema atualizado.'
+fi
+
+sleep 2
+tput setaf 3
+echo
+echo '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
+echo 'Você deseja desativar a atualização automática?'
+echo '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
+echo
+tput setaf 2
+echo "Sim"
+tput setaf 6
+echo "Não"
+echo
+tput setaf 16
+read opcao
+	case "$opcao" in
+ 	['S','s','Y','y','1']*)
+    Resposta_Positiva
+	;;
+	['N','n','2']*)
+    Resposta_Negativa
+	;;
+	['Q','q','E','e','3'-'99']*)
+    exit
+	;;
+	*)
+    echo
+    tput setaf 1
+    echo '━━━━━━━━━━━━━'
+    echo 'Opção errada!'
+    echo '━━━━━━━━━━━━━'
+    echo
+    tput setaf 3
+    echo '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
+    echo 'O script será reaberto, para cancelar e sair use "Ctrl+c"'
+    echo '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
+    sleep 6
+    exec "$0"
+	;;
+esac
+exit
