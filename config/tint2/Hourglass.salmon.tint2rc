@@ -543,7 +543,7 @@ execp_icon_h = 0
 #-------------------------------------
 # Executor 13
 execp = new
-execp_command = echo "(N): $(xset q | grep -Ei 'Num Lock:    on' | cut -c46-47)$(xset q | grep -Ei 'Num Lock:    off' | cut -c46-48)" #𝓝    🄝  🅽
+execp_command = echo " (N): $(xset q | grep -Ei 'Num Lock:    on' | cut -c46-47)$(xset q | grep -Ei 'Num Lock:    off' | cut -c46-48)" #𝓝    🄝  🅽
 execp_interval = 1
 execp_has_icon = 0
 execp_cache_icon = 1
@@ -556,7 +556,8 @@ execp_rclick_command = numlockx off
 execp_mclick_command = 
 execp_uwheel_command = 
 execp_dwheel_command = 
-execp_font = Noto Sans Arabic Thin 10
+execp_font = Disney Simple 10 
+#Noto Sans Arabic Thin 10
 execp_font_color = #d67981 60
 execp_padding = 0 0
 execp_background_id = 7
@@ -567,7 +568,7 @@ execp_icon_h = 0
 #-------------------------------------
 # Executor 14
 execp = new
-execp_command = echo "(C): $(xset q | grep -Ei 'Caps Lock:   on' | cut -c22-23)$(xset q | grep -Ei 'Caps Lock:   off' | cut -c22-24)" #🅰  🄐
+execp_command = echo " (C): $(xset q | grep -Ei 'Caps Lock:   on' | cut -c22-23)$(xset q | grep -Ei 'Caps Lock:   off' | cut -c22-24)" #🅰  🄐
 execp_interval = 1
 execp_has_icon = 0
 execp_cache_icon = 1
@@ -580,7 +581,8 @@ execp_rclick_command = xdotool key Caps_Lock
 execp_mclick_command = setxkbmap -option ctrl:nocaps
 execp_uwheel_command = 
 execp_dwheel_command = 
-execp_font = Noto Sans Arabic Thin 10
+execp_font = Disney Simple 10 
+#Noto Sans Arabic Thin 10
 execp_font_color = #d67980 60
 execp_padding = 0 0
 execp_background_id = 7
