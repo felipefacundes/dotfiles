@@ -1,4 +1,4 @@
-#---- Arrow.Oval.Salmon.DateRight.tint2rc ----
+#---- Arrow.Oval.Purple.DateRight.tint2rc ----
 # See https://gitlab.com/o9000/tint2/wikis/Configure for 
 # full documentation of the configuration options.
 #-------------------------------------
@@ -608,7 +608,7 @@ execp_icon_h = 0
 # Executor 13
 execp = new
 execp_command = echo "$(date +'%H:%M')  $(date +'%d-%m')"
-execp_interval = 0
+execp_interval = 1
 execp_has_icon = 0
 execp_cache_icon = 1
 execp_continuous = 0
