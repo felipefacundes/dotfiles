@@ -1,11 +1,11 @@
-#---- Hourglass.salmon.DateRight.tint2rc ----
-# See https://gitlab.com/o9000/tint2/wikis/Configure for 
+#---- Hourglass.Orange.DateRight.tint2rc ----
+# See https://gitlab.com/o9000/tint2/wikis/Configure for
 # full documentation of the configuration options.
 #-------------------------------------
 # Gradients
 #-------------------------------------
 # Backgrounds
-# Background 1: 
+# Background 1:
 rounded = 1
 border_width = 0
 border_sides = TBLR
@@ -18,7 +18,7 @@ border_color_hover = #d8d8d8 30
 background_color_pressed = #d8d8d8 30
 border_color_pressed = #d8d8d8 30
 
-# Background 2: 
+# Background 2:
 rounded = 0
 border_width = 0
 border_sides = TBLR
@@ -37,12 +37,12 @@ border_width = 2
 border_sides = TBLR
 border_content_tint_weight = 0
 background_content_tint_weight = 0
-background_color = #fd7980 71
-border_color = #fd7980 71
-background_color_hover = #fd7980 71
-border_color_hover = #fd7980 71
-background_color_pressed = #fd7980 71
-border_color_pressed = #fd7980 71
+background_color = #fc6203 100
+border_color = #fc6203 100
+background_color_hover = #fc6203 100
+border_color_hover = #fc6203 100
+background_color_pressed = #fc6203 100
+border_color_pressed = #fc6203 100
 
 # Background 4: Inactive taskbar, Panel
 rounded = 0
@@ -57,18 +57,18 @@ border_color_hover = #2f343f 59
 background_color_pressed = #2f343f 59
 border_color_pressed = #2f343f 59
 
-# Background 5: 
+# Background 5:
 rounded = 0
 border_width = 0
 border_sides = TBLR
 border_content_tint_weight = 0
 background_content_tint_weight = 0
-background_color = #fd7980 71
-border_color = #fd7980 71
-background_color_hover = #fd7980 71
-border_color_hover = #fd7980 71
-background_color_pressed = #fd7980 71
-border_color_pressed = #fd7980 71
+background_color = #fc6203 100
+border_color = #fc6203 100
+background_color_hover = #fc6203 100
+border_color_hover = #fc6203 100
+background_color_pressed = #fc6203 100
+border_color_pressed = #fc6203 100
 
 # Background 6: Active task
 rounded = 1
@@ -96,7 +96,7 @@ border_color_hover = #000000 56
 background_color_pressed = #000000 56
 border_color_pressed = #000000 56
 
-# Background 8: 
+# Background 8:
 rounded = 1
 border_width = 0
 border_sides = TBLR
@@ -195,7 +195,7 @@ systray_sort = right2left
 systray_icon_size = 20
 systray_icon_asb = 40 35 0
 systray_monitor = 1
-systray_name_filter = 
+systray_name_filter =
 
 #-------------------------------------
 # Launcher
@@ -213,40 +213,40 @@ launcher_item_app = /usr/share/applications/catt-gui.desktop
 # Clock
 time1_format = %d, %a
 time2_format = %H:%M
-time1_timezone = 
-time2_timezone = 
+time1_timezone =
+time2_timezone =
 clock_font_color = #ffffff 100
 clock_padding = 0 0
 clock_background_id = 3
-clock_tooltip = 
-clock_tooltip_timezone = 
+clock_tooltip =
+clock_tooltip_timezone =
 clock_lclick_command = gsimplecal
 clock_rclick_command = gsimplecal
-clock_mclick_command = 
-clock_uwheel_command = 
-clock_dwheel_command = 
+clock_mclick_command =
+clock_uwheel_command =
+clock_dwheel_command =
 
 #-------------------------------------
 # Battery
 battery_tooltip = 1
 battery_low_status = 20
 battery_low_cmd = systemctl hibernate
-battery_full_cmd = 
+battery_full_cmd =
 bat1_font = Disney Simple 10
 bat2_font = Disney Simple 10
 battery_font_color = #e67980 60
-bat1_format = 
-bat2_format = 
+bat1_format =
+bat2_format =
 battery_padding = 7 0
 battery_background_id = 7
 battery_hide = 96
-battery_lclick_command = 
-battery_rclick_command = 
-battery_mclick_command = 
-battery_uwheel_command = 
-battery_dwheel_command = 
-ac_connected_cmd = 
-ac_disconnected_cmd = 
+battery_lclick_command =
+battery_rclick_command =
+battery_mclick_command =
+battery_uwheel_command =
+battery_dwheel_command =
+ac_connected_cmd =
+ac_disconnected_cmd =
 
 #-------------------------------------
 # Separator 1
@@ -274,7 +274,7 @@ execp_mclick_command =
 execp_uwheel_command = bash -c "ponymix increase 2% ; pactl set-sink-volume 0 +3% ; pactl set-sink-volume 4 +3%; pkill -9 osd_cat; xrefresh; echo Volume:\ `pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'` | osd_cat -d 1 -s 30 -A center -l 1 -p middle -o 30 --color=#00ff73 --shadow=1 -f '-*-helvetica-bold-*-*-*-64-*-*-*-*-*-*'"
 execp_dwheel_command = bash -c "ponymix decrease 2% ; pactl set-sink-volume 0 -3% ; pactl set-sink-volume 4 -3%; pkill -9 osd_cat; xrefresh; echo Volume:\ `pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'` | osd_cat -d 1 -s 30 -A center -l 1 -p middle -o 30 --color=#00ff73 --shadow=1 -f '-*-helvetica-bold-*-*-*-64-*-*-*-*-*-*'"
 execp_font = Disney Simple 10
-execp_font_color = #d77981 60
+execp_font_color = #fc6203 100
 execp_padding = 0 0
 execp_background_id = 7
 execp_centered = 0
@@ -290,15 +290,14 @@ execp_has_icon = 0
 execp_cache_icon = 1
 execp_continuous = 0
 execp_markup = 1
-execp_monitor = all
-execp_tooltip = 
-execp_lclick_command = 
-execp_rclick_command = 
-execp_mclick_command = 
-execp_uwheel_command = 
-execp_dwheel_command = 
+execp_tooltip =
+execp_lclick_command =
+execp_rclick_command =
+execp_mclick_command =
+execp_uwheel_command =
+execp_dwheel_command =
 execp_font = DroidSansMono Nerd Font Mono 26
-execp_font_color = #000000 55
+execp_font_color = #000000 40
 execp_padding = 0 0
 execp_background_id = 0
 execp_centered = 0
@@ -322,7 +321,7 @@ execp_mclick_command = kitty -e watch cpupower frequency-info
 execp_uwheel_command = 
 execp_dwheel_command = 
 execp_font = Disney Simple 10
-execp_font_color = #d67980 60
+execp_font_color = #fc6203 100
 execp_padding = 0 0
 execp_background_id = 7
 execp_centered = 1
@@ -338,15 +337,14 @@ execp_has_icon = 0
 execp_cache_icon = 1
 execp_continuous = 0
 execp_markup = 1
-execp_monitor = all
-execp_tooltip = 
-execp_lclick_command = 
-execp_rclick_command = 
-execp_mclick_command = 
-execp_uwheel_command = 
-execp_dwheel_command = 
+execp_tooltip =
+execp_lclick_command =
+execp_rclick_command =
+execp_mclick_command =
+execp_uwheel_command =
+execp_dwheel_command =
 execp_font = DroidSansMono Nerd Font Mono 26
-execp_font_color = #000000 55
+execp_font_color = #000000 40
 execp_padding = 0 0
 execp_background_id = 0
 execp_centered = 0
@@ -370,7 +368,7 @@ execp_mclick_command =
 execp_uwheel_command = 
 execp_dwheel_command = 
 execp_font = Disney Simple 10
-execp_font_color = #d77a82 60
+execp_font_color = #fc6203 100
 execp_padding = 0 0
 execp_background_id = 7
 execp_centered = 0
@@ -386,15 +384,14 @@ execp_has_icon = 0
 execp_cache_icon = 1
 execp_continuous = 0
 execp_markup = 1
-execp_monitor = all
-execp_tooltip = 
-execp_lclick_command = 
-execp_rclick_command = 
-execp_mclick_command = 
-execp_uwheel_command = 
-execp_dwheel_command = 
+execp_tooltip =
+execp_lclick_command =
+execp_rclick_command =
+execp_mclick_command =
+execp_uwheel_command =
+execp_dwheel_command =
 execp_font = DroidSansMono Nerd Font Mono 26
-execp_font_color = #000000 55
+execp_font_color = #000000 40
 execp_padding = 0 0
 execp_background_id = 0
 execp_centered = 0
@@ -418,7 +415,7 @@ execp_mclick_command =
 execp_uwheel_command = 
 execp_dwheel_command = 
 execp_font = Disney Simple 10
-execp_font_color = #d87b82 60
+execp_font_color = #fc6203 100
 execp_padding = 2 0
 execp_background_id = 7
 execp_centered = 0
@@ -434,15 +431,14 @@ execp_has_icon = 0
 execp_cache_icon = 1
 execp_continuous = 0
 execp_markup = 1
-execp_monitor = all
-execp_tooltip = 
-execp_lclick_command = 
-execp_rclick_command = 
-execp_mclick_command = 
-execp_uwheel_command = 
-execp_dwheel_command = 
+execp_tooltip =
+execp_lclick_command =
+execp_rclick_command =
+execp_mclick_command =
+execp_uwheel_command =
+execp_dwheel_command =
 execp_font = DroidSansMono Nerd Font Mono 26
-execp_font_color = #000000 55
+execp_font_color = #000000 40
 execp_padding = 0 0
 execp_background_id = 0
 execp_centered = 0
@@ -466,7 +462,7 @@ execp_mclick_command =
 execp_uwheel_command = 
 execp_dwheel_command = 
 execp_font = Disney Simple 10
-execp_font_color = #d77981 60
+execp_font_color = #fc6203 100
 execp_padding = 0 0
 execp_background_id = 7
 execp_centered = 0
@@ -482,15 +478,14 @@ execp_has_icon = 0
 execp_cache_icon = 1
 execp_continuous = 0
 execp_markup = 1
-execp_monitor = all
-execp_tooltip = 
-execp_lclick_command = 
-execp_rclick_command = 
-execp_mclick_command = 
-execp_uwheel_command = 
-execp_dwheel_command = 
+execp_tooltip =
+execp_lclick_command =
+execp_rclick_command =
+execp_mclick_command =
+execp_uwheel_command =
+execp_dwheel_command =
 execp_font = DroidSansMono Nerd Font Mono 26
-execp_font_color = #000000 55
+execp_font_color = #000000 40
 execp_padding = 0 0
 execp_background_id = 0
 execp_centered = 0
@@ -514,7 +509,7 @@ execp_mclick_command =
 execp_uwheel_command = 
 execp_dwheel_command = 
 execp_font = Hack NF 12
-execp_font_color = #d67880 80
+execp_font_color = #fc6203 100
 execp_padding = 5 2
 execp_background_id = 7
 execp_centered = 1
@@ -538,7 +533,7 @@ execp_mclick_command = catt stop
 execp_uwheel_command = catt volumeup 5
 execp_dwheel_command = catt volumedown 5
 execp_font = Hack NF 16
-execp_font_color = #d67980 100
+execp_font_color = #fc6203 100
 execp_padding = 5 2
 execp_background_id = 7
 execp_centered = 1
@@ -561,8 +556,9 @@ execp_rclick_command = numlockx off
 execp_mclick_command = 
 execp_uwheel_command = 
 execp_dwheel_command = 
-execp_font = Disney Simple 10
-execp_font_color = #d67981 60
+execp_font = Disney Simple 10 
+#Noto Sans Arabic Thin 10
+execp_font_color = #fc6203 100
 execp_padding = 0 0
 execp_background_id = 7
 execp_centered = 1
@@ -585,8 +581,9 @@ execp_rclick_command = xdotool key Caps_Lock
 execp_mclick_command = setxkbmap -option ctrl:nocaps
 execp_uwheel_command = 
 execp_dwheel_command = 
-execp_font = Disney Simple 10
-execp_font_color = #d67980 60
+execp_font = Disney Simple 10 
+#Noto Sans Arabic Thin 10
+execp_font_color = #fc6203 100
 execp_padding = 0 0
 execp_background_id = 7
 execp_centered = 1
@@ -602,15 +599,14 @@ execp_has_icon = 0
 execp_cache_icon = 1
 execp_continuous = 0
 execp_markup = 1
-execp_monitor = all
-execp_tooltip = 
-execp_lclick_command = 
-execp_rclick_command = 
-execp_mclick_command = 
-execp_uwheel_command = 
-execp_dwheel_command = 
+execp_tooltip =
+execp_lclick_command =
+execp_rclick_command =
+execp_mclick_command =
+execp_uwheel_command =
+execp_dwheel_command =
 execp_font = DroidSansMono Nerd Font Mono 26
-execp_font_color = #000000 55
+execp_font_color = #000000 40
 execp_padding = 0 0
 execp_background_id = 0
 execp_centered = 0
@@ -626,15 +622,14 @@ execp_has_icon = 0
 execp_cache_icon = 1
 execp_continuous = 0
 execp_markup = 1
-execp_monitor = all
 execp_tooltip = Data e Hora
 execp_lclick_command = gsimplecal
 execp_rclick_command = gsimplecal
 execp_mclick_command = gsimplecal
-execp_uwheel_command = 
-execp_dwheel_command = 
+execp_uwheel_command =
+execp_dwheel_command =
 execp_font = Disney Simple 10
-execp_font_color = #d67981 60
+execp_font_color = #fc6203 100
 execp_padding = 0 0
 execp_background_id = 7
 execp_centered = 0
@@ -647,6 +642,5 @@ tooltip_show_timeout = 0
 tooltip_hide_timeout = 0
 tooltip_padding = 4 4
 tooltip_background_id = 7
-tooltip_font_color = #d77a82 60
+tooltip_font_color = #fc6203 100
 tooltip_font = Noto Sans 8
-
