@@ -48,7 +48,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>openColor violet</name>
+    <name>openColor orange</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -495,12 +495,12 @@
     <!-- Screen Record -->
     <keybind key="C-A-r">
       <action name="Execute">
-        <command>bash -c 'kitty -e ffmpeg -video_size 1920x1080 -framerate 15 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -bsf:v h264_mp4toannexb -max_muxing_queue_size 9999 -f mp4 -movflags frag_keyframe+empty_moov "/home/$USER/V&#xED;deos/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
+        <command>bash -c 'kitty -e ffmpeg -video_size 1920x1080 -framerate 15 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -bsf:v h264_mp4toannexb -max_muxing_queue_size 9999 -f mp4 -movflags frag_keyframe+empty_moov "${HOME}/V&#xED;deos/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
       </action>
     </keybind>
     <keybind key="C-A-s">
       <action name="Execute">
-        <command>bash -c 'kitty -e ffmpeg -video_size 1920x1080 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -preset ultrafast -tune zerolatency -maxrate 10000k -bufsize 20000k -pix_fmt yuv420p -framerate 15 -g 52 -max_muxing_queue_size 9999 -f mp4 -bsf:v h264_mp4toannexb -movflags frag_keyframe+empty_moov "/home/$USER/V&#xED;deos/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
+        <command>bash -c 'kitty -e ffmpeg -video_size 1920x1080 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -preset ultrafast -tune zerolatency -maxrate 10000k -bufsize 20000k -pix_fmt yuv420p -framerate 15 -g 52 -max_muxing_queue_size 9999 -f mp4 -bsf:v h264_mp4toannexb -movflags frag_keyframe+empty_moov "${HOME}/V&#xED;deos/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
       </action>
     </keybind>
     <!-- Tela Normal -->
@@ -750,6 +750,12 @@
         <command>bash -c 'cd ~/ ; mkdir -p "$HOME/Imagens/Captura de Tela/" ; scrot -u "$HOME/Imagens/Captura de Tela/%Y-%m-%d %H:%M:%S - Captura de Tela.png" ; mkdir -p ~/.local/songs/ ; cd ~/.local/songs/ ; wget -nc https://github.com/felipefacundes/dotfiles/blob/master/config/songs/camera_shutter.mp3?raw=true -O camera_shutter.mp3 ; paplay ~/.local/songs/camera_shutter.ogg'</command>
       </action>
     </keybind>
+    <!-- Gnome Screenshot interactive mode -->
+    <keybind key="A-Print">
+      <action name="Execute">
+        <command>gnome-screenshot -i</command>
+      </action>
+    </keybind>
     <!-- Random Wallpaper -->
     <keybind key="C-A-w">
       <action name="Execute">
@@ -759,7 +765,7 @@
     <!-- Tema aleatório do painel tint2 -->
     <keybind key="C-W-p">
       <action name="Execute">
-        <command>bash -c 'pkill -9 tint2 ; cp -f "$(ls -c "$HOME"/.config/tint2/*.tint2rc | shuf -n 1)" "$HOME"/.config/tint2/tint2rc ; tint2 -c "$HOME"/.config/tint2/tint2rc'</command>
+        <command>bash -c 'cp -f "$(ls -c "${HOME}"/.config/tint2/*.tint2rc | shuf -n 1)" "${HOME}"/.config/tint2/tint2rc ; killall -SIGUSR1 tint2'</command>
       </action>
     </keybind>
     <keybind key="C-A-d">
