@@ -1,0 +1,73 @@
+{
+    "editor.fontFamily": "Operator Mono, Fira Code iScript, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "editor.fontWeight": "normal",
+    "editor.tokenColorCustomizations": {
+      "textMateRules": [
+        {
+          "scope": [
+            //following will be in italic
+            "comment",
+            "entity.name.type.class", //class names
+            "constant", //String, Number, Boolean…, this, super
+            "storage.modifier", //static keyword
+            "storage.type.class.js", //class keyword
+            "keyword", //import, export, return…
+          ],
+          "settings": {
+            "fontStyle": "italic"
+          }
+        },
+        {
+          "scope": [
+            //following will be excluded from italics (VSCode has some defaults for italics)
+  
+            "invalid",
+            "keyword.operator",
+            "constant.numeric.css",
+            "keyword.other.unit.px.css",
+            "constant.numeric.decimal.js",
+            "constant.numeric.json"
+          ],
+          "settings": {
+            "fontStyle": ""
+          }
+        }
+      ]
+    },
+    "editor.fontSize": 16,
+    "zowe.ds.history": {
+      "persistence": true,
+      "favorites": [],
+      "history": [],
+      "sessions": [],
+      "fileHistory": [],
+      "searchHistory": []
+    },
+    "zowe.uss.history": {
+      "persistence": true,
+      "favorites": [],
+      "history": [],
+      "sessions": [],
+      "fileHistory": [],
+      "searchHistory": []
+    },
+    "zowe.jobs.history": {
+      "persistence": true,
+      "favorites": [],
+      "history": [],
+      "sessions": [],
+      "fileHistory": [],
+      "searchHistory": []
+    },
+    "files.defaultLanguage": "pt,pt_BR",
+    "cSpell.language": "en,en-US,pt,pt-BR",
+    "cSpell.languageSettings": [],
+    "editor.language.brackets": [],
+    "workbench.colorTheme": "Dracula",
+    "workbench.iconTheme": "vscode-icons",
+    "python.condaPath": "${HOME}/micromamba/condabin/conda",
+    "kite.showWelcomeNotificationOnStartup": false,
+    "editor.inlineSuggest.enabled": true,
+    "window.zoomLevel": 1,
+  }
