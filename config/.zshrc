@@ -7,7 +7,7 @@ export vblank_mode=0
 export __GL_SYNC_TO_VBLANK=0
 export EDITOR=vim
 export VISUAL=vim
-export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/.local/bin:~/.local/share/gem/ruby/3.0.0/bin/
 
 # Theme cursor fix
 export cursor_theme=`cat ~/.config/gtk-3.0/settings.ini | sed -n 5p | cut -c 23-333`
@@ -16,104 +16,17 @@ xsetroot -cursor_name left_ptr
 export XCURSOR_THEME="$cursor_name"
 export XCURSOR_SIZE="$cursor_size"
 
-# My Functions
-pkill -9 transmission-gtk
-check_hd()
-{
-clear -T "$TERM"
+########################################################################################################
+##### ███╗   ███╗██╗   ██╗    ███████╗██╗   ██╗███╗   ██╗ ██████╗████████╗██╗ ██████╗ ███╗   ██╗███████╗
+##### ████╗ ████║╚██╗ ██╔╝    ██╔════╝██║   ██║████╗  ██║██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║██╔════╝
+##### ██╔████╔██║ ╚████╔╝     █████╗  ██║   ██║██╔██╗ ██║██║        ██║   ██║██║   ██║██╔██╗ ██║███████╗
+##### ██║╚██╔╝██║  ╚██╔╝      ██╔══╝  ██║   ██║██║╚██╗██║██║        ██║   ██║██║   ██║██║╚██╗██║╚════██║
+##### ██║ ╚═╝ ██║   ██║       ██║     ╚██████╔╝██║ ╚████║╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║███████║
+##### ╚═╝     ╚═╝   ╚═╝       ╚═╝      ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝
+########################################################################################################
+############################################# MY FUNCTIONS #############################################
+. ~/.my_functions
 
-sudo su -c '
-    umount /dev/mapper/HD-HD_lv
-    e2fsck -f -y /dev/mapper/HD-HD_lv
-    e2fsck -p /dev/mapper/HD-HD_lv
-    tune2fs -c 1 /dev/mapper/rootvg-rootlv
-    tune2fs -c 1 /dev/mapper/HD-HD_lv
-    mount /dev/mapper/HD-HD_lv /home/rfacundes/Documentos/HD
-    e4defrag -c /dev/mapper/HD-HD_lv
-    e4defrag -c /home/rfacundes/Documentos/HD
-    e4defrag -c /dev/mapper/rootvg-rootlv
-    e4defrag -c /
-'
-
-tput setaf 2
-cat <<'EOF'
-###################
-Comandos executados:
-###################
-
-umount /dev/mapper/HD-HD_lv
-e2fsck -f -y /dev/mapper/HD-HD_lv
-e2fsck -p /dev/mapper/HD-HD_lv
-tune2fs -c 1 /dev/mapper/rootvg-rootlv
-tune2fs -c 1 /dev/mapper/HD-HD_lv
-mount /dev/mapper/HD-HD_lv /home/rfacundes/Documentos/HD
-e4defrag -c /dev/mapper/HD-HD_lv
-e4defrag -c /home/rfacundes/Documentos/HD
-e4defrag -c /dev/mapper/rootvg-rootlv
-e4defrag -c /
-
-EOF
-tput sgr0
-}
-
-performance_hd()
-{
-export device=sdb
-green='\033[1;32m'
-nc='\033[0m' # No Color
-sudo su -c "
-    hdparm -I /dev/${device}
-    hdparm -Tt /dev/${device}
-    echo
-    echo
-    echo -e 'Command: ${green}hdparm -a /dev/${device}${nc}'
-    hdparm -a /dev/${device}
-    hdparm -a254 /dev/${device}
-    echo
-    echo
-    echo -e 'Command: ${green}hdparm -m /dev/${device}${nc}'
-    hdparm -m /dev/${device}
-    #hdparm -m16 /dev/${device}
-    hdparm -m0 --yes-i-know-what-i-am-doing /dev/${device}
-    echo
-    echo
-    echo -e 'Command: ${green}hdparm -M /dev/${device}${nc}'
-    hdparm -M /dev/${device}
-    hdparm -M 128 /dev/${device}
-    echo
-    echo
-    echo -e 'Command: ${green}hdparm -W /dev/${device}${nc}'
-    hdparm -W /dev/${device}
-    echo
-    echo
-    echo -e 'Command: ${green}hdparm -B /dev/${device}${nc}'
-    hdparm -B /dev/${device}
-    hdparm -B254 /dev/${device}
-    echo
-    echo
-    echo -e 'Command: ${green}hdparm -d0 /dev/${device}${nc}'
-    hdparm -d0 /dev/${device}
-    hdparm -Tt /dev/${device}
-    hdparm -t --direct /dev/${device}
-"
-}
-
-tv_volume()
-{
-    cat <<'EOF'
-Command:
-~/.local/bin/lgtv audio getStatus | grep -Ev '^[[:blank:]]*$' | tail -1 | sed 's|}||g' | sed 's|{||g' | sed 's|"||g' | cut -c 233-236 | cut -d':' -f 2
-
-EOF
-
-    echo Volume: `~/.local/bin/lgtv audio getStatus \
-    | grep -Ev '^[[:blank:]]*$' \
-    | tail -1 | sed 's|}||g' \
-    | sed 's|{||g' \
-    | sed 's|"||g' \
-    | cut -c 233-236 \
-    | cut -d':' -f 2`
-}
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -131,7 +44,7 @@ export ZSH=$HOME/.oh-my-zsh
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="fino" # set by `omz`
 # See https://github.com/Powerlevel9k/powerlevel9k
 #ZSH_THEME="powerlevel9k/powerlevel9k"
 #POWERLEVEL9K_MODE="nerdfont-complete"
@@ -290,3 +203,19 @@ source $ZSH/oh-my-zsh.sh
 #--image_size none --crop_mode fill --w3m --source $HOME/Imagens/Wallpapers/gow.jpg
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/rfacundes/micromamba/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/rfacundes/micromamba/etc/profile.d/conda.sh" ]; then
+        . "/home/rfacundes/micromamba/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/rfacundes/micromamba/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
