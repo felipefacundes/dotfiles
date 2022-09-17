@@ -87,7 +87,7 @@ plugins=(
 
 # Which plugins would you like to conditionally load? (plugins can be found in ~/.oh-my-bash/plugins/*)
 # Custom plugins may be added to ~/.oh-my-bash/custom/plugins/
-# Example format: 
+# Example format:
 #  if [ "$DISPLAY" ] || [ "$SSH" ]; then
 #      plugins+=(tmux-autoattach)
 #  fi
@@ -208,139 +208,7 @@ On_IWhite='\033[0;107m'   # White
 ##### ╚═╝     ╚═╝   ╚═╝       ╚═╝      ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝
 ########################################################################################################
 ############################################# MY FUNCTIONS #############################################
-check_hd()
-{
-clear -T "$TERM"
-
-sudo su -c '
-	umount /dev/mapper/HD-HD_lv
-	e2fsck -f -y /dev/mapper/HD-HD_lv
-	e2fsck -p /dev/mapper/HD-HD_lv
-	tune2fs -c 1 /dev/mapper/rootvg-rootlv
-	tune2fs -c 1 /dev/mapper/HD-HD_lv
-	mount /dev/mapper/HD-HD_lv /home/rfacundes/Documentos/HD
-	e4defrag -c /dev/mapper/HD-HD_lv
-	e4defrag -c /home/rfacundes/Documentos/HD
-	e4defrag -c /dev/mapper/rootvg-rootlv
-	e4defrag -c /
-'
-
-tput setaf 2
-cat <<'EOF'
-###################
-Comandos executados:
-###################
-
-umount /dev/mapper/HD-HD_lv
-e2fsck -f -y /dev/mapper/HD-HD_lv
-e2fsck -p /dev/mapper/HD-HD_lv
-tune2fs -c 1 /dev/mapper/rootvg-rootlv
-tune2fs -c 1 /dev/mapper/HD-HD_lv
-mount /dev/mapper/HD-HD_lv /home/rfacundes/Documentos/HD
-e4defrag -c /dev/mapper/HD-HD_lv
-e4defrag -c /home/rfacundes/Documentos/HD
-e4defrag -c /dev/mapper/rootvg-rootlv
-e4defrag -c /
-
-EOF
-tput sgr0
-}
-
-performance_hd()
-{
-export device=sdb
-green='\033[1;32m'
-nc='\033[0m' # No Color
-sudo su -c "
-    hdparm -I /dev/${device}
-    hdparm -Tt /dev/${device}
-    echo
-    echo
-    echo -e 'Command: ${green}hdparm -a /dev/${device}${nc}'
-    hdparm -a /dev/${device}
-    hdparm -a254 /dev/${device}
-    echo
-    echo
-    echo -e 'Command: ${green}hdparm -m /dev/${device}${nc}'
-    hdparm -m /dev/${device}
-    #hdparm -m16 /dev/${device}
-    hdparm -m0 --yes-i-know-what-i-am-doing /dev/${device}
-    echo
-    echo
-    echo -e 'Command: ${green}hdparm -M /dev/${device}${nc}'
-    hdparm -M /dev/${device}
-    hdparm -M 128 /dev/${device}
-    echo
-    echo
-    echo -e 'Command: ${green}hdparm -W /dev/${device}${nc}'
-    hdparm -W /dev/${device}
-    echo
-    echo
-    echo -e 'Command: ${green}hdparm -B /dev/${device}${nc}'
-    hdparm -B /dev/${device}
-    hdparm -B254 /dev/${device}
-    echo
-    echo
-    echo -e 'Command: ${green}hdparm -d0 /dev/${device}${nc}'
-    hdparm -d0 /dev/${device}
-    hdparm -Tt /dev/${device}
-    hdparm -t --direct /dev/${device}
-"
-}
-
-tv_volume()
-{
-    cat <<'EOF'
-Command:
-~/.local/bin/lgtv audio getStatus | grep -Ev '^[[:blank:]]*$' | tail -1 | sed 's|}||g' | sed 's|{||g' | sed 's|"||g' | cut -c 233-236 | cut -d':' -f 2
-
-EOF
-
-    echo Volume: `~/.local/bin/lgtv audio getStatus \
-    | grep -Ev '^[[:blank:]]*$' \
-    | tail -1 | sed 's|}||g' \
-    | sed 's|{||g' \
-    | sed 's|"||g' \
-    | cut -c 233-236 \
-    | cut -d':' -f 2`
-}
-
-default-mime()
-{
-	cat <<'EOF'
-	xdg-mime default ranger.desktop inode/directory
-	xdg-mime default vim.desktop text/plain
-	xdg-mime default vim.desktop application/x-shellscript
-	xdg-mime default vim.desktop text/x-chdr
-	xdg-mime default vim.desktop text/event-stream
-	xdg-mime default vim.desktop text/x-python
-	xdg-mime default links.desktop text/html
-	xdg-mime default llpp.desktop application/pdf
-	xdg-mime default feh.desktop image/x-icon
-	xdg-mime default feh.desktop image/bmp 
-	xdg-mime default feh.desktop image/jpeg
-	xdg-mime default feh.desktop image/png
-	xdg-mime default feh.desktop image/tiff
-	xdg-mime default feh.desktop image/gif
-	xdg-mime default feh.desktop image/svg+xml
-	
-	Or edit file:
-	~/.config/mimeapps.list
-EOF
-}
-
-
-# Remove duplicate lines
-duplicate_lines()
-{
-    sort "$@" | uniq
-}
-delete_duplicate_bash_history()
-{
-    duplicate_lines ~/.bash_history > ~/.bash_history_temp; 
-    rm ~/.bash_history; 
-    mv ~/.bash_history_temp ~/.bash_history >/dev/null
-}
+. ~/.my_functions
 ###################################################################################################
 ##### ███╗   ███╗██╗   ██╗    ███████╗███████╗████████╗████████╗██╗███╗   ██╗ ██████╗ ███████╗
 ##### ████╗ ████║╚██╗ ██╔╝    ██╔════╝██╔════╝╚══██╔══╝╚══██╔══╝██║████╗  ██║██╔════╝ ██╔════╝
@@ -432,3 +300,36 @@ sed -i 's|/dev/sd[abc]|/dev/sdX|g' ~/.bash_history
 . ~/.my_aliases
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba init' !!
+export MAMBA_EXE="${HOME}/.micromamba/bin/micromamba";
+export MAMBA_ROOT_PREFIX="${HOME}/micromamba";
+__mamba_setup="$('/home/rfacundes/.micromamba/bin/micromamba' shell hook --shell bash --prefix '/home/rfacundes/micromamba' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__mamba_setup"
+else
+    if [ -f "${HOME}/micromamba/etc/profile.d/micromamba.sh" ]; then
+        . "${HOME}/micromamba/etc/profile.d/micromamba.sh"
+    else
+        export  PATH="${HOME}/micromamba/bin:$PATH"  # extra space after export prevents interference from conda init
+    fi
+fi
+unset __mamba_setup
+# <<< mamba initialize <<<
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/rfacundes/micromamba/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "${HOME}/micromamba/etc/profile.d/conda.sh" ]; then
+        . "${HOME}/micromamba/etc/profile.d/conda.sh"
+    else
+        export PATH="${HOME}/micromamba/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
