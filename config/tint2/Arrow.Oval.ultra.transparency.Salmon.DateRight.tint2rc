@@ -415,7 +415,7 @@ execp_icon_h = 0
 #-------------------------------------
 # Executor 5
 execp = new
-execp_command = echo "CPU $(cpupower frequency-info | grep -i asserted | cut -c 26-28)$(cpupower frequency-info | grep -i asserted | cut -c 30-33) | $[100-$(vmstat 1 2|tail -1|awk '{print $15}')]% | $(sensors | grep -i 'temp1:' | tail -n1 | sed -r 's/.*:\s+[\+-]?(.*C)\s+.*/\1/')"
+execp_command = echo "CPU $(cpupower frequency-info | grep -i asserted | cut -c 26-28)$(cpupower frequency-info | grep -i asserted | cut -c 30-33) | $[100-$(vmstat 1 2|tail -1|awk '{print $15}')]% | $(sensors | grep -i 'temp1:' | head -n1 | sed -r 's/.*:\s+[\+-]?(.*C)\s+.*/\1/')"
 execp_interval = 1
 execp_has_icon = 0
 execp_cache_icon = 1
@@ -423,8 +423,8 @@ execp_continuous = 0
 execp_markup = 1
 execp_monitor = all
 execp_tooltip = Frequência da CPU
-execp_lclick_command = kitty -e watch sensors
-execp_rclick_command = notify-send $(sensors | grep -i 'temp1:' | tail -n1 | sed -r 's/.*:\s+[\+-]?(.*C)\s+.*/\1/')
+execp_lclick_command = xsensors
+execp_rclick_command = notify-send $(sensors | grep -i 'temp1:' | head -n1 | sed -r 's/.*:\s+[\+-]?(.*C)\s+.*/\1/')
 execp_mclick_command = kitty -e watch cpupower frequency-info
 execp_uwheel_command = 
 execp_dwheel_command = 
