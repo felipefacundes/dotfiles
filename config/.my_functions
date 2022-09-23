@@ -136,9 +136,305 @@ duplicate_lines()
 {
     sort "$@" | uniq
 }
+
 delete_duplicate_bash_history()
 {
     duplicate_lines ~/.bash_history > ~/.bash_history_temp;
     rm ~/.bash_history;
     mv ~/.bash_history_temp ~/.bash_history >/dev/null
+}
+
+# Pictures
+
+tiff_bw()
+{
+for i in *.[jJpP][nNpP][gG];
+    do name=`echo "${i}" | cut -d'.' -f1`
+    echo "${name}"
+    convert "${i}" -density 300x300 -quality 100% "${name}".pgm
+    convert "${name}".pgm -depth 8 \
+            -colorspace Gray -type grayscale \
+            -channel rgba -alpha set -fuzz 50% \
+            -fill none -opaque white \
+            -fill white -opaque black \
+            -fill black -opaque none \
+            -colors 2 -strip \
+            -alpha off -negate -threshold 1% \
+            -density 300x300 -quality 100% "${name}".pgm "${name}".tiff
+    rm "${name}".pgm
+done
+}
+
+# OCR tesseract
+massive_ocr()
+{
+for i in *.[jJpP][nNpP][gG]
+    do name=`echo "${i}" | cut -d'.' -f1`
+    echo "${name}"
+    tesseract "$i" "${name}" -l por txt
+done
+}
+
+massive_ocr_optimized_tiff_bw()
+{
+for i in *.[jJpP][nNpP][gG];
+    do name=`echo "${i}" | cut -d'.' -f1`
+    echo "${name}"
+    convert "${i}" -enhance -enhance -enhance \
+            -enhance -enhance -enhance -enhance \
+            -enhance -enhance -enhance "${name}"_enhance.tiff
+    convert "${name}"_enhance.tiff -colorspace HSI -channel B \
+            -level 100,0% +channel -colorspace sRGB "${name}"_wb.tiff
+            convert "${name}"_wb.tiff -negate "${name}"_bw.tiff
+    tesseract "${name}"_bw.tiff "${name}" -l por txt
+    rm "${name}"_bw.tiff "${name}"_enhance.tiff "${name}"_wb.tiff
+done
+}
+
+massive_ocr_optimized_tiff_bw2()
+{
+for i in *.[jJpP][nNpP][gG];
+    do name=`echo "${i}" | cut -d'.' -f1`
+    echo "${name}"
+    convert "${i}" -enhance -enhance -enhance \
+            -enhance -enhance -enhance -enhance \
+            -enhance -enhance -enhance "${name}"_enhance.tiff
+    convert "${name}"_enhance.tiff -colorspace HSI -separate +channel \
+    \( -clone 2 -negate \) \
+    \( -clone 1 -threshold 1% -negate \) \
+    \( -clone 2 -clone 3 -clone 4 -compose over -composite \) \
+    -delete 3,4 +swap +delete -set colorspace HSI -combine -colorspace sRGB "${name}"_bw.tiff
+    tesseract "${name}"_bw.tiff "${name}" -l por txt
+    rm "${name}"_bw.tiff "${name}"_enhance.tiff
+done
+}
+
+massive_ocr_optimized_tiff_bw3()
+{
+#pdftoppm *.pdf -gray out
+for i in *.[jJpP][nNpP][gG];
+    do name=`echo "${i}" | cut -d'.' -f1`
+    echo "${name}"
+    convert "${i}" -enhance -enhance -enhance \
+            -enhance -enhance -enhance -enhance \
+            -enhance -enhance -enhance "${name}"_enhance.tiff
+    convert "${name}"_enhance.tiff -grayscale Rec709Luminance \
+            -channel RGB "${name}"_gray.tiff
+    convert "${name}"_gray.tiff \
+            -channel rgba -alpha set -fuzz 50% \
+            -fill none -opaque white \
+            -fill white -opaque black \
+            -fill black -opaque none \
+            -colors 2 -strip \
+            -alpha off -negate \
+            -density 300x300 -quality 100% "${name}"_bw.tiff
+    tesseract "${name}"_bw.tiff "${name}" -l por txt
+    rm "${name}"_bw.tiff "${name}"_gray.tiff "${name}"_enhance.tiff
+done
+}
+
+massive_ocr_optimized_scale_150()
+{
+for i in *.[jJpP][nNpP][gG];
+    do name=`echo "${i}" | cut -d'.' -f1`
+    echo "${name}"
+    convert "${i}" -enhance -enhance -enhance \
+            -enhance -enhance -enhance -enhance \
+            -enhance -enhance -enhance -scale 150% "${name}"_enhance.tiff
+    convert "${name}"_enhance.tiff -colorspace HSI -channel B \
+            -level 100,0% +channel -colorspace sRGB "${name}"_wb.tiff
+            convert "${name}"_wb.tiff -negate "${name}"_bw.tiff
+    tesseract "${name}"_bw.tiff "${name}" -l por txt
+    rm "${name}"_bw.tiff "${name}"_enhance.tiff "${name}"_wb.tiff
+done
+}
+
+massive_ocr_optimized_scale_200()
+{
+for i in *.[jJpP][nNpP][gG];
+    do name=`echo "${i}" | cut -d'.' -f1`
+    echo "${name}"
+    convert "${i}" -enhance -enhance -enhance \
+            -enhance -enhance -enhance -enhance \
+            -enhance -enhance -enhance -scale 200% "${name}"_enhance.tiff
+    convert "${name}"_enhance.tiff -colorspace HSI -channel B \
+            -level 100,0% +channel -colorspace sRGB "${name}"_wb.tiff
+            convert "${name}"_wb.tiff -negate "${name}"_bw.tiff
+    tesseract "${name}"_bw.tiff "${name}" -l por txt
+    rm "${name}"_bw.tiff "${name}"_enhance.tiff "${name}"_wb.tiff
+done
+}
+
+massive_ocr_optimized_tiff_gray()
+{
+for i in *.[jJpP][nNpP][gG];
+    do name=`echo "${i}" | cut -d'.' -f1`
+    echo "${name}"
+    convert "${i}" -enhance -enhance -enhance \
+            -enhance -enhance -enhance -enhance \
+            -enhance -enhance -enhance "${name}"_enhance.tiff
+    convert "${name}"_enhance.tiff -grayscale Rec709Luminance \
+            -channel RGB "${name}"_gray.tiff
+    convert "${name}"_gray.tiff -density 300x300 -quality 100% "${name}".pgm
+    tesseract "${name}".pgm "${name}" -l por txt
+    rm "${name}".pgm "${name}"_gray.tiff "${name}"_enhance.tiff
+done
+}
+
+massive_ocr_optimized_tiff_gray2()
+{
+for i in *.[jJpP][nNpP][gG];
+    do name=`echo "${i}" | cut -d'.' -f1`
+    echo "${name}"
+    convert "${i}" -grayscale Rec709Luminance \
+            -channel RGB "${name}"_gray.tiff
+    tesseract "${name}"_gray.tiff "${name}" -l por txt
+    rm "${name}"_gray.tiff
+done
+}
+
+massive_ocr_optimized_alpha_bw()
+{
+for i in *.[jJpP][nNpP][gG];
+    do name=`echo "${i}" | cut -d'.' -f1`
+    echo "${name}"
+    convert "${i}" -fill '#000000000001' -opaque white \
+            -fill white -opaque black \
+            -fill black -opaque '#000000000001' "${name}"_alpha_bw.png
+    tesseract "${name}"_alpha_bw.png "${name}" -l por txt
+    rm "${name}"_alpha_bw.png
+done
+}
+
+massive_ocr_optimized_bw()
+{
+for i in *.[jJpP][nNpP][gG];
+    do name=`echo "${i}" | cut -d'.' -f1`
+    echo "${name}"
+    convert "${i}" -fill '#0008' -opaque white \
+            -fill white -opaque black \
+            -fill black -opaque '#0008' "${name}"_bw.png
+    tesseract "${name}"_bw.png "${name}" -l por txt
+    rm "${name}"_bw.png
+done
+}
+
+massive_ocr_optimized_bw2()
+{
+for i in *.[jJpP][nNpP][gG];
+    do name=`echo "${i}" | cut -d'.' -f1`
+    echo "${name}"
+    convert "${i}" -channel rgba -alpha set \
+            -fill none -opaque white \
+            -fill white -opaque black \
+            -fill white -opaque none \
+            -alpha off "${name}"_bw.png
+    tesseract "${name}"_bw.png "${name}" -l por txt
+    rm "${name}"_bw.png
+done
+}
+
+massive_ocr_optimized_colors()
+{
+for i in *.[jJpP][nNpP][gG];
+    do name=`echo "${i}" | cut -d'.' -f1`
+    echo "${name}"
+    convert "${i}" -fuzz 0% -fill "#30ff00" \
+            -opaque "#b01111" -opaque "#c0c0c0" \
+            -opaque "#f4f4f4" -opaque "#c87d7d" \
+            -opaque "#bebebe" -opaque "#808080" \
+            -fill none -fuzz 0% +opaque "#30ff00" \
+            -fuzz 0% -fill "#000000" \
+            -opaque "#30ff00" +profile "icc" -density 1200 "${name}"_colors.png
+    tesseract "${name}"_colors.png "${name}" -l por txt
+    rm "${name}"_colors.png
+done
+}
+
+massive_ocr_optimized_enhance()
+{
+for i in *.[jJpP][nNpP][gG];
+    do name=`echo "${i}" | cut -d'.' -f1`
+    echo "${name}"
+    convert "${i}" -enhance -enhance -enhance \
+            -enhance -enhance -enhance -enhance \
+            -enhance -enhance -enhance "${name}"_enhance.tiff
+    tesseract "${name}"_enhance.tiff "${name}" -l por txt
+    rm "${name}"_enhance.tiff
+done
+}
+
+massive_ocr_optimized_gray()
+{
+for i in *.[jJpP][nNpP][gG];
+    do name=`echo "${i}" | cut -d'.' -f1`
+    echo "${name}"
+    convert "${i}" -colorspace Gray "${name}"_Gray.png
+    tesseract "${name}"_Gray.png "${name}" -l por txt
+    rm "${name}"_Gray.png
+done
+}
+
+massive_ocr_optimized_gray2()
+{
+for i in *.[jJpP][nNpP][gG];
+    do name=`echo "${i}" | cut -d'.' -f1`
+    echo "${name}"
+    convert "${i}" -density 300x300 -quality 100% "${name}".pgm
+    tesseract "${name}".pgm "${name}" -l por txt
+    rm "${name}".pgm
+done
+}
+
+massive_ocr_optimized_gray_RGB()
+{
+for i in *.[jJpP][nNpP][gG];
+    do name=`echo "${i}" | cut -d'.' -f1`
+    echo "${name}"
+    convert "${i}" -channel R -separate "${name}"_R.png
+    convert "${i}" -channel G -separate "${name}"_G.png
+    convert "${i}" -channel B -separate "${name}"_B.png
+    convert "${name}"_R.png "${name}"_G.png -evaluate-sequence mean "${name}"_RG.png
+    convert "${name}"_G.png "${name}"_B.png -evaluate-sequence mean "${name}"_GB.png
+    convert "${name}"_RG.png "${name}"_GB.png -evaluate-sequence mean "${name}"_grayRGB.png
+    tesseract "${name}"_grayRGB.png "${name}" -l por txt
+    rm "${name}"_grayRGB.png "${name}"_R.png "${name}"_G.png
+    rm "${name}"_B.png "${name}"_RG.png "${name}"_GB.png
+done
+}
+
+massive_ocr_optimized_gray_RGB2()
+{
+for i in *.[jJpP][nNpP][gG];
+    do name=`echo "${i}" | cut -d'.' -f1`
+    echo "${name}"
+    convert "${i}" \
+    \( -clone 0 -channel RG -separate +channel -evaluate-sequence mean \) \
+    \( -clone 0 -channel GB -separate +channel -evaluate-sequence mean \) \
+    -delete 0 -evaluate-sequence mean "${name}"_color2gray1.png
+    tesseract "${name}"_color2gray1.png "${name}" -l por txt
+    rm "${name}"_color2gray1.png
+done
+}
+
+massive_ocr_textcleaner()
+{
+# Script Font: https://www.fmwconcepts.com/imagemagick/downloadcounter.php?scriptname=textcleaner&dirname=textcleaner
+for i in *.[jJpP][nNpP][gG]
+    do name=`echo "${i}" | cut -d'.' -f1`
+    echo "${name}"
+    textcleaner -g -f 20 -o 10 -e normalize -i 1 "${i}" "${name}"_textcleaner.png
+    tesseract "${name}"_textcleaner.png "${name}" -l por txt
+    rm "${name}"_textcleaner.png
+done
+}
+
+# Merge all text files
+merge_all_text_file()
+{
+for i in *.txt
+    do touch merged_text_files.txt 
+    cat "${i}" >> merged_text_files.txt
+    echo -e "\n" >> merged_text_files.txt
+done
 }
