@@ -716,7 +716,7 @@ execp_markup = 1
 execp_monitor = all
 execp_tooltip = Status da Memória
 execp_lclick_command = HTOP=`wmctrl -l | grep htop | head -n 1 | awk "{print $1 }"`; if pidof htop; then wmctrl -ic "$HTOP"; else kitty -e htop; fi
-execp_rclick_command = kitty -e watch free -h
+execp_rclick_command = WATCH=`wmctrl -l | grep watch | head -n 1 | awk "{print $1 }"`; if pidof watch; then wmctrl -ic "$WATCH"; else kitty -e watch free; fi
 execp_mclick_command = 
 execp_uwheel_command = 
 execp_dwheel_command = 
@@ -925,7 +925,7 @@ execp_continuous = 0
 execp_markup = 1
 execp_monitor = all
 execp_tooltip = Status da placa de vídeo híbrida
-execp_lclick_command = kitty -e watch glxinfo -B
+execp_lclick_command = WATCH=`wmctrl -l | grep watch | head -n 1 | awk "{print $1 }"`; if pidof watch; then wmctrl -ic "$WATCH"; else kitty -e watch glxinfo -B; fi
 execp_rclick_command = 
 execp_mclick_command = 
 execp_uwheel_command = 
