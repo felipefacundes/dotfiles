@@ -1,0 +1,8 @@
+#!/bin/bash
+while true
+    do cd ~/.make/LGWebOSRemote
+    python -m venv lgtv-venv
+    source lgtv-venv/bin/activate
+    lgtv lgtv off
+    sleep 45
+done

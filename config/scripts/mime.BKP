@@ -1,0 +1,9 @@
+cat <<'EOF'
+
+xdg-mime default org.gnome.Nautilus.desktop inode/directory application/x-gnome-saved-search
+xdg-mime default howl.desktop text/x-shellscript
+xdg-mime default howl.desktop text/plain
+xdg-mime default howl.desktop application/x-shellscript
+xdg-mime default org.gnome.Evince.desktop application/pdf
+
+EOF

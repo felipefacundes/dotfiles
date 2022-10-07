@@ -1,0 +1,11 @@
+#!/bin/bash
+cat <<'EOF'
+mkdir new
+mv wine-tkg*zst new
+cd new
+tar -xf wine-tkg*zst
+mv usr wine-tkg-staging-X.XX.rX-x86_64
+tar -cf wine-tkg-staging-X.XX.rX-x86_64.tar wine-tkg-staging-X.XX.rX-x86_64
+zstd wine-tkg-staging-X.XX.rX-x86_64.tar --ultra -22 -o wine-tkg-staging-X.XX.rX-x86_64.tar.zst
+md5sum wine-tkg-staging-X.XX.rX-x86_64.tar.zst | awk '{ print $1 }' > wine-tkg-staging-X.XX.rX-x86_64.tar.zst.md5sum
+EOF

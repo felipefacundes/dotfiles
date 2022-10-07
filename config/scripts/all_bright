@@ -1,0 +1,128 @@
+#!/bin/bash
+
+if ! xrandr &>/dev/null; then
+    echo Install xorg-xrandr
+else
+
+set -e
+
+bright_file="/tmp/variable_brightness.value"
+connected=`xrandr | grep -w connected | awk '{print $1}'`
+mon_example=`echo $connected | head -n1`
+
+if [ ! -s "$bright_file" ]; then
+    rm -f "$bright_file"
+fi
+if [ ! -e "$bright_file" ]; then
+    touch "$bright_file"
+    echo 99 | tee "$bright_file" &>/dev/null
+fi
+
+Update_Value() {
+    value=`cat "$bright_file"` &>/dev/null
+}
+
+Update_Value
+
+Help() {
+    script=`basename "$0"`
+    echo -e "$script 1.0\n"
+    echo -e "\033[1;32mThis script by default adjusts the brightness of all connected and active monitors."
+    echo -e "If the system recognizes one or more monitors as connected, but they are disconnected or inactive, the script will not work.\nIdentify whether monitors are connected and active.\033[0m\n"
+    echo -e "\033[1;36mExample:\033[0m $script d\n"
+    echo -e "\033[1;36mUsage:\033[0m $script [d] [-] [i] [+] [=] [set] [l] [m] [h]\n"
+    echo -e "\033[1;36mArguments:\033[0m\n"
+    echo -e "\033[1;33m- or +   \033[0m     'd' or '-' to decrease or 'i' or '+' to increase brightness"
+    echo -e "\033[1;33m= or set \033[0m     '=' or 'set' to set brightness to a specific value from 0.00 to 0.99"
+    echo -e "\033[1;33m  l      \033[0m     'l' to list connected monitors"
+    echo -e "\033[1;33m  m      \033[0m     'm' to set specific value on certain monitor."
+    echo -e "               Example: 'm' <monitor> <value> | \033[0;33m$script m `echo $mon_example | awk '{ print $1 }'` 0.5\033[0m"
+    echo -e "\033[1;33m  h      \033[0m     'h' to display this help"
+}
+
+Increase() {
+    Update_Value
+    if (( "$value" < "99" )); then
+        echo $(($value + 3)) | tee "$bright_file" &>/dev/null
+    fi
+    Update_Value
+    if [ "$value" -ge "99" ]; then
+        notify-send "Brightness" "Brightness is at maximum";
+        echo 99 | tee "$bright_file" &>/dev/null
+    fi
+    Update_Value
+    for display in $connected; do
+        if (( "$value" > "10" )); then
+            xrandr --output "$display" --brightness 0."$value"
+        elif (( "$value" < "10" )) && (( "$value" > "0" )); then
+            xrandr --output "$display" --brightness 0.0"$value"
+        fi
+    done
+}
+
+Decrease() {
+    Update_Value
+    if (( "$value" <= "99" )) && (( "$value" > "0" )); then
+        echo $(($value - 3)) | tee "$bright_file" &>/dev/null
+    fi
+    Update_Value
+    if (( "$value" < "0" )); then
+        echo 0 | tee "$bright_file" &>/dev/null
+    fi
+    Update_Value
+    for display in $connected; do
+        if (( "$value" > "10" )); then
+            xrandr --output "$display" --brightness 0."$value"
+        elif (( "$value" < "10" )) && (( "$value" > "0" )); then
+            xrandr --output "$display" --brightness 0.0"$value"
+        elif (( "$value" == "0" )); then
+            xrandr --output "$display" --brightness 0.0
+        fi
+    done
+}
+
+Set_All() {
+    for display in $connected; do
+        xrandr --output "$display" --brightness "$2"
+    done
+}
+
+Set_Monitor() {
+    for display in $connected; do
+        xrandr --output "$2" --brightness "$3"
+    done
+}
+
+case "$1" in
+    "i")
+        Increase
+        ;;
+    "+")
+        Increase
+        ;;
+    "d")
+        Decrease
+        ;;
+    "-")
+        Decrease
+        ;;
+    "=")
+        Set_All "$1" "$2"
+        ;;
+    "set")
+        Set_All "$1" "$2"
+        ;;
+    "m")
+        Set_Monitor "$1" "$2" "$3"
+        ;;
+    "l")
+        echo "$connected"
+        ;;
+    "h")
+        Help
+        ;;
+    *)
+        Help
+        ;;
+esac
+fi
