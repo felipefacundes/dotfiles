@@ -221,6 +221,12 @@
         <command>rofi-search</command>
       </action>
     </keybind>
+    <!-- Help Shortcuts -->
+    <keybind key="C-F1">
+      <action name="Execute">
+        <command>kitty -e bash -c 'ccat --color=always ~/.config/openbox/rc.xml | less -i -R -N --use-color --color=HBCEMNPRSWsu'</command>
+      </action>
+    </keybind>
     <!-- Calculator -->
     <keybind key="XF86Calculator">
       <action name="Execute">
@@ -273,6 +279,12 @@
     <keybind key="W-A-p">
       <action name="Execute">
         <command>xpad -t</command>
+      </action>
+    </keybind>
+    <!-- Telegram -->
+    <keybind key="W-A-t">
+      <action name="Execute">
+        <command>bash -c 'TELEG=`wmctrl -l | grep "Telegram" | head -n 1 | awk "{print $1 }"`; if ! pidof telegram-desktop; then telegram-desktop; elif xdotool windowactivate "$TELEG"; then echo Ok; else killall -SIGUSR1 telegram-desktop; nohup telegram-desktop; fi' #xdotool windowstate --toggle HIDDEN "$TELEG"</command>
       </action>
     </keybind>
     <!-- Web Browser: Firefox -->
@@ -386,9 +398,19 @@
       </action>
     </keybind>
     <!-- Mouse Scroll -->
+    <keybind key="W-Prior">
+      <action name="Execute">
+        <command>xdotool click 4</command>
+      </action>
+    </keybind>
     <keybind key="W-w">
       <action name="Execute">
         <command>xdotool click 4</command>
+      </action>
+    </keybind>
+    <keybind key="W-Next">
+      <action name="Execute">
+        <command>xdotool click 5</command>
       </action>
     </keybind>
     <keybind key="W-s">
@@ -397,14 +419,24 @@
       </action>
     </keybind>
     <!-- Mouse Click -->
+    <keybind key="W-Home">
+      <action name="Execute">
+        <command>xdotool click 1</command>
+      </action>
+    </keybind>
     <keybind key="W-q">
       <action name="Execute">
         <command>xdotool click 1</command>
       </action>
     </keybind>
-    <keybind key="W-S-q">
+    <keybind key="W-S-Home">
       <action name="Execute">
         <command>xdotool click 2</command>
+      </action>
+    </keybind>
+    <keybind key="W-End">
+      <action name="Execute">
+        <command>xdotool click 3</command>
       </action>
     </keybind>
     <keybind key="W-e">
@@ -1421,7 +1453,7 @@
       <mousebind action="Click" button="A-Left">
         <action name="Unshade"/>
       </mousebind>
-      <mousebind action="Drag" button="A-Left">
+      <mousebind action="Drag" button="C-A-Left">
         <action name="Move"/>
       </mousebind>
       <mousebind action="Press" button="A-Right">
