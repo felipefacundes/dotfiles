@@ -351,9 +351,9 @@ execp_continuous = 0
 execp_markup = 1
 execp_monitor = all
 execp_tooltip = Frequência da CPU
-execp_lclick_command = xsens=`wmctrl -l | grep xsensors | head -n 1 | awk "{print $1 }"`; if pidof xsensors; then wmctrl -ic "$xsens"; else xsensors; fi
+execp_lclick_command = bash -c 'xsens=`wmctrl -l | grep xsensors | head -n 1 | awk "{print $1 }"`; if pidof xsensors; then wmctrl -ic "$xsens"; else xsensors; fi'
 execp_rclick_command = notify-send CPU: $(sensors | grep -i 'Core 0:' | head -n1 | sed -r 's/.*:\s+[\+-]?(.*C)\s+.*/\1/')
-execp_mclick_command = kitty -e watch cpupower frequency-info
+execp_mclick_command = bash -c 'CPUP=`wmctrl -l | grep watch | head -n 1 | awk "{print $1 }"`; if pidof watch; then wmctrl -ic "$CPUP"; else kitty -e watch cpupower frequency-info; fi'
 execp_uwheel_command = 
 execp_dwheel_command = 
 execp_font = Disney Simple 10
@@ -447,8 +447,8 @@ execp_continuous = 0
 execp_markup = 1
 execp_monitor = all
 execp_tooltip = Status da Memória
-execp_lclick_command = HTOP=`wmctrl -l | grep htop | head -n 1 | awk "{print $1 }"`; if pidof htop; then wmctrl -ic "$HTOP"; else kitty -e htop; fi
-execp_rclick_command = WATCH=`wmctrl -l | grep watch | head -n 1 | awk "{print $1 }"`; if pidof watch; then wmctrl -ic "$WATCH"; else kitty -e watch free; fi
+execp_lclick_command = bash -c 'HTOP=`wmctrl -l | grep htop | head -n 1 | awk "{print $1 }"`; if pidof htop; then wmctrl -ic "$HTOP"; else kitty -e htop; fi'
+execp_rclick_command = bash -c 'WATCH=`wmctrl -l | grep watch | head -n 1 | awk "{print $1 }"`; if pidof watch; then wmctrl -ic "$WATCH"; else kitty -e watch free -h; fi'
 execp_mclick_command = 
 execp_uwheel_command = 
 execp_dwheel_command = 
@@ -519,7 +519,7 @@ execp_continuous = 0
 execp_markup = 1
 execp_monitor = all
 execp_tooltip = Status da placa de vídeo híbrida
-execp_lclick_command = WATCH=`wmctrl -l | grep watch | head -n 1 | awk "{print $1 }"`; if pidof watch; then wmctrl -ic "$WATCH"; else kitty -e watch glxinfo -B; fi
+execp_lclick_command = bash -c 'WATCH=`wmctrl -l | grep watch | head -n 1 | awk "{print $1 }"`; if pidof watch; then wmctrl -ic "$WATCH"; else kitty -e watch glxinfo -B; fi'
 execp_rclick_command = 
 execp_mclick_command = 
 execp_uwheel_command = 
@@ -607,7 +607,7 @@ execp_icon_h = 0
 #-------------------------------------
 # Executor 13
 execp = new
-execp_command = echo "$(date +'%H:%M')  $(date +'%d-%m')"
+execp_command = echo "$(date +'%H:%M')  $(date +'%d/%m')"
 execp_interval = 1
 execp_has_icon = 0
 execp_cache_icon = 1
