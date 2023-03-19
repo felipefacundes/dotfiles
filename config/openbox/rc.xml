@@ -221,18 +221,6 @@
         <command>rofi-search</command>
       </action>
     </keybind>
-    <!-- Help Shortcuts -->
-    <keybind key="C-F1">
-      <action name="Execute">
-        <command>kitty -e bash -c 'ccat --color=always ~/.config/openbox/rc.xml | less -i -R -N --use-color --color=HBCEMNPRSWsu'</command>
-      </action>
-    </keybind>
-    <!-- Calculator -->
-    <keybind key="XF86Calculator">
-      <action name="Execute">
-        <command>mate-calc</command>
-      </action>
-    </keybind>
     <keybind key="A-F3">
       <action name="Execute">
         <command>rofi -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launchers/misc/appdrawer.rasi</command>
@@ -248,12 +236,25 @@
         <command>synapse</command>
       </action>
     </keybind>
+    <!-- Help Shortcuts -->
+    <keybind key="C-F1">
+      <action name="Execute">
+        <command>kitty -e bash -c 'ccat --color=always ~/.config/openbox/rc.xml | less -i -R -N --use-color --color=HBCEMNPRSWsu'</command>
+      </action>
+    </keybind>
+    <!-- Calculator -->
+    <keybind key="XF86Calculator">
+      <action name="Execute">
+        <command>mate-calc</command>
+      </action>
+    </keybind>
     <!-- Hour in big size -->
     <keybind key="C-W-t">
       <action name="Execute">
         <command>bash -c "echo `date +%T` | osd_cat -d 3 -s 1 -A center -l 1 -p middle -O 1 --color=#00ff73 --shadow=1 -f '-*-helvetica-bold-*-*-*-150-*-*-*-*-*-*'"</command>
       </action>
     </keybind>
+    <!-- Terminal -->
     <keybind key="W-t">
       <action name="Execute">
         <command>kitty</command>
@@ -261,7 +262,13 @@
     </keybind>
     <keybind key="W-Return">
       <action name="Execute">
-        <command>kitty</command>
+        <command>qterminal</command>
+      </action>
+    </keybind>
+    <!-- Gromit-MPX (Annotate in Screen) -->
+    <keybind key="W-g">
+      <action name="Execute">
+        <command>bash -c 'killall -SIGUSR1 gromit-mpx; gromit-mpx'</command>
       </action>
     </keybind>
     <!-- PDF Reader -->
@@ -403,12 +410,22 @@
         <command>xdotool click 4</command>
       </action>
     </keybind>
+    <keybind key="W-Up">
+      <action name="Execute">
+        <command>xdotool click 4</command>
+      </action>
+    </keybind>
     <keybind key="W-w">
       <action name="Execute">
         <command>xdotool click 4</command>
       </action>
     </keybind>
     <keybind key="W-Next">
+      <action name="Execute">
+        <command>xdotool click 5</command>
+      </action>
+    </keybind>
+    <keybind key="W-Down">
       <action name="Execute">
         <command>xdotool click 5</command>
       </action>
@@ -424,7 +441,7 @@
         <command>xdotool click 1</command>
       </action>
     </keybind>
-    <keybind key="W-q">
+    <keybind key="W-KP_7">
       <action name="Execute">
         <command>xdotool click 1</command>
       </action>
@@ -439,48 +456,48 @@
         <command>xdotool click 3</command>
       </action>
     </keybind>
-    <keybind key="W-e">
+    <keybind key="W-KP_9">
       <action name="Execute">
         <command>xdotool click 3</command>
       </action>
     </keybind>
     <!-- Mouse Move -->
-    <keybind key="W-Up">
+    <keybind key="W-KP_8">
       <action name="Execute">
         <command>xdotool mousemove_relative -- 0 -10</command>
       </action>
     </keybind>
-    <keybind key="W-Down">
+    <keybind key="W-KP_2">
       <action name="Execute">
         <command>xdotool mousemove_relative -- 0 10</command>
       </action>
     </keybind>
-    <keybind key="W-Left">
+    <keybind key="W-KP_4">
       <action name="Execute">
         <command>xdotool mousemove_relative -- -10 0</command>
       </action>
     </keybind>
-    <keybind key="W-Right">
+    <keybind key="W-KP_6">
       <action name="Execute">
         <command>xdotool mousemove_relative -- 10 0</command>
       </action>
     </keybind>
-    <keybind key="C-W-Up">
+    <keybind key="C-W-KP_8">
       <action name="Execute">
         <command>xdotool mousemove_relative -- 0 -40</command>
       </action>
     </keybind>
-    <keybind key="C-W-Down">
+    <keybind key="C-W-KP_2">
       <action name="Execute">
         <command>xdotool mousemove_relative -- 0 40</command>
       </action>
     </keybind>
-    <keybind key="C-W-Left">
+    <keybind key="C-W-KP_4">
       <action name="Execute">
         <command>xdotool mousemove_relative -- -40 0</command>
       </action>
     </keybind>
-    <keybind key="C-W-Right">
+    <keybind key="C-W-KP_6">
       <action name="Execute">
         <command>xdotool mousemove_relative -- 40 0</command>
       </action>
@@ -527,36 +544,42 @@
     <!-- Screen Record -->
     <keybind key="C-A-r">
       <action name="Execute">
-        <command>bash -c 'kitty -e ffmpeg -video_size 1920x1080 -framerate 15 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -bsf:v h264_mp4toannexb -max_muxing_queue_size 9999 -f mp4 -movflags frag_keyframe+empty_moov "${HOME}/V&#xED;deos/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
+        <command>bash -c "kitty -e ffmpeg -video_size `xrandr --current | grep '*' | uniq | awk '{print $1}'` -framerate 15 -f x11grab -re -i ${DISPLAY} -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -bsf:v h264_mp4toannexb -max_muxing_queue_size 9999 -f mp4 -movflags frag_keyframe+empty_moov ${HOME}/Vídeos/Tela_$(date +'%d-%m-%Y_%H:%M:%S').mp4"</command>
       </action>
     </keybind>
-    <keybind key="C-A-s">
+    <keybind key="C-A-S-r">
       <action name="Execute">
-        <command>bash -c 'kitty -e ffmpeg -video_size 1920x1080 -f x11grab -re -i "$DISPLAY" -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -preset ultrafast -tune zerolatency -maxrate 10000k -bufsize 20000k -pix_fmt yuv420p -framerate 15 -g 52 -max_muxing_queue_size 9999 -f mp4 -bsf:v h264_mp4toannexb -movflags frag_keyframe+empty_moov "${HOME}/V&#xED;deos/Tela_$(date +"%d-%m-%Y_%H:%M:%S").mp4"'</command>
+        <command>bash -c "kitty -e ffmpeg -video_size `xrandr --current | grep '*' | uniq | awk '{print $1}'` -f x11grab -re -i ${DISPLAY} -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -preset ultrafast -tune zerolatency -maxrate 10000k -bufsize 20000k -pix_fmt yuv420p -framerate 15 -g 52 -max_muxing_queue_size 9999 -f mp4 -bsf:v h264_mp4toannexb -movflags frag_keyframe+empty_moov ${HOME}/Vídeos/Tela_$(date +'%d-%m-%Y_%H:%M:%S').mp4"</command>
+      </action>
+    </keybind>
+    <!-- WEBCam / webcam / Webcam -->
+    <keybind key="A-S-w">
+      <action name="Execute">
+        <command>bash -c 'ffplay -f video4linux2 -framerate 10 -vf "hflip,format=yuv420p" -video_size hd720 /dev/video0'</command>
       </action>
     </keybind>
     <!-- Tela Normal -->
     <keybind key="W-F1">
       <action name="Execute">
-        <command>bash -c 'xrandr --output eDP-1-1 --primary --mode 1920x1080 --rate 120.00 --pos 0x0 --rotate normal --output HDMI-0 --off; xrandr --output eDP-1 --primary --mode 1920x1080 --rate 120.00 --pos 0x0 --rotate normal --output HDMI-1-0 --off'</command>
+        <command>bash -c "resol=`xrandr --current | grep '*' | uniq | awk '{print $1}'`; xrandr --output eDP-1-1 --primary --mode ${resol} --rate 120.00 --pos 0x0 --rotate normal --output HDMI-0 --off; xrandr --output eDP-1 --primary --mode ${resol} --rate 120.00 --pos 0x0 --rotate normal --output HDMI-1-0 --off"</command>
       </action>
     </keybind>
     <!-- Inverter tela (Monitor AOC x Notebook Asus X202E - Vivo Book ) -->
     <keybind key="W-F2">
       <action name="Execute">
-        <command>bash -c 'xrandr --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate inverted --output eDP-1-1 --off; xrandr --output HDMI-1-0 --mode 1920x1080 --pos 0x0 --rotate inverted --output eDP-1 --off; pactl set-card-profile 0 off'</command>
+        <command>bash -c "resol=`xrandr --current | grep '*' | uniq | awk '{print $1}'`; xrandr --output HDMI-0 --mode ${resol} --pos 0x0 --rotate inverted --output eDP-1-1 --off; xrandr --output HDMI-1-0 --mode ${resol} --pos 0x0 --rotate inverted --output eDP-1 --off; pactl set-card-profile 0 off"</command>
       </action>
     </keybind>
     <!-- Inverter tela e desativar display do notebook -->
     <keybind key="W-F3">
       <action name="Execute">
-        <command>bash -c 'xrandr --output eDP-1-1 --mode 1920x1080 --rate 120.00 --pos 0x0 --rotate normal --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate inverted; xrandr --output eDP-1 --mode 1920x1080 --rate 120.00 --pos 0x0 --rotate normal --output HDMI-1-0 --mode 1920x1080 --pos 0x0 --rotate inverted; pactl set-card-profile 0 off'</command>
+        <command>bash -c "resol=`xrandr --current | grep '*' | uniq | awk '{print $1}'`; xrandr --output eDP-1-1 --mode ${resol} --rate 120.00 --pos 0x0 --rotate normal --output HDMI-0 --mode ${resol} --pos 0x0 --rotate inverted; xrandr --output eDP-1 --mode ${resol} --rate 120.00 --pos 0x0 --rotate normal --output HDMI-1-0 --mode ${resol} --pos 0x0 --rotate inverted; pactl set-card-profile 0 off"</command>
       </action>
     </keybind>
     <!-- Tela extendida lado a lado -->
     <keybind key="W-F4">
       <action name="Execute">
-        <command>bash -c 'xrandr --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate inverted --output eDP-1-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal; xrandr --output HDMI-1-0 --mode 1920x1080 --pos 0x0 --rotate inverted --output eDP-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal; pactl set-card-profile 0 off'</command>
+        <command>bash -c "resol=`xrandr --current | grep '*' | uniq | awk '{print $1}'`; xrandr --output HDMI-0 --mode ${resol} --pos 0x0 --rotate inverted --output eDP-1-1 --primary --mode ${resol} --pos `echo ${resol} | cut -d 'x' -f1`x0 --rotate normal; xrandr --output HDMI-1-0 --mode ${resol} --pos 0x0 --rotate inverted --output eDP-1 --primary --mode ${resol} --pos `echo ${resol} | cut -d 'x' -f1`x0 --rotate normal; pactl set-card-profile 0 off"</command>
       </action>
     </keybind>
     <!-- Gravador de tela OBS -->
@@ -576,6 +599,17 @@
           <name>set_max_vol_lgtv</name>
           <icon>set_max_vol_lgtv</icon>
         </startupnotify>
+      </action>
+    </keybind>
+    <!-- LG TV WebOS Set Volume -->
+    <keybind key="C-A-S-Up">
+      <action name="Execute">
+        <command>bash -c "pkill -9 osd_cat; sleep 0.2; xrefresh; echo WebOS Vol: `~/.local/bin/lgtv audio volumeUp | ~/.local/bin/Current_Volume.sh` | osd_cat -d 1 -s 1 -A center -l 1 -p middle -o 60 -c green -f '-*-helvetica-bold-*-*-*-44-*-*-*-*-*-*'"</command>
+      </action>
+    </keybind>
+    <keybind key="C-A-S-Down">
+      <action name="Execute">
+        <command>bash -c "pkill -9 osd_cat; sleep 0.2; xrefresh; echo WebOS Vol: `~/.local/bin/lgtv audio volumeDown | ~/.local/bin/Current_Volume.sh` | osd_cat -d 1 -s 1 -A center -l 1 -p middle -o 60 -c green -f '-*-helvetica-bold-*-*-*-44-*-*-*-*-*-*'"</command>
       </action>
     </keybind>
     <!-- Chromecast/LGTVWebOS: pause/play streaming -->
@@ -653,22 +687,6 @@
         <command>bash -c 'catt cast $(xclip -selection clipboard -o) #you_url=`zenity --entry --text "Insira o link do Youtube ou outro Streaming que deseja ser exibido" --title "Streaming"` ; catt cast "$you_url"'</command>
       </action>
     </keybind>
-    <keybind key="W-p">
-      <action name="Execute">
-        <command>bash -c 'pavuc=`wmctrl -l | grep "Controle de volume" | head -n 1 | awk "{print $1 }"`; if pidof pavucontrol; then wmctrl -ic "$pavuc"; else pavucontrol; fi'</command>
-        <startupnotify>
-          <enabled>yes</enabled>
-          <wmclass>pavucontrol</wmclass>
-          <name>pavucontrol</name>
-          <icon>pavucontrol</icon>
-        </startupnotify>
-      </action>
-    </keybind>
-    <keybind key="C-A-a">
-      <action name="Execute">
-        <command>bash -c 'pavuc=`wmctrl -l | grep "Controle de volume" | head -n 1 | awk "{print $1 }"`; if pidof pavucontrol; then wmctrl -ic "$pavuc"; else pavucontrol; fi'</command>
-      </action>
-    </keybind>
     <keybind key="C-W-c">
       <action name="Execute">
         <command>bash -c "pkill -9 xcompmgr; pkill -9 xcompmgr; picom --experimental-backends --backend glx --xrender-sync-fence"</command>
@@ -691,29 +709,47 @@
         </startupnotify>
       </action>
     </keybind>
+    <!-- System Mixer Volume -->
+    <keybind key="W-p">
+      <action name="Execute">
+        <command>bash -c 'pavuc=`wmctrl -l | grep "Controle de volume" | head -n 1 | awk "{print $1 }"`; if pidof pavucontrol; then wmctrl -ic "$pavuc"; else pavucontrol; fi'</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <wmclass>pavucontrol</wmclass>
+          <name>pavucontrol</name>
+          <icon>pavucontrol</icon>
+        </startupnotify>
+      </action>
+    </keybind>
+    <keybind key="C-A-a">
+      <action name="Execute">
+        <command>bash -c 'pavuc=`wmctrl -l | grep "Controle de volume" | head -n 1 | awk "{print $1 }"`; if pidof pavucontrol; then wmctrl -ic "$pavuc"; else pavucontrol; fi'</command>
+      </action>
+    </keybind>
+    <!-- System Volume -->
     <keybind key="XF86AudioMute">
       <action name="Execute">
-        <command>bash -c "ponymix toggle #pactl set-sink-mute 0 toggle ; pactl set-sink-mute 4 toggle"</command>
+        <command>bash -c "pactl set-sink-mute @DEFAULT_SINK@ toggle #pactl set-sink-mute `pactl list short sinks | awk '{print $1}' | head -n1` toggle"</command>
       </action>
     </keybind>
     <keybind key="XF86AudioLowerVolume">
       <action name="Execute">
-        <command>bash -c "ponymix decrease 2% ; pactl set-sink-volume 0 -3% ; pactl set-sink-volume 4 -3%; pkill -9 osd_cat; xrefresh; echo Volume:\ `pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'` | osd_cat -d 1 -s 30 -A center -l 1 -p middle -o 30 --color=#00ff73 --shadow=1 -f '-*-helvetica-bold-*-*-*-64-*-*-*-*-*-*'"</command>
+        <command>bash -c "pactl set-sink-volume `pactl list short sinks | awk '{print $1}' | head -n1` -5%; pkill -9 osd_cat; xrefresh; echo Volume:\ `pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'` | osd_cat -d 1 -s 1 -A center -l 1 -p middle -o 60 -c green -f '-*-helvetica-bold-*-*-*-44-*-*-*-*-*-*'"</command>
       </action>
     </keybind>
     <keybind key="A-S-Down">
       <action name="Execute">
-        <command>bash -c "ponymix decrease 2% ; pactl set-sink-volume 0 -3% ; pactl set-sink-volume 4 -3%; pkill -9 osd_cat; xrefresh; echo Volume:\ `pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'` | osd_cat -d 1 -s 30 -A center -l 1 -p middle -o 30 --color=#00ff73 --shadow=1 -f '-*-helvetica-bold-*-*-*-64-*-*-*-*-*-*'"</command>
+        <command>bash -c "pactl set-sink-volume `pactl list short sinks | awk '{print $1}' | head -n1` -5%; pkill -9 osd_cat; xrefresh; echo Volume:\ `pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'` | osd_cat -d 1 -s 1 -A center -l 1 -p middle -o 60 -c green -f '-*-helvetica-bold-*-*-*-44-*-*-*-*-*-*'"</command>
       </action>
     </keybind>
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
-        <command>bash -c "ponymix increase 2% ; pactl set-sink-volume 0 +3% ; pactl set-sink-volume 4 +3%; pkill -9 osd_cat; xrefresh; echo Volume:\ `pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'` | osd_cat -d 1 -s 30 -A center -l 1 -p middle -o 30 --color=#00ff73 --shadow=1 -f '-*-helvetica-bold-*-*-*-64-*-*-*-*-*-*'"</command>
+        <command>bash -c "pactl set-sink-volume `pactl list short sinks | awk '{print $1}' | head -n1` +5%; pkill -9 osd_cat; xrefresh; echo Volume:\ `pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'` | osd_cat -d 1 -s 1 -A center -l 1 -p middle -o 60 -c green -f '-*-helvetica-bold-*-*-*-44-*-*-*-*-*-*'"</command>
       </action>
     </keybind>
     <keybind key="A-S-Up">
       <action name="Execute">
-        <command>bash -c "ponymix increase 2% ; pactl set-sink-volume 0 +3% ; pactl set-sink-volume 4 +3%; pkill -9 osd_cat; xrefresh; echo Volume:\ `pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'` | osd_cat -d 1 -s 30 -A center -l 1 -p middle -o 30 --color=#00ff73 --shadow=1 -f '-*-helvetica-bold-*-*-*-64-*-*-*-*-*-*'"</command>
+        <command>bash -c "pactl set-sink-volume `pactl list short sinks | awk '{print $1}' | head -n1` +5%; pkill -9 osd_cat; xrefresh; echo Volume:\ `pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'` | osd_cat -d 1 -s 1 -A center -l 1 -p middle -o 60 -c green -f '-*-helvetica-bold-*-*-*-44-*-*-*-*-*-*'"</command>
       </action>
     </keybind>
     <!-- Brightness Adjustment -->
@@ -761,25 +797,25 @@
     <!-- Print Screen -->
     <keybind key="Print">
       <action name="Execute">
-        <command>bash -c 'cd ~/ ; mkdir -p "$HOME/Imagens/Captura de Tela/" ; scrot "$HOME/Imagens/Captura de Tela/%Y-%m-%d %H:%M:%S - Captura de Tela.png" ; mkdir -p ~/.local/songs/ ; cd ~/.local/songs/ ; wget -nc https://github.com/felipefacundes/dotfiles/blob/master/config/songs/camera_shutter.mp3?raw=true -O camera_shutter.mp3 ; paplay ~/.local/songs/camera_shutter.ogg'</command>
+        <command>bash -c 'cd ~/; mkdir -p "$HOME/Imagens/Captura de Tela/"; date=`date +"%Y-%m-%d %H:%M:%S"`; file="$HOME/Imagens/Captura de Tela/${date} - Captura de Tela.png"; scrot "${file}"; mkdir -p ~/.local/songs/; cd ~/.local/songs/; wget -nc https://github.com/felipefacundes/dotfiles/blob/master/config/songs/camera_shutter.ogg?raw=true -O camera_shutter.ogg; beep=~/.local/songs/camera_shutter.ogg; pactl upload-sample "$beep"; paplay "$beep" --volume=76767; cat "${file}" | xclip -selection clipboard -target image/png -i'</command>
       </action>
     </keybind>
     <!-- Print Screen with delay -->
     <keybind key="A-S-Print">
       <action name="Execute">
-        <command>bash -c 'cd ~/ ; mkdir -p "$HOME/Imagens/Captura de Tela/" ; scrot -d 4 "$HOME/Imagens/Captura de Tela/%Y-%m-%d %H:%M:%S - Captura de Tela.png" ; mkdir -p ~/.local/songs/ ; cd ~/.local/songs/ ; wget -nc https://github.com/felipefacundes/dotfiles/blob/master/config/songs/camera_shutter.mp3?raw=true -O camera_shutter.mp3 ; paplay ~/.local/songs/camera_shutter.ogg'</command>
+        <command>bash -c 'cd ~/; mkdir -p "$HOME/Imagens/Captura de Tela/"; date=`date +"%Y-%m-%d %H:%M:%S"`; file="$HOME/Imagens/Captura de Tela/${date} - Captura de Tela.png"; scrot -d 4 "${file}"; mkdir -p ~/.local/songs/; cd ~/.local/songs/; wget -nc https://github.com/felipefacundes/dotfiles/blob/master/config/songs/camera_shutter.ogg?raw=true -O camera_shutter.ogg; beep=~/.local/songs/camera_shutter.ogg; pactl upload-sample "$beep"; paplay "$beep" --volume=76767; cat "${file}" | xclip -selection clipboard -target image/png -i'</command>
       </action>
     </keybind>
     <!-- Print Screen: Interactively select a window or rectangle with the mouse.-->
     <keybind key="S-Print">
       <action name="Execute">
-        <command>bash -c 'cd ~/ ; mkdir -p "$HOME/Imagens/Captura de Tela/" ; scrot -f -s "$HOME/Imagens/Captura de Tela/%Y-%m-%d %H:%M:%S - Captura de Tela.png"'</command>
+        <command>bash -c 'cd ~/ ; mkdir -p "$HOME/Imagens/Captura de Tela/"; date=`date +"%Y-%m-%d %H:%M:%S"`; file="$HOME/Imagens/Captura de Tela/${date} - Captura de Tela.png"; scrot -f -s "${file}"; cat "${file}" | xclip -selection clipboard -target image/png -i'</command>
       </action>
     </keybind>
     <!-- Print Screen of currently focused window.-->
     <keybind key="C-Print">
       <action name="Execute">
-        <command>bash -c 'cd ~/ ; mkdir -p "$HOME/Imagens/Captura de Tela/" ; scrot -u "$HOME/Imagens/Captura de Tela/%Y-%m-%d %H:%M:%S - Captura de Tela.png" ; mkdir -p ~/.local/songs/ ; cd ~/.local/songs/ ; wget -nc https://github.com/felipefacundes/dotfiles/blob/master/config/songs/camera_shutter.mp3?raw=true -O camera_shutter.mp3 ; paplay ~/.local/songs/camera_shutter.ogg'</command>
+        <command>bash -c 'cd ~/; mkdir -p "$HOME/Imagens/Captura de Tela/"; date=`date +"%Y-%m-%d %H:%M:%S"`; file="$HOME/Imagens/Captura de Tela/${date} - Captura de Tela.png"; scrot -u "${file}"; mkdir -p ~/.local/songs/; cd ~/.local/songs/; wget -nc https://github.com/felipefacundes/dotfiles/blob/master/config/songs/camera_shutter.ogg?raw=true -O camera_shutter.ogg; beep=~/.local/songs/camera_shutter.ogg; pactl upload-sample "$beep"; paplay "$beep" --volume=76767; cat "${file}" | xclip -selection clipboard -target image/png -i'</command>
       </action>
     </keybind>
     <!-- Gnome Screenshot interactive mode -->
@@ -820,9 +856,19 @@
         <command>bash -c "systemctl hibernate"</command>
       </action>
     </keybind>
+    <keybind key="C-A-l">
+      <action name="Execute">
+        <command>bash -c "slimlock"</command>
+      </action>
+    </keybind>
+    <keybind key="C-A-s">
+      <action name="Execute">
+        <command>bash -c "systemctl suspend; slimlock"</command>
+      </action>
+    </keybind>
     <keybind key="XF86Sleep">
       <action name="Execute">
-        <command>bash -c "systemctl suspend"</command>
+        <command>bash -c "systemctl suspend; slimlock"</command>
       </action>
     </keybind>
     <keybind key="C-S-A-BackSpace">
@@ -1446,16 +1492,18 @@
     <!-- Set this to TRUE to move the mouse pointer across the desktop when
        switching due to hitting the edge of the screen -->
     <context name="Frame">
+    <!-- Conflicts with Unreal Engine >
       <mousebind action="Press" button="A-Left">
         <action name="Focus"/>
         <action name="Raise"/>
       </mousebind>
       <mousebind action="Click" button="A-Left">
         <action name="Unshade"/>
-      </mousebind>
+      </mousebind -->
       <mousebind action="Drag" button="C-A-Left">
         <action name="Move"/>
       </mousebind>
+      <!-- Conflicts with Blender >
       <mousebind action="Press" button="A-Right">
         <action name="Focus"/>
         <action name="Raise"/>
@@ -1463,7 +1511,7 @@
       </mousebind>
       <mousebind action="Drag" button="A-Right">
         <action name="Resize"/>
-      </mousebind>
+      </mousebind -->
       <mousebind action="Press" button="A-Middle">
         <action name="Lower"/>
         <action name="FocusToBottom"/>
@@ -1814,9 +1862,45 @@
     <application name="howl">
       <maximized>yes</maximized>
     </application>
+
+    <!-- xpad no focus -->
+    <application class="xpad" name="xpad">
+      <decor>no</decor>
+      <shade>no</shade>
+      <focus>no</focus>
+      <desktop>all</desktop>
+      <layer>above</layer>
+    </application>
+
+    <!-- V4l ffplay overlay -->
+    <!--application class="ffplay" name="ffplay" role="ffplay" type="normal"-->
+    <application class="ffplay" name="ffplay">
+      <decor>no</decor>
+      <shade>no</shade>
+      <position force="yes">
+        <!-- start pos at (0,0), top-left corner -->
+        <!-- start pos at (-1,-1), bottom-right corner -->
+        <x>-1</x>
+        <y>-1</y>
+        <!-- monitor>1</monitor -->
+      </position>
+      <size>
+        <!-- go in height & width only 50%, one quarter of the screen -->
+        <width>15%</width>
+        <height>20%</height>
+      </size>
+      <focus>no</focus>
+      <desktop>all</desktop>
+      <layer>above</layer>
+      <iconic>no</iconic>
+    </application>
+
     <!-- MPV maximized -->
     <application name="mpv">
       <maximized>yes</maximized>
+      <!--<shade>yes</shade>
+      <focus>yes</focus>
+      <layer>below</layer>-->
     </application>
     <!-- MPlayer will follow me around when i switch desktop.
        that way i can always watch my vids when coding.
@@ -1922,6 +2006,7 @@
 
     <layer>normal</layer>
     # 'above', 'normal', or 'below'
+    # https://unix.stackexchange.com/questions/556456/openbox-window-on-the-below-layer-is-inaccessible
 
     <iconic>no</iconic>
     # make the window iconified when it appears, or not
