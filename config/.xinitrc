@@ -152,7 +152,7 @@ persistent_pid()
 rm ~/.wm_log
 touch ~/.wm_log
 while true
-    do wm=`pidof ${start_wm}`
+    do wm=`pidof "${start_wm}"`
        tint2=`pidof tint2`
        xpad=`pidof xpad`
        parcellite=`pidof parcellite`
@@ -171,12 +171,12 @@ while true
                     echo "${start_wm} log - `date +'%d/%m/%Y - %T'`" >> ~/.wm_log &
                     echo -e "------------------------------------\n" >> ~/.wm_log &
 
-                    if [ ${start_wm} = openbox ]; then
-                        ${start_wm} --debug >> ~/.wm_log &
-                    elif [ ${start_wm} = fluxbox ]; then
-                        ${start_wm} -log ~/.wm_log &
+                    if [ "${start_wm}" = openbox ]; then
+                        "${start_wm}" --debug >> ~/.wm_log &
+                    elif [ "${start_wm}" = fluxbox ]; then
+                        "${start_wm}" -log ~/.wm_log &
                     else
-                        ${start_wm} >> ~/.wm_log &
+                        "${start_wm}" >> ~/.wm_log &
                     fi
 
                     monitor_mode &
@@ -209,8 +209,6 @@ suspend_if_inert()
 {
 while true
     do sleep 15
-        xset dpms force on  # No black screen
-        xset -dpms          # No black screen
         numlockx on         # Enabled numlock
 
         log_file="/tmp/suspend_if_inert.log"
@@ -227,14 +225,19 @@ while true
                 echo '# The number must be greater than 0' | tee "${config_file}"
                 echo '# Set the screen lock minutes.' | tee -a "${config_file}"
                 echo 'Lockscreen = 0' | tee -a "${config_file}"
+                echo '# Set the minutes of DPMS - Display Power Management Signaling.' | tee -a "${config_file}"
+                echo '# DPMS to disabled is 0.' | tee -a "${config_file}"
+                echo 'DPMS = 0' | tee -a "${config_file}"
                 echo '# Set the system sleep minutes.' | tee -a "${config_file}"
                 echo 'Suspend = 0' | tee -a "${config_file}"
             fi
 
         idle=`xprintidle`
-        lockscreen_minutes=`cat ~/.suspend_if_inert.conf | head -3 | tail -1 | sed '/^$/d' | cut -f2 -d'=' | sed '/^$/d'`
+        lockscreen_minutes=`cat "${config_file}" | head -3 | tail -1 | sed '/^$/d' | cut -f2 -d'=' | sed '/^$/d'`
         lockscreen_milliseconds=`echo "$(((${lockscreen_minutes}*60)*1000))"`
-        suspend_minutes=`cat ~/.suspend_if_inert.conf | head -5 | tail -1 | sed '/^$/d' | cut -f2 -d'=' | sed '/^$/d'`
+        dpms_minutes=`cat "${config_file}" | head -6 | tail -1 | sed '/^$/d' | cut -f2 -d'=' | sed '/^$/d'`
+        dpms_seconds=`echo "$((${dpms_minutes}*60))"`
+        suspend_minutes=`cat "${config_file}" | head -8 | tail -1 | sed '/^$/d' | cut -f2 -d'=' | sed '/^$/d'`
         suspend_milliseconds=`echo "$(((${suspend_minutes}*60)*1000))"`
 
 
@@ -245,7 +248,7 @@ while true
             pid_slimlock=`pidof slimlock`
         }
 
-        if [ ${lockscreen_minutes} -gt 0 ]; then
+        if [ "${lockscreen_minutes}" -gt 0 ]; then
             if [ "${idle}" -gt "${lockscreen_milliseconds}" ]; then
 
                 _var_update
@@ -275,7 +278,23 @@ while true
             fi
         fi
 
-        if [ ${suspend_minutes} -gt 0 ]; then
+        if [ "${dpms_minutes}" -gt 0 ]; then
+            standby=`LC_ALL=C xset q | awk '/Standby:/ {print $4}'`
+            dpms_check=`LC_ALL=C xset q | awk '/DPMS is Disabled/'`
+
+            if [ "${standby}" != "${dpms_seconds}" ]; then
+                xset dpms 0 "${dpms_seconds}" "${dpms_seconds}"
+            fi
+            if [ "${dpms_check}" = '  DPMS is Disabled' ]; then
+                xset dpms
+            fi
+
+        else
+            xset -dpms          # Disable DPMS and prevent screen from blanking
+            xset s off -dpms    # Disable DPMS and prevent screen from blanking
+        fi
+
+        if [ "${suspend_minutes}" -gt 0 ]; then
             if [ "${idle}" -gt "${suspend_milliseconds}" ]; then
 
                 _var_update
