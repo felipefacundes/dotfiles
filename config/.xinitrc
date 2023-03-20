@@ -168,8 +168,8 @@ while true
                     monitor_mode &
             else
                     # WM LOG OUTPUT
-                    echo "${start_wm} log - `date +'%d/%m/%Y - %T'`" >> ~/.wm_log &
-                    echo -e "------------------------------------\n" >> ~/.wm_log &
+                    echo -e "${start_wm} log - `date +'%d/%m/%Y - %T'`\n\
+------------------------------------\n\n" >> ~/.wm_log &
 
                     if [ "${start_wm}" = openbox ]; then
                         "${start_wm}" --debug >> ~/.wm_log &
