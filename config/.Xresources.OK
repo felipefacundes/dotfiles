@@ -1,6 +1,6 @@
 ! Cursor
 Xcursor.theme: oreo_spark_red_cursors
-Xcursor.size: 
+Xcursor.size: 32
 
 ! Base colors
 *.foreground:  #E1E1E1
