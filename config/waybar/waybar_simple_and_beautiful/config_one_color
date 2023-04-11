@@ -1,0 +1,395 @@
+// 😉 Config created by Felipe Facundes
+//  Telegram: @FeFacundes
+//  Telegram Group: t.me/winehq_linux
+// 😅 Dúvidas:https://github.com/Alexays/Waybar/wiki/Module:-Custom
+// vim:ft=json
+
+{
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 30, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": ["custom/menu", "sway/workspaces", "sway/window"], //"sway/mode", "sway/scratchpad", "sway/window"
+    //"modules-center": ["sway/window"],
+    "modules-right": ["custom/playerctl2", "pulseaudio", "custom/wf-recorder2", "network", "bluetooth", "custom/gpu", "idle_inhibitor", "cpu", "memory", "disk", "temperature", "backlight", "battery", "custom/pacman", "custom/weather", "clock", "tray", "custom/poweroff"],
+    // Modules configuration
+    // "sway/workspaces": {
+    //     "disable-scroll": true,
+    //     "all-outputs": true,
+    //     "format": "{name}: {icon}",
+    //     "format-icons": {
+    //         "1": "",
+    //         "2": "",
+    //         "3": "",
+    //         "4": "",
+    //         "5": "",
+    //         "urgent": "",
+    //         "focused": "",
+    //         "default": ""
+    //     }
+    // },
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+
+    "sway/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+
+    "sway/language": {
+        "format": " {}",
+        "min-length": 5,
+        "tooltip": false,
+        "on-click": "swaymsg input $(swaymsg -t get_inputs --raw | jq '[.[] | select(.type == \"keyboard\")][0] | .identifier') xkb_switch_layout next"
+    },
+
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "unknown-tag": "N/A",
+        "interval": 2,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "零",   //""
+            "deactivated": "鈴"  //""
+        }
+    },
+
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+
+    "clock": {
+        "timezone": "America/Sao_Paulo", // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%H:%M} ", // 
+        "format-alt": "{:%Y-%m-%d} ",
+        "on-click-right": "wldash",
+        "on-click-middle": "gsimplecal"
+    },
+
+    "cpu": {
+        "interval": 5,
+        "format": "{usage}% ",
+        "tooltip-format": "{}",
+        "states": {
+            "warning": 70,
+            "critical": 90
+        },
+        "on-click": "kitty -e watch cpupower frequency-info"
+    },
+
+    "memory": {
+        "interval": 5,
+        "format": "{}% ", // ""  "
+        "tooltip-format": "{used:0.1f}G used\n{avail:0.1f}G available\n{total:0.1f}G total",
+        "states": {
+            "warning": 70,
+            "critical": 90
+        },
+        "on-click": "kitty -e htop"
+    },
+
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["","",""], //["", "", ""]
+        "on-click": "kitty -e watch sensors"
+    },
+
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        // 🌕🌖🌗🌘🌑🌒🌓🌔✨🌟⭐ ☀️🌞🔆🔅😎 ["", "", ""], ["🌑", "🌒", "🌓", "🌔", "🌕", "🌞"],
+        "format-icons": ["", "", "", "", "", "", "", "", ""], //["🌑", "🌒", "🌘", "🌓", "🌗", "🌖", "🌔", "🌕", "🌞"]
+        "on-scroll-up": "light -A 1",                           //"format-icons": ["", "", "", "", "", "", "", "", ""]
+        "on-scroll-down": "light -U 1"
+    },
+
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}%  ",
+        "format-plugged": "{capacity}%  ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": [" ", " ", " ", " ", " "]
+    },
+
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+
+    "bluetooth": {
+        "format": "{icon}",
+        "format-icons": {
+            "enabled": "",
+            "disabled": ""
+        },
+        "on-click": "bash -c ${HOME}/.config/waybar/scripts/rofi-bluetooth 2> /dev/null" ,
+        "tooltip-format": "{}"
+    },
+
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ", //
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected 睊", //⚠
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "on-click-right": "kitty -e nmtui"
+    },
+
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "disk": {
+        "interval": 30,
+        "format": "",
+        "format-alt": "Free: {}%",
+        "tooltip-format": "{used} used\n{free} free\n{total} total",
+        "on-click-right": "pcmanfm",
+        "on-click-middle": "kitty -e watch df -h /",
+        "path": "/",
+        "states": {
+            "low": 0,
+            "mid": 25,
+            "high": 50
+        }
+    },
+
+    "custom/sunset": {
+        "interval": 1,
+        "tooltip": false,
+        "return-type": "json",
+        "format" : "{icon}",
+        "format-icons": {
+            "on": "" ,
+            "off": "" 
+        },
+        "exec": "${HOME}/.config/waybar/scripts/sunset.sh",
+        "on-click": "${HOME}/.config/waybar/scripts/sunset.sh toggle; pkill -RTMIN+6 waybar",
+        "exec-if": "${HOME}/.config/waybar/scripts/sunset.sh check",
+        "signal": 6
+    },
+
+    "custom/wf-recorder2": {
+        "interval": 1,
+        "format" : "{}",
+        "tooltip": false,  // 雷 🎦  󰻂 󰻃 󰑋
+        "exec": "bash -c 'wf_rec=$(pidof wf-recorder); if [ -z ${wf_rec} ] ; then echo 󰑋; else echo  ; fi'",
+        "exec-if": "exit 0",
+        "on-click": "killall -s SIGINT wf-recorder",
+        "on-click-right": "bash <(wf-recorder -c libx265 --audio=`LC_ALL=c pactl list sources | head -n 3 | tail -n1 | awk '{print $2}'` pulse -f ${HOME}/Videos/Capture/WScreen_$(date +%d-%m-%Y_%H:%M:%S).mkv) &",
+        "signal": 8
+	},
+
+    "custom/wf-recorder": {
+        "interval": 1,
+        "return-type": "json",
+        "format" : "{}",
+        "tooltip-format": "{tooltip}",
+        "exec": "echo '{\"class\": \"recording\",\"text\":\"雷\",\"tooltip\":\"press $mod+Esc to stop recording\"}'",
+        "exec-if": "pgrep wf-recorder",
+        "on-click": "killall -s SIGINT wf-recorder",
+        "signal": 8
+	},
+
+    "custom/github": {
+        "interval": 300,
+        "tooltip": false,
+        "return-type": "json",
+        "format" : " {}",
+        "exec": "gh api '/notifications' -q '{ text: length }' | cat -",
+        "exec-if": "command -v gh >/dev/null && gh auth status 2>&1 | grep -q -m 1 'Logged in' && gh api '/notifications' -q 'length' | grep -q -m 1 '0' ; test $? -eq 1",
+        "on-click": "xdg-open https://github.com/notifications && sleep 30 && pkill -RTMIN+4 waybar",
+        "signal": 4
+    },
+
+    "custom/weather": {
+        "format": "{}",
+        "tooltip": true,
+        "interval": 900,
+        "exec": "python -u ${HOME}/.config/waybar/scripts/waybar-wttr.py",
+        "return-type": "json",
+        "on-click": "kitty -e ${HOME}/.config/waybar/scripts/prompt_weather.sh"
+    },
+
+    "custom/weather2": {
+        "exec": "bash -c ${HOME}/.config/waybar/scripts/wittr.sh",
+        "return-type": "json",
+        "format": "{}",
+        "tooltip": true,
+        "interval": 900
+    },
+
+	"custom/menu": {
+        //    ⨇   󰣇    󱉙 󱉛 󱉜  󰀖 󰤵 󱝖      󰕈   󰒱   󰣨    󰣚   
+		// ⚫🔵⚪💙🩸💧🛟 💎  ⚽🏀🏈⚾🥎🎾🏐🏉🥏🎱🪀  🧡💛💚💙💜🖤🤎🤍💔❣️💝❤️‍🩹❤️‍🔥 
+        //🛑💠🌀Ⓜ️🆗🆖⏺️⚪⚫🔴🔵🟤🟣🟢🟡🟠🔺🔻🔶🔷🔳🔲⬛⬜🟧🟦🟥🟫🟪🟩🟨 🔎👁️👽🤖👾☠️👇👆🤙☝️🎲🧊🎖️🚦🎗️ 🎲
+		"format": ".",
+        "on-click": "nwg-drawer",
+        "on-click-right": "rofi -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launchers/misc/appdrawer.rasi",
+        "on-click-middle": "pkill -9 rofi"
+    },
+
+	"custom/pacman": {
+        // "format": "Ⲣ  Ꝓ ⰐℙꝒᎮᗣᗧ•🍒 {}", 󱁂   󱁄 󱁅 󱨎 󱁆 󱁇 
+        "format": "ᗧ∙∙ ᗣ  {}",
+        "interval": 1,                        // every hour
+        "exec": "pacman -Qq | wc -l",         // packages
+        "exec-if": "exit 0",                  // always run; consider advanced run conditions
+        "on-click": "kitty -e ~/.local/bin/upgrade-system; pkill -SIGRTMIN+8 waybar", // update system
+        "signal": 8
+    },
+
+    "custom/uptime": {
+        "interval": 1,
+        "signal": 8,
+        "tooltip-format": "<big>{}</big></tt>",
+        "format":"ﴻ {}" , //"{} ﴻ" 🔝
+        "exec": "uptime | awk '{print $3}' | tr -d ','",
+        "exec-if": "exit 0",
+        "on-click": "swaynag -t warning -m 'Power Options:' -b 'Exit' 'swaymsg exit' -b 'Reboot' 'swaymsg exec systemctl reboot -i' -b 'Poweroff' 'openrc-shutdown -p now && systemctl shutdown -h now'"
+    },
+
+    "custom/poweroff": {
+        //"format": "" 📴,
+        "format": ".",
+        "format-alt": "ﴻ {}",
+        "tooltip": false,
+        "exec": "uptime | awk '{print $3}' | tr -d ','",
+        "exec-if": "exit 0",
+        "on-click-right": "swaynag -t warning -m 'Power Options:' -b 'Exit' 'swaymsg exit' -b 'Reboot' 'swaymsg exec systemctl reboot -i' -b 'Poweroff' 'openrc-shutdown -p now && systemctl shutdown -h now'"
+    },
+    
+    "custom/gpu": {
+        "format": "{}",
+        "tooltip": false,
+        "interval": 2,
+        "exec": "bash -c 'NVIDIA=$(glxinfo -B | grep -i 'NVIDIA') ; if [ -e $NVIDIA ] ; then echo  ; else echo  ; fi' 2>/dev/null",
+        "exec-if": "exit 0",                 
+        "on-click": "kitty -e watch glxinfo -B",
+        "on-click-right": "kitty -e nvtop",
+        "signal": 8
+    },
+
+    "custom/spotify": {
+        "interval": 1,
+        "return-type": "json",
+        "exec": "bash -c ${HOME}/.cargo/bin/waybar_media_display", 
+        "exec-if": "pgrep spotify",
+        "on-click":"playerctl --player=spotify play-pause",
+        "escape": true
+     },
+
+    "custom/playerctl2": {
+        "interval": 1,
+        "tooltip": true,
+        "format" : "{}", //奈 
+        "exec": "bash -c 'PCTL=$(LANG=en playerctl status); if [[ ${PCTL} = Playing ]]; then echo  ; elif [[ ${PCTL} = Paused ]]; then echo  ; else echo >/dev/null; fi' 2>/dev/null",
+        "on-click": "playerctl play-pause; pkill -RTMIN+5 waybar",
+        "on-click-right": "playerctl next; pkill -RTMIN+5 waybar",
+        "on-click-middle": "playerctl previous; pkill -RTMIN+5 waybar",
+        "on-scroll-up": "playerctl position 10+; pkill -RTMIN+5 waybar",
+        "on-scroll-down": "playerctl position 10-; pkill -RTMIN+5 waybar",
+        "signal": 5
+    },
+
+    "custom/playerctl": {
+        "interval": "once",
+        "tooltip": true,
+        "return-type": "json",
+        "format" : "{icon}",
+        "format-icons": {
+            "Playing": "", //奈
+            "Paused": ""  //
+        },
+        "exec": "playerctl metadata --format '{\"alt\": \"{{status}}\", \"tooltip\": \"{{playerName}}:  {{markup_escape(title)}} - {{markup_escape(artist)}}\" }'",
+        "on-click": "playerctl play-pause; pkill -RTMIN+5 waybar",
+        "on-click-right": "playerctl next; pkill -RTMIN+5 waybar",
+        "on-scroll-up": "playerctl position 10+; pkill -RTMIN+5 waybar",
+        "on-scroll-down": "playerctl position 10-; pkill -RTMIN+5 waybar",
+        "signal": 5
+    },
+
+    "custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "python -u ${HOME}/.config/waybar/scripts/mediaplayer.py 2> /dev/null" // Script in resources folder
+        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    }
+}
+
