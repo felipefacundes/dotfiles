@@ -1,0 +1,23 @@
+/*
+*
+* Base16 Catppuccin
+* Author: Pocco81 (https://github.com/pocco81)
+*
+*/
+
+@define-color base00 #1e1e28;
+@define-color base01 #1a1826;
+@define-color base02 #302d41;
+@define-color base03 #575268;
+@define-color base04 #6e6c7c;
+@define-color base05 #d7dae0;
+@define-color base06 #f5e0dc;
+@define-color base07 #c9cbff;
+@define-color base08 #f28fad;
+@define-color base09 #f8bd96;
+@define-color base0A #fae3b0;
+@define-color base0B #abe9b3;
+@define-color base0C #b5e8e0;
+@define-color base0D #96cdfb;
+@define-color base0E #ddb6f2;
+@define-color base0F #f2cdcd;

@@ -1,0 +1,23 @@
+/*
+*
+* Base16 Catppuccin Frappe
+* Author: https://github.com/catppuccin/catppuccin
+*
+*/
+
+@define-color base00 #303446;
+@define-color base01 #292c3c;
+@define-color base02 #414559;
+@define-color base03 #51576d;
+@define-color base04 #626880;
+@define-color base05 #c6d0f5;
+@define-color base06 #f2d5cf;
+@define-color base07 #babbf1;
+@define-color base08 #e78284;
+@define-color base09 #ef9f76;
+@define-color base0A #e5c890;
+@define-color base0B #a6d189;
+@define-color base0C #81c8be;
+@define-color base0D #8caaee;
+@define-color base0E #ca9ee6;
+@define-color base0F #eebebe;
