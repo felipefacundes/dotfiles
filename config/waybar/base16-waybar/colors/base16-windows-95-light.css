@@ -1,0 +1,23 @@
+/*
+*
+* Base16 Windows 95 Light
+* Author: Fergus Collins (https://github.com/C-Fergus)
+*
+*/
+
+@define-color base00 #fcfcfc;
+@define-color base01 #e0e0e0;
+@define-color base02 #c4c4c4;
+@define-color base03 #a8a8a8;
+@define-color base04 #7e7e7e;
+@define-color base05 #545454;
+@define-color base06 #2a2a2a;
+@define-color base07 #000000;
+@define-color base08 #a80000;
+@define-color base09 #fcfc54;
+@define-color base0A #a85400;
+@define-color base0B #00a800;
+@define-color base0C #00a8a8;
+@define-color base0D #0000a8;
+@define-color base0E #a800a8;
+@define-color base0F #54fc54;

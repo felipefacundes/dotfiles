@@ -1,0 +1,23 @@
+/*
+*
+* Base16 standardized-light
+* Author: ali (https://github.com/ali-githb/base16-standardized-scheme)
+*
+*/
+
+@define-color base00 #ffffff;
+@define-color base01 #eeeeee;
+@define-color base02 #cccccc;
+@define-color base03 #767676;
+@define-color base04 #767676;
+@define-color base05 #444444;
+@define-color base06 #333333;
+@define-color base07 #222222;
+@define-color base08 #d03e3e;
+@define-color base09 #d7691d;
+@define-color base0A #ad8200;
+@define-color base0B #31861f;
+@define-color base0C #00998f;
+@define-color base0D #3173c5;
+@define-color base0E #9e57c2;
+@define-color base0F #895025;

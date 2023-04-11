@@ -1,0 +1,23 @@
+/*
+*
+* Base16 Windows NT Light
+* Author: Fergus Collins (https://github.com/C-Fergus)
+*
+*/
+
+@define-color base00 #ffffff;
+@define-color base01 #eaeaea;
+@define-color base02 #d5d5d5;
+@define-color base03 #c0c0c0;
+@define-color base04 #a0a0a0;
+@define-color base05 #808080;
+@define-color base06 #404040;
+@define-color base07 #000000;
+@define-color base08 #800000;
+@define-color base09 #ffff00;
+@define-color base0A #808000;
+@define-color base0B #008000;
+@define-color base0C #008080;
+@define-color base0D #000080;
+@define-color base0E #800080;
+@define-color base0F #00ff00;

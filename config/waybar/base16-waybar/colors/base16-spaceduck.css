@@ -1,0 +1,23 @@
+/*
+*
+* Base16 Spaceduck
+* Author: Guillermo Rodriguez (https://github.com/pineapplegiant), packaged by Gabriel Fontes (https://github.com/Misterio77)
+*
+*/
+
+@define-color base00 #16172d;
+@define-color base01 #1b1c36;
+@define-color base02 #30365f;
+@define-color base03 #686f9a;
+@define-color base04 #818596;
+@define-color base05 #ecf0c1;
+@define-color base06 #c1c3cc;
+@define-color base07 #ffffff;
+@define-color base08 #e33400;
+@define-color base09 #e39400;
+@define-color base0A #f2ce00;
+@define-color base0B #5ccc96;
+@define-color base0C #00a3cc;
+@define-color base0D #7a5ccc;
+@define-color base0E #b3a1e6;
+@define-color base0F #ce6f8f;

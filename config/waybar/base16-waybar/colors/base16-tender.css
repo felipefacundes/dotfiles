@@ -1,0 +1,23 @@
+/*
+*
+* Base16 tender
+* Author: Jacobo Tabernero (https://github/com/jacoborus/tender.vim)
+*
+*/
+
+@define-color base00 #282828;
+@define-color base01 #383838;
+@define-color base02 #484848;
+@define-color base03 #4c4c4c;
+@define-color base04 #b8b8b8;
+@define-color base05 #eeeeee;
+@define-color base06 #e8e8e8;
+@define-color base07 #feffff;
+@define-color base08 #f43753;
+@define-color base09 #dc9656;
+@define-color base0A #ffc24b;
+@define-color base0B #c9d05c;
+@define-color base0C #73cef4;
+@define-color base0D #b3deef;
+@define-color base0E #d3b987;
+@define-color base0F #a16946;

@@ -1,0 +1,23 @@
+/*
+*
+* Base16 Tokyo City Terminal Light
+* Author: Michaël Ball
+*
+*/
+
+@define-color base00 #fbfbfd;
+@define-color base01 #f6f6f8;
+@define-color base02 #d8e2ec;
+@define-color base03 #b7c5d3;
+@define-color base04 #526270;
+@define-color base05 #28323a;
+@define-color base06 #1d252c;
+@define-color base07 #171d23;
+@define-color base08 #8c4351;
+@define-color base09 #965027;
+@define-color base0A #8f5e15;
+@define-color base0B #33635c;
+@define-color base0C #0f4b6e;
+@define-color base0D #34548a;
+@define-color base0E #5a4a78;
+@define-color base0F #7e5140;

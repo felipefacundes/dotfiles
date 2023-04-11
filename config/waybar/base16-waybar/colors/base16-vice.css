@@ -1,0 +1,23 @@
+/*
+*
+* Base16 vice
+* Author: Thomas Leon Highbaugh thighbaugh@zoho.com
+*
+*/
+
+@define-color base00 #17191e;
+@define-color base01 #22262d;
+@define-color base02 #3c3f4c;
+@define-color base03 #383a47;
+@define-color base04 #555e70;
+@define-color base05 #8b9cbe;
+@define-color base06 #b2bfd9;
+@define-color base07 #f4f4f7;
+@define-color base08 #ff29a8;
+@define-color base09 #85ffe0;
+@define-color base0A #f0ffaa;
+@define-color base0B #0badff;
+@define-color base0C #8265ff;
+@define-color base0D #00eaff;
+@define-color base0E #00f6d9;
+@define-color base0F #ff3d81;
