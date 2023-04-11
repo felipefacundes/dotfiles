@@ -1,0 +1,23 @@
+/*
+*
+* Base16 Horizon Terminal Light
+* Author: Michaël Ball (http://github.com/michael-ball/)
+*
+*/
+
+@define-color base00 #fdf0ed;
+@define-color base01 #fadad1;
+@define-color base02 #f9cbbe;
+@define-color base03 #bdb3b1;
+@define-color base04 #948c8a;
+@define-color base05 #403c3d;
+@define-color base06 #302c2d;
+@define-color base07 #201c1d;
+@define-color base08 #e95678;
+@define-color base09 #f9cec3;
+@define-color base0A #fadad1;
+@define-color base0B #29d398;
+@define-color base0C #59e1e3;
+@define-color base0D #26bbd9;
+@define-color base0E #ee64ac;
+@define-color base0F #f9cbbe;
