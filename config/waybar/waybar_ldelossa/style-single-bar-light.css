@@ -1,0 +1,272 @@
+@define-color trans             rgba(28, 28, 28, 0);
+@define-color black             #2f2f2f;
+@define-color black-trans       @white;
+@define-color blue              #437890;
+@define-color blue-light        @blue;
+@define-color yellow            #8d905f;
+@define-color yellow-light      #fff8c5;
+@define-color red               #755754;
+@define-color green             #609075;
+@define-color grey              #525050;
+@define-color grey-light        #8e8e8e;
+@define-color grey-trans        rgba(84, 85, 85, .60);
+@define-color white             #b9bab5;
+@define-color white-alt         #eaeef2;
+@define-color white-alt-trans   rgba(234, 238, 242, .90);
+@define-color white-lighter     #c9cac5;
+@define-color white-light       @grey; 
+@define-color orange            #9b885c;
+@define-color purple            #6b6098;
+@define-color turquoise         #6b6098;
+
+
+.modules-right {
+    font-family:    "Fira Code Regular Nerd Font Complete Mono";
+    font-size:      15px;
+}
+
+.modules-center {
+    font-family:    "Fira Code Regular Nerd Font Complete Mono";
+    font-size:      15px;
+}
+
+.modules-left {
+    font-family:    "Fira Code Regular Nerd Font Complete Mono";
+    font-size:      12px;
+}
+
+tooltip {
+  font-family:      "FreeMono";
+  font-size:        20px;
+  background:       @white-alt;
+  border:           2px solid @purple;
+}
+
+tooltip label {
+  color: @grey-light;
+}
+
+window#waybar {
+    /* border-bottom:         .5px solid @grey-light; */
+    background: @white-alt;
+}
+
+/* === work spaces === */
+
+#workspaces {
+    padding:            0px 0px 0px 0px;
+    border-radius:      0px 0px 0px 0px;
+}
+
+#workspaces button {
+    margin:             0px 0px 0px 0px;
+    padding:            0px 5px 0px 5px;
+    color:              @black;
+}
+
+#workspaces button.focused {
+    color:              #FFFFFF;
+    background:         @blue;
+    border-radius:      1px;
+    /* border-bottom:      3px solid @blue; */
+}
+
+#workspaces button:hover {
+    background:         @white;
+    border-radius:      2px;
+    box-shadow:         inherit;
+    text-shadow:        inherit;
+}
+
+#workspaces button.urgent {
+    color:              @red; 
+}
+
+#custom-spotify-metadata, #custom-spotify-play-pause, #custom-spotify-prev, #custom-spotify-next, #custom-spotify-quit {
+    color:              @white;
+    padding:            0px 6px 0px 6px;
+    font-size:          12px;
+}
+#custom-spotify-metadata {
+    margin:             0px 0px 0px 1px;
+}
+#custom-spotify-metadata.playing {
+    color:              @green;
+}
+#custom-spotify-metadata.paused {
+    color:              @yellow;
+}
+#custom-spotify-prev {
+    margin:             0px 0px 0px 1px;
+}
+#custom-spotify-play-pause {
+    margin:             0px 0px 0px 1px;
+}
+#custom-spotify-next {
+    margin:             0px 0px 0px 1px;
+}
+#custom-spotify-quit {
+    margin:             0px 0px 0px 1px;
+}
+
+#clock, #mode {
+    margin:             0px 15px 0px 15px;
+    padding:            0px 0px 0px 0px;
+    color:              @grey;
+}
+
+#mode {
+    font-size:          20px;
+}
+
+#scratchpad, #clock, #tray, #custom-bluelightfilter, #custom-vm, #custom-vm, #custom-notification, #custom-containers,  #custom-wfrecord, #custom-grimshot, #battery, #disk, #cpu, #memory, #temperature, #network, #pulseaudio, #backlight, #idle_inhibitor {
+    margin:             0px 1px 0px 1px;
+    padding:            0px 6px 0px 6px;
+    color:              @black;
+    font-size:          20px;
+}
+
+#clock {
+    font-size: 15px
+}
+
+#custom-notification {
+  color:        @grey;
+}
+
+#idle_inhibitor {
+    color:              @grey;
+}
+
+#idle_inhibitor.activated {
+    color:              @blue-light;
+}
+
+#custom-bluelightfilter {
+    color:              @grey;
+    font-size:          19px;
+}
+
+#custom-bluelightfilter.activated {
+    color:              @blue-light;
+}
+
+#tray {
+    color:        @green;
+}
+
+#custom-wfrecord {
+    font-size:          14px;
+}
+#custom-grimshot {
+    font-size:          15px;
+}
+
+#custom-wfrecord.recording {
+    color:              @blue-light;
+}
+
+#custom-vm {
+    font-size:          20px;
+}
+#custom-vm.running {
+    color:              @blue;
+}
+
+#custom-containers {
+    font-size:          20px;
+}
+
+#custom-containers.running {
+    color:              @blue;
+}
+
+#memory {
+}
+#memory.low {
+    color:        @blue;
+}
+#memory.mid {
+    color:        @yellow;
+}
+#memory.high {
+    color:        @red;
+}
+
+#cpu {
+}
+#cpu.low {
+    color:        @blue;
+}
+#cpu.mid {
+    color:        @yellow;
+}
+#cpu.high {
+    color:        @red;
+}
+
+#disk {
+    font-size:          16px;
+}
+#disk.low {
+    color:        @blue;
+}
+#disk.mid {
+    color:        @yellow;
+}
+#disk.high {
+    color:        @red;
+}
+
+#network {
+    color:        @green;
+    font-size:          18px;
+}
+#network.disconnected {
+    color:        @red;
+}
+
+#battery {
+    font-size:         11px;
+    color:        @green;
+}
+#battery.warning {
+    color:        @yellow;
+}
+#battery.critical {
+    color:        @red;
+}
+#battery.charging {
+    color:        @green;
+    font-size:          13px;
+}
+
+#backlight {
+    font-size:           12px;
+}
+#backlight.low {
+    color:        @blue;
+}
+#backlight.mid {
+    color:        @yellow;
+}
+#backlight.high {
+    color:        @red;
+}
+
+#pulseaudio {
+    font-size:           22px;
+}
+#pulseaudio.low {
+    color:        @blue;
+}
+#pulseaudio.mid {
+    color:        @yellow;
+}
+#pulseaudio.high {
+    color:        @red;
+}
+#pulseaudio.muted {
+    color:        @red;
+}
+

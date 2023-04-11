@@ -1,0 +1,181 @@
+{
+  // Basics
+  "layer": "bottom",
+	"position": "top",
+  "margin-top": 5,
+	"margin-right": 5,
+	"margin-left": 5,
+
+  // Modules
+  "modules-left": [
+    "clock",
+    "custom/separator",
+    "cpu",
+    "temperature",
+    "custom/separator",
+    "memory",
+    "custom/separator",
+    "disk#one",
+    "custom/separator",
+    "custom/spotify"
+  ],
+  "modules-center": [
+    "sway/workspaces",
+    "sway/mode"
+  ],
+  "modules-right": [
+    "tray",
+    "custom/separator",
+    "idle_inhibitor",
+    "backlight",
+    "pulseaudio",
+    "custom/separator",
+    "network",
+    "custom/vpn",
+    "custom/separator",
+    "battery",
+    "custom/separator",
+    "custom/powermenu",
+    "custom/separator"
+  ],
+
+  // Module Config
+  "clock": {
+    "format": " {:%a %d %b %H:%M}"
+  },
+  "cpu": {
+    "states": {
+      "good": 0,
+      "warning": 70,
+      "critical": 90
+    },
+    "interval": 1,
+    "format": " {usage:2}%",
+    "on-click": "foot -e btop"
+  },
+  "temperature": {
+    "thermal-zone": 3,
+    "interval": 1,
+    "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+    "critical-threshold": 80,
+    "format-critical": "({temperatureC}°C)",
+    "format": "({temperatureC}°C)"
+  },
+  "memory": {
+    "states": {
+      "good": 0,
+      "warning": 70,
+      "critical": 85
+    },
+    "interval": 5,
+    "format": " {}%",
+    "on-click": "foot -e btop"
+  },
+  "disk#one": {
+		"states": {
+			"good": 0,
+			"warning": 70,
+			"critical": 95
+		},
+		"interval": 5,
+		"format": " {percentage_used:2}%",
+		"path": "/"
+	},
+  "custom/spotify": {
+      "interval": 1,
+      "return-type": "json",
+      "exec": "~/.config/waybar/modules/spotify.sh",
+      "exec-if": "pgrep spotify",
+      "escape": true
+  },
+
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "format": "{name}",
+      "format-icons": {
+        "urgent": "",
+        "focused": "",
+        "default": ""
+      }
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": [
+      "",
+      ""
+    ],
+    "on-scroll-up": "brightnessctl set +5%",
+    "on-scroll-down": "brightnessctl set 5%-"
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}% {format_source}",
+    "format-bluetooth": "{icon} {volume}%  {format_source}",
+    "format-bluetooth-muted": " {icon}  {format_source}",
+    "format-muted": " {format_source}",
+    "format-source": " {volume}%",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "on-click": "pavucontrol"
+  },
+  "network": {
+    "format-wifi": " {essid} ({signalStrength}%)",
+    "format-ethernet": " {ifname} {ipaddr}",
+    "format-disconnected": "Disconnected",
+    "tooltip-format": "{ifname}",
+    "tooltip-format-wifi": "{ipaddr}",
+    "tooltip-format-ethernet": "{ipaddr}",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 30
+  },
+  "custom/vpn": {
+    "format": " {icon}",
+    "exec": "$HOME/.config/waybar/modules/vpn.sh",
+    "return-type": "json",
+    "interval": 5,
+    "format-icons": [" ",""]
+  },
+  "battery": {
+    "states": {
+      "good": 100,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "custom/powermenu": {
+    "format": "",
+    "on-click": "nwg-bar",
+    "tooltip": false
+  }
+}
