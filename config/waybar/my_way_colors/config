@@ -1,0 +1,190 @@
+// 😉 Config created by Felipe Facundes
+//  Telegram: @FeFacundes
+//  Telegram Group: t.me/winehq_linux
+// 😅 Dúvidas:https://github.com/Alexays/Waybar/wiki/Module:-Custom
+// vim:ft=json
+
+{
+	"layer": "top",
+	"position": "top",
+
+	"modules-left": [
+        "custom/rofi",
+        "custom/right-arrow-dark",
+		"custom/right-arrow-light",
+        "custom/arquivos",
+        "custom/right-arrow-dark",
+		"custom/right-arrow-light",
+        "custom/firefox",
+        "custom/right-arrow-dark",
+		"custom/right-arrow-light",
+        "custom/telegram",
+        "custom/right-arrow-dark",
+		"custom/right-arrow-light",
+        "custom/pacman",
+        "custom/right-arrow-dark",
+		"custom/right-arrow-light"
+	],
+	"modules-center": [
+		"custom/left-arrow-dark",
+		"clock#1",
+		"clock#2",
+		"clock#3",
+		"custom/right-arrow-dark"
+	],
+	"modules-right": [
+		"custom/left-arrow-dark",
+		"pulseaudio",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"memory",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"cpu",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+        "temperature",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"battery",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"tray",
+        "custom/desligar"
+	],
+	"custom/left-arrow-dark": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/left-arrow-light": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-dark": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-light": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/rofi": {
+		// ⨇,
+		"format": "",
+        "on-click": "nwg-drawer",
+        "on-click-right": "rofi -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launchers/misc/appdrawer.rasi",
+        "on-click-middle": "pkill -9 rofi"
+    },
+        "custom/pacman": {
+        // "format": "Ⲣ  Ꝓ ⰐℙꝒᎮᗣᗧ•🍒 {}",
+        "format": "ᗧ•ᗣ{}🍒",
+        "interval": 1,                        // every hour
+        "exec": "pacman -Qq | wc -l",         // packages
+        "exec-if": "exit 0",                  // always run; consider advanced run conditions
+        "on-click": "kitty -e ~/.local/bin/upgrade-system; pkill -SIGRTMIN+8 waybar", // update system
+        "signal": 8
+    },
+    "custom/terminal": {
+		"format": "",
+        "on-click": "kitty",
+        "on-click-right": "kitty",
+        "on-click-middle": "pkill -9 kitty"
+    },
+    "custom/arquivos": {
+		"format": "",
+        "on-click": "pcmanfm",
+        "on-click-right": "kitty -e fff"
+    },
+    "custom/firefox": {
+		"format": "",
+        "on-click": "firefox",
+        "on-click-right": "firefox --new-tab",
+        "on-click-middle": "firefox --private-window"
+    },
+    "custom/telegram": {
+		"format": "",
+        "on-click": "telegram-desktop"
+    },
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"format": "{name}"
+	},
+    "sway/window": {
+        "max-length": 80,
+        "tooltip": false
+    },
+	"clock#1": {
+		"format": " {:%a}",
+		"tooltip": false,
+        "on-click": "gsimplecal"
+	},
+	"clock#2": {
+		"format": " {:%H:%M}",
+		"tooltip": false,
+        "on-click": "gsimplecal"
+	},
+	"clock#3": {
+		"format": " {:%d-%m}",
+		"tooltip": false,
+        "on-click": "gsimplecal"
+	},
+	"pulseaudio": {
+		"format": "{icon} {volume}%",
+		"format-bluetooth": "{icon}  {volume}%",
+		"format-muted": "MUTE",
+		"format-icons": {
+			"headphones": "",
+			"default": [
+				"",
+				""
+			]
+		},
+		"scroll-step": 5,
+		"on-click": "pactl set-sink-mute 0 toggle",
+		"on-click-right": "pavucontrol"
+	},
+	"memory": {
+		"interval": 2,
+		"format": " {}%",
+        "on-click": "kitty -e htop"
+	},
+	"cpu": {
+		"interval": 2,
+		"format": "{usage:2}%",
+        "on-click": "kitty -e watch cpupower frequency-info"
+    },
+    "temperature": {
+        "interval": 2,
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": " {temperatureC}°C",
+        "format": " {temperatureC}°C",
+        "on-click": "xsensors"
+	},
+	"battery": {
+        "interval": 2,
+		"states": {
+			"good": 95,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		]
+	},
+    "custom/desligar": {
+    "format": "",
+    "on-click": "swaynag -t warning -m 'Opções de desligamento' -b 'Sair' 'swaymsg exit' -b 'Reiniciar' 'swaymsg exec reboot' -b 'Desligar' 'openrc-shutdown -p now && systemctl poweroff'"
+    },
+	"tray": {
+		"icon-size": 15
+	}
+}
