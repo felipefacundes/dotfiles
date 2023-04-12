@@ -1,0 +1,77 @@
+# by Felipe Facundes
+
+
+[options]
+fullscreen = true
+scroll_on_output = false
+scroll_on_keystroke = true
+audible_bell = false
+mouse_autohide = false
+allow_bold = true
+dynamic_title = true
+urgent_on_bell = true
+clickable_url = true
+#font = MesloLGS NF 12
+font = Hack Nerd Font 12
+#font = Inconsolata Nerd Font 12
+#font = Hack 12
+#font = DejaVu Sans Mono for Powerline 12
+scrollback_lines = 10000
+search_wrap = true
+icon_name = utilities-terminal
+#eometry = 800x550
+clickable_url = true
+cursor_blink = system
+cursor_shape = block
+filter_unmatched_urls = true
+
+[colors]
+
+# special
+foreground      = #c6c8d1
+foreground_bold = #c6c8d1
+cursor          = #c6c8d1
+background      = rgba(25,18,24,0.95)
+#rgba(28, 32, 35, 0.8)
+#rgba(63, 63, 63, 0.8)
+#background     = #161821
+
+# black
+color0  = #2f2222
+color8  = #404040
+
+# red
+color1  = #ff0000
+color9  = #e30000
+
+# green
+color2  = #00ff00
+color10 = #1ce11c
+
+# yellow
+color3  = #f7ff00
+color11 = #e4ea35
+
+# blue
+color4  = #003aff
+color12 = #355eea
+
+# magenta
+color5  = #c900ff
+#ffa600
+#ea01fd
+#fadbd8
+color13 = #c900ff
+#ffa600
+#c9079a
+#e6b0aa
+
+# cyan
+color6  = #47f7ff
+color14 = #35e2ea
+
+# white
+color7  = #fff7e9
+color15 = #fff7e9
+
+
