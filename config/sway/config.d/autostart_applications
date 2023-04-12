@@ -1,0 +1,1 @@
+exec python ~/.config/sway/scripts/swayfader.py

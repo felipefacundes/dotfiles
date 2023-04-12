@@ -13,7 +13,7 @@
 # Para o papel de parede aleatório use o comando control+alt+w
 # Para mudar o caminho da pasta é em ajustes e ao final em executar.
 # Ou, use o modo fixo, como está logo abaixo, só descomentar:
-#output * bg ${HOME}/Pictures/Wallpapers/Floresta.jpg fill
+#output * bg /home/$USER/Imagens/Wallpapers/Floresta.jpg fill
 
 ####################################################################
 ##################### X W A Y L A N D ##############################
@@ -90,7 +90,8 @@ transform 180
 
 # Mod1 = $alt
 # Mod4 = Super
-set $papel bash -c 'swww img "$(find ${HOME}/Pictures/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n1)"'
+set $papel bash -c 'pkill -9 oguri ; pkill -9 swaybg ; swaybg -i "$(find /home/$USER/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n1)"'
+set $menu dmenu_path | rofi -show drun | xargs swaymsg exec
 set $alt Mod1
 set $mod Mod4
 
@@ -135,46 +136,46 @@ focus_on_window_activation focus
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    swaybar_command waybar
+    swaybar_command nwg-panel
     tray_padding 0
 
-    position top
+    #position top
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
-    font pango:Fira Sans, FontAwesome 13
+    # status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
+    #font pango:Fira Sans, FontAwesome 13
     #status_command i3status-rs ~/.config/sway/status.toml
     #status_command i3status-rs ~/.config/sway/Cargo.toml
-    hidden_state hide
-    tray_output yes
-    strip_workspace_numbers yes
+    #hidden_state hide
+    #tray_output yes
+    #strip_workspace_numbers yes
 
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-    colors {
-        separator #666666
-        background #000000
-        statusline #dddddd
-        focused_workspace #0088CC #0088CC #ffffff
-        active_workspace #333333 #333333 #ffffff
-        inactive_workspace #333333 #333333 #888888
-        urgent_workspace #2f343a #900000 #ffffff
-    }
-    colors {
-       background #282A36
-       statusline #F8F8F2
-       separator  #44475A
-    
-       focused_workspace  #44475A #44475A #F8F8F2
-       active_workspace   #282A36 #44475A #F8F8F2
-       inactive_workspace #282A36 #282A36 #BFBFBF
-       urgent_workspace   #FF5555 #FF5555 #F8F8F2
-       binding_mode       #FF5555 #FF5555 #F8F8F2
-    }
+    # colors {
+    #     statusline #ffffff
+    #     background #323232
+    #     inactive_workspace #32323200 #32323200 #5c5c5c
+    # }
+    # colors {
+    #     separator #666666
+    #     background #000000
+    #     statusline #dddddd
+    #     focused_workspace #0088CC #0088CC #ffffff
+    #     active_workspace #333333 #333333 #ffffff
+    #     inactive_workspace #333333 #333333 #888888
+    #     urgent_workspace #2f343a #900000 #ffffff
+    # }
+    #colors {
+    #    background #282A36
+    #    statusline #F8F8F2
+    #    separator  #44475A
+    #
+    #    focused_workspace  #44475A #44475A #F8F8F2
+    #    active_workspace   #282A36 #44475A #F8F8F2
+    #    inactive_workspace #282A36 #282A36 #BFBFBF
+    #    urgent_workspace   #FF5555 #FF5555 #F8F8F2
+    #    binding_mode       #FF5555 #FF5555 #F8F8F2
+    #}
 }
 
 ####################################################################
@@ -270,7 +271,7 @@ bindsym Control+Mod4+f exec firefox
 bindsym Control+Mod4+Shift+f exec firefox --profile ~/.firefox-rofe/
 
 # https://www.qwant.com
-bindsym Control+Mod4+w exec chromium
+bindsym Control+Mod4+w exec firefox --new-tab https://www.qwant.com
 
 #https://www.ecosia.org/
 bindsym Control+Mod4+e exec firefox --new-tab https://www.ecosia.org/
@@ -280,8 +281,9 @@ bindsym Control+Mod4+d exec firefox --new-tab https://duckduckgo.com/
 
 # Arquivos
 bindsym Shift+Mod4+f exec xdg-open ~
+
+# Arquivos
 bindsym Mod4+n exec xdg-open ~
-bindsym Mod4+Shift+e exec xdg-open ~
 
 # Inkscape
 bindsym Control+Mod4+i exec inkscape
@@ -377,6 +379,7 @@ bindsym Control+Mod1+c exec code ~/.config/sway/config
 bindsym Control+Mod4+q exec pkill -9 sway
 
 # Sway Exit
+bindsym Mod4+Shift+e exit
 bindsym Control+Mod1+backspace exit
 
 # Lançadores de programas
@@ -392,12 +395,12 @@ bindsym Control+space exec synapse
 bindsym Control+alt+l exec swaylock
 
 # Screenshot
-bindsym Print exec bash -c 'play ~/.local/songs/camera_shutter.mp3 ; grim "${HOME}/Pictures/Captura de Tela/Captura de tela de $(date +"%d-%m-%Y %H:%M:%S").png" - | wl-copy'
+bindsym Print exec bash -c 'play ~/.local/songs/camera_shutter.mp3 ; grim "/home/$USER/Imagens/Captura de Tela/Captura de tela de $(date +"%d-%m-%Y %H:%M:%S").png" - | wl-copy'
 
 # Gravar tela
-#bindsym Control+Mod1+r exec bash -c 'kitty -e ffmpeg -video_size 1360x768 -framerate 25 -f x11grab -i :0.0 -f pulse -ac 2 -i default ${HOME}/Videos/Tela_$(date +%d-%m-%Y_%H:%M:%S).mkv'
+#bindsym Control+Mod1+r exec bash -c 'sakura -e ffmpeg -video_size 1360x768 -framerate 25 -f x11grab -i :0.0 -f pulse -ac 2 -i default /home/$USER/Vídeos/Tela_$(date +%d-%m-%Y_%H:%M:%S).mkv'
 #bindsym Control+Mod1+r exec obs
-bindsym Control+Mod1+r exec bash <(kitty -e wf-recorder -c libx265 --audio=`LC_ALL=c pactl list sources | head -n 3 | tail -n1 | awk '{print $2}'` pulse -f "${HOME}/Videos/Captura/WScreen_$(date +%d-%m-%Y_%H:%M:%S).mkv")
+bindsym Control+Mod1+r exec wf-recorder -f '/home/$USER/Vídeos/Tela_$(date +%d-%m-%Y_%H:%M:%S).mkv'
 
 ####################################################################
 ######################### A R E A S ################################
@@ -456,20 +459,20 @@ bindsym Mod4+d workspace back_and_forth
 ####################################################################
 #
 ######## No i3 o modo floating seria assim:
-# for_window [class="(kitty)"]floating enable, move position center
+# for_window [class="(Sakura)"]floating enable, move position center
 #
 ######## No sway o modo floating é diferente, não precisa da opção "move position center" é assim:
-# for_window [app_id=".*kitty$"] floating enable
+# for_window [app_id=".*sakura$"] floating enable
 #
 ######## Ou com (title / app_id ou class), dependerá do progrma, ou vai funcionar de um modo ou de outro,
 ######## No entanto, às vezes precisa de uma parâmetro especial, como: ".*progrma$", ou simplesmente: "progrma", exemplos:
-# for_window [app_id=".*kitty$"] floating enable
+# for_window [app_id=".*sakura$"] floating enable
 # for_window [title=".*mpv$"] floating enable
 # for_window [class="Viewnior"] floating enable
 #####################################################################
 
-# kitty (Terminal)
-#for_window [app_id=".*kitty$"] floating enable
+# Sakura (Terminal)
+#for_window [app_id=".*sakura$"] floating enable
 
 # Termite (Terminal)
 #for_window [app_id=".*termite$"] floating enable
@@ -582,28 +585,28 @@ mode "$mode_gaps_outer" {
 ####################################################################
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec bash -c 'swww init & sleep 2; swww img "$(find ${HOME}/Pictures/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n1)"' &
+exec bash -c 'pkill -9 swaybg ; swaybg -i "$(find /home/$USER/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n1)"' &
+
+#exec oguri &
+
+exec copyq &
 
 exec bash -c "while true; do anyremote -f /usr/share/anyremote/cfg-data/Server-mode/all-in-one2.cfg -s socket:5197 ; done" &
 
-exec bash -c "while true; do minidlnad -f ${HOME}/.config/minidlna/minidlna.conf -P ${HOME}/.config/minidlna/minidlna.pid ; done" &
+exec bash -c "while true; do minidlnad -f /home/$USER/.config/minidlna/minidlna.conf -P /home/$USER/.config/minidlna/minidlna.pid ; done" &
 
-exec pulseaudio --start &
-exec bash -c 'while true; do if ! pactl stat; then systemctl --user stop pulseaudio.service pulseaudio.socket; sleep 2; pulseaudio --kill; sleep 2; pulseaudio --start; sleep 2; if ! pactl stat; then systemctl --user restart pulseaudio.service; sleep 2; systemctl --user reset-failed pulseaudio.service; fi; fi; sleep 7; done' &
+exec bash -c 'while true; do sleep 7; if ! pactl stat; then systemctl --user stop pulseaudio.service pulseaudio.socket; sleep 2; pulseaudio --kill; sleep 2; pulseaudio --start; sleep 2; if ! pactl stat; then systemctl --user restart pulseaudio.service; sleep 2; systemctl --user reset-failed pulseaudio.service; fi; fi; done' &
 
-exec pactl set-card-profile 0 output:analog-stereo+input:analog-stereo &
-exec pactl upload-sample "${HOME}/.local/songs/media-center-family-facundes.ogg" &
-exec paplay "${HOME}/.local/songs/media-center-family-facundes.ogg" --volume=76767 &
-#exec nwg-panel &
-
-# sets xwayland scale
-exec xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2 &
-
-#dbus-update-activation-environment --systemd --all &
-exec systemctl --user import-environment WAYLAND_DISPLAY & dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE &
-
-exec bash -c "${HOME}/.local/bin/gnome-keyring-daemon-fix.sh" &
-exec bash -c 'LANG=en /usr/lib/xdg-desktop-portal-gtk & LANG=en /usr/lib/xdg-desktop-portal-gnome' &
+exec pulseaudio --start
+exec pactl set-card-profile 0 output:analog-stereo+input:analog-stereo
+exec pactl upload-sample /home/$USER/.local/songs/media-center-family-facundes.ogg
+exec paplay /home/$USER/.local/songs/media-center-family-facundes.ogg --volume=76767
+exec nwg-panel &
 
 # https://github.com/swaywm/swaylock/issues/99
-exec swayidle -w timeout 300 'imv-wayland -x -t 1 -f /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png & sleep 0.25 ; swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' timeout 315 'swaylock -f' before-sleep 'swaylock -f ; sleep 1' &
+set $lockcmd swaylock -f
+exec swayidle -w \
+        timeout 300 'imv-wayland -x -t 1 -f /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png & sleep 0.25 ; swaymsg "output * dpms off"' \
+                resume 'swaymsg "output * dpms on"' \
+        timeout 315 '$lockcmd' \
+        before-sleep '$lockcmd ; sleep 1'
