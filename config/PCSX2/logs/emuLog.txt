@@ -1,0 +1,289 @@
+
+PCSX2 1.7.0-20210907093309 
+Savestate version: 0x9a230000
+
+Host Machine Init:
+	Operating System =  Arch Linux
+	Physical RAM     =  15843 MB
+	CPU name         =  Intel(R) Core(TM) i7-8750H CPU @ 2.20GHz
+	Vendor/Model     =  GenuineIntel (stepping 0A)
+	CPU speed        =  2.205 ghz (12 logical threads)
+	x86PType         =  Standard OEM
+	x86Flags         =  bfebfbff 7ffafbbf
+	x86EFlags        =  2c100800
+
+x86 Features Detected:
+	SSE2.. SSE3.. SSSE3.. SSE4.1.. SSE4.2.. AVX.. AVX2.. FMA
+	Pcsx2 was compiled as 64-bits.
+
+Installing POSIX SIGSEGV handler...
+Reserving memory for recompilers...
+
+(PCSX2:343103): Gtk-CRITICAL **: 13:34:42.516: gtk_distribute_natural_allocation: assertion 'extra_space >= 0' failed
+
+(PCSX2:343103): Gtk-WARNING **: 13:34:42.526: Negative content height -1 (allocation 1, extents 1x1) while allocating gadget (node scrolledwindow, owner GtkScrolledWindow)
+
+(PCSX2:343103): Gtk-CRITICAL **: 13:34:42.526: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkScrollbar
+
+(PCSX2:343103): Gtk-CRITICAL **: 13:34:42.526: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkScrollbar
+
+(PCSX2:343103): Gtk-WARNING **: 13:34:42.588: Negative content height -1 (allocation 1, extents 1x1) while allocating gadget (node scrolledwindow, owner GtkScrolledWindow)
+
+(PCSX2:343103): Gtk-CRITICAL **: 13:34:42.588: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkScrollbar
+
+(PCSX2:343103): Gtk-CRITICAL **: 13:34:42.588: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkScrollbar
+
+(PCSX2:343103): Gtk-WARNING **: 13:34:42.588: Negative content height -1 (allocation 1, extents 1x1) while allocating gadget (node scrolledwindow, owner GtkScrolledWindow)
+
+(PCSX2:343103): Gtk-CRITICAL **: 13:34:42.588: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkScrollbar
+
+(PCSX2:343103): Gtk-WARNING **: 13:34:42.591: Negative content height -1 (allocation 1, extents 1x1) while allocating gadget (node scrolledwindow, owner GtkScrolledWindow)
+
+(PCSX2:343103): Gtk-CRITICAL **: 13:34:42.591: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkScrollbar
+[GameDB] 10627 games on record (loaded in 256ms)
+	HotSwapping to new ISO src image!
+HLE Host: Set 'host:' root path to: /
+
+OnePAD: failed to load ini /home/rfacundes/.config/PCSX2/inis/PAD.ini
+Patches: No CRC found, using 00000000 instead.
+isoFile open ok: /home/rfacundes/Documentos/HD/Jogos/Roms/PS2/SLUS-20694 (1.01).iso
+	Image type  = DVD
+ * CDVD Disk Open: DVD, Single layer or unknown:
+ * * Track 1: Data (Mode 1) (2287040 sectors)
+EGL: Supported extensions: EGL_EXT_platform_base EGL_EXT_device_base EGL_EXT_device_enumeration EGL_EXT_device_query EGL_KHR_client_get_all_proc_addresses EGL_EXT_client_extensions EGL_KHR_debug EGL_KHR_platform_x11 EGL_EXT_platform_x11 EGL_EXT_platform_device EGL_KHR_platform_wayland EGL_EXT_platform_wayland EGL_MESA_platform_xcb EGL_MESA_platform_gbm EGL_KHR_platform_gbm EGL_MESA_platform_surfaceless
+EGL: select X11 platform
+ATTENTION: default value of option vblank_mode overridden by environment.
+OpenGL information. GPU: Mesa Intel(R) UHD Graphics 630 (CFL GT2). Vendor: Intel. Driver: (Core Profile) Mesa 21.2.2
+INFO: GL_ARB_sparse_texture is NOT SUPPORTED
+INFO: GL_ARB_sparse_texture2 is NOT SUPPORTED
+INFO: GL_ARB_gpu_shader5 is available
+INFO: GL_ARB_shader_image_load_store is available
+INFO: GL_ARB_compute_shader is available
+INFO: GL_ARB_shader_storage_buffer_object is available
+INFO: GL_ARB_texture_view is available
+INFO: GL_ARB_vertex_attrib_binding is available
+INFO: GL_ARB_clear_texture is available
+INFO: GL_ARB_multi_bind is available
+INFO: GL_ARB_direct_state_access is available
+INFO: GL_ARB_texture_barrier is available
+INFO: GL_ARB_get_texture_sub_image is available
+
+Current Renderer: OpenGL
+No extenstion supported to get available memory. Use default value !
+Available VRAM/RAM:3840MB for textures
+GS Lookup CRC:00000000
+48000 SampleRate: 
+GS Lookup CRC:00000000
+Request SDL audio driver: pulseaudio
+Opened SDL audio driver: pulseaudio
+McdSlot 0 [File]: /home/rfacundes/.config/PCSX2/memcards/Mcd001.ps2
+(FileMcd) Creating new 8MB memory card: /home/rfacundes/.config/PCSX2/memcards/Mcd001.ps2
+McdSlot 1 [File]: /home/rfacundes/.config/PCSX2/memcards/Mcd002.ps2
+(FileMcd) Creating new 8MB memory card: /home/rfacundes/.config/PCSX2/memcards/Mcd002.ps2
+EE/iR5900-32 Recompiler Reset
+	Bios Found: Europe  v02.00(14/06/2004)  Console
+	BIOS r module not found, skipping...
+	BIOS r module not found, skipping...
+	BIOS e module not found, skipping...
+# Initialize memory (rev:3.70, ctm:196Mhz, cpuclk:147Mhz detected)
+NVM File Not Found, creating substitute...
+
+PlayStation 2 ======== Hard reset boot
+ ROMGEN=2004-0614, IOP info (CPUID=1f, CACH_CONFIG=0, 2MB, IOP mode)
+ <20040614-100914,ROMconf,PS20200EC20040614.bin:11696>
+# Total accessable memory size: 32 MB (B:2:8:0) (370:2:7c30)
+# TLB spad=0 kernel=1:12 default=13:30 extended=31:38
+# Initialize Start.
+# Initialize GS ...
+# Initialize INTC ...
+# Initialize TIMER ...
+# Initialize DMAC ...
+# Initialize VU1 ...
+# Initialize VIF1 ...
+# Initialize GIF ...
+# Initialize VU0 ...
+# Initialize VIF0 ...
+# Initialize IPU ...
+# Initialize FPU ...
+# Initialize User Memory ...
+# Initialize Scratch Pad ...
+# Initialize Done.
+
+EE DECI2 Manager version 0.06 Feb  6 2003 08:38:48
+  CPUID=2e20, BoardID=0, ROMGEN=2004-0614, 32M
+
+Patches: No CRC found, using 00000000 instead.
+(SYSTEM.CNF) Detected PS2 Disc = cdrom0:\SLUS_206.94;1
+(SYSTEM.CNF) Software version = 1.01
+(SYSTEM.CNF) Disc region type = NTSC
+found 0 symbols
+ELF (cdrom0:\SLUS_206.94;1) Game CRC = 0x6BF11378, EntryPoint = 0x00100008
+(SYSTEM.CNF) Detected PS2 Disc = cdrom0:\SLUS_206.94;1
+(SYSTEM.CNF) Software version = 1.01
+(SYSTEM.CNF) Disc region type = NTSC
+
+IOP Realtime Kernel Ver.0.9.1
+    Copyright 1999 (C) Sony Computer Entertainment Inc. 
+Reboot service module.(99/11/10)
+cdvd driver module version 0.1.1 (C)SCEI
+Load File service.(99/11/05)
+Multi Threaded Fileio module.(99/11/15) 
+iop heap service (99/11/03)
+loadelf: fname cdrom0:¥SLUS_206.94;1 secname all
+loadelf version 3.30
+Input ELF format filename = cdrom0:¥SLUS_206.94;1
+0 00100000 0041e200 ..................................................................
+Loaded, cdrom0:¥SLUS_206.94;1
+start address 0x100008
+gp address 00000000
+# Restart Without Memory Clear.
+# Initialize GS ...
+# Initialize INTC ...
+# Initialize TIMER ...
+# Initialize DMAC ...
+# Initialize VU1 ...
+# Initialize VIF1 ...
+# Initialize GIF ...
+# Initialize VU0 ...
+# Initialize VIF0 ...
+# Initialize IPU ...
+# Initialize FPU ...
+# Initialize Scratch Pad ...
+# Restart Without Memory Clear Done.
+Elf entry point @ 0x00100008 about to get recompiled. Load patches first.
+[GameDB] Searching for 'slus-20694' in GameDB
+[GameDB] Found 'slus-20694' in GameDB
+[GameDB] Searching for patch with CRC '6bf11378'
+[GameDB] No CRC-specific patch or default patch found
+[GameDB] Searching for 'slus-20694' in GameDB
+[GameDB] Found 'slus-20694' in GameDB
+[GameDB] Searching for patch with CRC '6bf11378'
+[GameDB] No CRC-specific patch or default patch found
+GS Lookup CRC:6BF11378
+GS Lookup CRC:6BF11378
+Get Reboot Request From EE
+ROM directory not found
+
+PlayStation 2 ======== Update rebooting..
+
+PlayStation 2 ======== Update reboot complete
+cdvdman Init
+MEC File Not Found, creating substitute...
+
+IOP Realtime Kernel Ver. 2.2
+    Copyright 1999-2002 (C) Sony Computer Entertainment Inc. 
+Reboot service module.(99/11/10)
+cdvd driver module version 0.1.1 (C)SCEI
+Load File service.(99/11/05)
+Multi Threaded Fileio module.(99/11/15) 
+iop heap service (99/11/03)
+(UpdateVSyncRate) Mode Changed to NTSC.
+loadmodule: fname cdrom0:¥IMAGE¥MODULES¥SIO2MAN.IRX;1 args 0 arg 
+loadmodule: id 25, ret 0
+loadmodule: fname cdrom0:¥IMAGE¥MODULES¥SIO2D.IRX;1 args 0 arg 
+loadmodule: id 26, ret 0
+loadmodule: fname cdrom0:¥IMAGE¥MODULES¥DBCMAN.IRX;1 args 0 arg 
+loadmodule: id 27, ret 0
+loadmodule: fname cdrom0:¥IMAGE¥MODULES¥DS2O_S1.IRX;1 args 0 arg 
+loadmodule: id 28, ret 0
+loadmodule: fname cdrom0:¥IMAGE¥MODULES¥MCMAN.IRX;1 args 0 arg 
+loadmodule: id 29, ret 2
+loadmodule: fname cdrom0:¥IMAGE¥MODULES¥MCSERV.IRX;1 args 0 arg 
+loadmodule: id 30, ret 2
+loadmodule: fname cdrom0:¥IMAGE¥MODULES¥LIBSD.IRX;1 args 0 arg 
+loadmodule: id 31, ret 0
+loadmodule: fname cdrom0:¥IMAGE¥MODULES¥MODHSYN.IRX;1 args 0 arg 
+loadmodule: id 32, ret 0
+loadmodule: fname cdrom0:¥IMAGE¥MODULES¥MODMIDI.IRX;1 args 0 arg 
+loadmodule: id 33, ret 0
+loadmodule: fname cdrom0:¥IMAGE¥MODULES¥MODMSIN.IRX;1 args 0 arg 
+loadmodule: id 34, ret 0
+loadmodule: fname cdrom0:¥IMAGE¥MODULES¥SDRDRV.IRX;1 args 0 arg 
+SDR driver version 4.0.1 (C) SCEI
+ Exit rsd_main 
+loadmodule: id 35, ret 2
+loadmodule: fname cdrom0:¥IMAGE¥MODULES¥SNDDRV.IRX;1 args 43 arg 0x1FFFF
+snddrv: 
+snddrv: *-*-* Capcom RD2 Sound Driver for PS2(HD)         by A.Kazaoka *-*-*  ver 1.60.
+snddrv: date: Dec 12 2003 19:46:32
+loadmodule: id 36, ret 0
+loadmodule: fname cdrom0:¥IMAGE¥MODULES¥CRI_ADXI.IRX;1 args 39 arg thpri=39
+CRI ADX Driver Ver.9.10a(Dec  4 2003 18:55:57)
+CRI ADX Driver : sceSdInit Call = 0
+CRI ADX Driver : Main Thread Priority = 39
+CRI ADX Driver : PSM Thread Priority  = 39
+CRI ADX Driver : DTX Thread Priority  = 48
+CRI ADX Driver : SPU CORE Number = 1
+loadmodule: id 37, ret 2
+DVCI: "¥IMAGE.AFS" found.
+DVCI: Total 1 files.
+PS2RNA: sceSifAllocIopHeap(266304) ret=0x0011e700
+PS2RNA: sceSifAllocIopHeap(2256) ret=0x0015f800
+PS2RNA: sceSifAllocIopHeap(16448) ret=0x00160100
+[GameDB] Searching for 'slus-20694' in GameDB
+[GameDB] Found 'slus-20694' in GameDB
+[GameDB] Searching for patch with CRC '6bf11378'
+[GameDB] No CRC-specific patch or default patch found
+[GameDB] Searching for 'slus-20694' in GameDB
+[GameDB] Found 'slus-20694' in GameDB
+[GameDB] Searching for patch with CRC '6bf11378'
+[GameDB] No CRC-specific patch or default patch found
+[GameDB] Searching for 'slus-20694' in GameDB
+[GameDB] Found 'slus-20694' in GameDB
+[GameDB] Searching for patch with CRC '6bf11378'
+[GameDB] No CRC-specific patch or default patch found
+(FileMcd) Warning: checksum sector overwritten. (0)
+Memory Card Mcd001.ps2 written.
+(FileMcd) Warning: checksum sector overwritten. (0)
+Memory Card Mcd001.ps2 written.
+
+(PCSX2:343103): Gdk-CRITICAL **: 13:41:38.779: gdk_window_process_updates: assertion 'GDK_IS_WINDOW (window)' failed
+Bios Found: Japan   v01.00(17/01/2000)  Console
+Bios Found: USA     v01.60(07/02/2002)  Console
+Bios Found: Europe  v02.00(14/06/2004)  Console
+Bios Found: Europe  v01.60(04/10/2001)  Console
+
+(PCSX2:343103): Gtk-WARNING **: 13:41:38.910: Negative content height -1 (allocation 1, extents 1x1) while allocating gadget (node trough, owner GtkScale)
+Delete 0 Shaders, 39 Programs, 28 Pipelines
+EGL: Supported extensions: EGL_EXT_platform_base EGL_EXT_device_base EGL_EXT_device_enumeration EGL_EXT_device_query EGL_KHR_client_get_all_proc_addresses EGL_EXT_client_extensions EGL_KHR_debug EGL_KHR_platform_x11 EGL_EXT_platform_x11 EGL_EXT_platform_device EGL_KHR_platform_wayland EGL_EXT_platform_wayland EGL_MESA_platform_xcb EGL_MESA_platform_gbm EGL_KHR_platform_gbm EGL_MESA_platform_surfaceless
+EGL: select X11 platform
+ATTENTION: default value of option vblank_mode overridden by environment.
+Current Renderer: OpenGL
+No extenstion supported to get available memory. Use default value !
+Available VRAM/RAM:3840MB for textures
+GS Lookup CRC:6BF11378
+GS Lookup CRC:6BF11378
+[GameDB] Searching for 'slus-20694' in GameDB
+[GameDB] Found 'slus-20694' in GameDB
+[GameDB] Searching for patch with CRC '6bf11378'
+[GameDB] No CRC-specific patch or default patch found
+Delete 0 Shaders, 35 Programs, 28 Pipelines
+EGL: Supported extensions: EGL_EXT_platform_base EGL_EXT_device_base EGL_EXT_device_enumeration EGL_EXT_device_query EGL_KHR_client_get_all_proc_addresses EGL_EXT_client_extensions EGL_KHR_debug EGL_KHR_platform_x11 EGL_EXT_platform_x11 EGL_EXT_platform_device EGL_KHR_platform_wayland EGL_EXT_platform_wayland EGL_MESA_platform_xcb EGL_MESA_platform_gbm EGL_KHR_platform_gbm EGL_MESA_platform_surfaceless
+EGL: select X11 platform
+ATTENTION: default value of option vblank_mode overridden by environment.
+Current Renderer: OpenGL
+No extenstion supported to get available memory. Use default value !
+Available VRAM/RAM:3840MB for textures
+GS Lookup CRC:6BF11378
+GS Lookup CRC:6BF11378
+[GameDB] Searching for 'slus-20694' in GameDB
+[GameDB] Found 'slus-20694' in GameDB
+[GameDB] Searching for patch with CRC '6bf11378'
+[GameDB] No CRC-specific patch or default patch found
+Frame buffer size set to  512x512 (1536x1536)
+Delete 0 Shaders, 35 Programs, 28 Pipelines
+EGL: Supported extensions: EGL_EXT_platform_base EGL_EXT_device_base EGL_EXT_device_enumeration EGL_EXT_device_query EGL_KHR_client_get_all_proc_addresses EGL_EXT_client_extensions EGL_KHR_debug EGL_KHR_platform_x11 EGL_EXT_platform_x11 EGL_EXT_platform_device EGL_KHR_platform_wayland EGL_EXT_platform_wayland EGL_MESA_platform_xcb EGL_MESA_platform_gbm EGL_KHR_platform_gbm EGL_MESA_platform_surfaceless
+EGL: select X11 platform
+ATTENTION: default value of option vblank_mode overridden by environment.
+Current Renderer: OpenGL
+No extenstion supported to get available memory. Use default value !
+Available VRAM/RAM:3840MB for textures
+GS Lookup CRC:6BF11378
+GS Lookup CRC:6BF11378
+[GameDB] Searching for 'slus-20694' in GameDB
+[GameDB] Found 'slus-20694' in GameDB
+[GameDB] Searching for patch with CRC '6bf11378'
+[GameDB] No CRC-specific patch or default patch found
+Frame buffer size set to  512x512 (1536x1536)
+Delete 0 Shaders, 84 Programs, 28 Pipelines
+(GameDB) Unloading...

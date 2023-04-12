@@ -544,12 +544,12 @@
     <!-- Screen Record -->
     <keybind key="C-A-r">
       <action name="Execute">
-        <command>bash -c "kitty -e ffmpeg -video_size `xrandr --current | grep '*' | uniq | awk '{print $1}'` -framerate 15 -f x11grab -re -i ${DISPLAY} -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -bsf:v h264_mp4toannexb -max_muxing_queue_size 9999 -f mp4 -movflags frag_keyframe+empty_moov ${HOME}/Vídeos/Tela_$(date +'%d-%m-%Y_%H:%M:%S').mp4"</command>
+        <command>bash -c "kitty -e ffmpeg -video_size `xrandr --current | grep '*' | uniq | awk '{print $1}'` -framerate 15 -f x11grab -re -i ${DISPLAY} -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -bsf:v h264_mp4toannexb -max_muxing_queue_size 9999 -f mp4 -movflags frag_keyframe+empty_moov ${HOME}/Videos/Tela_$(date +'%d-%m-%Y_%H:%M:%S').mp4"</command>
       </action>
     </keybind>
     <keybind key="C-A-S-r">
       <action name="Execute">
-        <command>bash -c "kitty -e ffmpeg -video_size `xrandr --current | grep '*' | uniq | awk '{print $1}'` -f x11grab -re -i ${DISPLAY} -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -preset ultrafast -tune zerolatency -maxrate 10000k -bufsize 20000k -pix_fmt yuv420p -framerate 15 -g 52 -max_muxing_queue_size 9999 -f mp4 -bsf:v h264_mp4toannexb -movflags frag_keyframe+empty_moov ${HOME}/Vídeos/Tela_$(date +'%d-%m-%Y_%H:%M:%S').mp4"</command>
+        <command>bash -c "kitty -e ffmpeg -video_size `xrandr --current | grep '*' | uniq | awk '{print $1}'` -f x11grab -re -i ${DISPLAY} -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -preset ultrafast -tune zerolatency -maxrate 10000k -bufsize 20000k -pix_fmt yuv420p -framerate 15 -g 52 -max_muxing_queue_size 9999 -f mp4 -bsf:v h264_mp4toannexb -movflags frag_keyframe+empty_moov ${HOME}/Videos/Tela_$(date +'%d-%m-%Y_%H:%M:%S').mp4"</command>
       </action>
     </keybind>
     <!-- WEBCam / webcam / Webcam -->
@@ -674,12 +674,12 @@
     </keybind>
     <keybind key="W-S-i">
       <action name="Execute">
-        <command>bash -c 'zenity --icon-name applications-multimedia --info --title="Status da Reprodu&#xE7;&#xE3;o" --text="$(catt status)" --width="600" height="600"'</command>
+        <command>bash -c 'zenity --icon-name applications-multimedia --info --title="Status da Reproducao" --text="$(catt status)" --width="600" height="600"'</command>
       </action>
     </keybind>
     <keybind key="W-S-t">
       <action name="Execute">
-        <command>bash -c 'time=`zenity --entry --text "Defina o tempo que voc&#xEA; quer avan&#xE7;ar" --title "Tempo do v&#xED;deo"` ; catt seek "$time"'</command>
+        <command>bash -c 'time=`zenity --entry --text "Defina o tempo que voce quer avancar" --title "Tempo do Video"` ; catt seek "$time"'</command>
       </action>
     </keybind>
     <keybind key="W-S-y">
@@ -728,6 +728,11 @@
     </keybind>
     <!-- System Volume -->
     <keybind key="XF86AudioMute">
+      <action name="Execute">
+        <command>bash -c "pactl set-sink-mute @DEFAULT_SINK@ toggle #pactl set-sink-mute `pactl list short sinks | awk '{print $1}' | head -n1` toggle"</command>
+      </action>
+    </keybind>
+    <keybind key="A-S-m">
       <action name="Execute">
         <command>bash -c "pactl set-sink-mute @DEFAULT_SINK@ toggle #pactl set-sink-mute `pactl list short sinks | awk '{print $1}' | head -n1` toggle"</command>
       </action>
@@ -797,25 +802,25 @@
     <!-- Print Screen -->
     <keybind key="Print">
       <action name="Execute">
-        <command>bash -c 'cd ~/; mkdir -p "$HOME/Imagens/Captura de Tela/"; date=`date +"%Y-%m-%d %H:%M:%S"`; file="$HOME/Imagens/Captura de Tela/${date} - Captura de Tela.png"; scrot "${file}"; mkdir -p ~/.local/songs/; cd ~/.local/songs/; wget -nc https://github.com/felipefacundes/dotfiles/blob/master/config/songs/camera_shutter.ogg?raw=true -O camera_shutter.ogg; beep=~/.local/songs/camera_shutter.ogg; pactl upload-sample "$beep"; paplay "$beep" --volume=76767; cat "${file}" | xclip -selection clipboard -target image/png -i'</command>
+        <command>bash -c 'cd ~/; mkdir -p "$HOME/Pictures/Captura de Tela/"; date=`date +"%Y-%m-%d %H:%M:%S"`; file="$HOME/Pictures/Captura de Tela/${date} - Captura de Tela.png"; scrot "${file}"; mkdir -p ~/.local/songs/; cd ~/.local/songs/; wget -nc https://github.com/felipefacundes/dotfiles/blob/master/config/songs/camera_shutter.ogg?raw=true -O camera_shutter.ogg; beep=~/.local/songs/camera_shutter.ogg; pactl upload-sample "$beep"; paplay "$beep" --volume=76767; cat "${file}" | xclip -selection clipboard -target image/png -i'</command>
       </action>
     </keybind>
     <!-- Print Screen with delay -->
     <keybind key="A-S-Print">
       <action name="Execute">
-        <command>bash -c 'cd ~/; mkdir -p "$HOME/Imagens/Captura de Tela/"; date=`date +"%Y-%m-%d %H:%M:%S"`; file="$HOME/Imagens/Captura de Tela/${date} - Captura de Tela.png"; scrot -d 4 "${file}"; mkdir -p ~/.local/songs/; cd ~/.local/songs/; wget -nc https://github.com/felipefacundes/dotfiles/blob/master/config/songs/camera_shutter.ogg?raw=true -O camera_shutter.ogg; beep=~/.local/songs/camera_shutter.ogg; pactl upload-sample "$beep"; paplay "$beep" --volume=76767; cat "${file}" | xclip -selection clipboard -target image/png -i'</command>
+        <command>bash -c 'cd ~/; mkdir -p "$HOME/Pictures/Captura de Tela/"; date=`date +"%Y-%m-%d %H:%M:%S"`; file="$HOME/Pictures/Captura de Tela/${date} - Captura de Tela.png"; scrot -d 4 "${file}"; mkdir -p ~/.local/songs/; cd ~/.local/songs/; wget -nc https://github.com/felipefacundes/dotfiles/blob/master/config/songs/camera_shutter.ogg?raw=true -O camera_shutter.ogg; beep=~/.local/songs/camera_shutter.ogg; pactl upload-sample "$beep"; paplay "$beep" --volume=76767; cat "${file}" | xclip -selection clipboard -target image/png -i'</command>
       </action>
     </keybind>
     <!-- Print Screen: Interactively select a window or rectangle with the mouse.-->
     <keybind key="S-Print">
       <action name="Execute">
-        <command>bash -c 'cd ~/ ; mkdir -p "$HOME/Imagens/Captura de Tela/"; date=`date +"%Y-%m-%d %H:%M:%S"`; file="$HOME/Imagens/Captura de Tela/${date} - Captura de Tela.png"; scrot -f -s "${file}"; cat "${file}" | xclip -selection clipboard -target image/png -i'</command>
+        <command>bash -c 'cd ~/ ; mkdir -p "$HOME/Pictures/Captura de Tela/"; date=`date +"%Y-%m-%d %H:%M:%S"`; file="$HOME/Pictures/Captura de Tela/${date} - Captura de Tela.png"; scrot -f -s "${file}"; cat "${file}" | xclip -selection clipboard -target image/png -i'</command>
       </action>
     </keybind>
     <!-- Print Screen of currently focused window.-->
     <keybind key="C-Print">
       <action name="Execute">
-        <command>bash -c 'cd ~/; mkdir -p "$HOME/Imagens/Captura de Tela/"; date=`date +"%Y-%m-%d %H:%M:%S"`; file="$HOME/Imagens/Captura de Tela/${date} - Captura de Tela.png"; scrot -u "${file}"; mkdir -p ~/.local/songs/; cd ~/.local/songs/; wget -nc https://github.com/felipefacundes/dotfiles/blob/master/config/songs/camera_shutter.ogg?raw=true -O camera_shutter.ogg; beep=~/.local/songs/camera_shutter.ogg; pactl upload-sample "$beep"; paplay "$beep" --volume=76767; cat "${file}" | xclip -selection clipboard -target image/png -i'</command>
+        <command>bash -c 'cd ~/; mkdir -p "$HOME/Pictures/Captura de Tela/"; date=`date +"%Y-%m-%d %H:%M:%S"`; file="$HOME/Pictures/Captura de Tela/${date} - Captura de Tela.png"; scrot -u "${file}"; mkdir -p ~/.local/songs/; cd ~/.local/songs/; wget -nc https://github.com/felipefacundes/dotfiles/blob/master/config/songs/camera_shutter.ogg?raw=true -O camera_shutter.ogg; beep=~/.local/songs/camera_shutter.ogg; pactl upload-sample "$beep"; paplay "$beep" --volume=76767; cat "${file}" | xclip -selection clipboard -target image/png -i'</command>
       </action>
     </keybind>
     <!-- Gnome Screenshot interactive mode -->
@@ -827,7 +832,7 @@
     <!-- Random Wallpaper -->
     <keybind key="C-A-w">
       <action name="Execute">
-        <command>bash -c 'cd ~/ ; mkdir -p ~/Imagens/Wallpapers/ ; feh --bg-fill "$(find "$HOME"/Imagens/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n1)" #nitrogen --set-zoom-fill'</command>
+        <command>bash -c 'cd ~/ ; mkdir -p ~/Pictures/Wallpapers/ ; feh --bg-fill "$(find "$HOME"/Pictures/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n1)" #nitrogen --set-zoom-fill'</command>
       </action>
     </keybind>
     <!-- Tema aleatório do painel tint2 -->
@@ -1500,19 +1505,19 @@
       <mousebind action="Click" button="A-Left">
         <action name="Unshade"/>
       </mousebind -->
-      <mousebind action="Drag" button="C-A-Left">
+      <mousebind action="Drag" button="W-Left">
         <action name="Move"/>
       </mousebind>
-      <!-- Conflicts with Blender >
-      <mousebind action="Press" button="A-Right">
+      <!-- Conflicts with Blender: ALT -->
+      <mousebind action="Press" button="W-Right">
         <action name="Focus"/>
         <action name="Raise"/>
         <action name="Unshade"/>
       </mousebind>
-      <mousebind action="Drag" button="A-Right">
+      <mousebind action="Drag" button="W-Right">
         <action name="Resize"/>
-      </mousebind -->
-      <mousebind action="Press" button="A-Middle">
+      </mousebind>
+      <mousebind action="Press" button="W-Middle">
         <action name="Lower"/>
         <action name="FocusToBottom"/>
         <action name="Unfocus"/>
