@@ -1,0 +1,10 @@
+^sep()
+Bloquear,i3lock-fancy -p,system-lock-screen
+Sair,^checkout(exit),system-shutdown
+
+exit,^tag(exit)
+Openbox Refresh,openbox --exit,system-log-out
+Suspender,systemctl -i suspend,system-log-out
+Hibernar,systemctl -i hibernate,system-hibernate
+Reiniciar,systemctl -i reboot,system-reboot
+Desligar,systemctl -i poweroff,system-shutdown

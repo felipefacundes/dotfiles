@@ -1,0 +1,4 @@
+Web browser,firefox,web-browser
+File manager,xdg-open ~,system-file-manager
+Terminal,kitty,utilities-terminal
+^sep()
