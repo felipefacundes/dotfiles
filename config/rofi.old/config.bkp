@@ -1,0 +1,5 @@
+rofi.theme: ~/.config/rofi/center.rasi
+# Estilo dashboard
+# rofi.theme: ~/.config/rofi/appmenu/drun.rasi
+# Estilo sidebar
+# rofi.theme: ~/.config/rofi/sidebar/rofi.rasi
