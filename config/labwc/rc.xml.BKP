@@ -1,0 +1,2045 @@
+<?xml version="1.0"?>
+<labwc_config xmlns="http://openbox.org/3.4/rc" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <!--
+# 😉 Credits: Felipe Facundes
+# 﨧 Telegram: @FeFacundes
+# 﨧 Telegram Group: t.me/winehq_linux
+# 😅 FAQ:  http://openbox.org/wiki/Main_Page
+#              http://openbox.org/wiki/Special:Search/Help
+#              http://openbox.org/wiki/Help:Actions
+-->
+  <resistance>
+    <strength>10</strength>
+    <screen_edge_strength>20</screen_edge_strength>
+  </resistance>
+  <focus>
+    <focusNew>yes</focusNew>
+    <!-- always try to focus new windows when they appear. other rules do
+       apply -->
+    <followMouse>no</followMouse>
+    <!-- Move o foco da janela com o passar do mouse | move focus to a window when you move the mouse into it -->
+    <focusLast>yes</focusLast>
+    <!-- focus the last used window when changing desktops, instead of the one
+       under the mouse pointer. when followMouse is enabled -->
+    <underMouse>no</underMouse>
+    <!-- move focus under the mouse, even when the mouse is not moving -->
+    <focusDelay>0</focusDelay>
+    <!-- when followMouse is enabled, the mouse must be inside the window for
+       this many milliseconds (1000 = 1 sec) before moving focus to it -->
+    <raiseOnFocus>yes</raiseOnFocus>
+    <!-- Levanta a janela focada com o passar do mouse (para funcionar tem que habilitar: "followMouse" | when followMouse is enabled, and a window is given focus by moving the
+       mouse into it, also raise the window -->
+  </focus>
+  <placement>
+    <policy>Smart</policy>
+    <!-- 'Smart' or 'UnderMouse' -->
+    <center>yes</center>
+    <!-- whether to place windows in the center of the free area found or
+       the top left corner -->
+    <monitor>Primary</monitor>
+    <!-- with Smart placement on a multi-monitor system, try to place new windows
+       on: 'Any' - any monitor, 'Mouse' - where the mouse is, 'Active' - where
+       the active window is, 'Primary' - only on the primary monitor -->
+    <primaryMonitor>1</primaryMonitor>
+    <!-- The monitor where Openbox should place popup dialogs such as the
+       focus cycling popup, or the desktop switch popup.  It can be an index
+       from 1, specifying a particular monitor.  Or it can be one of the
+       following: 'Mouse' - where the mouse is, or
+                  'Active' - where the active window is -->
+  </placement>
+  <theme>
+    <name>openColor orange</name>
+    <titleLayout>NLIMC</titleLayout>
+    <!--
+      available characters are NDSLIMC, each can occur at most once.
+      N: window icon
+      L: window label (AKA title).
+      I: iconify
+      M: maximize
+      C: close
+      S: shade (roll up/down)
+      D: omnipresent (on all desktops).
+  -->
+    <keepBorder>yes</keepBorder>
+    <animateIconify>no</animateIconify>
+    <font place="ActiveWindow">
+      <name>Sans</name>
+      <size>12</size>
+      <!-- font size in points -->
+      <weight>Normal</weight>
+      <!-- 'bold' or 'normal' -->
+      <slant>Normal</slant>
+      <!-- 'italic' or 'normal' -->
+    </font>
+    <font place="InactiveWindow">
+      <name>Sans</name>
+      <size>8</size>
+      <!-- font size in points -->
+      <weight>Bold</weight>
+      <!-- 'bold' or 'normal' -->
+      <slant>Normal</slant>
+      <!-- 'italic' or 'normal' -->
+    </font>
+    <font place="MenuHeader">
+      <name>Sans</name>
+      <size>11</size>
+      <!-- font size in points -->
+      <weight>Normal</weight>
+      <!-- 'bold' or 'normal' -->
+      <slant>Normal</slant>
+      <!-- 'italic' or 'normal' -->
+    </font>
+    <font place="MenuItem">
+      <name>Sans</name>
+      <size>11</size>
+      <!-- font size in points -->
+      <weight>Normal</weight>
+      <!-- 'bold' or 'normal' -->
+      <slant>Normal</slant>
+      <!-- 'italic' or 'normal' -->
+    </font>
+    <font place="ActiveOnScreenDisplay">
+      <name>Sans</name>
+      <size>11</size>
+      <!-- font size in points -->
+      <weight>Normal</weight>
+      <!-- 'bold' or 'normal' -->
+      <slant>Normal</slant>
+      <!-- 'italic' or 'normal' -->
+    </font>
+    <font place="InactiveOnScreenDisplay">
+      <name>Sans</name>
+      <size>9</size>
+      <!-- font size in points -->
+      <weight>Bold</weight>
+      <!-- 'bold' or 'normal' -->
+      <slant>Normal</slant>
+      <!-- 'italic' or 'normal' -->
+    </font>
+  </theme>
+  <desktops>
+    <!-- this stuff is only used at startup, pagers allow you to change them
+       during a session
+
+       these are default values to use when other ones are not already set
+       by other applications, or saved in your session
+
+       use obconf if you want to change these without having to log out
+       and back in -->
+    <number>10</number>
+    <firstdesk>1</firstdesk>
+    <names>
+      <name>I</name>
+      <name>II</name>
+      <name>III</name>
+      <name>IV</name>
+      <name>V</name>
+      <name>VI</name>
+      <name>VII</name>
+      <name>VIII</name>
+      <name>IX</name>
+      <name>X</name>
+    </names>
+    <popupTime>875</popupTime>
+    <!-- The number of milliseconds to show the popup for when switching
+       desktops.  Set this to 0 to disable the popup. -->
+  </desktops>
+  <resize>
+    <drawContents>yes</drawContents>
+    <popupShow>Nonpixel</popupShow>
+    <!-- 'Always', 'Never', or 'Nonpixel' (xterms and such) -->
+    <popupPosition>Center</popupPosition>
+    <!-- 'Center', 'Top', or 'Fixed' -->
+    <popupFixedPosition>
+      <!-- these are used if popupPosition is set to 'Fixed' -->
+      <x>10</x>
+      <!-- positive number for distance from left edge, negative number for
+         distance from right edge, or 'Center' -->
+      <y>10</y>
+      <!-- positive number for distance from top edge, negative number for
+         distance from bottom edge, or 'Center' -->
+    </popupFixedPosition>
+  </resize>
+  <!-- You can reserve a portion of your screen where windows will not cover when
+     they are maximized, or when they are initially placed.
+     Many programs reserve space automatically, but you can use this in other
+     cases. -->
+  <margins>
+    <top>0</top>
+    <bottom>0</bottom>
+    <left>0</left>
+    <right>0</right>
+  </margins>
+  <dock>
+    <position>TopLeft</position>
+    <!-- (Top|Bottom)(Left|Right|)|Top|Bottom|Left|Right|Floating -->
+    <floatingX>0</floatingX>
+    <floatingY>0</floatingY>
+    <noStrut>no</noStrut>
+    <stacking>Above</stacking>
+    <!-- 'Above', 'Normal', or 'Below' -->
+    <direction>Vertical</direction>
+    <!-- 'Vertical' or 'Horizontal' -->
+    <autoHide>yes</autoHide>
+    <hideDelay>0</hideDelay>
+    <!-- in milliseconds (1000 = 1 second) -->
+    <showDelay>0</showDelay>
+    <!-- in milliseconds (1000 = 1 second) -->
+    <moveButton>Middle</moveButton>
+    <!-- 'Left', 'Middle', 'Right' -->
+  </dock>
+  <!-- launchers -->
+  <keyboard>
+    <!-- XKB configuration.  See `man xkeyboard-config` for more information -->
+    <!-- You can use the XKB_* environment variables instead -->
+    <xkb>
+      <!-- model>105</model -->
+      <layout>br</layout>
+      <!-- options>ctrl:swapcaps,esperanto:dvorak,lv3:ralt_switch_multikey</options>
+      <rules>evdev</rules>
+      <variant>dvorak</variant -->
+    </xkb>
+    <!--                                                                      -->
+    <chainQuitKey>C-g</chainQuitKey>
+    <keybind key="A-F1">
+      <action name="Execute">
+        <command>bash -c "rm ~/.jgmenu-lockfile ; jgmenu"</command>
+      </action>
+    </keybind>
+    <keybind key="W-x">
+      <action name="Execute">
+        <command>~/.config/rofi/rofimenu2.sh</command>
+      </action>
+    </keybind>
+    <keybind key="W-z">
+      <action name="Execute">
+        <command>rofi -show drun -font "Poppins 13"</command>
+      </action>
+    </keybind>
+    <keybind key="A-F2">
+      <action name="Execute">
+        <command>rofi -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launchers/misc/row_dock.rasi</command>
+      </action>
+    </keybind>
+    <keybind key="A-w">
+      <action name="Execute">
+        <command>rofi-search</command>
+      </action>
+    </keybind>
+    <keybind key="XF86Search">
+      <action name="Execute">
+        <command>rofi-search</command>
+      </action>
+    </keybind>
+    <keybind key="A-F3">
+      <action name="Execute">
+        <command>rofi -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launchers/misc/appdrawer.rasi</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-F2">
+      <action name="Execute">
+        <command>rofi -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launchers/misc/screen.rasi</command>
+      </action>
+    </keybind>
+    <keybind key="C-S-space">
+      <action name="Execute">
+        <command>synapse</command>
+      </action>
+    </keybind>
+    <!-- Help Shortcuts -->
+    <keybind key="C-F1">
+      <action name="Execute">
+        <command>kitty -e bash -c 'ccat --color=always ~/.config/openbox/rc.xml | less -i -R -N --use-color --color=HBCEMNPRSWsu'</command>
+      </action>
+    </keybind>
+    <!-- Calculator -->
+    <keybind key="XF86Calculator">
+      <action name="Execute">
+        <command>mate-calc</command>
+      </action>
+    </keybind>
+    <!-- Hour in big size -->
+    <keybind key="C-W-t">
+      <action name="Execute">
+        <command>bash -c "echo `date +%T` | osd_cat -d 3 -s 1 -A center -l 1 -p middle -O 1 --color=#00ff73 --shadow=1 -f '-*-helvetica-bold-*-*-*-150-*-*-*-*-*-*'"</command>
+      </action>
+    </keybind>
+    <!-- Terminal -->
+    <keybind key="W-t">
+      <action name="Execute">
+        <command>kitty</command>
+      </action>
+    </keybind>
+    <keybind key="W-Return">
+      <action name="Execute">
+        <command>qterminal</command>
+      </action>
+    </keybind>
+    <!-- Gromit-MPX (Annotate in Screen) -->
+    <keybind key="W-g">
+      <action name="Execute">
+        <command>bash -c 'killall -SIGUSR1 gromit-mpx; gromit-mpx'</command>
+      </action>
+    </keybind>
+    <!-- PDF Reader -->
+    <keybind key="C-A-p">
+      <action name="Execute">
+        <command>foxitreader #llpp</command>
+      </action>
+    </keybind>
+    <keybind key="C-S-A-p">
+      <action name="Execute">
+        <command>llpp</command>
+      </action>
+    </keybind>
+    <!-- Postit -->
+    <keybind key="W-A-p">
+      <action name="Execute">
+        <command>xpad -t</command>
+      </action>
+    </keybind>
+    <!-- Telegram -->
+    <keybind key="W-A-t">
+      <action name="Execute">
+        <command>bash -c 'TELEG=`wmctrl -l | grep "Telegram" | head -n 1 | awk "{print $1 }"`; if ! pidof telegram-desktop; then telegram-desktop; elif xdotool windowactivate "$TELEG"; then echo Ok; else killall -SIGUSR1 telegram-desktop; nohup telegram-desktop; fi' #xdotool windowstate --toggle HIDDEN "$TELEG"</command>
+      </action>
+    </keybind>
+    <!-- Web Browser: Firefox -->
+    <keybind key="C-W-f">
+      <action name="Execute">
+        <command>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then xdotool search "Mozilla Firefox" windowactivate --sync key --clearmodifiers ctrl+l; else nohup firefox &gt; /dev/null; sleep 4; exec xdotool key alt+3; fi'</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <wmclass>firefox</wmclass>
+          <name>firefox</name>
+          <icon>firefox</icon>
+        </startupnotify>
+      </action>
+    </keybind>
+    <keybind key="C-S-W-f">
+      <action name="Execute">
+        <command>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then xdotool search "Mozilla Firefox" windowactivate --sync key --clearmodifiers ctrl+l; else mkdir -p ~/.firefox-rofe/ ; firefox --profile ~/.firefox-rofe/'</command>
+      </action>
+    </keybind>
+    <keybind key="C-S-W-m">
+      <action name="Execute">
+        <command>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then xdotool search "Mozilla Firefox" windowactivate --sync key --clearmodifiers ctrl+l; else firefox --profile ~/.firefox-mobile/'</command>
+      </action>
+    </keybind>
+    <keybind key="C-S-W-p">
+      <action name="Execute">
+        <command>firefox www.primevideo.com</command>
+      </action>
+    </keybind>
+    <keybind key="C-S-W-n">
+      <action name="Execute">
+        <command>firefox www.netflix.com</command>
+      </action>
+    </keybind>
+    <keybind key="XF86WWW">
+      <action name="Execute">
+        <command>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then xdotool search "Mozilla Firefox" windowactivate --sync key --clearmodifiers ctrl+l; else nohup firefox &gt; /dev/null; sleep 4; exec xdotool key alt+3; fi'</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <wmclass>firefox</wmclass>
+          <name>firefox</name>
+          <icon>firefox</icon>
+        </startupnotify>
+      </action>
+    </keybind>
+    <keybind key="C-S-W-g">
+      <action name="Execute">
+        <command>firefox www.gmail.com</command>
+      </action>
+    </keybind>
+    <keybind key="C-W-g">
+      <action name="Execute">
+        <command>firefox www.gmail.com</command>
+      </action>
+    </keybind>
+    <keybind key="XF86Mail">
+      <action name="Execute">
+        <command>firefox www.gmail.com</command>
+      </action>
+    </keybind>
+    <keybind key="S-W-w">
+      <action name="Execute">
+        <command>bash -c 'xrefresh; zenity --ellipsize --info --text "$(wmctrl -l)"; entry=`zenity --entry --text="Enter window id." --entry-text="Enter window id."`; wmctrl -ia "$entry"'</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <wmclass>active_window</wmclass>
+          <name>active_window</name>
+          <icon>active_window</icon>
+        </startupnotify>
+      </action>
+    </keybind>
+    <keybind key="C-W-w">
+      <action name="Execute">
+        <command>bash -c "eval $(ps ax|egrep '*\.exe'|grep -v 'egrep'|awk '{print $1 }' | xargs kill -9 $1 ; pkill -9 .exe)"</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <wmclass>matar-wine</wmclass>
+          <name>matar-wine</name>
+          <icon>matar-wine</icon>
+        </startupnotify>
+      </action>
+    </keybind>
+    <!-- Transmission-->
+    <keybind key="C-A-t">
+      <action name="Execute">
+        <command>bash -c 'check_transmission="/tmp/check-transmission-gtk.txt"; transmission=`wmctrl -l | grep Transmission | head -n 1 | awk "{print $1 }"`; if pidof transmission-gtk; then wmctrl -ic "$transmission"; else transmission-gtk; fi; if [ ! -e "$check_transmission" ]; then touch "$check_transmission"; transmission-gtk; sleep 0.50; xdotool windowsize "$(xdotool getactivewindow)" 100% 100%; else rm "$check_transmission"; wmctrl -ic "$transmission"; fi'</command>
+      </action>
+    </keybind>
+    <!-- Accessibility Zoom Screen -->
+    <keybind key="C-W-m">
+      <action name="Execute">
+        <command>bash -c "pkill -9 vmg ; vmg"</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <wmclass>vmg</wmclass>
+          <name>vmg</name>
+          <icon>vmg</icon>
+        </startupnotify>
+      </action>
+    </keybind>
+    <!-- Hide Mouse pointer -->
+    <keybind key="W-m">
+      <action name="Execute">
+        <command>bash -c "unclutter -idle 0"</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <wmclass>Hide Mouse pointer</wmclass>
+          <name>Hide Mouse pointer</name>
+          <icon>Hide Mouse pointer</icon>
+        </startupnotify>
+      </action>
+    </keybind>
+    <!-- Mouse Scroll -->
+    <keybind key="W-Prior">
+      <action name="Execute">
+        <command>xdotool click 4</command>
+      </action>
+    </keybind>
+    <keybind key="W-Up">
+      <action name="Execute">
+        <command>xdotool click 4</command>
+      </action>
+    </keybind>
+    <keybind key="W-w">
+      <action name="Execute">
+        <command>xdotool click 4</command>
+      </action>
+    </keybind>
+    <keybind key="W-Next">
+      <action name="Execute">
+        <command>xdotool click 5</command>
+      </action>
+    </keybind>
+    <keybind key="W-Down">
+      <action name="Execute">
+        <command>xdotool click 5</command>
+      </action>
+    </keybind>
+    <keybind key="W-s">
+      <action name="Execute">
+        <command>xdotool click 5</command>
+      </action>
+    </keybind>
+    <!-- Mouse Click -->
+    <keybind key="W-Home">
+      <action name="Execute">
+        <command>xdotool click 1</command>
+      </action>
+    </keybind>
+    <keybind key="W-KP_7">
+      <action name="Execute">
+        <command>xdotool click 1</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-Home">
+      <action name="Execute">
+        <command>xdotool click 2</command>
+      </action>
+    </keybind>
+    <keybind key="W-End">
+      <action name="Execute">
+        <command>xdotool click 3</command>
+      </action>
+    </keybind>
+    <keybind key="W-KP_9">
+      <action name="Execute">
+        <command>xdotool click 3</command>
+      </action>
+    </keybind>
+    <!-- Mouse Move -->
+    <keybind key="W-KP_8">
+      <action name="Execute">
+        <command>xdotool mousemove_relative -- 0 -10</command>
+      </action>
+    </keybind>
+    <keybind key="W-KP_2">
+      <action name="Execute">
+        <command>xdotool mousemove_relative -- 0 10</command>
+      </action>
+    </keybind>
+    <keybind key="W-KP_4">
+      <action name="Execute">
+        <command>xdotool mousemove_relative -- -10 0</command>
+      </action>
+    </keybind>
+    <keybind key="W-KP_6">
+      <action name="Execute">
+        <command>xdotool mousemove_relative -- 10 0</command>
+      </action>
+    </keybind>
+    <keybind key="C-W-KP_8">
+      <action name="Execute">
+        <command>xdotool mousemove_relative -- 0 -40</command>
+      </action>
+    </keybind>
+    <keybind key="C-W-KP_2">
+      <action name="Execute">
+        <command>xdotool mousemove_relative -- 0 40</command>
+      </action>
+    </keybind>
+    <keybind key="C-W-KP_4">
+      <action name="Execute">
+        <command>xdotool mousemove_relative -- -40 0</command>
+      </action>
+    </keybind>
+    <keybind key="C-W-KP_6">
+      <action name="Execute">
+        <command>xdotool mousemove_relative -- 40 0</command>
+      </action>
+    </keybind>
+    <!-- File Manager -->
+    <keybind key="W-f">
+      <action name="Execute">
+        <command>bash -c "rofi -theme ~/.config/rofi/launchers/misc/row_dock.rasi -modi file-browser-extended -show file-browser-extended -file-browser-oc-search-path -file-browser-exclude Documents -file-browser-exclude Welcome*Desktop*"</command>
+      </action>
+    </keybind>
+    <keybind key="S-W-f">
+      <action name="Execute">
+        <command>rofi -theme ~/.config/rofi/launchers/misc/row_dock.rasi -file-browser-show-hidden -file-browser-oc-search-path -show file-browser-extended</command>
+      </action>
+    </keybind>
+    <keybind key="XF86HomePage">
+      <action name="Execute">
+        <command>xdg-open ~/</command>
+      </action>
+    </keybind>
+    <keybind key="W-n">
+      <action name="Execute">
+        <command>xdg-open ~/</command>
+      </action>
+    </keybind>
+    <!-- Bluetooth Menu -->
+    <keybind key="W-b">
+      <action name="Execute">
+        <command>~/.local/bin/rofi-bluetooth</command>
+      </action>
+    </keybind>
+    <!-- Correcting errors -->
+    <keybind key="C-W-e">
+      <action name="Execute">
+        <command>bash -c 'xrefresh; pulseaudio -k; wmctrl -l; pulseaudio --start; zenity --title "Correcting errors" --error --ellipsize --text "Correcting errors:\n\nSound, video, WM..."'</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <wmclass>Correcting errors</wmclass>
+          <name>Correcting errors</name>
+          <icon>Correcting errors</icon>
+        </startupnotify>
+      </action>
+    </keybind>
+    <!-- Screen Record -->
+    <keybind key="C-A-r">
+      <action name="Execute">
+        <command>bash -c "kitty -e ffmpeg -video_size `xrandr --current | grep '*' | uniq | awk '{print $1}'` -framerate 15 -f x11grab -re -i ${DISPLAY} -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -bsf:v h264_mp4toannexb -max_muxing_queue_size 9999 -f mp4 -movflags frag_keyframe+empty_moov ${HOME}/Videos/Tela_$(date +'%d-%m-%Y_%H:%M:%S').mp4"</command>
+      </action>
+    </keybind>
+    <keybind key="C-A-S-r">
+      <action name="Execute">
+        <command>bash -c "kitty -e ffmpeg -video_size `xrandr --current | grep '*' | uniq | awk '{print $1}'` -f x11grab -re -i ${DISPLAY} -f pulse -ac 2 -i default -ar 22050 -c:a libmp3lame -c:v libx264 -preset ultrafast -tune zerolatency -maxrate 10000k -bufsize 20000k -pix_fmt yuv420p -framerate 15 -g 52 -max_muxing_queue_size 9999 -f mp4 -bsf:v h264_mp4toannexb -movflags frag_keyframe+empty_moov ${HOME}/Videos/Tela_$(date +'%d-%m-%Y_%H:%M:%S').mp4"</command>
+      </action>
+    </keybind>
+    <!-- WEBCam / webcam / Webcam -->
+    <keybind key="A-S-w">
+      <action name="Execute">
+        <command>bash -c 'ffplay -f video4linux2 -framerate 10 -vf "hflip,format=yuv420p" -video_size hd720 /dev/video0'</command>
+      </action>
+    </keybind>
+    <!-- Tela Normal -->
+    <keybind key="W-F1">
+      <action name="Execute">
+        <command>bash -c "resol=`xrandr --current | grep '*' | uniq | awk '{print $1}'`; xrandr --output eDP-1-1 --primary --mode ${resol} --rate 120.00 --pos 0x0 --rotate normal --output HDMI-0 --off; xrandr --output eDP-1 --primary --mode ${resol} --rate 120.00 --pos 0x0 --rotate normal --output HDMI-1-0 --off"</command>
+      </action>
+    </keybind>
+    <!-- Inverter tela (Monitor AOC x Notebook Asus X202E - Vivo Book ) -->
+    <keybind key="W-F2">
+      <action name="Execute">
+        <command>bash -c "resol=`xrandr --current | grep '*' | uniq | awk '{print $1}'`; xrandr --output HDMI-0 --mode ${resol} --pos 0x0 --rotate inverted --output eDP-1-1 --off; xrandr --output HDMI-1-0 --mode ${resol} --pos 0x0 --rotate inverted --output eDP-1 --off; pactl set-card-profile 0 off"</command>
+      </action>
+    </keybind>
+    <!-- Inverter tela e desativar display do notebook -->
+    <keybind key="W-F3">
+      <action name="Execute">
+        <command>bash -c "resol=`xrandr --current | grep '*' | uniq | awk '{print $1}'`; xrandr --output eDP-1-1 --mode ${resol} --rate 120.00 --pos 0x0 --rotate normal --output HDMI-0 --mode ${resol} --pos 0x0 --rotate inverted; xrandr --output eDP-1 --mode ${resol} --rate 120.00 --pos 0x0 --rotate normal --output HDMI-1-0 --mode ${resol} --pos 0x0 --rotate inverted; pactl set-card-profile 0 off"</command>
+      </action>
+    </keybind>
+    <!-- Tela extendida lado a lado -->
+    <keybind key="W-F4">
+      <action name="Execute">
+        <command>bash -c "resol=`xrandr --current | grep '*' | uniq | awk '{print $1}'`; xrandr --output HDMI-0 --mode ${resol} --pos 0x0 --rotate inverted --output eDP-1-1 --primary --mode ${resol} --pos `echo ${resol} | cut -d 'x' -f1`x0 --rotate normal; xrandr --output HDMI-1-0 --mode ${resol} --pos 0x0 --rotate inverted --output eDP-1 --primary --mode ${resol} --pos `echo ${resol} | cut -d 'x' -f1`x0 --rotate normal; pactl set-card-profile 0 off"</command>
+      </action>
+    </keybind>
+    <!-- Gravador de tela OBS -->
+    <keybind key="S-A-r">
+      <action name="Execute">
+        <command>obs</command>
+      </action>
+    </keybind>
+    <!--                            Streaming Multimedia Control                            -->
+    <!-- LGTVWebOS: Set Max Volume -->
+    <keybind key="C-A-v">
+      <action name="Execute">
+        <command>bash -c 'pkill -9 tv-default-volu; script=~/.local/bin/tv-default-volume.sh; Current_Volume=`~/.local/bin/Current_Volume.sh` old_vol=`cat "$script" | head -5 | sed -n 5p | cut -c 16-17 | grep -E "[^[:blank:]]"`; new_vol=`zenity --text "Current volume is $Current_Volume.\nVolume is limited on $old_vol.\n\nEnter new volume:" --entry`; sed -i "5s/$old_vol/$new_vol/" "$script" | sed -i "5s/=$/=$new_vol/" "$script"; "$script"'</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <wmclass>set_max_vol_lgtv</wmclass>
+          <name>set_max_vol_lgtv</name>
+          <icon>set_max_vol_lgtv</icon>
+        </startupnotify>
+      </action>
+    </keybind>
+    <!-- LG TV WebOS Set Volume -->
+    <keybind key="C-A-S-Up">
+      <action name="Execute">
+        <command>bash -c "pkill -9 osd_cat; sleep 0.2; xrefresh; echo WebOS Vol: `~/.local/bin/lgtv audio volumeUp | ~/.local/bin/Current_Volume.sh` | osd_cat -d 1 -s 1 -A center -l 1 -p middle -o 60 -c green -f '-*-helvetica-bold-*-*-*-44-*-*-*-*-*-*'"</command>
+      </action>
+    </keybind>
+    <keybind key="C-A-S-Down">
+      <action name="Execute">
+        <command>bash -c "pkill -9 osd_cat; sleep 0.2; xrefresh; echo WebOS Vol: `~/.local/bin/lgtv audio volumeDown | ~/.local/bin/Current_Volume.sh` | osd_cat -d 1 -s 1 -A center -l 1 -p middle -o 60 -c green -f '-*-helvetica-bold-*-*-*-44-*-*-*-*-*-*'"</command>
+      </action>
+    </keybind>
+    <!-- Chromecast/LGTVWebOS: pause/play streaming -->
+    <keybind key="W-S-p">
+      <action name="Execute">
+        <command>bash -c 'catt play_toggle; check_pause="/tmp/pause_streaming_check.txt"; if [ ! -e "$check_pause" ]; then touch "${check_pause}"; ~/.local/bin/lgtv media.controls pause; else rm "${check_pause}"; ~/.local/bin/lgtv media.controls play; fi'</command>
+      </action>
+    </keybind>
+    <keybind key="W-XF86AudioPlay">
+      <action name="Execute">
+        <command>bash -c 'catt play_toggle; check_pause="/tmp/pause_streaming_check.txt"; if [ ! -e "$check_pause" ]; then touch "${check_pause}"; ~/.local/bin/lgtv media.controls pause; else rm "${check_pause}"; ~/.local/bin/lgtv media.controls play; fi'</command>
+      </action>
+    </keybind>
+    <!-- Chromecast: aumentar volume -->
+    <keybind key="W-S-Up">
+      <action name="Execute">
+        <command>catt volumeup 5</command>
+      </action>
+    </keybind>
+    <!-- Chromecast: abaixar volume -->
+    <keybind key="W-S-Down">
+      <action name="Execute">
+        <command>catt volumedown 5</command>
+      </action>
+    </keybind>
+    <!-- Chromecast: avançar streaming -->
+    <keybind key="W-S-Right">
+      <action name="Execute">
+        <command>catt ffwd</command>
+      </action>
+    </keybind>
+    <keybind key="C-W-S-Right">
+      <action name="Execute">
+        <command>catt ffwd 60</command>
+      </action>
+    </keybind>
+    <!-- Chromecast: retroceder streaming -->
+    <keybind key="W-S-Left">
+      <action name="Execute">
+        <command>catt rewind</command>
+      </action>
+    </keybind>
+    <keybind key="C-W-S-Left">
+      <action name="Execute">
+        <command>catt rewind 60</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-e">
+      <action name="Execute">
+        <command>catt stop</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-C-s">
+      <action name="Execute">
+        <command>catt save</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-C-r">
+      <action name="Execute">
+        <command>catt restore</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-i">
+      <action name="Execute">
+        <command>bash -c 'zenity --icon-name applications-multimedia --info --title="Status da Reproducao" --text="$(catt status)" --width="600" height="600"'</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-t">
+      <action name="Execute">
+        <command>bash -c 'time=`zenity --entry --text "Defina o tempo que voce quer avancar" --title "Tempo do Video"` ; catt seek "$time"'</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-y">
+      <action name="Execute">
+        <command>bash -c 'catt cast $(xclip -selection clipboard -o) #you_url=`zenity --entry --text "Insira o link do Youtube ou outro Streaming que deseja ser exibido" --title "Streaming"` ; catt cast "$you_url"'</command>
+      </action>
+    </keybind>
+    <keybind key="C-W-c">
+      <action name="Execute">
+        <command>bash -c "pkill -9 xcompmgr; pkill -9 xcompmgr; picom --experimental-backends --backend glx --xrender-sync-fence"</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <wmclass>picom</wmclass>
+          <name>picom</name>
+          <icon>picom</icon>
+        </startupnotify>
+      </action>
+    </keybind>
+    <keybind key="C-S-W-c">
+      <action name="Execute">
+        <command>bash -c "pkill -9 picom; pkill -9 picom; xcompmgr"</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <wmclass>xcompmgr</wmclass>
+          <name>xcompmgr</name>
+          <icon>xcompmgr</icon>
+        </startupnotify>
+      </action>
+    </keybind>
+    <!-- System Mixer Volume -->
+    <keybind key="W-p">
+      <action name="Execute">
+        <command>bash -c 'pavuc=`wmctrl -l | grep "Controle de volume" | head -n 1 | awk "{print $1 }"`; if pidof pavucontrol; then wmctrl -ic "$pavuc"; else pavucontrol; fi'</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <wmclass>pavucontrol</wmclass>
+          <name>pavucontrol</name>
+          <icon>pavucontrol</icon>
+        </startupnotify>
+      </action>
+    </keybind>
+    <keybind key="C-A-a">
+      <action name="Execute">
+        <command>bash -c 'pavuc=`wmctrl -l | grep "Controle de volume" | head -n 1 | awk "{print $1 }"`; if pidof pavucontrol; then wmctrl -ic "$pavuc"; else pavucontrol; fi'</command>
+      </action>
+    </keybind>
+    <!-- System Volume -->
+    <keybind key="XF86AudioMute">
+      <action name="Execute">
+        <command>bash -c "pactl set-sink-mute @DEFAULT_SINK@ toggle #pactl set-sink-mute `pactl list short sinks | awk '{print $1}' | head -n1` toggle"</command>
+      </action>
+    </keybind>
+    <keybind key="A-S-m">
+      <action name="Execute">
+        <command>bash -c "pactl set-sink-mute @DEFAULT_SINK@ toggle #pactl set-sink-mute `pactl list short sinks | awk '{print $1}' | head -n1` toggle"</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioLowerVolume">
+      <action name="Execute">
+        <command>bash -c "pactl set-sink-volume `pactl list short sinks | awk '{print $1}' | head -n1` -5%; pkill -9 osd_cat; xrefresh; echo Volume:\ `pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'` | osd_cat -d 1 -s 1 -A center -l 1 -p middle -o 60 -c green -f '-*-helvetica-bold-*-*-*-44-*-*-*-*-*-*'"</command>
+      </action>
+    </keybind>
+    <keybind key="A-S-Down">
+      <action name="Execute">
+        <command>bash -c "pactl set-sink-volume `pactl list short sinks | awk '{print $1}' | head -n1` -5%; pkill -9 osd_cat; xrefresh; echo Volume:\ `pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'` | osd_cat -d 1 -s 1 -A center -l 1 -p middle -o 60 -c green -f '-*-helvetica-bold-*-*-*-44-*-*-*-*-*-*'"</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioRaiseVolume">
+      <action name="Execute">
+        <command>bash -c "pactl set-sink-volume `pactl list short sinks | awk '{print $1}' | head -n1` +5%; pkill -9 osd_cat; xrefresh; echo Volume:\ `pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'` | osd_cat -d 1 -s 1 -A center -l 1 -p middle -o 60 -c green -f '-*-helvetica-bold-*-*-*-44-*-*-*-*-*-*'"</command>
+      </action>
+    </keybind>
+    <keybind key="A-S-Up">
+      <action name="Execute">
+        <command>bash -c "pactl set-sink-volume `pactl list short sinks | awk '{print $1}' | head -n1` +5%; pkill -9 osd_cat; xrefresh; echo Volume:\ `pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'` | osd_cat -d 1 -s 1 -A center -l 1 -p middle -o 60 -c green -f '-*-helvetica-bold-*-*-*-44-*-*-*-*-*-*'"</command>
+      </action>
+    </keybind>
+    <!-- Brightness Adjustment -->
+    <keybind key="XF86MonBrightnessDown">
+      <action name="Execute">
+        <command>bash -c "xbacklight -dec +2 ; light -U 2"</command>
+      </action>
+    </keybind>
+    <keybind key="A-S-Next">
+      <action name="Execute">
+        <command>~/.local/bin/all_bright -</command>
+      </action>
+    </keybind>
+    <keybind key="A-S-Left">
+      <action name="Execute">
+        <command>bash -c "xbacklight -dec +2 ; light -U 2"</command>
+      </action>
+    </keybind>
+    <keybind key="XF86MonBrightnessUp">
+      <action name="Execute">
+        <command>bash -c "xbacklight -inc +2 ; light -A 2"</command>
+      </action>
+    </keybind>
+    <keybind key="A-S-Prior">
+      <action name="Execute">
+        <command>~/.local/bin/all_bright +</command>
+      </action>
+    </keybind>
+    <keybind key="A-S-Right">
+      <action name="Execute">
+        <command>bash -c "xbacklight -inc +2 ; light -A 2"</command>
+      </action>
+    </keybind>
+    <!-- Toggle Brightness 0/1.3 -->
+    <keybind key="XF86ScreenSaver">
+      <action name="Execute">
+        <command>bash -c 'vendor=`ls /sys/class/backlight/`; max_brightness=`cat /sys/class/backlight/"${vendor}"/max_brightness`; check_brightness="/tmp/brightness_check.txt"; brightness=`perl -e "print ${max_brightness}/3.3" | cut -f1 -d'.'`; if [ ! -e "$check_brightness" ]; then touch "${check_brightness}"; echo 0 | tee /sys/class/backlight/"${vendor}"/brightness; else rm "${check_brightness}"; echo "${brightness}" | tee /sys/class/backlight/"${vendor}"/brightness; fi'</command>
+      </action>
+    </keybind>
+    <keybind key="C-A-0">
+      <action name="Execute">
+        <command>bash -c 'vendor=`ls /sys/class/backlight/`; max_brightness=`cat /sys/class/backlight/"${vendor}"/max_brightness`; check_brightness="/tmp/brightness_check.txt"; brightness=`perl -e "print ${max_brightness}/3.3" | cut -f1 -d'.'`; if [ ! -e "$check_brightness" ]; then touch "${check_brightness}"; echo 0 | tee /sys/class/backlight/"${vendor}"/brightness; else rm "${check_brightness}"; echo "${brightness}" | tee /sys/class/backlight/"${vendor}"/brightness; fi'</command>
+      </action>
+    </keybind>
+    <!-- Print Screen -->
+    <keybind key="Print">
+      <action name="Execute">
+        <command>bash -c 'cd ~/; mkdir -p "$HOME/Pictures/Captura de Tela/"; date=`date +"%Y-%m-%d %H:%M:%S"`; file="$HOME/Pictures/Captura de Tela/${date} - Captura de Tela.png"; scrot "${file}"; mkdir -p ~/.local/songs/; cd ~/.local/songs/; wget -nc https://github.com/felipefacundes/dotfiles/blob/master/config/songs/camera_shutter.ogg?raw=true -O camera_shutter.ogg; beep=~/.local/songs/camera_shutter.ogg; pactl upload-sample "$beep"; paplay "$beep" --volume=76767; cat "${file}" | xclip -selection clipboard -target image/png -i'</command>
+      </action>
+    </keybind>
+    <!-- Print Screen with delay -->
+    <keybind key="A-S-Print">
+      <action name="Execute">
+        <command>bash -c 'cd ~/; mkdir -p "$HOME/Pictures/Captura de Tela/"; date=`date +"%Y-%m-%d %H:%M:%S"`; file="$HOME/Pictures/Captura de Tela/${date} - Captura de Tela.png"; scrot -d 4 "${file}"; mkdir -p ~/.local/songs/; cd ~/.local/songs/; wget -nc https://github.com/felipefacundes/dotfiles/blob/master/config/songs/camera_shutter.ogg?raw=true -O camera_shutter.ogg; beep=~/.local/songs/camera_shutter.ogg; pactl upload-sample "$beep"; paplay "$beep" --volume=76767; cat "${file}" | xclip -selection clipboard -target image/png -i'</command>
+      </action>
+    </keybind>
+    <!-- Print Screen: Interactively select a window or rectangle with the mouse.-->
+    <keybind key="S-Print">
+      <action name="Execute">
+        <command>bash -c 'cd ~/ ; mkdir -p "$HOME/Pictures/Captura de Tela/"; date=`date +"%Y-%m-%d %H:%M:%S"`; file="$HOME/Pictures/Captura de Tela/${date} - Captura de Tela.png"; scrot -f -s "${file}"; cat "${file}" | xclip -selection clipboard -target image/png -i'</command>
+      </action>
+    </keybind>
+    <!-- Print Screen of currently focused window.-->
+    <keybind key="C-Print">
+      <action name="Execute">
+        <command>bash -c 'cd ~/; mkdir -p "$HOME/Pictures/Captura de Tela/"; date=`date +"%Y-%m-%d %H:%M:%S"`; file="$HOME/Pictures/Captura de Tela/${date} - Captura de Tela.png"; scrot -u "${file}"; mkdir -p ~/.local/songs/; cd ~/.local/songs/; wget -nc https://github.com/felipefacundes/dotfiles/blob/master/config/songs/camera_shutter.ogg?raw=true -O camera_shutter.ogg; beep=~/.local/songs/camera_shutter.ogg; pactl upload-sample "$beep"; paplay "$beep" --volume=76767; cat "${file}" | xclip -selection clipboard -target image/png -i'</command>
+      </action>
+    </keybind>
+    <!-- Gnome Screenshot interactive mode -->
+    <keybind key="A-Print">
+      <action name="Execute">
+        <command>gnome-screenshot -i</command>
+      </action>
+    </keybind>
+    <!-- Random Wallpaper -->
+    <keybind key="C-A-w">
+      <action name="Execute">
+        <command>swww img "$(find ${HOME}/Pictures/Wallpapers/ -name '*[jJpP][nNpP][gG]' | shuf -n1)"</command>
+      </action>
+    </keybind>
+    <!-- Tema aleatório do painel tint2 -->
+    <keybind key="C-W-p">
+      <action name="Execute">
+        <command>bash -c 'cp -f "$(ls -c "${HOME}"/.config/tint2/*.tint2rc | shuf -n 1)" "${HOME}"/.config/tint2/tint2rc ; killall -SIGUSR1 tint2'</command>
+      </action>
+    </keybind>
+    <keybind key="C-A-d">
+      <action name="Execute">
+        <command>bash -c "/bin/openrc-shutdown --poweroff now ; systemctl -i poweroff"</command>
+      </action>
+    </keybind>
+    <keybind key="C-S-W-d">
+      <action name="Execute">
+        <command>bash -c "/bin/openrc-shutdown --poweroff now ; systemctl -i poweroff"</command>
+      </action>
+    </keybind>
+    <keybind key="C-S-A-h">
+      <action name="Execute">
+        <command>bash -c "systemctl hibernate"</command>
+      </action>
+    </keybind>
+    <keybind key="C-A-h">
+      <action name="Execute">
+        <command>bash -c "systemctl hibernate"</command>
+      </action>
+    </keybind>
+    <keybind key="C-A-l">
+      <action name="Execute">
+        <command>bash -c "slimlock"</command>
+      </action>
+    </keybind>
+    <keybind key="C-A-s">
+      <action name="Execute">
+        <command>bash -c "systemctl suspend; slimlock"</command>
+      </action>
+    </keybind>
+    <keybind key="XF86Sleep">
+      <action name="Execute">
+        <command>bash -c "systemctl suspend; slimlock"</command>
+      </action>
+    </keybind>
+    <keybind key="C-S-A-BackSpace">
+      <action name="Execute">
+        <command>bash -c "/bin/openrc-shutdown --reboot now ; systemctl -i reboot"</command>
+      </action>
+    </keybind>
+    <keybind key="C-A-q">
+      <action name="Execute">
+        <command>watch -g pkill -9 -u "$USER"</command>
+        <prompt>Matar todos os programas abertos?</prompt>
+      </action>
+    </keybind>
+    <keybind key="C-A-Delete">
+      <action name="Execute">
+        <command>watch -g pkill -9 -u "$USER"</command>
+      </action>
+    </keybind>
+    <keybind key="C-A-Escape">
+      <action name="Execute">
+        <command>xkill #xkill -button 1</command>
+      </action>
+    </keybind>
+    <keybind key="C-W-q">
+      <action name="Execute">
+        <command>xdotool getwindowfocus windowkill</command>
+      </action>
+    </keybind>
+    <keybind key="C-Escape">
+      <action name="Execute">
+        <command>kitty -e htop</command>
+      </action>
+    </keybind>
+    <keybind key="W-u">
+      <action name="Execute">
+        <command>bash -c "kitty -e sudo pacman -Syyu --noconfirm; sudo mkinitcpio -P; sudo grub-mkconfig -o /boot/grub/grub.cfg"</command>
+      </action>
+    </keybind>
+    <keybind key="C-W-o">
+      <action name="Execute">
+        <command>obkey</command>
+        <prompt>Deseja alterar os atalhos do openbox?</prompt>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <wmclass>obkey</wmclass>
+          <name>obkey</name>
+          <icon>obkey</icon>
+        </startupnotify>
+      </action>
+    </keybind>
+    <keybind key="C-W-d">
+      <action name="ToggleDecorations"/>
+    </keybind>
+    <keybind key="C-W-s">
+      <action name="ToggleShade"/>
+    </keybind>
+    <keybind key="W-a">
+      <action name="ToggleMaximize"/>
+    </keybind>
+    <keybind key="A-F11">
+      <action name="ToggleFullscreen"/>
+    </keybind>
+    <keybind key="C-W-h">
+      <action name="ToggleMaximizeHorz"/>
+    </keybind>
+    <keybind key="C-W-v">
+      <action name="ToggleMaximizeVert"/>
+    </keybind>
+    <keybind key="W-c">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveToCenter"/>
+    </keybind>
+    <keybind key="C-W-l">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveToEdgeEast"/>
+    </keybind>
+    <keybind key="C-W-k">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveToEdgeSouth"/>
+    </keybind>
+    <keybind key="C-W-i">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveToEdgeNorth"/>
+    </keybind>
+    <keybind key="C-W-j">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveToEdgeWest"/>
+    </keybind>
+    <keybind key="A-W-l">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+      <action name="MoveToEdgeEast"/>
+    </keybind>
+    <keybind key="A-W-Right">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+      <action name="MoveToEdgeEast"/>
+    </keybind>
+    <keybind key="A-W-k">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+      <action name="MoveToEdgeSouth"/>
+    </keybind>
+    <keybind key="A-W-Down">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+      <action name="MoveToEdgeSouth"/>
+    </keybind>
+    <keybind key="A-W-i">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+      <action name="MoveToEdgeNorth"/>
+    </keybind>
+    <keybind key="A-W-Up">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+      <action name="MoveToEdgeNorth"/>
+    </keybind>
+    <keybind key="A-W-j">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+      <action name="MoveToEdgeWest"/>
+    </keybind>
+    <keybind key="A-W-Left">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+      <action name="MoveToEdgeWest"/>
+    </keybind>
+    <keybind key="S-A-W-l">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>25%</width>
+        <height>25%</height>
+      </action>
+      <action name="MoveToEdgeEast"/>
+    </keybind>
+    <keybind key="S-A-W-Right">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>25%</width>
+        <height>25%</height>
+      </action>
+      <action name="MoveToEdgeEast"/>
+    </keybind>
+    <keybind key="S-A-W-k">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>25%</width>
+        <height>25%</height>
+      </action>
+      <action name="MoveToEdgeSouth"/>
+    </keybind>
+    <keybind key="S-A-W-Down">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>25%</width>
+        <height>25%</height>
+      </action>
+      <action name="MoveToEdgeSouth"/>
+    </keybind>
+    <keybind key="S-A-W-i">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>25%</width>
+        <height>25%</height>
+      </action>
+      <action name="MoveToEdgeNorth"/>
+    </keybind>
+    <keybind key="S-A-W-Up">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>25%</width>
+        <height>25%</height>
+      </action>
+      <action name="MoveToEdgeNorth"/>
+    </keybind>
+    <keybind key="S-A-W-j">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>25%</width>
+        <height>25%</height>
+      </action>
+      <action name="MoveToEdgeWest"/>
+    </keybind>
+    <keybind key="S-A-W-Left">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>25%</width>
+        <height>25%</height>
+      </action>
+      <action name="MoveToEdgeWest"/>
+    </keybind>
+    <keybind key="A-l">
+      <action name="DirectionalFocusEast"/>
+    </keybind>
+    <keybind key="A-k">
+      <action name="DirectionalFocusSouth"/>
+    </keybind>
+    <keybind key="A-i">
+      <action name="DirectionalFocusNorth"/>
+    </keybind>
+    <keybind key="A-j">
+      <action name="DirectionalFocusWest"/>
+    </keybind>
+    <!-- Vertical tiling -->
+    <keybind key="W-v">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>50%</width>
+      </action>
+      <action name="MaximizeVert"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+      </action>
+      <action name="NextWindow">
+        <finalactions>
+          <action name="UnmaximizeFull"/>
+          <action name="MoveResizeTo">
+            <width>50%</width>
+          </action>
+          <action name="MaximizeVert"/>
+          <action name="MoveResizeTo">
+            <x>-0</x>
+            <y>0</y>
+          </action>
+        </finalactions>
+      </action>
+    </keybind>
+    <!-- Horizontal tiling -->
+    <keybind key="W-h">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <height>50%</height>
+      </action>
+      <action name="MaximizeHorz"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+      </action>
+      <action name="NextWindow">
+        <finalactions>
+          <action name="UnmaximizeFull"/>
+          <action name="MoveResizeTo">
+            <height>50%</height>
+          </action>
+          <action name="MaximizeHorz"/>
+          <action name="MoveResizeTo">
+            <x>0</x>
+            <y>-0</y>
+          </action>
+        </finalactions>
+      </action>
+    </keybind>
+    <!-- Restaurar dimensões das janelas -->
+    <keybind key="A-W-r">
+      <action name="UnmaximizeFull"/>
+      <action name="NextWindow">
+        <interactive>no</interactive>
+        <dialog>none</dialog>
+        <finalactions>
+          <action name="UnmaximizeFull"/>
+        </finalactions>
+      </action>
+    </keybind>
+    <keybind key="C-W-a">
+      <action name="UnmaximizeFull"/>
+      <action name="NextWindow"/>
+    </keybind>
+    <keybind key="A-W-2">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+        <width>25%</width>
+        <height>100%</height>
+      </action>
+    </keybind>
+    <keybind key="A-W-4">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+    </keybind>
+    <keybind key="C-A-W-2">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+        <width>25%</width>
+        <height>100%</height>
+      </action>
+      <action name="NextWindow"/>
+    </keybind>
+    <keybind key="C-A-W-4">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+      <action name="NextWindow"/>
+    </keybind>
+    <keybind key="W-l">
+      <action name="UnmaximizeFull"/>
+      <action name="GrowToEdgeEast"/>
+    </keybind>
+    <keybind key="W-k">
+      <action name="UnmaximizeFull"/>
+      <action name="GrowToEdgeSouth"/>
+    </keybind>
+    <keybind key="W-i">
+      <action name="UnmaximizeFull"/>
+      <action name="GrowToEdgeNorth"/>
+    </keybind>
+    <keybind key="W-j">
+      <action name="UnmaximizeFull"/>
+      <action name="GrowToEdgeWest"/>
+    </keybind>
+    <keybind key="W-r">
+      <action name="Resize"/>
+    </keybind>
+    <keybind key="C-W-r">
+      <action name="labwc -r"/>
+    </keybind>
+    <keybind key="C-A-Left">
+      <action name="GoToDesktop">
+        <to>left</to>
+      </action>
+    </keybind>
+    <keybind key="C-A-Right">
+      <action name="GoToDesktop">
+        <to>right</to>
+      </action>
+    </keybind>
+    <keybind key="C-A-Up">
+      <action name="GoToDesktop">
+        <to>up</to>
+      </action>
+    </keybind>
+    <keybind key="C-A-Down">
+      <action name="GoToDesktop">
+        <to>down</to>
+      </action>
+    </keybind>
+    <keybind key="S-A-1">
+      <action name="SendToDesktopLeft"/>
+    </keybind>
+    <keybind key="S-A-2">
+      <action name="SendToDesktopRight"/>
+    </keybind>
+    <keybind key="S-A-3">
+      <action name="SendToDesktopUp"/>
+    </keybind>
+    <keybind key="S-A-4">
+      <action name="SendToDesktopDown"/>
+    </keybind>
+    <!-- move a janela para outro monitor -->
+    <keybind key="C-1">
+      <action name="MoveResizeTo">
+        <x>center</x>
+        <y>center</y>
+        <monitor>1</monitor>
+      </action>
+    </keybind>
+    <keybind key="C-2">
+      <action name="MoveResizeTo">
+        <x>center</x>
+        <y>center</y>
+        <monitor>2</monitor>
+      </action>
+    </keybind>
+    <!-- Mudar de Desktop Virtual -->
+    <keybind key="W-1">
+      <action name="GoToDesktop">
+        <to>1</to>
+      </action>
+    </keybind>
+    <keybind key="W-2">
+      <action name="GoToDesktop">
+        <to>2</to>
+      </action>
+    </keybind>
+    <keybind key="W-3">
+      <action name="GoToDesktop">
+        <to>3</to>
+      </action>
+    </keybind>
+    <keybind key="W-4">
+      <action name="GoToDesktop">
+        <to>4</to>
+      </action>
+    </keybind>
+    <keybind key="W-5">
+      <action name="GoToDesktop">
+        <to>5</to>
+      </action>
+    </keybind>
+    <keybind key="W-6">
+      <action name="GoToDesktop">
+        <to>6</to>
+      </action>
+    </keybind>
+    <keybind key="W-7">
+      <action name="GoToDesktop">
+        <to>7</to>
+      </action>
+    </keybind>
+    <keybind key="W-8">
+      <action name="GoToDesktop">
+        <to>8</to>
+      </action>
+    </keybind>
+    <keybind key="W-9">
+      <action name="GoToDesktop">
+        <to>9</to>
+      </action>
+    </keybind>
+    <keybind key="W-0">
+      <action name="GoToDesktop">
+        <to>10</to>
+      </action>
+    </keybind>
+    <keybind key="S-W-1">
+      <action name="SendToDesktop">
+        <desktop>1</desktop>
+      </action>
+      <action name="DesktopLast"/>
+    </keybind>
+    <keybind key="S-W-2">
+      <action name="SendToDesktop">
+        <desktop>2</desktop>
+      </action>
+      <action name="DesktopLast"/>
+    </keybind>
+    <keybind key="S-W-3">
+      <action name="SendToDesktop">
+        <desktop>3</desktop>
+      </action>
+      <action name="DesktopLast"/>
+    </keybind>
+    <keybind key="S-W-4">
+      <action name="SendToDesktop">
+        <desktop>4</desktop>
+      </action>
+      <action name="DesktopLast"/>
+    </keybind>
+    <keybind key="S-W-5">
+      <action name="SendToDesktop">
+        <desktop>5</desktop>
+      </action>
+      <action name="DesktopLast"/>
+    </keybind>
+    <keybind key="S-W-6">
+      <action name="SendToDesktop">
+        <desktop>6</desktop>
+      </action>
+      <action name="DesktopLast"/>
+    </keybind>
+    <keybind key="S-W-7">
+      <action name="SendToDesktop">
+        <desktop>7</desktop>
+      </action>
+      <action name="DesktopLast"/>
+    </keybind>
+    <keybind key="S-W-8">
+      <action name="SendToDesktop">
+        <desktop>8</desktop>
+      </action>
+      <action name="DesktopLast"/>
+    </keybind>
+    <keybind key="S-W-9">
+      <action name="SendToDesktop">
+        <desktop>9</desktop>
+      </action>
+      <action name="DesktopLast"/>
+    </keybind>
+    <keybind key="S-W-0">
+      <action name="SendToDesktop">
+        <desktop>10</desktop>
+      </action>
+      <action name="DesktopLast"/>
+    </keybind>
+    <keybind key="C-W-1">
+      <action name="SendToDesktop">
+        <desktop>1</desktop>
+      </action>
+    </keybind>
+    <keybind key="C-W-2">
+      <action name="SendToDesktop">
+        <desktop>2</desktop>
+      </action>
+    </keybind>
+    <keybind key="C-W-3">
+      <action name="SendToDesktop">
+        <desktop>3</desktop>
+      </action>
+    </keybind>
+    <keybind key="C-W-4">
+      <action name="SendToDesktop">
+        <desktop>4</desktop>
+      </action>
+    </keybind>
+    <keybind key="C-W-5">
+      <action name="SendToDesktop">
+        <desktop>5</desktop>
+      </action>
+    </keybind>
+    <keybind key="C-W-6">
+      <action name="SendToDesktop">
+        <desktop>6</desktop>
+      </action>
+    </keybind>
+    <keybind key="C-W-7">
+      <action name="SendToDesktop">
+        <desktop>7</desktop>
+      </action>
+    </keybind>
+    <keybind key="C-W-8">
+      <action name="SendToDesktop">
+        <desktop>8</desktop>
+      </action>
+    </keybind>
+    <keybind key="C-W-9">
+      <action name="SendToDesktop">
+        <desktop>9</desktop>
+      </action>
+    </keybind>
+    <keybind key="C-W-0">
+      <action name="SendToDesktop">
+        <desktop>10</desktop>
+      </action>
+    </keybind>
+    <keybind key="W-apostrophe">
+      <action name="DesktopLast"/>
+    </keybind>
+    <keybind key="S-A-0">
+      <action name="ToggleOmnipresent"/>
+    </keybind>
+    <keybind key="A-8">
+      <action name="ToggleAlwaysOnTop"/>
+    </keybind>
+    <keybind key="W-d">
+      <action name="ToggleShowDesktop"/>
+    </keybind>
+    <keybind key="A-Tab">
+      <action name="NextWindow"/>
+    </keybind>
+    <keybind key="A-S-Tab">
+      <action name="PreviousWindow"/>
+    </keybind>
+    <keybind key="W-Tab">
+      <action name="NextWindow">
+        <raise>yes</raise>
+        <allDesktops>yes</allDesktops>
+        <finalactions>
+          <action name="Focus"/>
+          <action name="UnshadeRaise"/>
+        </finalactions>
+      </action>
+    </keybind>
+    <keybind key="S-W-Tab">
+      <action name="PreviousWindow"/>
+    </keybind>
+    <keybind key="A-Escape">
+      <action name="Lower"/>
+      <action name="FocusToBottom"/>
+      <action name="Unfocus"/>
+    </keybind>
+    <keybind key="A-F4">
+      <action name="Close"/>
+    </keybind>
+    <keybind key="C-S-q">
+      <action name="Close"/>
+      <action name="PreviousWindow"/>
+    </keybind>
+    <keybind key="A-space">
+      <action name="ShowMenu">
+        <menu>client-menu</menu>
+      </action>
+    </keybind>
+  </keyboard>
+  <mouse>
+    <dragThreshold>1</dragThreshold>
+    <!-- number of pixels the mouse must move before a drag begins -->
+    <doubleClickTime>500</doubleClickTime>
+    <!-- in milliseconds (1000 = 1 second) -->
+    <screenEdgeWarpTime>400</screenEdgeWarpTime>
+    <!-- Time before changing desktops when the pointer touches the edge of the
+       screen while moving a window, in milliseconds (1000 = 1 second).
+       Set this to 0 to disable warping -->
+    <screenEdgeWarpMouse>false</screenEdgeWarpMouse>
+    <!-- Set this to TRUE to move the mouse pointer across the desktop when
+       switching due to hitting the edge of the screen -->
+    <context name="Frame">
+    <!-- Conflicts with Unreal Engine >
+      <mousebind action="Press" button="A-Left">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
+      <mousebind action="Click" button="A-Left">
+        <action name="Unshade"/>
+      </mousebind -->
+      <mousebind action="Drag" button="W-Left">
+        <action name="Move"/>
+      </mousebind>
+      <!-- Conflicts with Blender: ALT -->
+      <mousebind action="Press" button="W-Right">
+        <action name="Focus"/>
+        <action name="Raise"/>
+        <action name="Unshade"/>
+      </mousebind>
+      <mousebind action="Drag" button="W-Right">
+        <action name="Resize"/>
+      </mousebind>
+      <mousebind action="Press" button="W-Middle">
+        <action name="Lower"/>
+        <action name="FocusToBottom"/>
+        <action name="Unfocus"/>
+      </mousebind>
+      <mousebind action="Click" button="A-Up">
+        <action name="GoToDesktop">
+          <to>previous</to>
+        </action>
+      </mousebind>
+      <mousebind action="Click" button="A-Down">
+        <action name="GoToDesktop">
+          <to>next</to>
+        </action>
+      </mousebind>
+      <mousebind action="Click" button="C-A-Up">
+        <action name="GoToDesktop">
+          <to>previous</to>
+        </action>
+      </mousebind>
+      <mousebind action="Click" button="C-A-Down">
+        <action name="GoToDesktop">
+          <to>next</to>
+        </action>
+      </mousebind>
+      <mousebind action="Click" button="A-S-Up">
+        <action name="SendToDesktop">
+          <to>previous</to>
+        </action>
+      </mousebind>
+      <mousebind action="Click" button="A-S-Down">
+        <action name="SendToDesktop">
+          <to>next</to>
+        </action>
+      </mousebind>
+    </context>
+    <context name="Titlebar">
+      <mousebind action="Drag" button="Left">
+        <action name="Move"/>
+      </mousebind>
+      <mousebind action="DoubleClick" button="Left">
+        <action name="ToggleMaximize"/>
+      </mousebind>
+      <mousebind action="Click" button="Up">
+        <action name="if">
+          <shaded>no</shaded>
+          <then>
+            <action name="Shade"/>
+            <action name="FocusToBottom"/>
+            <action name="Unfocus"/>
+            <action name="Lower"/>
+          </then>
+        </action>
+      </mousebind>
+      <mousebind action="Click" button="Down">
+        <action name="if">
+          <shaded>yes</shaded>
+          <then>
+            <action name="Unshade"/>
+            <action name="Raise"/>
+          </then>
+        </action>
+      </mousebind>
+    </context>
+    <context name="Titlebar Top Right Bottom Left TLCorner TRCorner BRCorner BLCorner">
+      <mousebind action="Press" button="Left">
+        <action name="Focus"/>
+        <action name="Raise"/>
+        <action name="Unshade"/>
+      </mousebind>
+      <mousebind action="Press" button="Middle">
+        <action name="Lower"/>
+        <action name="FocusToBottom"/>
+        <action name="Unfocus"/>
+      </mousebind>
+      <mousebind action="Press" button="Right">
+        <action name="Focus"/>
+        <action name="Raise"/>
+        <action name="ShowMenu">
+          <menu>client-menu</menu>
+        </action>
+      </mousebind>
+    </context>
+    <context name="Top">
+      <mousebind action="Drag" button="Left">
+        <action name="Resize">
+          <edge>top</edge>
+        </action>
+      </mousebind>
+    </context>
+    <context name="Left">
+      <mousebind action="Drag" button="Left">
+        <action name="Resize">
+          <edge>left</edge>
+        </action>
+      </mousebind>
+    </context>
+    <context name="Right">
+      <mousebind action="Drag" button="Left">
+        <action name="Resize">
+          <edge>right</edge>
+        </action>
+      </mousebind>
+    </context>
+    <context name="Bottom">
+      <mousebind action="Drag" button="Left">
+        <action name="Resize">
+          <edge>bottom</edge>
+        </action>
+      </mousebind>
+      <mousebind action="Press" button="Right">
+        <action name="Focus"/>
+        <action name="Raise"/>
+        <action name="ShowMenu">
+          <menu>client-menu</menu>
+        </action>
+      </mousebind>
+    </context>
+    <context name="TRCorner BRCorner TLCorner BLCorner">
+      <mousebind action="Press" button="Left">
+        <action name="Focus"/>
+        <action name="Raise"/>
+        <action name="Unshade"/>
+      </mousebind>
+      <mousebind action="Drag" button="Left">
+        <action name="Resize"/>
+      </mousebind>
+    </context>
+    <context name="Client">
+      <mousebind action="Press" button="Left">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
+      <mousebind action="Press" button="Middle">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
+      <mousebind action="Press" button="Right">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
+    </context>
+    <context name="Icon">
+      <mousebind action="Press" button="Left">
+        <action name="Focus"/>
+        <action name="Raise"/>
+        <action name="Unshade"/>
+        <action name="ShowMenu">
+          <menu>client-menu</menu>
+        </action>
+      </mousebind>
+      <mousebind action="Press" button="Right">
+        <action name="Focus"/>
+        <action name="Raise"/>
+        <action name="ShowMenu">
+          <menu>client-menu</menu>
+        </action>
+      </mousebind>
+    </context>
+    <context name="Shade">
+      <mousebind action="Press" button="Left">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
+      <mousebind action="Click" button="Left">
+        <action name="ToggleShade"/>
+      </mousebind>
+    </context>
+    <context name="Iconify">
+      <mousebind action="Press" button="Left">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
+      <mousebind action="Click" button="Left">
+        <action name="Iconify"/>
+      </mousebind>
+    </context>
+    <context name="Maximize">
+      <mousebind action="Press" button="Left">
+        <action name="Focus"/>
+        <action name="Raise"/>
+        <action name="Unshade"/>
+      </mousebind>
+      <mousebind action="Press" button="Middle">
+        <action name="Focus"/>
+        <action name="Raise"/>
+        <action name="Unshade"/>
+      </mousebind>
+      <mousebind action="Press" button="Right">
+        <action name="Focus"/>
+        <action name="Raise"/>
+        <action name="Unshade"/>
+      </mousebind>
+      <mousebind action="Click" button="Left">
+        <action name="ToggleMaximize"/>
+      </mousebind>
+      <mousebind action="Click" button="Middle">
+        <action name="ToggleMaximize">
+          <direction>vertical</direction>
+        </action>
+      </mousebind>
+      <mousebind action="Click" button="Right">
+        <action name="ToggleMaximize">
+          <direction>horizontal</direction>
+        </action>
+      </mousebind>
+    </context>
+    <context name="Close">
+      <mousebind action="Press" button="Left">
+        <action name="Focus"/>
+        <action name="Raise"/>
+        <action name="Unshade"/>
+      </mousebind>
+      <mousebind action="Click" button="Left">
+        <action name="Close"/>
+      </mousebind>
+    </context>
+    <!-- Para habilitar a mudança de àrea de trabalho com a roda do mouse e isso é chato pacas |
+         Enable/Disable switching desktop OpenBox with mouse wheel
+    <context name="Desktop">
+      <mousebind action="Click" button="Up">
+        <action name="GoToDesktop">
+          <to>previous</to>
+        </action>
+      </mousebind>
+      <mousebind action="Click" button="Down">
+        <action name="GoToDesktop">
+          <to>next</to>
+        </action>
+      </mousebind>
+      <mousebind action="Click" button="A-Up">
+        <action name="GoToDesktop">
+          <to>previous</to>
+        </action>
+      </mousebind>
+      <mousebind action="Click" button="A-Down">
+        <action name="GoToDesktop">
+          <to>next</to>
+        </action>
+      </mousebind>
+      <mousebind action="Click" button="C-A-Up">
+        <action name="GoToDesktop">
+          <to>previous</to>
+        </action>
+      </mousebind>
+      <mousebind action="Click" button="C-A-Down">
+        <action name="GoToDesktop">
+          <to>next</to>
+        </action>
+      </mousebind>
+      <mousebind action="Press" button="Left">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
+      <mousebind action="Press" button="Right">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
+    </context>
+    -->
+    <context name="Root">
+      <!-- Menus -->
+      <!--<mousebind action="Press" button="Middle">
+        <action name="ShowMenu">
+          <menu>client-list-combined-menu</menu>
+        </action>
+      </mousebind>-->
+      <mousebind action="Press" button="Right">
+        <action name="ShowMenu">
+          <!--menu>root-menu</menu-->
+        </action>
+      </mousebind>
+    </context>
+    <context name="MoveResize">
+      <mousebind action="Click" button="Up">
+        <action name="GoToDesktop">
+          <to>previous</to>
+        </action>
+      </mousebind>
+      <mousebind action="Click" button="Down">
+        <action name="GoToDesktop">
+          <to>next</to>
+        </action>
+      </mousebind>
+      <mousebind action="Click" button="A-Up">
+        <action name="GoToDesktop">
+          <to>previous</to>
+        </action>
+      </mousebind>
+      <mousebind action="Click" button="A-Down">
+        <action name="GoToDesktop">
+          <to>next</to>
+        </action>
+      </mousebind>
+    </context>
+  </mouse>
+  <menu>
+    <!-- You can specify more than one menu file in here and they are all loaded,
+       just don't make menu ids clash or, well, it'll be kind of pointless -->
+    <!-- default menu file (or custom one in $HOME/.config/openbox/) -->
+    <file>menu.xml</file>
+    <hideDelay>0</hideDelay>
+    <!-- if a press-release lasts longer than this setting (in milliseconds), the
+       menu is hidden again -->
+    <middle>no</middle>
+    <!-- center submenus vertically about the parent entry -->
+    <submenuShowDelay>0</submenuShowDelay>
+    <!-- time to delay before showing a submenu after hovering over the parent
+       entry.
+       if this is a negative value, then the delay is infinite and the
+       submenu will not be shown until it is clicked on -->
+    <submenuHideDelay>0</submenuHideDelay>
+    <!-- time to delay before hiding a submenu when selecting another
+       entry in parent menu
+       if this is a negative value, then the delay is infinite and the
+       submenu will not be hidden until a different submenu is opened -->
+    <showIcons>yes</showIcons>
+    <!-- controls if icons appear in the client-list-(combined-)menu -->
+    <manageDesktops>yes</manageDesktops>
+    <!-- show the manage desktops section in the client-list-(combined-)menu -->
+  </menu>
+  <applications>
+    <!-- match all windows, and remove their decorations -->
+    <application class="*">
+      <decor>no</decor>
+    </application>
+    <!-- my xterm with screen in it must always be on desktop 2,
+       maximized and below everything else -->
+    <application name="screen">
+      <desktop>2</desktop>
+      <maximized>yes</maximized>
+      <layer>below</layer>
+    </application>
+    <!-- i want QbitTorrent on desktop 10 and maximized -->
+    <application name="qbittorrent">
+      <!--<desktop>10</desktop>-->
+      <maximized>yes</maximized>
+    </application>
+    <!-- i want pavucontrol maximized -->
+    <application name="pavucontrol">
+      <maximized>yes</maximized>
+    </application>
+    <!-- i want Obkey maximized -->
+    <application name="obkey">
+      <maximized>yes</maximized>
+    </application>
+    <!-- i want Howl maximized -->
+    <application name="howl">
+      <maximized>yes</maximized>
+    </application>
+
+    <!-- xpad no focus -->
+    <application class="xpad" name="xpad">
+      <decor>no</decor>
+      <shade>no</shade>
+      <focus>no</focus>
+      <desktop>all</desktop>
+      <layer>above</layer>
+    </application>
+
+    <!-- V4l ffplay overlay -->
+    <!--application class="ffplay" name="ffplay" role="ffplay" type="normal"-->
+    <application class="ffplay" name="ffplay">
+      <decor>no</decor>
+      <shade>no</shade>
+      <position force="yes">
+        <!-- start pos at (0,0), top-left corner -->
+        <!-- start pos at (-1,-1), bottom-right corner -->
+        <x>-1</x>
+        <y>-1</y>
+        <!-- monitor>1</monitor -->
+      </position>
+      <size>
+        <!-- go in height & width only 50%, one quarter of the screen -->
+        <width>15%</width>
+        <height>20%</height>
+      </size>
+      <focus>no</focus>
+      <desktop>all</desktop>
+      <layer>above</layer>
+      <iconic>no</iconic>
+    </application>
+
+    <!-- MPV maximized -->
+    <application name="mpv">
+      <maximized>yes</maximized>
+      <!--<shade>yes</shade>
+      <focus>yes</focus>
+      <layer>below</layer>-->
+    </application>
+    <!-- MPlayer will follow me around when i switch desktop.
+       that way i can always watch my vids when coding.
+       same goes for Realplayer -->
+    <application class="MPlayer">
+      <desktop>all</desktop>
+      <layer>above</layer>
+    </application>
+    <application class="Realplay.bin">
+      <desktop>all</desktop>
+      <layer>above</layer>
+    </application>
+    <!-- i want nwn always maximized, same for openttd -->
+    <application name="Neverwinter Nights Client">
+      <maximized>yes</maximized>
+    </application>
+    <application class="openttd">
+      <maximized>yes</maximized>
+    </application>
+    <!-- A is for Amarok, A is the 1st letter in the alphabet, so
+       move Amarok to the first desktop -->
+    <application class="Amarokapp">
+      <desktop>1</desktop>
+      <maximized>yes</maximized>
+    </application>
+    <!-- Easytag is obviously something which belongs on desktop 6, duh -->
+    <application name="easytag">
+      <desktop>6</desktop>
+      <maximized>yes</maximized>
+    </application>
+  </applications>
+  <!--
+  # this is an example with comments through out. use these to make your
+  # own rules, but without the comments of course.
+  # you may use one or more of the name/class/role/title/type rules to specify
+  # windows to match
+
+  <application name="the window's _OB_APP_NAME property (see obxprop)"
+              class="the window's _OB_APP_CLASS property (see obxprop)"
+          groupname="the window's _OB_APP_GROUP_NAME property (see obxprop)"
+         groupclass="the window's _OB_APP_GROUP_CLASS property (see obxprop)"
+               role="the window's _OB_APP_ROLE property (see obxprop)"
+              title="the window's _OB_APP_TITLE property (see obxprop)"
+               type="the window's _OB_APP_TYPE property (see obxprob)..
+                      (if unspecified, then it is 'dialog' for child windows)">
+  # you may set only one of name/class/role/title/type, or you may use more
+  # than one together to restrict your matches.
+
+  # the name, class, role, and title use simple wildcard matching such as those
+  # used by a shell. you can use * to match any characters and ? to match
+  # any single character.
+
+  # the type is one of: normal, dialog, splash, utility, menu, toolbar, dock,
+  #    or desktop
+
+  # when multiple rules match a window, they will all be applied, in the
+  # order that they appear in this list
+
+
+    # each rule element can be left out or set to 'default' to specify to not
+    # change that attribute of the window
+
+    <decor>yes</decor>
+    # enable or disable window decorations
+
+    <shade>no</shade>
+    # make the window shaded when it appears, or not
+
+    <position force="no">
+      # the position is only used if both an x and y coordinate are provided
+      # (and not set to 'default')
+      # when force is "yes", then the window will be placed here even if it
+      # says you want it placed elsewhere.  this is to override buggy
+      # applications who refuse to behave
+      <x>center</x>
+      # a number like 50, or 'center' to center on screen. use a negative number
+      # to start from the right (or bottom for <y>), ie -50 is 50 pixels from
+      # the right edge (or bottom). use 'default' to specify using value
+      # provided by the application, or chosen by openbox, instead.
+      <y>200</y>
+      <monitor>1</monitor>
+      # specifies the monitor in a xinerama setup.
+      # 1 is the first head, or 'mouse' for wherever the mouse is
+    </position>
+
+    <size>
+      # the size to make the window.
+      <width>20</width>
+      # a number like 20, or 'default' to use the size given by the application.
+      # you can use fractions such as 1/2 or percentages such as 75% in which
+      # case the value is relative to the size of the monitor that the window
+      # appears on.
+      <height>30%</height>
+    </size>
+
+    <focus>yes</focus>
+    # if the window should try be given focus when it appears. if this is set
+    # to yes it doesn't guarantee the window will be given focus. some
+    # restrictions may apply, but Openbox will try to
+
+    <desktop>1</desktop>
+    # 1 is the first desktop, 'all' for all desktops
+
+    <layer>normal</layer>
+    # 'above', 'normal', or 'below'
+    # https://unix.stackexchange.com/questions/556456/openbox-window-on-the-below-layer-is-inaccessible
+
+    <iconic>no</iconic>
+    # make the window iconified when it appears, or not
+
+    <skip_pager>no</skip_pager>
+    # asks to not be shown in pagers
+
+    <skip_taskbar>no</skip_taskbar>
+    # asks to not be shown in taskbars. window cycling actions will also
+    # skip past such windows
+
+    <fullscreen>yes</fullscreen>
+    # make the window in fullscreen mode when it appears
+
+    <maximized>true</maximized>
+    # 'Horizontal', 'Vertical' or boolean (yes/no)
+  </application>
+
+  # end of the example
+-->
+</labwc_config>
