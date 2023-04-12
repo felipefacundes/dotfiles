@@ -1,0 +1,18 @@
+Apr 09 19:33 : exception: Failed to open '/home/rfacundes/.config/mpd/state': No such file or directory
+Apr 09 19:34 : exception: Failed to open '/home/rfacundes/.config/mpd/state': No such file or directory
+Apr 09 19:35 : exception: Failed to open '/home/rfacundes/.config/mpd/state': No such file or directory
+Apr 09 19:37 : exception: Failed to open '/home/rfacundes/.config/mpd/state': No such file or directory
+Apr 09 19:37 : exception: Failed to open '/home/rfacundes/.config/mpd/state': No such file or directory
+Apr 09 20:11 : config: option 'mixer_device' on line 223 was not recognized
+Apr 09 20:11 : config: option 'mixer_control' on line 224 was not recognized
+Apr 09 20:11 : config: option 'mixer_index' on line 225 was not recognized
+Apr 09 20:12 : config: option 'mixer_device' on line 223 was not recognized
+Apr 09 20:12 : config: option 'mixer_control' on line 224 was not recognized
+Apr 09 20:12 : config: option 'mixer_index' on line 225 was not recognized
+Apr 09 21:19 : update: removing Music/children-logo-116101.mp3
+Apr 09 21:19 : update: removing Music/children-logo-116101.mp3
+Apr 09 21:19 : update: removing Music/children-logo-116101.mp3
+Apr 09 22:17 : update: added /children-logo-116101.mp3
+Apr 09 22:17 : update: added /children-logo-116101.mp3
+Apr 09 22:17 : update: added /children-logo-116101.mp3
+Apr 09 22:17 : exception: Failed to save database: Failed to commit /home/rfacundes/.config/mpd/database: File exists

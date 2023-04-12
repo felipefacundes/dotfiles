@@ -1,0 +1,12 @@
+sw_volume: 100
+audio_device_state:1:alsa_output.pci-0000_00_1f.3.analog-stereo.monitor
+state: stop
+random: 0
+repeat: 0
+single: 0
+consume: 0
+crossfade: 0
+mixrampdb: 0.000000
+mixrampdelay: -1.000000
+playlist_begin
+playlist_end
