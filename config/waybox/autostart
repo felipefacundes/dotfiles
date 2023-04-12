@@ -1,0 +1,46 @@
+#
+# These things are run when a Waybox Wayland session is started.
+# Copy to $XDG_CONFIG_HOME/waybox/autostart to customize.
+#
+
+#
+# Change from Openbox: the desktop environment's config tools should begin
+# through autostart elements (e.g. /etc/xdg/autostart); there's no need to
+# specify them here.
+#
+
+
+# Update the DBus environment
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE
+
+# Start a dock
+#cairo-dock &
+
+# Start a panel
+(waybar || yambar) &
+
+# Start a notification daemon
+mako &
+
+# FIX PULSEAUDIO
+bash -c 'while true; do sleep 7; if ! pactl stat; then systemctl --user stop pulseaudio.service pulseaudio.socket; sleep 2; pulseaudio --kill; sleep 2; pulseaudio --start; sleep 2; if ! pactl stat; then systemctl --user restart pulseaudio.service; sleep 2; systemctl --user reset-failed pulseaudio.service; fi; fi; done' &
+
+# SWWW DAEMON
+swww init & #bash <(sleep 1; swww img "$(find ${HOME}/Pictures/Wallpapers/ -name '*[jJpP][nNpP][gG]' | shuf -n1)") &
+
+# Load a random wallpaper
+random_wallpaper() {
+    while true
+        do
+        time="5m"
+        #data_dirs=${XDG_DATA_DIRS:-${datadir:-/usr/share}}:${XDG_DATA_HOME:-~/.local/share}
+        data_dir="${HOME}/Pictures/Wallpapers"
+        for i in "${data_dir}"/*.[JjPpSs][PpNnVv][Gg]
+        do
+            swww img "${i}" &
+            sleep "${time}"
+        done
+    done
+}
+
+random_wallpaper &

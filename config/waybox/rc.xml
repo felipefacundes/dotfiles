@@ -1,0 +1,476 @@
+<?xml version="1.0"?>
+<openbox_config xmlns="http://openbox.org/3.4/rc" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <!--
+# 😉 Credits: Felipe Facundes
+# 﨧 Telegram: @FeFacundes
+# 﨧 Telegram Group: t.me/winehq_linux
+# 😅 FAQ:  http://openbox.org/wiki/Main_Page
+#              http://openbox.org/wiki/Special:Search/Help
+#              http://openbox.org/wiki/Help:Actions
+-->
+  <keyboard>                                                                   -->
+  <resistance>
+    <strength>10</strength>
+    <screen_edge_strength>20</screen_edge_strength>
+  </resistance>
+  <focus>
+    <focusNew>yes</focusNew>
+    <!-- always try to focus new windows when they appear. other rules do
+       apply -->
+    <followMouse>no</followMouse>
+    <!-- Move o foco da janela com o passar do mouse | move focus to a window when you move the mouse into it -->
+    <focusLast>yes</focusLast>
+    <!-- focus the last used window when changing desktops, instead of the one
+       under the mouse pointer. when followMouse is enabled -->
+    <underMouse>no</underMouse>
+    <!-- move focus under the mouse, even when the mouse is not moving -->
+    <focusDelay>0</focusDelay>
+    <!-- when followMouse is enabled, the mouse must be inside the window for
+       this many milliseconds (1000 = 1 sec) before moving focus to it -->
+    <raiseOnFocus>yes</raiseOnFocus>
+    <!-- Levanta a janela focada com o passar do mouse (para funcionar tem que habilitar: "followMouse" | when followMouse is enabled, and a window is given focus by moving the
+       mouse into it, also raise the window -->
+  </focus>
+  <placement>
+    <policy>Smart</policy>
+    <!-- 'Smart' or 'UnderMouse' -->
+    <center>yes</center>
+    <!-- whether to place windows in the center of the free area found or
+       the top left corner -->
+    <monitor>Primary</monitor>
+    <!-- with Smart placement on a multi-monitor system, try to place new windows
+       on: 'Any' - any monitor, 'Mouse' - where the mouse is, 'Active' - where
+       the active window is, 'Primary' - only on the primary monitor -->
+    <primaryMonitor>1</primaryMonitor>
+    <!-- The monitor where Openbox should place popup dialogs such as the
+       focus cycling popup, or the desktop switch popup.  It can be an index
+       from 1, specifying a particular monitor.  Or it can be one of the
+       following: 'Mouse' - where the mouse is, or
+                  'Active' - where the active window is -->
+  </placement>
+
+    <!--                         -->
+  <theme>
+    <name>openColor orange</name>
+    <titleLayout>NLIMC</titleLayout>
+    <!--
+      available characters are NDSLIMC, each can occur at most once.
+      N: window icon
+      L: window label (AKA title).
+      I: iconify
+      M: maximize
+      C: close
+      S: shade (roll up/down)
+      D: omnipresent (on all desktops).
+  -->
+    <keepBorder>yes</keepBorder>
+    <animateIconify>no</animateIconify>
+    <font place="ActiveWindow">
+      <name>Sans</name>
+      <size>12</size>
+      <!-- font size in points -->
+      <weight>Normal</weight>
+      <!-- 'bold' or 'normal' -->
+      <slant>Normal</slant>
+      <!-- 'italic' or 'normal' -->
+    </font>
+    <font place="InactiveWindow">
+      <name>Sans</name>
+      <size>8</size>
+      <!-- font size in points -->
+      <weight>Bold</weight>
+      <!-- 'bold' or 'normal' -->
+      <slant>Normal</slant>
+      <!-- 'italic' or 'normal' -->
+    </font>
+    <font place="MenuHeader">
+      <name>Sans</name>
+      <size>11</size>
+      <!-- font size in points -->
+      <weight>Normal</weight>
+      <!-- 'bold' or 'normal' -->
+      <slant>Normal</slant>
+      <!-- 'italic' or 'normal' -->
+    </font>
+    <font place="MenuItem">
+      <name>Sans</name>
+      <size>11</size>
+      <!-- font size in points -->
+      <weight>Normal</weight>
+      <!-- 'bold' or 'normal' -->
+      <slant>Normal</slant>
+      <!-- 'italic' or 'normal' -->
+    </font>
+    <font place="ActiveOnScreenDisplay">
+      <name>Sans</name>
+      <size>11</size>
+      <!-- font size in points -->
+      <weight>Normal</weight>
+      <!-- 'bold' or 'normal' -->
+      <slant>Normal</slant>
+      <!-- 'italic' or 'normal' -->
+    </font>
+    <font place="InactiveOnScreenDisplay">
+      <name>Sans</name>
+      <size>9</size>
+      <!-- font size in points -->
+      <weight>Bold</weight>
+      <!-- 'bold' or 'normal' -->
+      <slant>Normal</slant>
+      <!-- 'italic' or 'normal' -->
+    </font>
+  </theme>
+  <desktops>
+    <!-- this stuff is only used at startup, pagers allow you to change them
+       during a session
+
+       these are default values to use when other ones are not already set
+       by other applications, or saved in your session
+
+       use obconf if you want to change these without having to log out
+       and back in -->
+    <number>10</number>
+    <firstdesk>1</firstdesk>
+    <names>
+      <name>I</name>
+      <name>II</name>
+      <name>III</name>
+      <name>IV</name>
+      <name>V</name>
+      <name>VI</name>
+      <name>VII</name>
+      <name>VIII</name>
+      <name>IX</name>
+      <name>X</name>
+    </names>
+    <popupTime>875</popupTime>
+    <!-- The number of milliseconds to show the popup for when switching
+       desktops.  Set this to 0 to disable the popup. -->
+  </desktops>
+  <resize>
+    <drawContents>yes</drawContents>
+    <popupShow>Nonpixel</popupShow>
+    <!-- 'Always', 'Never', or 'Nonpixel' (xterms and such) -->
+    <popupPosition>Center</popupPosition>
+    <!-- 'Center', 'Top', or 'Fixed' -->
+    <popupFixedPosition>
+      <!-- these are used if popupPosition is set to 'Fixed' -->
+      <x>10</x>
+      <!-- positive number for distance from left edge, negative number for
+         distance from right edge, or 'Center' -->
+      <y>10</y>
+      <!-- positive number for distance from top edge, negative number for
+         distance from bottom edge, or 'Center' -->
+    </popupFixedPosition>
+  </resize>
+  <!-- You can reserve a portion of your screen where windows will not cover when
+     they are maximized, or when they are initially placed.
+     Many programs reserve space automatically, but you can use this in other
+     cases. -->
+   <!-- You can reserve a portion of your screen where windows will not cover when
+       they are maximized, or when they are initially placed. -->
+  <margins>
+    <top>0</top>
+    <bottom>0</bottom>
+    <left>0</left>
+    <right>0</right>
+  </margins>
+
+    <!-- Mudar de Desktop Virtual -->
+    <keybind key="W-1">
+      <action name="GoToDesktop">
+        <to>1</to>
+      </action>
+    </keybind>
+    <keybind key="W-2">
+      <action name="GoToDesktop">
+        <to>2</to>
+      </action>
+    </keybind>
+    <keybind key="W-3">
+      <action name="GoToDesktop">
+        <to>3</to>
+      </action>
+    </keybind>
+    <keybind key="W-4">
+      <action name="GoToDesktop">
+        <to>4</to>
+      </action>
+    </keybind>
+    <keybind key="W-5">
+      <action name="GoToDesktop">
+        <to>5</to>
+      </action>
+    </keybind>
+    <keybind key="W-6">
+      <action name="GoToDesktop">
+        <to>6</to>
+      </action>
+    </keybind>
+    <keybind key="W-7">
+      <action name="GoToDesktop">
+        <to>7</to>
+      </action>
+    </keybind>
+    <keybind key="W-8">
+      <action name="GoToDesktop">
+        <to>8</to>
+      </action>
+    </keybind>
+    <keybind key="W-9">
+      <action name="GoToDesktop">
+        <to>9</to>
+      </action>
+    </keybind>
+    <keybind key="W-0">
+      <action name="GoToDesktop">
+        <to>10</to>
+      </action>
+    </keybind>
+    <keybind key="S-W-1">
+      <action name="SendToDesktop">
+        <desktop>1</desktop>
+      </action>
+      <action name="DesktopLast"/>
+    </keybind>
+    <keybind key="S-W-2">
+      <action name="SendToDesktop">
+        <desktop>2</desktop>
+      </action>
+      <action name="DesktopLast"/>
+    </keybind>
+    <keybind key="S-W-3">
+      <action name="SendToDesktop">
+        <desktop>3</desktop>
+      </action>
+      <action name="DesktopLast"/>
+    </keybind>
+    <keybind key="S-W-4">
+      <action name="SendToDesktop">
+        <desktop>4</desktop>
+      </action>
+      <action name="DesktopLast"/>
+    </keybind>
+    <keybind key="S-W-5">
+      <action name="SendToDesktop">
+        <desktop>5</desktop>
+      </action>
+      <action name="DesktopLast"/>
+    </keybind>
+    <keybind key="S-W-6">
+      <action name="SendToDesktop">
+        <desktop>6</desktop>
+      </action>
+      <action name="DesktopLast"/>
+    </keybind>
+    <keybind key="S-W-7">
+      <action name="SendToDesktop">
+        <desktop>7</desktop>
+      </action>
+      <action name="DesktopLast"/>
+    </keybind>
+    <keybind key="S-W-8">
+      <action name="SendToDesktop">
+        <desktop>8</desktop>
+      </action>
+      <action name="DesktopLast"/>
+    </keybind>
+    <keybind key="S-W-9">
+      <action name="SendToDesktop">
+        <desktop>9</desktop>
+      </action>
+      <action name="DesktopLast"/>
+    </keybind>
+    <keybind key="S-W-0">
+      <action name="SendToDesktop">
+        <desktop>10</desktop>
+      </action>
+      <action name="DesktopLast"/>
+    </keybind>
+    <keybind key="C-W-1">
+      <action name="SendToDesktop">
+        <desktop>1</desktop>
+      </action>
+    </keybind>
+    <keybind key="C-W-2">
+      <action name="SendToDesktop">
+        <desktop>2</desktop>
+      </action>
+    </keybind>
+    <keybind key="C-W-3">
+      <action name="SendToDesktop">
+        <desktop>3</desktop>
+      </action>
+    </keybind>
+    <keybind key="C-W-4">
+      <action name="SendToDesktop">
+        <desktop>4</desktop>
+      </action>
+    </keybind>
+    <keybind key="C-W-5">
+      <action name="SendToDesktop">
+        <desktop>5</desktop>
+      </action>
+    </keybind>
+    <keybind key="C-W-6">
+      <action name="SendToDesktop">
+        <desktop>6</desktop>
+      </action>
+    </keybind>
+    <keybind key="C-W-7">
+      <action name="SendToDesktop">
+        <desktop>7</desktop>
+      </action>
+    </keybind>
+    <keybind key="C-W-8">
+      <action name="SendToDesktop">
+        <desktop>8</desktop>
+      </action>
+    </keybind>
+    <keybind key="C-W-9">
+      <action name="SendToDesktop">
+        <desktop>9</desktop>
+      </action>
+    </keybind>
+    <keybind key="C-W-0">
+      <action name="SendToDesktop">
+        <desktop>10</desktop>
+      </action>
+    </keybind>
+    <keybind key="W-apostrophe">
+      <action name="DesktopLast"/>
+    </keybind>
+    <keybind key="S-A-0">
+      <action name="ToggleOmnipresent"/>
+    </keybind>
+    <keybind key="A-8">
+      <action name="ToggleAlwaysOnTop"/>
+    </keybind>
+    <keybind key="W-d">
+      <action name="ToggleShowDesktop"/>
+    </keybind>
+    <!--                         -->
+    <!-- Keybindings for windows -->
+    <keybind key="A-F4">
+      <action name="Close"/>
+    </keybind>
+    <keybind key="C-Escape">
+      <action name="Exit"/>
+    </keybind>
+    <keybind key="W-c">
+      <action name="Reconfigure"/>
+    </keybind>
+    <keybind key="W-m">
+      <action name="Iconify"/>
+    </keybind>
+    <keybind key="W-a">
+      <action name="ToggleMaximize"/>
+    </keybind>
+    <keybind key="W-s">
+      <action name="Shade"/>
+    </keybind>
+    <keybind key="W-S-S">
+      <action name="Unshade"/>
+    </keybind>
+    <!-- Keybindings for window switching -->
+    <keybind key="A-Tab">
+      <action name="NextWindow"/>
+      <action name="Unshade"/>
+    </keybind>
+    <keybind key="S-A-Tab">
+      <action name="PreviousWindow"/>
+      <action name="Unshade"/>
+    </keybind>
+    <!-- Keybindings for running applications -->
+    <keybind key="W-t">
+      <action name="Execute">
+        <execute>$TERMINAL</execute>
+      </action>
+    </keybind>
+    <keybind key="C-S-space">
+      <action name="Execute">
+        <execute>synapse</execute>
+      </action>
+    </keybind>
+    <keybind key="Print">
+      <action name="Execute">
+        <execute>grim "$(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d-%H%M%S_grim_fs.png')"</execute>
+      </action>
+    </keybind>
+    <keybind key="A-Sys_Req">
+      <action name="Execute">
+        <execute>grim -g "$(slurp -d)" "$(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d-%H%M%S_grim_sel.png')"</execute>
+      </action>
+    </keybind>
+    <!-- Postit -->
+    <keybind key="W-A-p">
+      <action name="Execute">
+        <command>xpad -t</command>
+      </action>
+    </keybind>
+    <!-- Telegram -->
+    <keybind key="W-A-t">
+      <action name="Execute">
+        <command>bash -c 'TELEG=`wmctrl -l | grep "Telegram" | head -n 1 | awk "{print $1 }"`; if ! pidof telegram-desktop; then telegram-desktop; elif xdotool windowactivate "$TELEG"; then echo Ok; else killall -SIGUSR1 telegram-desktop; nohup telegram-desktop; fi' #xdotool windowstate --toggle HIDDEN "$TELEG"</command>
+      </action>
+    </keybind>
+    <keybind key="A-F2">
+      <action name="Execute">
+        <execute>synapse</execute>
+      </action>
+    </keybind>
+    <keybind key="W-e">
+      <action name="Execute">
+        <execute>nautilus || pcmanfm</execute>
+      </action>
+    </keybind>
+    <keybind key="W-o">
+      <action name="Execute">
+        <execute>$TERMINAL -e fff</execute>
+      </action>
+    </keybind>
+    <keybind key="W-w">
+      <action name="Execute">
+        <execute>bash -c 'firefox=`pidof firefox`; if [ -n "$firefox" ]; then xdotool search "Mozilla Firefox" windowactivate --sync key --clearmodifiers ctrl+l; else nohup firefox; /dev/null; sleep 4; exec xdotool key alt+3; fi'</execute>
+      </action>
+    </keybind>
+    <!-- Media keys -->
+    <keybind key="XF86AudioMute">
+      <action name="Execute">
+        <execute>amixer -c 0 -D pulse -q sset Master toggle</execute>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioLowerVolume">
+      <action name="Execute">
+        <execute>amixer -c 0 -q set Master 3%-</execute>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioRaiseVolume">
+      <action name="Execute">
+        <execute>amixer -c 0 -q set Master 3%+</execute>
+      </action>
+    </keybind>
+  </keyboard>
+  <!-- Configuration for mice and other pointers. <mouse> instead of <pointer> only for backwards compatibility. -->
+  <mouse>
+    <!-- libinput configuration. -->
+    <!-- <libinput>
+      <accelProfile>adaptive</accelProfile>
+      <accelSpeed>0.9</accelSpeed>
+      <calibrationMatrix>0 0 0 0 0 0</calibrationMatrix>
+      <clickMethod>buttonAreas</clickMethod>
+      <disableWhileTrackpointing>enabled</disableWhileTrackpointing>
+      <disableWhileTyping>enabled</disableWhileTyping>
+      <leftHanded>disabled</leftHanded>
+      <middleEmulation>enabled</middleEmulation>
+      <naturalScroll>disabled</naturalScroll>
+      <scrollButton>BTN_MIDDLE</scrollButton>
+      <scrollButtonLock>disabled</scrollButtonLock>
+      <scrollMethod>twofinger</scrollMethod>
+      <tap>enabled</tap>
+      <tapButtonMap>lrm</tapButtonMap>
+      <tapDrag>enabled</tapDrag>
+      <tapDragLock>enabled</tapDragLock>
+    </libinput> -->
+  </mouse>
+</openbox_config>
