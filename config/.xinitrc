@@ -1,17 +1,18 @@
-#!/bin/bash
+ #!/bin/bash
 
-# User-specific variables should be placed in $HOME/.config/openbox/environment
+# User-specific variables should be placed in ${HOME}/.config/openbox/environment
 #
 
 export DISPLAY=:0
 # set main XDG variables
 export XDG_CONFIG_DIRS=/etc/xdg
-export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_DATA_DIRS=/usr/local/share:/usr/share
 export XDG_DATA_HOME="${HOME}/.local/share"
 export XDG_CURRENT_DESKTOP=OPENBOX
 export XDG_SESSION_DESKTOP=openbox
 export XDG_MENU_PREFIX=openbox-
+export XDG_SESSION_TYPE=x11
 
 # clean DM influence
 export DESKTOP_SESSION=openbox
@@ -29,7 +30,7 @@ export GTK2_RC_FILES="${HOME}/.gtkrc-2.0:${XDG_CONFIG_HOME}/gtk-2.0/gtkrc:/etc/g
 export QT_QPA_PLATFORMTHEME=gtk2
 export QT_QPA_PLATFORM=xcb
 export QT_STYLE_OVERRIDE=gtk2
-export GTK_RC_FILES=~/.config/gtk-3.0/settings.ini
+export GTK_RC_FILES="${XDG_CONFIG_HOME:-${HOME}/.config}/gtk-3.0/settings.ini"
 
 # see https://unix.stackexchange.com/a/295652/332452
 source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
@@ -41,7 +42,7 @@ export SSH_AUTH_SOCK
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 # see https://github.com/NixOS/nixpkgs/issues/14966#issuecomment-520083836
-mkdir -p "$HOME"/.local/share/keyrings
+mkdir -p "${HOME}"/.local/share/keyrings
 
 
 # Cursor Theme fix for WMs: openbox, i3 and more...
@@ -49,25 +50,18 @@ mkdir -p "$HOME"/.local/share/keyrings
 xsetroot -cursor_name left_ptr
 xrdb -merge ~/.Xresources
 
-cursor_theme_fix()
+only_xrdb()
 {
-while true
-    do sleep 5
-          export cursor_theme=`cat ~/.config/gtk-3.0/settings.ini | sed -n 5p | cut -c 21-333`
-          export cursor_size=`cat ~/.config/gtk-3.0/settings.ini | grep gtk-cursor-theme-size= | cut -c 23-25`
-          export cursor_theme_old=`cat ~/.Xresources | sed -n 2p | cut -c 16-333`
-          export cursor_size_old=`cat ~/.Xresources | sed -n 3p | cut -c 15-333`
-          export cursor_theme_fix_origin=`cat ~/.gtkrc-2.0 | sed -n 8p | sed 's/"//' | sed 's/"//' | cut -c 23-333`
-          export cursor_theme_fix_replace=`cat ~/.config/gtk-3.0/settings.ini | grep gtk-icon-theme-name= | cut -c 21-333`
-          #export cursor_theme_fix_replace=`cat ~/.config/gtk-3.0/settings.ini | sed -n 5p | cut -c 21-333`
-          sed -i "s|$cursor_theme_fix_replace|$cursor_theme_fix_origin|g" ~/.config/gtk-3.0/settings.ini
-          sed -i "2 s|$cursor_theme_old|$cursor_theme|g" ~/.Xresources
-          sed -i "3 s|$cursor_size_old|$cursor_size|g" ~/.Xresources
-          xsetroot -cursor_name left_ptr
-          #export XCURSOR_THEME="$cursor_name"
-          #export XCURSOR_SIZE="$cursor_size"
-          xrdb -merge ~/.Xresources &
-done
+    while true; 
+    do 
+        xrdb ~/.Xresources > /dev/null 2>&1
+        xrdb -I${HOME} ~/.Xresources > /dev/null 2>&1
+        xrdb -merge -I${HOME} ~/.Xresources > /dev/null 2>&1
+        xrdb -merge ~/.Xresources > /dev/null 2>&1
+        xsetroot -cursor_name left_ptr > /dev/null 2>&1
+
+        sleep 5
+    done
 }
 
 # Restore persistent volume TV
@@ -119,8 +113,8 @@ random_wallpaper()
 {
     xrefresh -white
     sleep 2
-    feh --bg-fill "$(find "${HOME}"/Imagens/Wallpapers/ -name '*[jJpP][nNpP][gG]' | shuf -n 1)"
-    ###nitrogen --set-auto $(find "${HOME}"/Imagens/Wallpapers/ -name '*[jJpP][nNpP][gG]' | shuf -n1)
+    feh --bg-fill "$(find "${HOME}"/Pictures/Wallpapers/ -name '*[jJpP][nNpP][gG]' | shuf -n 1)"
+    ###nitrogen --set-auto $(find "${HOME}"/Pictures/Wallpapers/ -name '*[jJpP][nNpP][gG]' | shuf -n1)
 }
 
 start_sound()
@@ -144,6 +138,25 @@ start_sound()
 
     pactl load-module module-equalizer-sink
     pactl load-module module-dbus-protocol
+
+    # FIX PULSEAUDIO
+    while true;
+    do sleep 7
+        if ! pactl stat; then
+            systemctl --user stop pulseaudio.service pulseaudio.socket;
+            sleep 2;
+            pulseaudio --kill;
+            sleep 2;
+            pulseaudio --start;
+            sleep 2;
+            if ! pactl stat; then
+                systemctl --user restart pulseaudio.service;
+                sleep 2;
+                systemctl --user reset-failed pulseaudio.service
+            fi
+        fi
+    done
+
 }
 
 # persistent pid of openbox, tint2 and more...
@@ -160,7 +173,7 @@ while true
 
 ######## MY WM:
         if [ -z "${wm}" ]; then
-            if test -z "$DBUS_SESSION_BUS_ADDRESS" ; then
+            if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
                     # if not found, launch a new one
                     export "$(dbus-launch)" &
                     eval "$(dbus-launch --sh-syntax --exit-with-session ${start_wm})" &
@@ -169,14 +182,14 @@ while true
             else
                     # WM LOG OUTPUT
                     echo -e "${start_wm} log - `date +'%d/%m/%Y - %T'`\n\
-------------------------------------\n\n" >> ~/.wm_log &
+------------------------------------\n\n" >> "${wms_logs_dir}"/"${start_wm}_$(date +'%d-%m-%Y - %T')".log
 
                     if [ "${start_wm}" = openbox ]; then
-                        "${start_wm}" --debug >> ~/.wm_log &
+                        "${start_wm}" --debug >> "${wms_logs_dir}"/"${start_wm}_$(date +'%d-%m-%Y - %T')".log &
                     elif [ "${start_wm}" = fluxbox ]; then
-                        "${start_wm}" -log ~/.wm_log &
+                        "${start_wm}" -log "${wms_logs_dir}"/"${start_wm}_$(date +'%d-%m-%Y - %T')".log &
                     else
-                        "${start_wm}" >> ~/.wm_log &
+                        exec "${start_wm}" >> "${wms_logs_dir}"/"${start_wm}_$(date +'%d-%m-%Y - %T')".log &
                     fi
 
                     monitor_mode &
@@ -184,7 +197,9 @@ while true
         fi
 
 ######## TINT2 SLAVE PIDs
-        if [ -z "${tint2}" ]; then
+        if [[ "${start_wm}" != fluxbox ]] && [[ "${start_wm}" != blackbox ]] \
+        && [[ "${start_wm}" != awesome ]] \
+        && [ -n "${wm}" ] && [ -z "${tint2}" ]; then
             xrefresh
             tint2 &
         fi
@@ -197,8 +212,13 @@ while true
         #if [ -n "${tint2}" ] && [ -z "${transmission}" ]; then
         #    exec transmission-gtk -m &
         #fi
-    sleep 7
+    sleep 4
 done
+}
+
+delay_exec() {
+    sleep 25;
+    exec transmission-gtk -m;
 }
 
 # Inert suspend
@@ -240,7 +260,6 @@ while true
         suspend_minutes=`cat "${config_file}" | head -8 | tail -1 | sed '/^$/d' | cut -f2 -d'=' | sed '/^$/d'`
         suspend_milliseconds=`echo "$(((${suspend_minutes}*60)*1000))"`
 
-
         _var_update()
         {
             pid_xscrsaver=`pidof xscreensaver`
@@ -263,17 +282,16 @@ while true
 
                 if ([ -n "${pid_xscrsaver}" ] && [ -z "${pid_xscrsaver_gfx}" ]) && [ -z "${pid_slimlock}" ]; then
                     echo "Lockscreen at `date +'%T'`" | tee -a "${log_file}"
-                    xscreensaver-command -lock >/dev/null 2>&1
-                    sleep 4
-                    xrefresh
+                    xscreensaver-command -lock >/dev/null 2>&1 &
+                    sleep 4 && xrefresh
                 fi
 
                 _var_update
 
                 if [ -z "${pid_xscrsaver}" ] && [ -z "${pid_slimlock}" ]; then
                     echo "Lockscreen at `date +'%T'`" | tee -a "${log_file}"
-                    slimlock >/dev/null 2>&1
-                    xrefresh
+                    slimlock >/dev/null 2>&1 &
+                    sleep 4 && xrefresh
                 fi
             fi
         fi
@@ -326,30 +344,31 @@ done
 
 ####################################################################
 ########################## START SERVICES ##########################
-(systemd-analyze blame > ~/.sysAnalyze) &
 
-start_sound &
-
-#/usr/lib/mate-settings-daemon/mate-settings-daemon &
-random_wallpaper &
-monitor_mode &
-/usr/lib/notify-osd/notify-osd &
-#/usr/lib/mate-notification-daemon/mate-notification-daemon &
-exec transmission-gtk -m &
-
-xrefresh
-#/usr/bin/xfce4-clipman &
-numlockx on &
-#screen -S suspend_if_inert -d -m bash &
-#screen -r suspend_if_inert -X stuff "suspend_if_inert" &
-suspend_if_inert &
-xrefresh
-#~/.local/bin/barcomplete.sh &
+### Video ##
 xcompmgr &
 #picom --experimental-backends --backend glx --xrender-sync-fence &
+random_wallpaper &
+xrefresh
+monitor_mode &
 
-cursor_theme_fix &
+### Sound ###
+start_sound &
+
+### Daemons ###
+#/usr/lib/mate-settings-daemon/mate-settings-daemon &
+/usr/lib/notify-osd/notify-osd &
+#/usr/lib/mate-notification-daemon/mate-notification-daemon &
+
+### System e more ###
+delay_exec &
+numlockx on &
 battery_check &
+only_xrdb &
+suspend_if_inert &
 
+### WM / tint2 e more..
+#screen -S suspend_if_inert -d -m bash &
+#screen -r suspend_if_inert -X stuff "suspend_if_inert" &
 persistent_pid
 
