@@ -121,7 +121,7 @@
 
     "memory": {
         "interval": 5,
-        "format": "{}% ", // ""  "
+        "format": "{}%  ", // ""  "
         "tooltip-format": "{used:0.1f}G used\n{avail:0.1f}G available\n{total:0.1f}G total",
         "states": {
             "warning": 70,
@@ -143,8 +143,8 @@
     "backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
-        // 🌕🌖🌗🌘🌑🌒🌓🌔✨🌟⭐ ☀️🌞🔆🔅😎 ["", "", ""],
-        "format-icons": ["🌑", "🌒", "🌓", "🌔", "🌕", "🌞"], //["🌑", "🌒", "🌘", "🌓", "🌗", "🌖", "🌔", "🌕", "🌞"]
+        // 🌕🌖🌗🌘🌑🌒🌓🌔✨🌟⭐ ☀️🌞🔆🔅😎 ["", "", ""], ["🌑", "🌒", "🌓", "🌔", "🌕", "🌞"],
+        "format-icons": ["", "", "", "", "", "", "", "", ""], //["🌑", "🌒", "🌘", "🌓", "🌗", "🌖", "🌔", "🌕", "🌞"]
         "on-scroll-up": "light -A 1",                           //"format-icons": ["", "", "", "", "", "", "", "", ""]
         "on-scroll-down": "light -U 1"
     },
@@ -246,7 +246,7 @@
         "exec": "bash -c 'wf_rec=$(pidof wf-recorder); if [ -z ${wf_rec} ] ; then echo 󰑋; else echo  ; fi'",
         "exec-if": "exit 0",
         "on-click": "killall -s SIGINT wf-recorder",
-        "on-click-right": "bash <(wf-recorder -c libx265 --audio=`LC_ALL=c pactl list sources | head -n 3 | tail -n1 | awk '{print $2}'` pulse -f ${HOME}/Videos/Capture/WScreen_$(date +%d-%m-%Y_%H:%M:%S).mkv) &",
+        "on-click-right": "bash <(wf_rec=$(pidof wf-recorder); if [ -z ${wf_rec} ] ; then echo wf-recorder -c libx265 --audio=`LANG=en pactl list sources | awk '/Name:/ {print $2}' | head -n1 | tail -n1` -f ${HOME}/Videos/Capture/WScreen_$(date +%Y-%m-%d_%H:%M:%S).mkv; fi) &",
         "signal": 8
 	},
 
@@ -290,9 +290,10 @@
     },
 
 	"custom/menu": {
-		// ⨇,  ⚫🔵⚪💙🩸💧🛟 💎  ⚽🏀🏈⚾🥎🎾🏐🏉🥏🎱🪀  🧡💛💚💙💜🖤🤎🤍💔❣️💝❤️‍🩹❤️‍🔥 
-        //🛑💠🌀Ⓜ️🆗🆖⏺️⚪⚫🔴🔵🟤🟣🟢🟡🟠🔺🔻🔶🔷🔳🔲⬛⬜🟧🟦🟥🟫🟪🟩🟨 🔎👁️👽🤖👾☠️👇👆🤙☝️🎲🧊🎖️🚦🎗️
-		"format": "🎲",
+        //    ⨇   󰣇    󱉙 󱉛 󱉜  󰀖 󰤵 󱝖      󰕈   󰒱   󰣨    󰣚   
+		// ⚫🔵⚪💙🩸💧🛟 💎  ⚽🏀🏈⚾🥎🎾🏐🏉🥏🎱🪀  🧡💛💚💙💜🖤🤎🤍💔❣️💝❤️‍🩹❤️‍🔥 
+        //🛑💠🌀Ⓜ️🆗🆖⏺️⚪⚫🔴🔵🟤🟣🟢🟡🟠🔺🔻🔶🔷🔳🔲⬛⬜🟧🟦🟥🟫🟪🟩🟨 🔎👁️👽🤖👾☠️👇👆🤙☝️🎲🧊🎖️🚦🎗️ 🎲
+		"format": ".",
         "on-click": "nwg-drawer",
         "on-click-right": "rofi -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launchers/misc/appdrawer.rasi",
         "on-click-middle": "pkill -9 rofi"
@@ -315,17 +316,17 @@
         "format":"ﴻ {}" , //"{} ﴻ" 🔝
         "exec": "uptime | awk '{print $3}' | tr -d ','",
         "exec-if": "exit 0",
-        "on-click": "swaynag -t warning -m 'Power Options:' -b 'Exit' 'swaymsg exit' -b 'Reboot' 'swaymsg exec systemctl reboot -i' -b 'Poweroff' 'openrc-shutdown -p now && systemctl shutdown -h now'"
+        "on-click": "swaynag -t warning -m 'Power Options:' -b 'Exit' 'loginctl terminate-session self' -b 'LockScreen' 'swaylock' -b 'Suspend' 'systemctl suspend; swaylock' -b 'Reboot' 'systemctl -i reboot' -b 'Poweroff' 'openrc-shutdown -p now && systemctl shutdown -h now'"
     },
 
     "custom/poweroff": {
         //"format": "" 📴,
-        "format": "",
+        "format": ".",
         "format-alt": "ﴻ {}",
         "tooltip": false,
         "exec": "uptime | awk '{print $3}' | tr -d ','",
         "exec-if": "exit 0",
-        "on-click-right": "swaynag -t warning -m 'Power Options:' -b 'Exit' 'swaymsg exit' -b 'Reboot' 'swaymsg exec systemctl reboot -i' -b 'Poweroff' 'openrc-shutdown -p now && systemctl shutdown -h now'"
+        "on-click-right": "swaynag -t warning -m 'Power Options:' -b 'Exit' 'loginctl terminate-session self' -b 'LockScreen' 'swaylock' -b 'Suspend' 'systemctl suspend; swaylock' -b 'Reboot' 'systemctl -i reboot' -b 'Poweroff' 'openrc-shutdown -p now && systemctl shutdown -h now'"
     },
     
     "custom/gpu": {
