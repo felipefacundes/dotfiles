@@ -1,0 +1,26 @@
+Section "OutputClass"
+    Identifier     "Device0"
+    Driver         "nvidia"
+    Option         "PrimaryGPU" "yes"
+    Option         "Coolbits" "24"
+EndSection
+
+Section "Monitor"
+	Identifier   "Monitor0"
+	VendorName   "Monitor Vendor"
+	ModelName    "Monitor Model"
+    Option "PreferredMode" "1920x1080"
+    Option "DPMS" "true"
+    #Option "RightOf" "DP-1"
+    Option "Primary" "true"
+EndSection
+
+Section "Screen"
+    Identifier     "Screen0"
+    Device         "Device0"
+    Monitor        "Monitor0"
+    DefaultDepth    24
+    SubSection     "Display"
+        Depth       24
+    EndSubSection
+EndSection

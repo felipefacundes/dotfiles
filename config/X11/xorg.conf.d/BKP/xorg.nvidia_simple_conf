@@ -1,0 +1,15 @@
+Section "OutputClass"
+    Identifier "intel"
+    MatchDriver "i915"
+    Driver "modesetting"
+    Option "TearFree" "true"
+    Option "RandRRotation" "True"
+    Option "VirtualHeads" "2"
+EndSection
+
+Section "OutputClass"
+    Identifier "nvidia"
+    MatchDriver "nvidia-drm"
+    Driver "nvidia"
+    Option "PrimaryGPU" "yes"
+EndSection

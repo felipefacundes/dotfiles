@@ -1,0 +1,41 @@
+Section "Files"
+	ModulePath "/usr/lib/nvidia"
+	ModulePath "/usr/lib32/nvidia"
+	ModulePath "/usr/lib32/nvidia/xorg/modules"
+	ModulePath "/usr/lib32/xorg/modules"
+	ModulePath "/usr/lib64/nvidia/xorg/modules"
+	ModulePath "/usr/lib64/nvidia/xorg"
+	ModulePath "/usr/lib64/xorg/modules"
+EndSection
+
+Section "ServerLayout"
+	Identifier "layout"
+	Screen 0 "nvidia"
+	Inactive "intel"
+EndSection
+
+Section "Device"
+	Identifier "nvidia"
+	Driver "nvidia"
+	BusID "PCI:1:0:0"
+	Option "Coolbits" "28"
+	Option "RegistryDwords" "PowerMizerEnable=0x1 PerfLevelSrc=0x3322; PowerMizerDefault=0x1; PowerMizerDefaultAC=0x1"
+EndSection
+
+Section "Screen"
+	Identifier "nvidia"
+	Device "nvidia"
+	Option "AllowEmptyInitialConfiguration"
+EndSection
+
+Section "Device"
+	Identifier "intel"
+	Driver "modesetting"
+	BusID "PCI:0:2:0"
+EndSection
+
+Section "Screen"
+	Identifier "intel"
+	Device "intel"
+EndSection
+
