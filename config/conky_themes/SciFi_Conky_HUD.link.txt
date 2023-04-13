@@ -1,0 +1,1 @@
+git clone https://github.com/SandSux/SciFi_Conky_HUD.git ~/.conky
