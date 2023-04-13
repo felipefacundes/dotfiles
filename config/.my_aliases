@@ -1,4 +1,3 @@
-#!/bin/bash
 #########################################################
 #####  █████╗ ██╗     ██╗ █████╗ ███████╗███████╗███████╗
 ##### ██╔══██╗██║     ██║██╔══██╗██╔════╝██╔════╝██╔════╝
@@ -17,14 +16,37 @@
 # alias bashconfig="mate ~/.bashrc"
 # alias ohmybash="mate ~/.oh-my-bash"
 ######################################
+################# WM #################
+alias help_openbox="bash -c 'ccat --color=always ~/.config/openbox/rc.xml | less -i -R -N --use-color --color=HBCEMNPRSWsu'"
+alias help_hyprland="bash -c 'ccat --color=always ~/.config/hypr/hyprland.conf | less -i -R -N --use-color --color=HBCEMNPRSWsu'"
+alias help_wayfire="bash -c 'ccat --color=always ~/.config/wayfire.ini | less -i -R -N --use-color --color=HBCEMNPRSWsu'"
+alias help_sway="bash -c 'ccat --color=always ~/.config/sway/config | less -i -R -N --use-color --color=HBCEMNPRSWsu'"
+######################################
 ############### System ###############
-alias duplicate_lines='duplicate'
-alias clip="echo -e 'xclip -selection clipboard -i < input_file\nOr\nxclip -sel c < input_file'"
-alias clipcopy='clip'
-alias pbcopy='clip'
-alias clipboard='clip'
 alias b='cd ~/.local/bin'
-alias playongit_review='bash ~/.local/bin/base_for_create_installation_script.sh'
+alias bi='b'
+alias bin='b'
+alias s='sudo'
+alias p='pacman'
+alias sp='s pacman'
+alias spS='s pacman -S'
+alias pSs='pacman -Ss'
+alias sS='screen -S'
+alias sr='screen -r'
+alias sls='screen -ls'
+alias suspend_log='cat /tmp/suspend_if_inert.log'
+alias suspend_if_inert_log='suspend_log'
+alias linux_kernel_update='sudo pacman -Syy linux-headers linux'
+alias kernel_linux_update='linux_kernel_update'
+alias flush='tput bold; tput setaf 3; echo "sudo nft flush ruleset"; tput sgr0; echo; sudo nft flush ruleset'
+alias clipboard='clipboard' #https://getclipboard.app
+alias clip="echo 'Use: clipboard command'"
+alias clip_tip="echo -e 'xclip -selection clipboard -i < input_file\nOr\nxclip -sel c < input_file'"
+alias clipcopy='clip_tip'
+alias pbcopy='clip_tip'
+alias clipboard_tip='clip_tip'
+alias playongit_review='bash <(curl -s https://raw.githubusercontent.com/felipefacundes/PS/master/other_scripts/base/base_for_create_installation_script.sh)'
+alias playongit_create_new_script='playongit_review'
 alias c='clear'
 alias u='sudo pacman -Syyu --noconfirm'
 alias list-gpu='tput bold; tput setaf 3; echo "xrandr --listproviders"; tput sgr0; echo; xrandr --listproviders'
@@ -32,16 +54,14 @@ alias gpu-list='list-gpu'
 alias INTEL='tput bold; tput setaf 3; echo "xrandr --setprovideroutputsource modesetting modesetting"; tput sgr0; xrandr --setprovideroutputsource modesetting modesetting'
 alias NVIDIA='tput bold; tput setaf 3; echo "xrandr --setprovideroutputsource modesetting NVIDIA-0"; tput sgr0; xrandr --setprovideroutputsource modesetting NVIDIA-0'
 alias kl='setxkbmap -option "terminate:ctrl_alt_bksp"; xdotool key ctrl+alt+BackSpace'
-alias wget='tput setaf 9; echo -e "\nAtenção!\n"; tput setaf 6; echo -e "Baixe sites completos com WGET\n"; tput setaf 11; echo -e "wget -r -p -E --execute=robots=off --limit-rate=100k --convert-links --random-wait -U mozilla\n"; tput setaf 7; wget'
-alias dd='dd --help; tput setaf 9; echo -e "\nAtenção!\n"; tput setaf 6; echo -e "Crie pendrives bootáveis de SO: BSDs e Distros Linux\n"; tput setaf 11; echo -e "sudo dd if=DISTRO.iso of=/dev/sdX bs=70k oflag=direct conv=sync status=progress && sync\n"; tput setaf 7; dd'
+alias wget='tput setaf 9; echo -e "\nAtenção!\n"; tput setaf 6; echo -e "Baixe sites completos com WGET\n"; tput setaf 11; echo -e "wget -r -p -E --execute=robots=off --limit-rate=100k --convert-links --random-wait -U mozilla\n\nwget --mirror -p --convert-links -P ./local-dir --user-agent='"'"'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:107.0'"'"' http://www.domain.com/\n\nhttps://www.pair.com/support/kb/paircloud-downloading-files-with-wget/\n"; tput sgr0; wget "$@"'
+alias dd='dd --help; tput setaf 9; echo -e "\nAtenção!\n"; tput setaf 6; echo -e "Crie pendrives bootáveis de SO: BSDs e Distros Linux\n"; tput setaf 11; echo -e "sudo dd if=DISTRO.iso of=/dev/sdX bs=70k oflag=direct conv=sync status=progress && sync\nOu:\nsudo dd if=DISTRO.iso of=/dev/sdX count=1 bs=4M oflag=direct,dsync status=progress && sync"; tput sgr0; dd'
 alias neofetch="~/.make/neofetch/neofetch"
 alias cp="advcp -pgr" # Advanced copy
-alias mv='tput setaf 11; echo -e "mv -v --backup=t\n"; tput setaf 7; mv -v --backup=t'
+alias mv='tput setaf 11; echo -e "mv -v --backup=t\n"; tput sgr0; mv -v --backup=t'
 alias mvd='echo "mv file (date +%d-%m-%Y_%H:%M:%S)"'
 alias aur="yay -S --nodiffmenu --noeditmenu --noupgrademenu --mflags --skipinteg --noconfirm"
 alias cpi="cpupower frequency-info"
-alias bi="cd ~/.local/bin"
-alias py='tput setaf 2; echo -e "install python binaries isolated: python -m venv env\n"; tput setaf 11; echo -e "source ~/.local/bin/python/env/bin/activate\n"; tput sgr0; source ~/.local/bin/python/env/bin/activate'
 alias shutdown="openrc-shutdown -p now; systemctl poweroff -i; shutdown -h now"
 #alias reboot="/usr/bin/openrc-shutdown --reboot now"
 alias des="shutdown"
@@ -53,7 +73,6 @@ alias so="echo source ~/.zshrc; source ~/.zshrc"
 alias lwine="rm -rf ~/.local/share/applications/*wine*"
 alias limpawine="lwine"
 alias rwine="lwine"
-alias remover="rm ~/.local/share/applications/remover-*.desktop"
 alias mwine="ps ax|egrep '*\.exe'|grep -v 'egrep'|awk '{print $1 }' | xargs kill -9 $1 ; wineserver -k; wineserver -k9; pkill -9 .exe; pkill -9 Steam; pkill -9 steam; pkill -9 Epic; pkill -9 wine; pkill -9 wineserver; killall -9 wine wineserver; killall -9 .exe"
 alias renicewine1="ps ax|egrep '*\.exe'|grep -v 'egrep'|awk '{print $1 }' | xargs sudo renice -n -2 -p $1 ; echo --- ; \
 top -bn 1 | grep -Ei --color .exe ; echo --- ; echo 'ps ax|egrep “*\.exe“|grep -v 'egrep'|awk '{print $1 }' | xargs sudo renice -n -2 -p “$ 1“'"
@@ -105,14 +124,17 @@ alias gamma="xgamma -gamma .90 ; echo --- ; echo xgamma -gamma .90"
 alias gama="gamma"
 alias blue='xgamma -bgamma 1.1 ; xgamma -rgamma .8 ; echo --- ; echo "xgamma -bgamma 1.1 ; xgamma -rgamma .8"'
 alias pip-upgrade-all="echo 'sudo pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 sudo pip install -U' ; sudo su -c 'pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U'"
+alias pip-upgrade-all_local="echo 'pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U' ; pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U"
 alias pip-upgrade-all-2="echo 'sudo pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 sudo pip install -U' ; sudo su -c 'pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U'"
+alias pip-upgrade-all-2_local="echo 'pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U' ; pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U"
 alias mute="pactl set-sink-mute 0 toggle ; pactl set-sink-mute 4 toggle"
 alias volume="pactl set-sink-volume 0 "
 alias vol="pactl set-sink-volume 0 "
-alias ffp.leg='echo "Antes, execute export v=arquivo.m.."; for i in "$v"; do name="${i%.*}"; echo $name; ffplay2.8 "$i" -vf subtitles="${name}.srt"; done'
-alias ffp='for i in *.[mM][pPkK][vV4]; do ffplay2.8 "$i" -vf subtitles="${i/.[mM][pPkK][vV4]/.srt}"; done'
-alias ffp.f='for i in *.[mM][kKpP][vV4]; do name="${i%.*}"; echo $name; ffplay2.8 "$i" -vf subtitles="${name}.forced.srt"; done'
-alias ffp.f.leg='echo "Antes, execute export v=arquivo.m.."; for i in "$v"; do ffplay2.8 "$i" -vf subtitles="${i/.[mM][pPkK][vV4]/.forced.srt}"; done'
+alias fpa="ffplay -autoexit -nodisp"
+alias ffp.leg='echo "Antes, execute export v=arquivo.m.."; for i in "$v"; do name="${i%.*}"; echo $name; ffplay "$i" -vf subtitles="${name}.srt"; done'
+alias ffp='for i in *.[mM][pPkK][vV4]; do ffplay "$i" -vf subtitles="${i/.[mM][pPkK][vV4]/.srt}"; done'
+alias ffp.f='for i in *.[mM][kKpP][vV4]; do name="${i%.*}"; echo $name; ffplay "$i" -vf subtitles="${name}.forced.srt"; done'
+alias ffp.f.leg='echo "Antes, execute export v=arquivo.m.."; for i in "$v"; do ffplay "$i" -vf subtitles="${i/.[mM][pPkK][vV4]/.forced.srt}"; done'
 alias testevideo='ls *.[mM][pPkK][vV4]; ls *.[sS][rR][tT]'
 alias meuip='echo -e "'"curl -s checkip.dyndns.org | awk '{ print $NF }'"'\n'"curl -s checkip.dyndns.org | grep -Eo '[0-9\.]+'"'\n'"curl -s https://icanhazip.com"'\n'"curl -s https://checkip.amazonaws.com"'\n\n"Ou com perl:"\n'"lwp-request -o text checkip.dyndns.org | awk '{ print $NF }'"'"'
 alias my_ip='meuip'
@@ -120,8 +142,9 @@ alias Ent='xdotool key Return'
 alias Enter='Ent'
 alias Min='xdotool windowminimize $(xdotool getactivewindow)'
 alias f='firefox'
-alias p='export DISPLAY=":0" && unset HISTFILE && firefox --private-window'
-alias private='p'
+alias fp='export DISPLAY=":0" && unset HISTFILE && firefox --private-window'
+alias firefox_private='fp'
+alias private='fp'
 alias ex='export'
 alias undevel='sudo pacman -Rcs autoconf texinfo pkgconf patch make m4 groff flex binutils automake autoconf gcc'
 alias devel='sudo pacman -S autoconf texinfo pkgconf patch make m4 groff flex binutils automake autoconf gcc'
@@ -129,27 +152,41 @@ alias vim-remove-space='tput setaf 11; echo -e "Comandos simples para remover es
 alias mouse-coordinates='eval $(xdotool getmouselocation --shell); tput setaf 3; echo -e "eval $(xdotool getmouselocation --shell) ; echo $X $Y\n"; xdotool getmouselocation'
 alias mouse-coordenadas='mouse-coordinates'
 alias bkp='ls -v | cat -n | while read n f; do mv -n "$f" "$f.$n"; done'
-alias igjssh="echo ssh iar3@192.168.1.84 ; ssh iar3@192.168.1.84"
+alias igjssh="echo ssh iar3@192.168.1.0 ; ssh iar3@192.168.1.0"
 alias ssh2send="echo scp file user@ip.x.x.x:/home/user"
-alias scp='tput setaf 11; echo -e "scp file user@ip.x.x.x:/home/user/\n\n"; tput setaf 7; scp'
-alias ftp='tput setaf 11; echo -e "ftp 192.168.X.X 2121\n\n"; tput setaf 7; ftp'
-alias ssh='tput setaf 11; echo -e "ssh -p 22 user@192.168.X.X\n\n"; tput setaf 7; ssh'
-alias sftp='tput setaf 11; echo -e ""sftp -P 2222 user@192.168.X.X"\n\n"Faça Download de diretórios com: get -r"\n\n"; tput setaf 7; sftp'
+alias scp='tput setaf 11; echo -e "scp file user@ip.x.x.x:/home/user/\n\n"; tput sgr0; scp'
+alias ftp='tput setaf 11; echo -e "ftp 192.168.X.X 2121\n\n"; tput sgr0; ftp'
+alias ssh='tput setaf 11; echo -e "ssh -p 22 user@192.168.X.X\n\n"; tput sgr0; ssh'
+alias sftp='tput setaf 11; echo -e ""sftp -P 2222 user@192.168.X.X"\n\n"Faça Download de diretórios com: get -r"\n\n"; tput sgr0; sftp'
 alias rsync2ssh="echo rsync -avzh --progress /diretório usuário@192.168.X.X:/home/usuário"
-alias rsync='tput setaf 11; echo -e """Envie arquivos e diretórios via rsync usando a porta 22 (ssh)""\n\n""rsync -avzh --progress /diretório usuário@192.168.1.XX:/home/usuário""\n"; tput setaf 7; rsync'
+alias rsync='tput setaf 11; echo -e """Envie arquivos e diretórios via rsync usando a porta 22 (ssh)""\n\n""rsync -avzh --progress /diretório usuário@192.168.1.XX:/home/usuário""\n"; tput sgr0; rsync'
+alias wine_list='bash <(curl -s https://raw.githubusercontent.com/felipefacundes/PS/master/other_scripts/wine_list.sh)'
+alias check_duplicate_shell_color_palette='grep -wo "[\[:alnum:][;]\+" ~/.shell_utils/variables/colors_shell.sh | sort | uniq -d -c; echo; echo Command:; echo '"'"'grep -wo "[\[:alnum:][;]\+" ~/.shell_utils/variables/colors_shell.sh | sort | uniq -d -c'"'"''
 
-#######################################
-########## Photos and Videos ##########
+#####################################################
+########## Documents and Photos and Videos ##########
 
-alias im-options='tput setaf 11; echo -e "\n"Veja mais opções, com:"\n"convert --help"\n\n"Olhe os exemplos abaixo:"\n\n"convert -channel RGB -contrast-stretch 1x1%"\n"convert -level 25%,75%"\n"convert +level 0x120%"\n"convert -sharpen  0x4"\n"convert -contrast -contrast -contrast"\n"convert -fx "u*125/102" +repage"\n"convert -channel green -fx "u*42/255" +repage"\n"convert -function Polynomial "-3.786,5.767,-1.543,0.562,0""\n"convert -sigmoidal-contrast 2,0%"\n"convert -sigmoidal-contrast 15x30%"\n""convert -normalize -unsharp 12x25 (Para aumentar a nitidez)""\n""convert imagem.jpg -colors 5 paleta.jpg (Para extrair às cores dominantes, e depois melhorar a imagem com Gimp > Duplicar Camada > Menu - Inverter cor > e em camadas > extrair grãos)""\n\n"Visite:"\n"https://legacy.imagemagick.org/Usage/color_mods/"\n"https://im.snibgo.com/ckbkClut.htm"\n"https://www.imagemagick.org/Usage/mapping/"\n"https://www.imagemagick.org/Usage/thumbnails/"\n"https://legacy.imagemagick.org/Usage/transform/"\n""https://www.imagemagick.org/discourse-server/viewtopic.php?t=35836""\n"https://legacy.imagemagick.org/Usage/photos/"\n"https://stackoverflow.com/questions/26889358/generate-color-palette-from-image-with-imagemagic"\n\n"; tput setaf 7'
+# Fred's ImageMagick Scripts
+. ~/.shell_utils/faqs/help/freds_aliases.sh
+#
+alias ascii-image-converter_help='echo https://github.com/TheZoraiz/ascii-image-converter'
+alias ascii-image-converter_man='ascii-image-converter_help'
+alias im-options='tput setaf 11; echo -e "\n"Veja mais opções, com:"\n"convert --help"\n\n"Olhe os exemplos abaixo:"\n\n"convert -channel RGB -contrast-stretch 1x1%"\n"convert -level 25%,75%"\n"convert +level 0x120%"\n"convert -sharpen  0x4"\n"convert -contrast -contrast -contrast"\n"convert -fx "u*125/102" +repage"\n"convert -channel green -fx "u*42/255" +repage"\n"convert -function Polynomial "-3.786,5.767,-1.543,0.562,0""\n"convert -sigmoidal-contrast 2,0%"\n"convert -sigmoidal-contrast 15x30%"\n""convert -normalize -unsharp 12x25 (Para aumentar a nitidez)""\n""convert imagem.jpg -colors 5 paleta.jpg (Para extrair às cores dominantes, e depois melhorar a imagem com Gimp > Duplicar Camada > Menu - Inverter cor > e em camadas > extrair grãos)""\n\n"Visite:"\n"https://legacy.imagemagick.org/Usage/color_mods/"\n"https://im.snibgo.com/ckbkClut.htm"\n"https://www.imagemagick.org/Usage/mapping/"\n"https://www.imagemagick.org/Usage/thumbnails/"\n"https://legacy.imagemagick.org/Usage/transform/"\n""https://www.imagemagick.org/discourse-server/viewtopic.php?t=35836""\n"https://legacy.imagemagick.org/Usage/photos/"\n"https://stackoverflow.com/questions/26889358/generate-color-palette-from-image-with-imagemagic"\n\n"; tput sgr0'
 alias convert='im-options; convert'
 alias pdfimg='tput bold; tput setaf 11; echo -e "Converta determinadas páginas para uma imagem específica:"; tput setaf 2; echo "pdftoppm -<image_format> -f <first page> -l <last page> <pdf_filename> <image_name>"; tput setaf 11; echo -e "\nExemplo:"; tput setaf 2; echo "pdftoppm -jpeg -f 1 -l 2 Meu_Arquivo.pdf Minha_Imagem"'
+alias pdftotext_help='tput setaf 2; echo "Use:\n"; tput setaf 9; echo -e "pdftotext -layout -nopgbrk file.pdf file.txt\n\nOr:\nlesspipe.sh file.pdf > file.txt\n"'
+alias texttopdf_help='tput setaf 2; echo "Use:\n"; tput setaf 9; echo -e "cupsfilter file.txt > file.pdf\n\nOr:\nsoffice --convert-to pdf file.txt\n\nSee more:\nhttps://www.baeldung.com/linux/convert-text-to-pdf"'
+alias pdf2text='pdftotext_help'
+alias text2pdf='texttopdf_help'
+alias lesspipe='lesspipe.sh'
 alias pdftoimg='pdfimg; pdftoppm'
 alias pdftoppm='pdfimg; pdftoppm'
 alias ima="cd ~/Imagens"
 alias wpp="cd ~/Imagens/Wallpapers"
 alias wallpp="wpp"
-alias yd="youtube-dl -i"
+alias yd="yt-dlp -i"
+alias yt="yd"
+alias mpvl='mpv --loop'
 alias gt='ffmpeg -video_size 1366x768 -framerate 15 -f x11grab -i $DISPLAY -f pulse -ac 2 -i default ~/Vídeos/Tela_$(date +%d-%m-%Y_%H:%M:%S).mkv ; echo --- ; echo "ffmpeg -video_size 1360x768 -framerate 15 -f x11grab -i :0.0 -f pulse -ac 2 -i default ~/Vídeos/Tela_$(date +%d-%m-%Y_%H:%M:%S).mkv"'
 alias gif="echo 'ffmpeg -i Tela_09-12-2019_14:40:57.mkv -filter_complex '[0:v] palettegen' palette.png ; ffmpeg -ss 00:00:26.00 -t 8 -r 23 -i Tela_09-12-2019_14:40:57.mkv -i palette.png -filter_complex '[0:v][1:v] paletteuse' -pix_fmt rgb24 -s 616x182 GuildWars2.gif'"
 alias criargif="gif"
@@ -183,19 +220,27 @@ alias paleta='pallete'
 alias cor-dominante='echo convert imagem.jpg +dither -colors 5 -unique-colors cor-resultante.jpg'
 alias cor-dominante2='echo convert imagem.jpg +dither -colors 5 -colors cor-resultante.jpg'
 alias cor2pallete='echo convert imagem.jpg +dither -colors 5 -define histogram:unique-colors=true -format "%c" histogram:info:'
-alias cartoonize='for i in *.[jJpP][nNpP][gG]; do convert "$i" -colors 64 -paint 4 -compose over -compose multiply -modulate 100,150,100 -posterize 24 -blur 0x2 -set filename:base "%[basename]" "%[filename:base]-cartoon.jpg"; done'
+alias cartoonize='for i in *.[jJpP][nNpP][gG]; do convert "$i" -colors 64 -paint 4 -compose over -compose multiply -modulate 100,150,100 -posterize 24 -blur 0x2 -set filename:base "%[basename]" "%[filename:base]-cartoon.png"; done'
 # https://imagemagick.org/discourse-server/viewtopic.php?t=31416
 # https://graphicdesign.stackexchange.com/questions/28561/how-can-i-achieve-this-cartoon-effect
 # http://mariovalle.name/postprocessing/ImageTools.html
 # https://askubuntu.com/questions/703184/how-to-transform-an-image-into-a-cartoon-from-command-line
 # http://www.fmwconcepts.com/imagemagick/cartoon/
 # https://stackoverflow.com/questions/47017741/image-filter-to-cartoonize-and-colorize
-alias cartoonize2='for i in *.[jJpP][nNpP][gG]; do convert "$i" \( -clone 0 -blur 0x5 \) \( -clone 0 -fill black -colorize 100 \) \( -clone 0 -define convolve:scale="!" -define morphology:compose=Lighten -morphology Convolve  "Sobel:>" -negate -evaluate pow 5 -negate -level 30x100% \) -delete 0 -compose over -composite -set filename:base "%[basename]" "%[filename:base]-cartoon.jpg"; done'
-alias cartoonize3='for i in *.[jJpP][nNpP][gG]; do convert "$i" -colors 64 -paint 4 -compose over -compose multiply -modulate 100,150,100 -posterize 24 -blur 0x2 -define morphology:compose=Lighten -morphology Convolve "Sobel:>" -negate -evaluate pow 5 -negate -level 30x100% -set filename:base "%[basename]" "%[filename:base]-cartoon.jpg"; done'
-alias cartoonize4='for i in *.[jJpP][nNpP][gG]; do convert -quiet "$i" +repage -depth 8 -selective-blur 0x5+10% /tmp/pre-cartoon1.mpc; convert /tmp/pre-cartoon1.mpc -level 0x60% -colorspace gray -posterize 6 -depth 8 -gamma 2.2 /tmp/pre-cartoon2.mpc; export PreCartoon1=/tmp/pre-cartoon1.mpc; export PreCartoon2=/tmp/pre-cartoon2.mpc; convert "$PreCartoon1" \( "$PreCartoon2" -blur 0x1 \) \( -clone 0 -clone 1 -compose over -compose multiply -composite -modulate 100,150,100 \) \( -clone 0 -colorspace gray \) \( -clone 3 -negate -blur 0x2 \) \( -clone 3 -clone 4 -compose over -compose colordodge -composite -evaluate pow 4 -threshold 90% -statistic median 3x3 \) -delete 0,1,3,4 -compose over -compose multiply -composite "${i/.[jJpP][nNpP][gG]/-cartoon.jpg}"; rm /tmp/pre-cartoon1.mpc; rm /tmp/pre-cartoon2.mpc; done'
-alias cartoonize4-other-method='for i in *.[jJpP][pPnN][gG]; do convert "$i" +repage -depth 8 -selective-blur 0x5+10%% \( -clone 0 -level 0x60%% -colorspace gray -posterize 6 -depth 8 -gamma 2.2 -blur 0x1 \) \( -clone 0 -clone 1 -compose multiply -composite -modulate 100,150,100 \) \( -clone 0 -colorspace gray \) \( -clone 3 -negate -blur 0x2 \) \( -clone 3 -clone 4 -compose colordodge -composite -evaluate pow 4 -threshold 90%% -statistic median 3x3 \) -delete 0,1,3,4 -compose multiply -composite "${i/.[jJpP][pPnN][gG]/-cartoon.jpg}"; done'
-alias cartoonize5='export convolution=0.70; export dx="-$convolution,0,$convolution,-$convolution,0,$convolution,-$convolution,0,$convolution"; export dy="$convolution,$convolution,$convolution,0,0,0,-$convolution,-$convolution,-$convolution"; for i in *.[jJpP][nNpP][gG]; do convert "$i" -quiet -regard-warnings $@ -colorspace RGB +repage /tmp/pre-cartoon1.jpg; convert \( /tmp/pre-cartoon1.jpg -median 2 \) \( -size 1x256 gradient: -rotate 90 -fx "floor(u*10+0.5)/10" \) -clut /tmp/pre-cartoon2.jpg; convert \( /tmp/pre-cartoon1.jpg -colorspace gray -median 2 \) \( -clone 0 -bias 50% -convolve "$dx" -solarize 50% \) \( -clone 0 -bias 50% -convolve "$dy" -solarize 50% \) \( -clone 1 -clone 1 -compose multiply -composite -gamma 2 \) \( -clone 2 -clone 2 -compose multiply -composite -gamma 2 \) -delete 0-2 -compose plus -composite -threshold 75% /tmp/pre-cartoon3.jpg; convert /tmp/pre-cartoon2.jpg /tmp/pre-cartoon3.jpg -compose multiply -composite "${i/.[jJpP][nNpP][gG]/-cartoon.jpg}"; rm /tmp/pre-cartoon1.jpg /tmp/pre-cartoon2.jpg /tmp/pre-cartoon3.jpg; done'
-alias cartoonize6='for i in *.[jJpP][nNpP][gG]; do convert -quiet "$i" +repage -depth 8 -selective-blur 0x5+10% /tmp/pre-cartoon1.jpg; convert /tmp/pre-cartoon1.jpg -level 0x60 -set colorspace RGB -colorspace gray -posterize 6 -depth 8 -colorspace sRGB /tmp/pre-cartoon2.jpg; export PreCartoon1=/tmp/pre-cartoon1.jpg; export PreCartoon2=/tmp/pre-cartoon2.jpg; convert "$PreCartoon1" \( "$PreCartoon2" -blur 0x1 \) \( -clone 0 -clone 1 -compose over -compose multiply -composite -modulate 100,150,100 \) \( -clone 0 -set colorspace RGB -colorspace gray \) \( -clone 3 -negate -blur 0x4 \) \( -clone 3 -clone 4 -compose over -compose colordodge -composite -evaluate pow 4 -threshold 4 -statistic median 3x3 \) -delete 0,1,3,4 -compose over -compose multiply -composite "${i/.[jJpP][nNpP][gG]/-cartoon.jpg}"; rm /tmp/pre-cartoon1.jpg; rm /tmp/pre-cartoon2.jpg; done'
+alias cartoonize2='for i in *.[jJpP][nNpP][gG]; do convert "$i" \( -clone 0 -blur 0x5 \) \( -clone 0 -fill black -colorize 100 \) \( -clone 0 -define convolve:scale="!" -define morphology:compose=Lighten -morphology Convolve  "Sobel:>" -negate -evaluate pow 5 -negate -level 30x100% \) -delete 0 -compose over -composite -set filename:base "%[basename]" "%[filename:base]-cartoon.png"; done'
+alias cartoonize3='for i in *.[jJpP][nNpP][gG]; do convert "$i" -colors 64 -paint 4 -compose over -compose multiply -modulate 100,150,100 -posterize 24 -blur 0x2 -define morphology:compose=Lighten -morphology Convolve "Sobel:>" -negate -evaluate pow 5 -negate -level 30x100% -set filename:base "%[basename]" "%[filename:base]-cartoon.png"; done'
+alias cartoonize4='for i in *.[jJpP][nNpP][gG]; do convert -quiet "$i" +repage -depth 8 -selective-blur 0x5+10% /tmp/pre-cartoon1.mpc; convert /tmp/pre-cartoon1.mpc -level 0x60% -colorspace gray -posterize 6 -depth 8 -gamma 2.2 /tmp/pre-cartoon2.mpc; export PreCartoon1=/tmp/pre-cartoon1.mpc; export PreCartoon2=/tmp/pre-cartoon2.mpc; convert "$PreCartoon1" \( "$PreCartoon2" -blur 0x1 \) \( -clone 0 -clone 1 -compose over -compose multiply -composite -modulate 100,150,100 \) \( -clone 0 -colorspace gray \) \( -clone 3 -negate -blur 0x2 \) \( -clone 3 -clone 4 -compose over -compose colordodge -composite -evaluate pow 4 -threshold 90% -statistic median 3x3 \) -delete 0,1,3,4 -compose over -compose multiply -composite "${i/.[jJpP][nNpP][gG]/-cartoon.png}"; rm /tmp/pre-cartoon1.mpc; rm /tmp/pre-cartoon2.mpc; done'
+alias cartoonize4-other-method='for i in *.[jJpP][pPnN][gG]; do convert "$i" +repage -depth 8 -selective-blur 0x5+10%% \( -clone 0 -level 0x60%% -colorspace gray -posterize 6 -depth 8 -gamma 2.2 -blur 0x1 \) \( -clone 0 -clone 1 -compose multiply -composite -modulate 100,150,100 \) \( -clone 0 -colorspace gray \) \( -clone 3 -negate -blur 0x2 \) \( -clone 3 -clone 4 -compose colordodge -composite -evaluate pow 4 -threshold 90%% -statistic median 3x3 \) -delete 0,1,3,4 -compose multiply -composite "${i/.[jJpP][pPnN][gG]/-cartoon.png}"; done'
+alias cartoonize5='export convolution=0.70; export dx="-$convolution,0,$convolution,-$convolution,0,$convolution,-$convolution,0,$convolution"; export dy="$convolution,$convolution,$convolution,0,0,0,-$convolution,-$convolution,-$convolution"; for i in *.[jJpP][nNpP][gG]; do convert "$i" -quiet -regard-warnings $@ -colorspace RGB +repage /tmp/pre-cartoon1.jpg; convert \( /tmp/pre-cartoon1.jpg -median 2 \) \( -size 1x256 gradient: -rotate 90 -fx "floor(u*10+0.5)/10" \) -clut /tmp/pre-cartoon2.jpg; convert \( /tmp/pre-cartoon1.jpg -colorspace gray -median 2 \) \( -clone 0 -bias 50% -convolve "$dx" -solarize 50% \) \( -clone 0 -bias 50% -convolve "$dy" -solarize 50% \) \( -clone 1 -clone 1 -compose multiply -composite -gamma 2 \) \( -clone 2 -clone 2 -compose multiply -composite -gamma 2 \) -delete 0-2 -compose plus -composite -threshold 75% /tmp/pre-cartoon3.jpg; convert /tmp/pre-cartoon2.jpg /tmp/pre-cartoon3.jpg -compose multiply -composite "${i/.[jJpP][nNpP][gG]/-cartoon.png}"; rm /tmp/pre-cartoon1.jpg /tmp/pre-cartoon2.jpg /tmp/pre-cartoon3.jpg; done'
+alias cartoonize6='for i in *.[jJpP][nNpP][gG]; do convert -quiet "$i" +repage -depth 8 -selective-blur 0x5+10% /tmp/pre-cartoon1.jpg; convert /tmp/pre-cartoon1.jpg -level 0x60 -set colorspace RGB -colorspace gray -posterize 6 -depth 8 -colorspace sRGB /tmp/pre-cartoon2.jpg; export PreCartoon1=/tmp/pre-cartoon1.jpg; export PreCartoon2=/tmp/pre-cartoon2.jpg; convert "$PreCartoon1" \( "$PreCartoon2" -blur 0x1 \) \( -clone 0 -clone 1 -compose over -compose multiply -composite -modulate 100,150,100 \) \( -clone 0 -set colorspace RGB -colorspace gray \) \( -clone 3 -negate -blur 0x4 \) \( -clone 3 -clone 4 -compose over -compose colordodge -composite -evaluate pow 4 -threshold 4 -statistic median 3x3 \) -delete 0,1,3,4 -compose over -compose multiply -composite "${i/.[jJpP][nNpP][gG]/-cartoon.png}"; rm /tmp/pre-cartoon1.jpg; rm /tmp/pre-cartoon2.jpg; done'
 alias cartoonize6-remover-espinhas='cartoonize5'
-alias cartoonize7='for i in *[jJpP][nNpP][gG]; do convert "$i" -colorspace gray -kuwahara 3 -unsharp 0x2+4+0 \( xc:blue xc:red xc:yellow +append \) -clut "${i/.[jJpP][nNpP][gG]/-cartoon.jpg}"; done'
-alias cartoonize8='for i in *[jJpP][nNpP][gG]; do convert "$i" -kuwahara 3 -unsharp 0x2+4+0 "${i/.[jJpP][nNpP][gG]/-cartoon.jpg}"; done'
+alias cartoonize7='for i in *[jJpP][nNpP][gG]; do convert "$i" -colorspace gray -kuwahara 3 -unsharp 0x2+4+0 \( xc:blue xc:red xc:yellow +append \) -clut "${i/.[jJpP][nNpP][gG]/-cartoon.png}"; done'
+alias cartoonize8='for i in *[jJpP][nNpP][gG]; do convert "$i" -kuwahara 3 -unsharp 0x2+4+0 "${i/.[jJpP][nNpP][gG]/-cartoon.png}"; done'
+
+##################################
+########## dictionaries ##########
+alias dictionary_Prib_pt_BR='less -i -N -S --use-color ~/.shell_utils/dictionaries/Dicionario-Prib-da-Lingua-Portuguesa.txt'
+alias dictionary_Generic_pt_BR='less -i -N -S --use-color ~/.shell_utils/dictionaries/Dicionario-Generico-Portugues.txt'
+alias dic_pt_BR='dictionary_Prib_pt_BR'
+alias dic_girias_pt_eng='less -i -N -S --use-color ~/.shell_utils/dictionaries/Dicionario\ de\ Girias\ Ingles\ -\ Portugues.txt'
+alias dic_slang_pt_eng='dic_girias_pt_eng'
