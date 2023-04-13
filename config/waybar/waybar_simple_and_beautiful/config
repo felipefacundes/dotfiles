@@ -246,7 +246,7 @@
         "exec": "bash -c 'wf_rec=$(pidof wf-recorder); if [ -z ${wf_rec} ] ; then echo 󰑋; else echo  ; fi'",
         "exec-if": "exit 0",
         "on-click": "killall -s SIGINT wf-recorder",
-        "on-click-right": "bash <(wf_rec=$(pidof wf-recorder); if [ -z ${wf_rec} ] ; then echo wf-recorder -c libx265 --audio=`LANG=en pactl list sources | awk '/Name:/ {print $2}' | head -n1 | tail -n1` -f ${HOME}/Videos/Capture/WScreen_$(date +%Y-%m-%d_%H:%M:%S).mkv; fi) &",
+        "on-click-right": "bash <([[ ! -d ~/Videos/Capture ]] && mkdir -p ~/Videos/Capture; wf_rec=$(pidof wf-recorder); if [ -z ${wf_rec} ] ; then echo wf-recorder -c libx265 --audio=`LANG=en pactl list sources | awk '/Name:/ {print $2}' | head -n1 | tail -n1` -f ${HOME}/Videos/Capture/WScreen_$(date +%Y-%m-%d_%H:%M:%S).mkv; fi) &",
         "signal": 8
 	},
 
