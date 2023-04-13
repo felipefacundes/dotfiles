@@ -41,7 +41,7 @@ nord15 #b48ead
 /* Reset all styles */
 
 * {
-    color: #eceff4;
+    color: #C465F6;
     border: 0;
     border-radius: 0;
     padding: 0 0;
@@ -59,18 +59,18 @@ window#waybar {
 #workspaces button {
     padding: 2px 0px;
     border-bottom: 2px;
-    color: #eceff4;
-    border-color: #d8dee9;
+    color: #C465F6;
+    border-color: #C465F6;
     border-style: solid;
     margin-top:2px;
 }
 
 #workspaces button.focused {
-    border-color: #81a1c1;
+    border-color: #C465F6;
 }
 
 #mode {
-    color: #ebcb8b;
+    color: #C465F6;
 }
 
 #clock, #battery, #cpu, #memory, #idle_inhibitor, #temperature, #custom-keyboard-layout, #language, #keyboard-state, #backlight, #bluetooth, #network, #pulseaudio, #mode, #disk, #tray, #window, #custom-menu, #custom-gpu, #custom-uptime, #custom-pacman, #custom-playerctl2, #custom-wf-recorder2, #custom-weather, #custom-weather2, #custom-poweroff {
@@ -85,31 +85,31 @@ window#waybar {
 
  
 #clock {
- color:#a3be8c;
+    color: #C465F6;
 }
 
 #backlight {
-    color: #ebcb8b;
+    color: #C465F6;
 }
 
 #battery {
-    color: #d8dee9;
+    color: #C465F6;
 }
 
 #battery.charging {
-    color: #81a1c1;
+    color: #C465F6;
 }
 
 @keyframes blink {
     to {
-        color: #4c566a;
-        background-color: #eceff4;
+        color: #C465F6;
+        background-color: #C465F6;
     }
 }
 
 #battery.critical:not(.charging) {
-    background: #bf616a;
-    color: #eceff4;
+    background: #C465F6;
+    color: #C465F6;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -118,99 +118,99 @@ window#waybar {
 }
 
 #custom-menu {
-    color:#A8AB6D;
+    color:#C465F6;
 }
 
 #custom-uptime {
-	color: #ff0000;
+	color:#C465F6;
 }
 
 #custom-poweroff {
-	color: #CF0F26; /* #BD1226; #A42E2E;  #ff0000; */
+	color:#C465F6; /* #BD1226; #A42E2E;  #ff0000; */
 }
 
 #bluetooth {
-	color: #8fbcbb;
+	color:#C465F6;
 }
 
 #custom-weather {
-	color: #ffffff;
+	color:#C465F6;
 }
 
 #custom-weather2 {
-	color: #ffffff;
+	color:#C465F6;
 }
 
 #disk {
-	color: #ffffff;
+	color:#C465F6;
 }
 
 #language {
-	color: #ffffff;
+	color:#C465F6;
 }
 
 #keyboard-state {
-	color: #ffffff;
+	color:#C465F6;
 }
 
 #custom-pacman {
-	color: #d3869b;
+	color:#C465F6;
 }
 
 #cpu {
-    color:#A8AB6D;
+    color:#C465F6;
 }
 
 #memory {
-    color: #d3869b;
+    color: #C465F6;
 }
 
 #network.disabled {
-    color:#bf616a;
+    color: #C465F6;
 }
 
 #network{
-    color:#8fbcbb;
+    color: #C465F6;
 }
 
 #network.disconnected {
-    color: #bf616a;
+    color: #C465F6;
 }
 
 #custom-gpu {
-    color:#c0c55f;
+    color: #C465F6;
 }
 
 #custom-playerctl2 {
-    color: #b48ead;
+    color: #C465F6;
 }
 
 #custom-wf-recorder2 {
-    color: #b48ead;
+    color: #C465F6;
 }
 
 #pulseaudio {
-    color: #b48ead;
+    color: #C465F6;
 }
 
 #pulseaudio.muted {
-    color: #3b4252;
+    color: #C465F6;
 }
 
 #temperature {
-    color: #8fbcbb;
+    color: #C465F6;
 }
 
 #temperature.critical {
-    color: #bf616a;
+    color: #C465F6;
 }
 
 #idle_inhibitor {
-   color: #ebcb8b;
+    color: #C465F6;
 }
 
 #tray {
-  color: #2BB1C3
+    color: #C465F6;
 }
 
 #custom-launcher,#custom-power{
@@ -227,5 +227,5 @@ window#waybar {
 }
 
 #custom-keyboard-layout{
-   color:#d08770;
+    color: #C465F6;
 }
