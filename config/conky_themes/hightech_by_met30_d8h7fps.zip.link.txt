@@ -1,0 +1,4 @@
+wget https://github.com/felipefacundes/SciFi_Conky_HUD/releases/download/hightech_by_met30_d8h7fps.zip/hightech_by_met30_d8h7fps.zip
+
+https://www.gnome-look.org/p/1220192/
+https://www.deviantart.com/met30/art/Hightech-512629840?ga_submit_new=10%253A1423431072&ga_type=edit&ga_changes=1&ga_recent=1
