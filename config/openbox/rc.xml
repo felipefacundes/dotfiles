@@ -592,7 +592,7 @@
     <!-- LGTVWebOS: Set Max Volume -->
     <keybind key="C-A-v">
       <action name="Execute">
-        <command>bash -c 'pkill -9 tv-default-volu; script=~/.local/bin/tv-default-volume.sh; Current_Volume=`~/.local/bin/Current_Volume.sh` old_vol=`cat "$script" | head -5 | sed -n 5p | cut -c 16-17 | grep -E "[^[:blank:]]"`; new_vol=`zenity --text "Current volume is $Current_Volume.\nVolume is limited on $old_vol.\n\nEnter new volume:" --entry`; sed -i "5s/$old_vol/$new_vol/" "$script" | sed -i "5s/=$/=$new_vol/" "$script"; "$script"'</command>
+        <command>bash -c 'pkill -9 tv-default-volu; script=~/.local/bin/tv-default-volume.sh; current_volume=`~/.local/bin/lgtv_current_volume.sh` old_vol=`cat "$script" | head -5 | sed -n 5p | cut -c 16-17 | grep -E "[^[:blank:]]"`; new_vol=`zenity --text "Current volume is $Current_Volume.\nVolume is limited on $old_vol.\n\nEnter new volume:" --entry`; sed -i "5s/$old_vol/$new_vol/" "$script" | sed -i "5s/=$/=$new_vol/" "$script"; "$script"'</command>
         <startupnotify>
           <enabled>yes</enabled>
           <wmclass>set_max_vol_lgtv</wmclass>
@@ -602,14 +602,14 @@
       </action>
     </keybind>
     <!-- LG TV WebOS Set Volume -->
-    <keybind key="C-A-S-Up">
+    <keybind key="C-A-S-Prior">
       <action name="Execute">
-        <command>bash -c "pkill -9 osd_cat; sleep 0.2; xrefresh; echo WebOS Vol: `~/.local/bin/lgtv audio volumeUp | ~/.local/bin/Current_Volume.sh` | osd_cat -d 1 -s 1 -A center -l 1 -p middle -o 60 -c green -f '-*-helvetica-bold-*-*-*-44-*-*-*-*-*-*'"</command>
+        <command>bash -c "pkill -9 osd_cat; sleep 0.2; xrefresh; echo WebOS Vol: `~/.local/bin/lgtv audio volumeUp | ~/.local/bin/lgtv_current_volume.sh` | osd_cat -d 1 -s 1 -A center -l 1 -p middle -o 60 -c green -f '-*-helvetica-bold-*-*-*-44-*-*-*-*-*-*'"</command>
       </action>
     </keybind>
-    <keybind key="C-A-S-Down">
+    <keybind key="C-A-S-Next">
       <action name="Execute">
-        <command>bash -c "pkill -9 osd_cat; sleep 0.2; xrefresh; echo WebOS Vol: `~/.local/bin/lgtv audio volumeDown | ~/.local/bin/Current_Volume.sh` | osd_cat -d 1 -s 1 -A center -l 1 -p middle -o 60 -c green -f '-*-helvetica-bold-*-*-*-44-*-*-*-*-*-*'"</command>
+        <command>bash -c "pkill -9 osd_cat; sleep 0.2; xrefresh; echo WebOS Vol: `~/.local/bin/lgtv audio volumeDown | ~/.local/bin/lgtv_current_volume.sh` | osd_cat -d 1 -s 1 -A center -l 1 -p middle -o 60 -c green -f '-*-helvetica-bold-*-*-*-44-*-*-*-*-*-*'"</command>
       </action>
     </keybind>
     <!-- Chromecast/LGTVWebOS: pause/play streaming -->
