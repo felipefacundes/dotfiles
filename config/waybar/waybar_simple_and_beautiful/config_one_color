@@ -13,7 +13,7 @@
     // Choose the order of the modules
     "modules-left": ["custom/menu", "sway/workspaces", "sway/window"], //"sway/mode", "sway/scratchpad", "sway/window"
     //"modules-center": ["sway/window"],
-    "modules-right": ["custom/playerctl2", "pulseaudio", "custom/wf-recorder2", "network", "bluetooth", "custom/gpu", "idle_inhibitor", "cpu", "memory", "disk", "temperature", "backlight", "battery", "custom/pacman", "custom/weather", "clock", "tray", "custom/poweroff"],
+    "modules-right": ["custom/playerctl2", "pulseaudio", "custom/wf-recorder2", "network", "bluetooth", "custom/gpu", "idle_inhibitor", "cpu", "memory", "disk", "temperature", "backlight", "battery", "custom/pacman", "custom/weather", "clock", "custom/clipboard", "tray", "custom/poweroff"],
     // Modules configuration
     // "sway/workspaces": {
     //     "disable-scroll": true,
@@ -238,6 +238,15 @@
         "exec-if": "${HOME}/.config/waybar/scripts/sunset.sh check",
         "signal": 6
     },
+    
+    "custom/clipboard": {
+        "format" : "-",
+        "tooltip": false,  //   󰅇 󱓦 󱉥 󱉦 󱓥 
+        "on-click": "cliphist list | rofi -dmenu | cliphist decode | wl-copy",
+        "on-click-right": "cliphist list | dmenu | cliphist decode | wl-copy",
+        "on-click-middle": "cliphist wipe",
+        "signal": 8
+	},
 
     "custom/wf-recorder2": {
         "interval": 1,

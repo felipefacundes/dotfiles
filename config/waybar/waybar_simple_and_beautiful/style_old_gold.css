@@ -73,7 +73,7 @@ window#waybar {
     color: #A8AB6D;
 }
 
-#clock, #battery, #cpu, #memory, #idle_inhibitor, #temperature, #custom-keyboard-layout, #language, #keyboard-state, #backlight, #bluetooth, #network, #pulseaudio, #mode, #disk, #tray, #window, #custom-menu, #custom-gpu, #custom-uptime, #custom-pacman, #custom-playerctl2, #custom-wf-recorder2, #custom-weather, #custom-weather2, #custom-poweroff {
+#clock, #battery, #cpu, #memory, #idle_inhibitor, #temperature, #custom-keyboard-layout, #language, #keyboard-state, #backlight, #bluetooth, #network, #pulseaudio, #mode, #disk, #tray, #window, #custom-menu, #custom-gpu, #custom-clipboard, #custom-uptime, #custom-pacman, #custom-playerctl2, #custom-wf-recorder2, #custom-weather, #custom-weather2, #custom-poweroff {
     padding: 0 3px;
     border-bottom: 2px;
     border-style: solid;
@@ -118,6 +118,10 @@ window#waybar {
 }
 
 #custom-menu {
+    color:#A8AB6D;
+}
+
+#custom-clipboard {
     color:#A8AB6D;
 }
 
