@@ -160,6 +160,19 @@ alias rsync2ssh="echo rsync -avzh --progress /diretório usuário@192.168.X.X:/h
 alias rsync='tput setaf 11; echo -e """Envie arquivos e diretórios via rsync usando a porta 22 (ssh)""\n\n""rsync -avzh --progress /diretório usuário@192.168.1.XX:/home/usuário""\n"; tput sgr0; rsync'
 alias wine_list='bash <(curl -s https://raw.githubusercontent.com/felipefacundes/PS/master/other_scripts/wine_list.sh)'
 alias check_duplicate_shell_color_palette='grep -wo "[\[:alnum:][;]\+" ~/.shell_utils/variables/colors_shell.sh | sort | uniq -d -c; echo; echo Command:; echo '"'"'grep -wo "[\[:alnum:][;]\+" ~/.shell_utils/variables/colors_shell.sh | sort | uniq -d -c'"'"''
+#####################################################
+##################### Waydroid ######################
+alias waydroid_start='waydroid_container=`ps aux | grep -i waydroid | grep -v grep`; waydroid=`pidof waydroid`; if [ -z ${waydroid_container} ]; then sudo waydroid init -s GAPPS -f; fi; if [ -z ${waydroid} ]; then waydroid first-launch 2>/dev/null & sleep 0.1; fi'
+alias waydroids='waydroid_start'
+alias waydroid_app_help='waydroid app -h'
+alias waydroid_app_install='waydroid app install'
+alias waydroid_app_remove='waydroid app remove'
+alias waydroid_app_launch='waydroid app launch'
+alias waydroid_app_list='waydroid app list'
+alias waydroid_script='sudo waydroid-extras'
+alias waydroid_show_full_ui='waydroid show-full-ui'
+alias waydroid_script_libhoudini='sudo waydroid-extras -l'
+alias waydroid_mount_share_folder='echo Example: sudo mount --bind ~/Documentos/HD/waydroid/share ~/.local/share/waydroid/data/media/0/Share'
 
 #####################################################
 ########## Documents and Photos and Videos ##########
