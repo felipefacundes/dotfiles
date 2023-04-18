@@ -1,0 +1,235 @@
+/* =============================================================================
+ *
+ * Waybar configuration
+ *
+ * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+ *
+ * =========================================================================== */
+ 
+/* -----------------------------------------------------------------------------
+ * Keyframes
+ * -------------------------------------------------------------------------- */
+
+
+/*
+Polar Night
+nord0  #2e3440
+nord1  #3b4252
+nord2  #434c5e
+nord3  #4c566a
+Snow Storm
+nord4  #d8dee9
+nord5  #e5e9f0
+nord6  #eceff4
+Frost
+nord7  #8fbcbb
+nord8  #88c0d0
+nord9  #81a1c1
+nord10 #5e81ac
+Aurora
+nord11 #bf616a
+nord12 #d08770
+nord13 #ebcb8b
+nord14 #a3be8c
+nord15 #b48ead
+*/
+
+/* -----------------------------------------------------------------------------
+ * Base styles
+ * -------------------------------------------------------------------------- */
+ 
+/* Reset all styles */
+
+* {
+    color: #B690DC;
+    border: 0;
+    border-radius: 0;
+    padding: 0 0;
+    font-family:'Disney Simple';
+    font-size: 15px;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding-bottom:3px;
+   }
+
+window#waybar {
+    background:rgba (0, 0, 0, 0.55);
+}
+
+#workspaces button {
+    padding: 2px 0px;
+    border-bottom: 2px;
+    color: #B690DC;
+    border-color: #B690DC;
+    border-style: solid;
+    margin-top:2px;
+}
+
+#workspaces button.focused {
+    border-color: #B690DC;
+}
+
+#mode {
+    color: #B690DC;
+}
+
+#clock, #battery, #cpu, #memory, #idle_inhibitor, #temperature, #custom-keyboard-layout, #language, #keyboard-state, #backlight, #bluetooth, #network, #pulseaudio, #mode, #disk, #tray, #window, #custom-menu, #custom-gpu, #custom-clipboard, #custom-uptime, #custom-pacman, #custom-playerctl2, #custom-wf-recorder2, #custom-weather, #custom-weather2, #custom-poweroff {
+    padding: 0 3px;
+    border-bottom: 2px;
+    border-style: solid;
+}
+ 
+/* -----------------------------------------------------------------------------
+ * Module styles
+ * -------------------------------------------------------------------------- */
+
+ 
+#clock {
+    color: #B690DC;
+}
+
+#backlight {
+    color: #B690DC;
+}
+
+#battery {
+    color: #B690DC;
+}
+
+#battery.charging {
+    color: #B690DC;
+}
+
+@keyframes blink {
+    to {
+        color: #B690DC;
+        background-color: #B690DC;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background: #B690DC;
+    color: #B690DC;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#custom-menu {
+    color:#B690DC;
+}
+
+#custom-clipboard {
+    color:#B690DC;
+}
+
+#custom-uptime {
+	color:#B690DC;
+}
+
+#custom-poweroff {
+	color:#B690DC; /* #BD1226; #A42E2E;  #ff0000; */
+}
+
+#bluetooth {
+	color:#B690DC;
+}
+
+#custom-weather {
+	color:#B690DC;
+}
+
+#custom-weather2 {
+	color:#B690DC;
+}
+
+#disk {
+	color:#B690DC;
+}
+
+#language {
+	color:#B690DC;
+}
+
+#keyboard-state {
+	color:#B690DC;
+}
+
+#custom-pacman {
+	color:#B690DC;
+}
+
+#cpu {
+    color:#B690DC;
+}
+
+#memory {
+    color: #B690DC;
+}
+
+#network.disabled {
+    color: #B690DC;
+}
+
+#network{
+    color: #B690DC;
+}
+
+#network.disconnected {
+    color: #B690DC;
+}
+
+#custom-gpu {
+    color: #B690DC;
+}
+
+#custom-playerctl2 {
+    color: #B690DC;
+}
+
+#custom-wf-recorder2 {
+    color: #B690DC;
+}
+
+#pulseaudio {
+    color: #B690DC;
+}
+
+#pulseaudio.muted {
+    color: #B690DC;
+}
+
+#temperature {
+    color: #B690DC;
+}
+
+#temperature.critical {
+    color: #B690DC;
+}
+
+#idle_inhibitor {
+    color: #B690DC;
+}
+
+#tray {
+    color: #B690DC;
+}
+
+#custom-launcher,#custom-power{
+    border-style: hidden;
+    margin-top:2px;    
+}
+
+#window{
+    border-style: hidden;
+    margin-top:1px;  
+}    
+#mode{
+    margin-bottom:3px;
+}
+
+#custom-keyboard-layout{
+    color: #B690DC;
+}
