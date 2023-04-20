@@ -1,0 +1,30 @@
+[begin] (Menu)
+[separator]
+	[exec] (Programas) {lxlauncher}
+[separator]
+	[exec] (Gerenciar Arquivos) {pcmanfm}
+[separator]
+	[exec] (Definir Aparência) {lxappearance}
+[separator]
+[config] (Configuração)
+                [workspaces] (Áreas de Trabalho)
+                [submenu] (Estilos do sistema) {Choose a style...}
+                        [stylesdir] (/usr/share/blackbox/styles)
+			[stylesdir] (/usr/share/fluxbox/styles)
+			[stylesdir] (/usr/share/openbox/styles)
+                [end]
+                [submenu] (Estilos do usuário) {Choose a style...}
+                        [stylesdir] (~/.blackbox/styles)
+			[stylesdir] (~/.fluxbox/styles)
+			[stylesdir] (~/.openbox/styles)
+                [end]
+        [separator]
+        [exec] (Executar) {fbrun}
+	[separator]
+	[exec] (Terminal) {xfce4-terminal}
+	[separator]
+        [exec] (Bloqueio de tela) {xlock}
+        [restart] (Reiniciar Fluxbox) {}
+        [exec] (Sair) {logout.sh}
+[end]
+    [end]

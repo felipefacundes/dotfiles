@@ -1,0 +1,14 @@
+l9fluxbox-random-wallpaper
+systemctl shutdown -h now
+xfce4-terminal
+tl shutdown -h now
+shutdown -h now
+compton
+-terminal
+tl shutdown -h now
+shutdown -h now
+xterm
+compton
+utdown -h now
+xterm
+kitty

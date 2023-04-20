@@ -1,0 +1,36 @@
+#!/bin/bash
+#
+# fluxbox startup-script:
+#
+# Lines starting with a '#' are ignored.
+
+### Change your keymap:
+#setxkbmap br abnt2 &
+
+# Applications you want to run with fluxbox.
+# MAKE SURE THAT APPS THAT KEEP RUNNING HAVE AN ''&'' AT THE END.
+#
+# unclutter -idle 2 &
+# wmnd &
+# wmsmixer -w &
+# idesk & 
+# --------->Esta opção ativa composição e sombra de menus
+#xcompmgr -cFo 0.15 & 
+#compton & 
+# dbus-launch pcmanfm --daemon-mode & 
+start-pulseaudio-x11 & 
+setxkbmap -option terminate:ctrl_alt_bksp & 
+# fluxbox-random-wallpaper & 
+# nm-applet & 
+# volumeicon & 
+# vattery & 
+### TouchPad Scroll
+#synclient VertEdgeScroll=1 & 
+#synclient HorizEdgeScroll=1 & 
+#synclient TapButton1=1 &
+# And last but not least we start fluxbox.
+# Because it is the last app you have to run it with ''exec'' before it.
+
+#exec fluxbox -sync
+# or if you want to keep a log:
+# exec fluxbox -log "/home/rfacundes/.fluxbox/log"
