@@ -67,29 +67,37 @@ URxvt.tabbed.tab-bg: 4
 URxvt*buffered: false
 
 ! xterm
+xterm*depth: 24
 xterm*termName: xterm-256color
-xterm*font: monospace
-xterm*faceName: monospace:size=18
-xterm*boldFont: xft:monospace:bold:size=18
-xterm*italicFont: xft:monospace:italic:size=18
-xterm*boldItalicFont: xft:monospace:bold:italic:size=18
+xterm*font: Hack NF
+xterm*faceName: Hack NF:size=18
+xterm*boldFont: xft:Hack NF:bold:size=18
+xterm*italicFont: xft:Hack NF:italic:size=18
+xterm*boldItalicFont: xft:Hack NF:bold:italic:size=18
+xterm*antialias: true
+xterm*subPixel: true
+xterm*subPixelOrder: RGB
+xterm*renderFont: true
+xterm*dpi: 96
+
 xterm*loginShell: true
 xterm*vt100*geometry: 90x34
 xterm*geometry: 90x34
 xterm*saveLines: 997891
 xterm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
-xterm*eightBitInput: false
+xterm*eightBitInput: true
 XTerm*selectToClipboard: true
 
-xterm*letterSpace: -1
+xterm*letterSpace: 0
 xterm*lineSpace: 0
-xterm*wordSep:     0
+xterm*wordSep: 0
 
 xterm*cursorBlink: false
 xterm*cursorUnderline: false
 xterm*cursorColor: #00cc99
 
 xterm*scrollBar: false
+xterm*scrollBar_left: false
 xterm*scrollBar_right: false
 xterm*scrollstyle: next
 xterm*skipScroll: true
@@ -111,10 +119,10 @@ xterm*urlColor: #73daca
 xterm*color0: #1D202F
 xterm*color1: #707070
 xterm*color2: #00ff00
-xterm*color3: #00ff00
+xterm*color3: #ffff00
 xterm*color4: #ffff00
-xterm*color5: #0000ff
-xterm*color6: #cc66ff
+xterm*color5: #cc66ff
+xterm*color6: #33ccff
 xterm*color7: #bac1de
 xterm*color8: #707070
 xterm*color9: #f10e38
@@ -147,3 +155,4 @@ xterm*tabbed.tab-underline: false
 xterm*vt100*translations: #override \
     Ctrl Shift <KeyPress> C: copy-selection(CLIPBOARD) \n\
     Ctrl Shift <KeyPress> V: insert-selection(CLIPBOARD)
+
