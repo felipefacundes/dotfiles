@@ -1,31 +1,73 @@
 ! xrdb -merge ~/.Xresources
 
+! ------------------------------------------------------------------------------
 ! Cursor
 Xcursor.theme: Pulse-Glass-Jade-Regular
 Xcursor.size: 24
 
-! Base colors
-*.foreground:  #E1E1E1
-*.background:  #1c2023
-*.cursorColor: #778899
+! ------------------------------------------------------------------------------
+! General Colors
 
-*.color0:  #1c2023
-*.color1:  #bf616a
-*.color2:  #a3be8c
-*.color3:  #ebcb8b
-*.color4:  #8fa1b3
-*.color5:  #b48ead
-*.color6:  #96b5b4
-*.color7:  #E1E1E1
-*.color8:  #919ba0
-*.color9:  #bf616a
-*.color10: #a3be8c
-*.color11: #ebcb8b
-*.color12: #8fa1b3
-*.color13: #b48ead
-*.color14: #96b5b4
-*.color15: #c0c5ce
+! Groove colors
+!*.foreground:  #E1E1E1
+!*.background:  #1c2023
+!*.cursorColor: #778899
 
+!*.color0:  #1c2023
+!*.color1:  #bf616a
+!*.color2:  #a3be8c
+!*.color3:  #ebcb8b
+!*.color4:  #8fa1b3
+!*.color5:  #b48ead
+!*.color6:  #96b5b4
+!*.color7:  #E1E1E1
+!*.color8:  #919ba0
+!*.color9:  #bf616a
+!*.color10: #a3be8c
+!*.color11: #ebcb8b
+!*.color12: #8fa1b3
+!*.color13: #b48ead
+!*.color14: #96b5b4
+!*.color15: #c0c5ce
+
+! special
+*.foreground:   #c6c8d1
+*.background:   black
+*.cursorColor:  #e4e4e4
+
+! black
+*.color0:       #121212
+*.color8:       #585858
+
+! red
+*.color1:       #ff0000
+*.color9:       #e30000
+
+! green
+*.color2:       #00ff00
+*.color10:      #1ce11c
+
+! yellow
+*.color3:       #f7ff00
+*.color11:      #e4ea35
+
+! blue
+*.color4:       #003aff
+*.color12:      #355eea
+
+! magenta
+*.color5:       #c900ff
+*.color13:      #c900ff
+
+! cyan
+*.color6:       #47f7ff
+*.color14:      #35e2ea
+
+! white
+*.color7:       #fff7e9
+*.color15:      #e4e4e4
+
+! ------------------------------------------------------------------------------
 ! Rofi
 rofi.font: monospace 12
 rofi.padding: 20
@@ -39,33 +81,104 @@ rofi.color-urgent: argb:00000000, #f43753, argb:00000000, argb:00000000, #e29a49
 rofi.color-active: argb:00000000, #49bbfb, argb:00000000, argb:00000000, #e29a49
 rofi.kb-cancel: Escape,Alt+F1
 
+! ------------------------------------------------------------------------------
 ! URxvt
-URxvt*saveline: 15000
-URxvt*termName: rxvt-256color
-URxvt*iso14755: false
 URxvt*depth: 32
-URxvt*background: [95]#1C2023
-URxvt*scrollBar: false
-URxvt*scrollBar_right: false
-URxvt*internalBorder: 0
-URxvt*externalBorder: 0
-URxvt*letterSpace: -1
-URxvt.font: xft:monospace:size=11
-URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
-URxvt.copyCommand: xclip -i -selection clipboard
-URxvt.pasteCommand: xclip -o -selection clipboard
-URxvt.keysym.m-c: perl:clipboard:copy
-URxvt.keysym.m-v: perl:clipboard:paste
-URxvt.urlLauncher: exo-open
-URxvt.underlineURLs: true
-URxvt.urlButton: 1
-URxvt.geometry: 90x34
-URxvt.tabbed.tabbar-fg: 4
-URxvt.tabbed.tabbar-bg: 16
-URxvt.tabbed.tab-fg: 15
-URxvt.tabbed.tab-bg: 4
-URxvt*buffered: false
+URxvt*termName: rxvt-256color
+URxvt*faceName: Hack NF:pixelsize=14
+URxvt*boldFont: xft:Hack NF:bold:pixelsize=14
+URxvt*italicFont: xft:Hack NF:italic:pixelsize=14
+URxvt*boldItalicFont: xft:Hack NF:bold:italic:pixelsize=14
+URxvt*antialias: true
+URxvt*subPixel: true
+URxvt*subPixelOrder: RGB
+URxvt*renderFont: true
+URxvt*dpi: 96
 
+URxvt*loginShell: true
+URxvt*vt100*geometry: 90x34
+URxvt*geometry: 90x34
+URxvt*saveLines: 997891
+URxvt*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+URxvt*eightBitInput: true
+URxvt*selectToClipboard: true
+
+URxvt*letterSpace: 0
+URxvt*lineSpace: 0
+URxvt*wordSep: 0
+
+URxvt*cursorBlink: false
+URxvt*cursorUnderline: false
+URxvt*cursorColor: #00cc99
+
+URxvt*reverseVideo: false
+
+URxvt*scrollBar: false
+URxvt*scrollBar_left: false
+URxvt*scrollBar_right: false
+URxvt*scrollstyle: next
+URxvt*skipScroll: true
+
+URxvt*urlLauncher: default
+URxvt*matcher.button: 1
+
+URxvt*copyCommand: xsel -ib
+URxvt*pasteCommand: xsel -ob
+URxvt*cutchars: " ()*,<>[]{}|'`\""
+URxvt*tripleclickwords: true
+
+URxvt*background: rgba:0000/0000/0200/c800
+!URxvt*background: #24283b
+URxvt*foreground: #33cccc
+URxvt*highlightColor: #00cc99
+URxvt*highlightTextColor: #c7ff1a
+URxvt*urlColor: #73daca
+
+URxvt*color0: #1D202F
+URxvt*color1: #707070
+URxvt*color2: #00ff00
+URxvt*color3: #ffff00
+URxvt*color4: #ffff00
+URxvt*color5: #cc66ff
+URxvt*color6: #33ccff
+URxvt*color7: #bac1de
+URxvt*color8: #707070
+URxvt*color9: #f10e38
+URxvt*color10: #05f005
+URxvt*color11: #ffff00
+URxvt*color12: #0000ff
+URxvt*color13: #bb9af7
+URxvt*color14: #33ccff
+URxvt*color15: #bac1de
+URxvt*color16: #ff9e64
+URxvt*color17: #db4b4b
+
+URxvt*borderWidth: 1
+URxvt*internalBorder: 2
+URxvt*externalBorder: 0
+URxvt*marginBell: false
+URxvt*urgentOnBell: false
+
+!URxvt*transparent: true
+URxvt*shading: 90
+
+URxvt*perl-lib: /usr/lib/URxvt/perl
+
+URxvt*tabbed.tabbar-fg: 7
+URxvt*tabbed.tabbar-bg: 0
+URxvt*tabbed.tab-fg: 7
+URxvt*tabbed.tab-bg: 1
+URxvt*tabbed.tab-underline: false
+
+! URxvt shortcuts
+URxvt*vt100*translations: #override \
+    Ctrl Shift <KeyPress> C: copy-selection(CLIPBOARD) \n\
+    Ctrl Shift <KeyPress> V: insert-selection(CLIPBOARD) \n\
+    Ctrl <KeyPress> plus: larger-vt-font() \n\
+    Ctrl <KeyPress> minus: smaller-vt-font()
+
+
+! ------------------------------------------------------------------------------
 ! xterm
 xterm*depth: 24
 xterm*termName: xterm-256color
@@ -96,6 +209,8 @@ xterm*cursorBlink: false
 xterm*cursorUnderline: false
 xterm*cursorColor: #00cc99
 
+xterm*reverseVideo: false
+
 xterm*scrollBar: false
 xterm*scrollBar_left: false
 xterm*scrollBar_right: false
@@ -110,10 +225,10 @@ xterm*pasteCommand: xsel -ob
 xterm*cutchars: " ()*,<>[]{}|'`\""
 xterm*tripleclickwords: true
 
-xterm*background: #24283b
+xterm*background: #24283b 
 xterm*foreground: #33cccc
-xterm*highlightColor: #364A82
-xterm*highlightTextColor: #c0caf5
+xterm*highlightColor: #00cc99 !#364A82
+xterm*highlightTextColor: #c7ff1a
 xterm*urlColor: #73daca
 
 xterm*color0: #1D202F
@@ -152,7 +267,10 @@ xterm*tabbed.tab-fg: 7
 xterm*tabbed.tab-bg: 1
 xterm*tabbed.tab-underline: false
 
+! xterm shortcuts
 xterm*vt100*translations: #override \
     Ctrl Shift <KeyPress> C: copy-selection(CLIPBOARD) \n\
-    Ctrl Shift <KeyPress> V: insert-selection(CLIPBOARD)
+    Ctrl Shift <KeyPress> V: insert-selection(CLIPBOARD) \n\
+    Ctrl <KeyPress> plus: larger-vt-font() \n\
+    Ctrl <KeyPress> minus: smaller-vt-font()
 
