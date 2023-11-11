@@ -1,0 +1,55 @@
+font.size = 12.0
+window.opacity = 0.9
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "#707070" #"#414868"
+blue = "#0000ff" #"#7aa2f7"
+cyan = "#33ccff" #"#7dcfff"
+green = "#05f005" #"#9ece6a"
+magenta = "#bb9af7" 
+red = "#f10e38" #"#f7768e"
+white = "#bac1de" #"#c0caf5"
+yellow = "#ffff00" #"#e0af68"
+
+[colors.normal]
+black = "#707070"
+blue = "#0000ff"
+cyan = "#33ccff"
+green = "#00ff00"
+magenta = "#cc66ff"
+red = "#f10e38"
+white = "#bac1de"
+yellow = "#ffff00"
+
+[colors.primary]
+background = "#24283b"
+foreground = "#33cccc"
+
+[cursor]
+style = "Beam"
+unfocused_hollow = true
+
+[font.bold]
+family = "Hack NF" #"monospace"
+style = "Bold"
+
+[font.bold_italic]
+family = "Hack NF" #"monospace"
+style = "Bold Italic"
+
+[font.italic]
+family = "Hack NF" #"monospace"
+style = "Italic"
+
+[font.normal]
+family = "Hack NF" #"monospace"
+style = "Regular"
+
+[mouse]
+hide_when_typing = true
+
+[selection]
+semantic_escape_chars = ":@-./_~?&=%+#"
