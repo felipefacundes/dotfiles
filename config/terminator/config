@@ -1,0 +1,38 @@
+[global_config]
+  enabled_plugins = TerminalNotifier, Activity, MessageNotification, ShortcutsHintsDbus, TabActivity, Layout
+  suppress_multiple_term_dialog = True
+  enable_slenames = True
+  title_transmit_fg_color = "#000000"
+  title_transmit_bg_color = "#0aff0a"
+  title_inactive_fg_color = "#c0bfbc"
+  title_use_system_font = False
+  title_font = Seagram tfb 10
+[keybindings]
+[profiles]
+  [[default]]
+    background_darkness = 0.90
+    background_type = transparent
+    cursor_blink = False
+    cursor_shape = "IBEAM"
+    use_system_cursors = False
+    cursor_color = "#aaaaaa"
+    font = Hack NF 18
+    background_color = "#24283b"
+    foreground_color = "#33cccc"
+    scrollbar_position = hidden
+    hide_scrollbar = True
+    scrollback_infinite = True
+    show_titlebar = False
+    #Default: #palette = "#000000:#aa0000:#00aa00:#aa5500:#0000aa:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#55ff55:#ffff55:#5555ff:#ff55ff:#55ffff:#ffffff"
+    palette = "#1D202F:#707070:#00ff00:#ffff00:#f10e38:#cc66ff:#33ccff:#0000ff:#414868:#f10e38:#00ff00:#e0af68:#0000ff:#bb9af7:#7dcfff:#c0caf5"
+    use_system_font = False
+    bold_is_bright = True
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]
