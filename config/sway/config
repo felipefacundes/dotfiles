@@ -151,24 +151,32 @@ client.placeholder      #000000  #0c0c0c #ffffff    #000000    #0c0c0c
 ####################################################################
 ### Use o comando:  xev  para detectar qual é à sua tecla especial.
 
-# Set your preferred terminal emulator# Give it a title
+# Set your preferred terminal emulator# Give it a title (for dropdown terminal)
 set $title QuakeTerminal
+set $Qterm alacritty
 set $term terminator
-set $QuakeTerminal $term -T $title  
-# Execute your preferred terminal emulator in scratchpad  
-exec $QuakeTerminal
-for_window [title="$title"] move container to scratchpad
+set $QuakeTerminal $Qterm -T $title
+# Execute your preferred terminal emulator in scratchpad (for dropdown terminal)
+#exec $QuakeTerminal
+#for_window [title="$title"] move container to scratchpad
 
 # Bind your preferred shortcut to show / hide the terminal  
-bindsym $sup+F12 scratchpad show
+#bindsym $sup+F12 [title="$title"] scratchpad show
+bindsym $sup+F12 exec bash -c '~/.shell_utils/scripts/sway_dropdown_terminal.sh'
 
 bindsym $sup+Button1 tiling_drag
+
+# Help functions
+bindsym $ctrl+$alt+h exec bash -c '~/.shell_utils/scripts/help_with_rofi'
 
 # Reiniciar o sistema
 bindsym $ctrl+$sup+backspace exec bash -c 'openrc-shutdown --reboot now; systemctl reboot'
 
 # Matar janela
 bindsym $ctrl+$alt+Escape exec xkill
+
+# Xpad (Postit)
+bindsym $sup+$alt+p exec bash -c 'xpad -t &'
 
 # Clipboard wayland
 bindsym $ctrl+$alt+c exec bash -c 'pkill -9 wofi; cliphist list | wofi --show dmenu | cliphist decode | wl-copy'
@@ -249,8 +257,11 @@ bindsym Shift+space exec playerctl play-pause
 # Min Browser
 bindsym $ctrl+$sup+m exec min
 
+# Open With MPV
+bindsym $ctrl+$alt+m exec bash -c '~/.shell_utils/scripts/open_video_with_mpv.sh &'
+
 # Firefox
-bindsym $ctrl+$sup+f exec ~/.shell_utils/scripts/check_firefox.sh
+bindsym $ctrl+$sup+f exec bash -c '~/.shell_utils/scripts/check_firefox.sh &'
 
 # https://www.qwant.com
 bindsym $ctrl+$sup+c exec chromium
@@ -275,11 +286,12 @@ bindsym $ctrl+$sup+g exec gimp
 # Arandr
 bindsym $ctrl+$sup+a exec arandr
 
-# Iniciar terminal
-#bindsym $sup+Return exec i3-sensible-terminal
-bindsym $sup+t exec $term
+# Iniciar terminal e previnir de coredump com a regra: for_window [app_id=".*$term$"] floating enable, resize set 1900 1020, split horizontal
+bindsym $sup+t exec bash -c "$term & swaymsg [app_id=".*$term$"] -t command split horizontal & sleep 0.5 && swaymsg [app_id=".*$term$"] -t command resize set width 1920px height 1020px &"
+
+#
 bindsym $sup+y exec yakuake
-bindsym $sup+Return exec alacritty
+bindsym $sup+Return exec $Qterm
 bindsym $sup+Shift+x exec xterm
 
 # Iniciar Transmission
@@ -293,18 +305,16 @@ bindsym $alt+F4 kill
 
 # Mudar foco
 bindsym $alt+h focus left
+bindsym $alt+$sup+Left focus left
 bindsym $sup+Shift+Tab focus left
 bindsym $alt+j focus down
+bindsym $alt+$sup+Down focus down
 bindsym $sup+Tab exec bash -c '~/.shell_utils/scripts/sway_all_windows_focused.sh'
 bindsym $alt+k focus up
-bindsym $alt+l focus right
-bindsym $alt+Tab focus right
-
-# Alternativa
-bindsym $alt+$sup+Left focus left
-bindsym $alt+$sup+Down focus down
 bindsym $alt+$sup+Up focus up
+bindsym $alt+l focus right
 bindsym $alt+$sup+Right focus right
+bindsym $alt+Tab focus right
 
 # Entrar em modo tela cheia
 bindsym $alt+F11 fullscreen toggle
@@ -316,6 +326,19 @@ bindsym $sup+Shift+w layout tabbed
 bindsym $sup+Shift+a layout toggle tabbed stacking split
 bindsym $sup+Shift+Space layout toggle tabbed stacking split
 
+# Float resize
+bindsym $sup+Shift+h exec swaymsg -t command resize shrink width 50px
+bindsym $sup+Shift+k exec swaymsg -t command resize grow height 50px
+bindsym $sup+Shift+j exec swaymsg -t command resize shrink height 50px
+bindsym $sup+Shift+l exec swaymsg -t command resize grow width 50px
+bindsym $sup+backslash exec bash -c 'f=/tmp/sway_toggle_float_size; if [[ ! -f "$f" ]]; then swaymsg -t command resize set width 1900px height 1020px; touch "$f"; else swaymsg -t command resize set width 1000px height 800px; rm "$f"; fi'
+
+# Move float
+bindsym $sup+h exec bash -c '~/.shell_utils/scripts/sway_move_position.sh h'
+bindsym $sup+l exec bash -c '~/.shell_utils/scripts/sway_move_position.sh l'
+bindsym $sup+k exec bash -c '~/.shell_utils/scripts/sway_move_position.sh k'
+bindsym $sup+j exec bash -c '~/.shell_utils/scripts/sway_move_position.sh j'
+
 # Tela maximizada/floating
 bindsym $sup+f floating toggle
 bindsym button3 floating toggle
@@ -323,6 +346,10 @@ bindsym button3 floating toggle
 # change focus between tiling / floating windows
 bindsym $sup+space focus mode_toggle
 bindsym $alt+Escape focus mode_toggle
+
+# zoom
+bindsym $sup+Equal exec bash -c '~/.shell_utils/scripts/sway_zoom.sh +'
+bindsym $sup+Minus exec bash -c '~/.shell_utils/scripts/sway_zoom.sh -'
 
 # Centro
 bindsym $sup+Shift+c move position center
@@ -351,10 +378,15 @@ bindsym $alt+F1 exec bash -c "rm ~/.jgmenu-lockfile ; jgmenu"
 bindsym $ctrl+space exec synapse
 
 # Lock
-bindsym $ctrl+alt+l exec swaylock
+bindsym $ctrl+$alt+l exec swaylock
 
 # Screenshot
-bindsym Print exec bash -c 'play ~/.local/songs/camera_shutter.mp3 ; grim "${HOME}/Pictures/Capture/Screen Capture $(date +"%d-%m-%Y %H:%M:%S").png" - | wl-copy'
+#bindsym Print exec bash -c 'grim -t png - | wl-copy && wl-paste > "${HOME}/Pictures/Capture/$(date +"%Y-%m-%d %H:%M:%S") - Capture.png"'
+#bindsym Shift+Print exec bash -c 'slurp | grim -g - - | tee "${HOME}/Pictures/Capture/$(date +"%Y-%m-%d %H:%M:%S") - Capture.png" | wl-copy'
+bindsym Print exec bash -c '~/.shell_utils/scripts/print_screen.sh -p -msg &'
+bindsym $alt+Print exec bash -c '~/.shell_utils/scripts/print_screen.sh -ap -msg &'
+bindsym Shift+Print exec bash -c '~/.shell_utils/scripts/print_screen.sh -sp -msg &'
+bindsym $sup+v exec bash -c '~/.shell_utils/scripts/print_screen.sh -d &'
 
 # Gravar tela
 #bindsym $ctrl+$alt+r exec bash -c '$term -e ffmpeg -video_size 1360x768 -framerate 25 -f x11grab -i :0.0 -f pulse -ac 2 -i default ${HOME}/Videos/Tela_$(date +%d-%m-%Y_%H:%M:%S).mkv'
@@ -425,16 +457,12 @@ bindsym $sup+d workspace back_and_forth
 #
 ######## Ou com (title / app_id ou class), dependerá do progrma, ou vai funcionar de um modo ou de outro,
 ######## No entanto, às vezes precisa de uma parâmetro especial, como: ".*progrma$", ou simplesmente: "progrma", exemplos:
-# for_window [app_id=".*$term$"] floating enable
-# for_window [title=".*mpv$"] floating enable
-# for_window [class="Viewnior"] floating enable
-#####################################################################
-
-# $term (Terminal)
-#for_window [app_id=".*$term$"] floating enable
 
 # Termite (Terminal)
 #for_window [app_id=".*termite$"] floating enable
+
+# Default terminal
+#for_window [app_id=".*$term$"] floating enable #, resize set 1900 1020, split horizontal
 
 # Telegram (Desktop)
 #for_window [title=".*telegram$"] floating enable
@@ -449,7 +477,11 @@ bindsym $sup+d workspace back_and_forth
 #for_window [class=".*orage$" instance=".*orage$" title="Orage" app_id=".*orage$"] floating enable
 
 # MPV (Video Player)
-#for_window [title=".*mpv$"] floating enable
+for_window [title=".*mpv$"] floating enable
+
+# Xpad (Postit)
+for_window [app_id="xpad"] split vertical
+#assign [app_id="xpad"] $ws6
 
 # Qbittorrent
 for_window [app_id="qbittorrent"] floating enable
@@ -460,7 +492,6 @@ assign [app_id="qbittorrent"] $ws5
 
 # Viewnior (Gerenciador de imagens)
 #for_window [class="Viewnior"] floating enable
-
 
 ####################################################################
 ######################### M O V E R ################################
@@ -591,6 +622,9 @@ mode "$mode_gaps_outer" {
 # Kernel Update
 exec bash -c '~/.shell_utils/scripts/kernel_check_update.sh &' &
 
+# QuakeTerminal daemon
+#exec bash -c '~/.shell_utils/scripts/sway_dropdown_terminal_daemon.sh &' &
+
 # Set a random wallpaper
 exec bash -c 'swww init & sleep 2; swww img "$(find ${HOME}/Pictures/Wallpapers/ -name "*[jJpP][nNpP][gG]" | shuf -n1)" &' &
 
@@ -598,10 +632,12 @@ exec bash -c 'swww init & sleep 2; swww img "$(find ${HOME}/Pictures/Wallpapers/
 exec bash -c '~/.shell_utils/scripts/persistent_pid.sh /bin/waybar &' & 
 
 # Others
+exec bash -c 'mako &' &
 exec bash -c '~/.shell_utils/scripts/persistent_pid.sh /bin/anyremote -f /usr/share/anyremote/cfg-data/Server-mode/all-in-one2.cfg -s socket:5197 &' &
 exec bash -c '~/.shell_utils/scripts/persistent_pid.sh /bin/minidlnad -f ${HOME}/.config/minidlna/minidlna.conf -P ${HOME}/.config/minidlna/minidlna.pid &' &
-exec bash -c '~/.shell_utils/scripts/gnome-keyring-daemon-fix.sh' &
-exec bash -c 'LANG=en /usr/lib/xdg-desktop-portal-gtk & LANG=en /usr/lib/xdg-desktop-portal-gnome' &
+exec bash -c '~/.shell_utils/scripts/gnome-keyring-daemon-fix.sh &' &
+exec bash -c 'LANG=en /usr/lib/xdg-desktop-portal-gtk & LANG=en /usr/lib/xdg-desktop-portal-gnome &' &
+exec bash -c 'cadmus &' &
 
 # Fix pulseaudio
 exec bash -c '~/.shell_utils/scripts/fix_pulseaudio.sh &' &
