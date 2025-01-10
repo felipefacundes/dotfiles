@@ -1,0 +1,28 @@
+sudo vim /etc/default/grub
+GRUB_DISTRIBUTOR='Arch'
+
+sudo vim /etc/lsb-release
+NAME="Arch Linux"
+PRETTY_NAME="Arch Linux"
+ID="arch"
+ID_LIKE="arch"
+ANSI_COLOR="38;2;23;147;209"
+HOME_URL="https://www.archlinux.org/"
+DOCUMENTATION_URL="https://wiki.archlinux.org/"
+SUPPORT_URL="https://bbs.archlinux.org/"
+BUG_REPORT_URL="https://bugs.archlinux.org/"
+PRIVACY_POLICY_URL="https://terms.archlinux.org/docs/privacy-policy/"
+BUILD_ID="2025.01.10"
+LOGO="arch"
+LSB_VERSION=1.4-14
+DISTRIB_ID="Arch"
+DISTRIB_RELEASE="rolling"
+DISTRIB_DESCRIPTION="Arch Linux"
+DISTRIB_CODENAME="rolling"
+
+sudo vim /etc/issue
+Arch Linux \r (\l)
+
+sudo cp -f /etc/lsb-release /usr/lib/os-release
+
+sudo mkinitcpio -P && sudo grub-mkconfig -o /boot/grub/grub.cfg
